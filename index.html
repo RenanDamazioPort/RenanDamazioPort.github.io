@@ -99,7 +99,7 @@ footer{padding:28px var(--pad);border-top:1px solid var(--line);font:9px var(--m
 <section class="hero"><div class="hero-top"><span class="hero-kicker">SÃO PAULO · BRAZIL · 2026</span><span class="hero-status"><i class="dot"></i> AVAILABLE FOR SELECT PROJECTS</span></div><h1 class="hero-title">IDEAS<br><span class="stroke">WITH</span> <span class="accent">IMPACT.</span></h1><div class="hero-bottom"><p class="hero-copy">Direção de arte, design, branding e experimentação com IA. Um portfólio pensado para mostrar ideias fortes, execução visual e trabalhos que ganham presença.</p><a class="hero-cta" href="#work">SCROLL TO SELECTED WORKS ↓</a></div></section>
 <section class="section" id="work"><div class="section-head"><span>01 / SELECTED WORKS</span><span class="muted">4 SELECTED PROJECTS</span></div><div class="projects">
 <button class="project" data-id="jj"><div class="visual"><img data-b64="assets/juros-jitsu-kv.b64" alt="Juros-Jitsu"></div><div class="project-info"><div class="project-title">Juros-Jitsu</div><div class="project-meta">NUBANK / SPEC<br>2026</div></div></button>
-<button class="project" data-id="verao"><div class="visual"><img data-b64="assets/verao-kv.b64" alt="Verão Premiado"></div><div class="project-info"><div class="project-title">Verão Premiado</div><div class="project-meta">FEBRAFAR<br>2026</div></div></button>
+<button class="project" data-id="verao"><div class="visual"><img data-b64-parts="assets/verao-kv-01.b64,assets/verao-kv-02.b64,assets/verao-kv-03.b64,assets/verao-kv-04.b64,assets/verao-kv-05.b64,assets/verao-kv-06.b64" alt="Verão Premiado"></div><div class="project-info"><div class="project-title">Verão Premiado</div><div class="project-meta">FEBRAFAR<br>2026</div></div></button>
 <button class="project" data-id="gulf"><div class="visual v-gulf"><b>30</b></div><div class="project-info"><div class="project-title">Gulf 30L</div><div class="project-meta">GULF<br>2025</div></div></button>
 <button class="project" data-id="keune"><div class="visual v-keune"><b>BLACK<br>FRIDAY</b></div><div class="project-info"><div class="project-title">Keune Black Friday</div><div class="project-meta">KEUNE<br>2024</div></div></button>
 </div></section>
@@ -109,7 +109,18 @@ footer{padding:28px var(--pad);border-top:1px solid var(--line);font:9px var(--m
 <footer><span>© 2026 RENAN DAMAZIO</span><span>ART DIRECTOR · SÃO PAULO</span></footer>
 <div class="modal" id="modal"><div class="modal-top"><span id="modalNum">PROJECT</span><button class="close" id="close">CLOSE ×</button></div><div class="modal-content" id="modalContent"></div></div>
 <script>
-async function hydrate(){for(const el of document.querySelectorAll('[data-b64]')){try{const t=await fetch(el.dataset.b64).then(r=>r.text());el.src='data:image/webp;base64,'+t.trim()}catch(e){}}}
+async function hydrate(){
+  for(const el of document.querySelectorAll('[data-b64]')){
+    try{const t=await fetch(el.dataset.b64).then(r=>r.text());el.src='data:image/webp;base64,'+t.trim()}catch(e){}
+  }
+  for(const el of document.querySelectorAll('[data-b64-parts]')){
+    try{
+      const paths=el.dataset.b64Parts.split(',').map(s=>s.trim());
+      const chunks=await Promise.all(paths.map(p=>fetch(p).then(r=>r.text())));
+      el.src='data:image/webp;base64,'+chunks.join('').replace(/\s/g,'');
+    }catch(e){}
+  }
+}
 hydrate();
 const projects={
   jj:{n:'01',t:'Juros-Jitsu',c:'Nubank / Spec',y:'2026',r:'Art Direction · Film · AI',d:'Uma metáfora visual que transforma juros, taxas e cobranças em golpes de jiu-jitsu.'},
@@ -122,7 +133,7 @@ document.querySelectorAll('.project').forEach(b=>b.onclick=async()=>{
   const p=projects[b.dataset.id];
   mn.textContent='PROJECT / '+p.n;
   if(p.type==='case'){
-    mc.innerHTML=`<h2>Verão Premiado</h2><div class="modal-meta"><span>CLIENT — FEBRAFAR</span><span>YEAR — 2026</span><span>ROLE — DIREÇÃO DE ARTE</span></div><figure class="case-hero"><img data-b64="assets/verao-kv.b64"></figure><div class="case-copy"><div class="credits"><div><strong>Cliente:</strong> Febrafar</div><div><strong>Redação:</strong> David Douglas</div><div><strong>Direção de Arte:</strong> Renan Damazio</div></div><p>E se o vocabulário da estação mais quente do ano pudesse dar uma virada em uma promoção que não estava bem das pernas?</p><p>Na edição de 2026 do Verão Premiado, expressões, situações e códigos veranis passaram a fazer parte de toda a linguagem da campanha, transformando um simples nome em ideia.</p><p>E essa comunicação repaginada, muito mais próxima do dia a dia dos balconistas de farmácias, fez as metas pegarem fogo.</p><div class="stats"><strong>54</strong> redes de farmácias, <strong>2.009</strong> lojas e <strong>7.724</strong> balconistas inscritos em todo o Brasil.<br><br>O maior resultado de adesão da história da promoção.</div></div><div class="gallery"><img data-b64="assets/verao-01.b64"><img data-b64="assets/verao-02.b64"><img data-b64="assets/verao-03.b64"></div>`;
+    mc.innerHTML=`<h2>Verão Premiado</h2><div class="modal-meta"><span>CLIENT — FEBRAFAR</span><span>YEAR — 2026</span><span>ROLE — DIREÇÃO DE ARTE</span></div><figure class="case-hero"><img data-b64-parts="assets/verao-kv-01.b64,assets/verao-kv-02.b64,assets/verao-kv-03.b64,assets/verao-kv-04.b64,assets/verao-kv-05.b64,assets/verao-kv-06.b64"></figure><div class="case-copy"><div class="credits"><div><strong>Cliente:</strong> Febrafar</div><div><strong>Redação:</strong> David Douglas</div><div><strong>Direção de Arte:</strong> Renan Damazio</div></div><p>E se o vocabulário da estação mais quente do ano pudesse dar uma virada em uma promoção que não estava bem das pernas?</p><p>Na edição de 2026 do Verão Premiado, expressões, situações e códigos veranis passaram a fazer parte de toda a linguagem da campanha, transformando um simples nome em ideia.</p><p>E essa comunicação repaginada, muito mais próxima do dia a dia dos balconistas de farmácias, fez as metas pegarem fogo.</p><div class="stats"><strong>54</strong> redes de farmácias, <strong>2.009</strong> lojas e <strong>7.724</strong> balconistas inscritos em todo o Brasil.<br><br>O maior resultado de adesão da história da promoção.</div></div><div class="gallery"><img data-b64="assets/verao-01.b64"><img data-b64="assets/verao-02.b64"><img data-b64="assets/verao-03.b64"></div>`;
     await hydrate();
   }else{
     mc.innerHTML=`<h2>${p.t}</h2><div class="modal-meta"><span>CLIENT — ${p.c}</span><span>YEAR — ${p.y}</span><span>ROLE — ${p.r}</span></div><div class="case-copy"><p>${p.d}</p></div>`;
