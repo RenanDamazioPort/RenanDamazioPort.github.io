@@ -71,6 +71,12 @@ header a{pointer-events:auto}
 .modal-content{padding:70px var(--pad) 100px}
 .modal-content h2{font-size:clamp(70px,11vw,170px);line-height:.8;letter-spacing:-.085em;margin:0 0 40px}
 .modal-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;border-block:1px solid var(--line);padding:14px 0;font:9px var(--mono);color:var(--muted)}
+.neon-meta{overflow:hidden;border-color:rgba(130,10,209,.38)}
+.neon-meta span{color:#a93df0;opacity:0;transform:translateX(-90px);filter:blur(1.5px);text-shadow:0 0 5px rgba(130,10,209,.95),0 0 14px rgba(130,10,209,.68),0 0 28px rgba(130,10,209,.34);animation:metaNeonSlide 1.65s cubic-bezier(.18,.78,.18,1) forwards}
+.neon-meta span:nth-child(1){animation-delay:.08s}
+.neon-meta span:nth-child(2){animation-delay:.3s}
+.neon-meta span:nth-child(3){animation-delay:.52s}
+@keyframes metaNeonSlide{0%{opacity:0;transform:translateX(-90px);filter:blur(3px);text-shadow:0 0 8px rgba(130,10,209,1),0 0 22px rgba(130,10,209,.85),0 0 38px rgba(130,10,209,.55)}58%{opacity:1;transform:translateX(10px);filter:blur(0);text-shadow:0 0 6px rgba(130,10,209,.95),0 0 18px rgba(130,10,209,.72),0 0 30px rgba(130,10,209,.42)}100%{opacity:1;transform:translateX(0);filter:blur(0);text-shadow:0 0 3px rgba(130,10,209,.7),0 0 10px rgba(130,10,209,.4),0 0 18px rgba(130,10,209,.2)}}
 .case-hero{margin:36px 0;border:1px solid var(--line)}
 .case-hero img{width:100%;display:block}
 .case-copy{max-width:1000px;margin:60px 0}
@@ -93,6 +99,7 @@ footer{padding:28px var(--pad);border-top:1px solid var(--line);font:9px var(--m
   .visual{aspect-ratio:16/10;border-radius:10px}
   .gallery{grid-template-columns:1fr}
   .modal-meta{grid-template-columns:1fr}
+  .neon-meta span{transform:translateX(-50px)}
   .nav{gap:12px}
   footer{flex-direction:column;gap:15px}
 }
@@ -140,7 +147,7 @@ document.querySelectorAll('.project').forEach(b=>b.onclick=async()=>{
   mn.textContent='PROJECT / '+p.n;
   if(b.dataset.id==='jj'){
     mc.innerHTML=`<h2>Juros-Jitsu</h2>
-      <div class="modal-meta"><span>CLIENT — NUBANK / SPEC</span><span>YEAR — 2026</span><span>ROLE — DIREÇÃO DE ARTE</span></div>
+      <div class="modal-meta neon-meta"><span>CLIENT — NUBANK / SPEC</span><span>YEAR — 2026</span><span>ROLE — DIREÇÃO DE ARTE</span></div>
       <div class="case-label">A IDEIA</div>
       <div class="case-stack"><img src="assets/nubank/juros-jst.png" alt="Ideia Juros-Jitsu"></div>
       <div class="case-copy wide"><p>Juros-Jitsu nasceu durante o <strong>Super Creative</strong>, curso da <strong>Miami Ad School Brasil</strong>, conduzido por <strong>Alexandre Kazuo Kubo</strong>. O projeto partiu do desafio de explorar até onde a IA pode ampliar a direção de arte sem substituir o que vem antes dela: a ideia.</p><p>A proposta transforma juros, taxas e cobranças dos bancos tradicionais em golpes de jiu-jitsu, criando uma metáfora simples, direta e visualmente forte. Mais do que acelerar a execução, o exercício abriu espaço para testar fotografia, filme, efeitos e desdobramentos com mais liberdade. A ferramenta abre caminhos; repertório, olhar e conceito continuam guiando o trabalho.</p></div>
