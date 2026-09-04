@@ -34,9 +34,13 @@ header a{pointer-events:auto}
 .hero-kicker,.hero-status{font:10px var(--mono);letter-spacing:.08em}
 .hero-status{display:flex;gap:8px;align-items:center}
 .dot{width:7px;height:7px;border-radius:50%;background:var(--acid);box-shadow:0 0 18px var(--acid)}
-.hero-title{align-self:center;margin:7vh 0 5vh;font-size:clamp(66px,11vw,178px);line-height:.79;letter-spacing:-.09em;font-weight:700}
+.hero-title{align-self:center;margin:7vh 0 5vh;font-size:clamp(66px,11vw,178px);line-height:.79;letter-spacing:-.09em;font-weight:700;display:flex;flex-direction:column;align-items:flex-start}
+.hero-line{display:block}
 .stroke{color:transparent;-webkit-text-stroke:1.2px var(--fg)}
 .accent{color:var(--acid)}
+.hero-rotator{position:relative;display:block;width:100%;height:.88em;overflow:hidden}
+.hero-word{position:absolute;left:0;top:0;white-space:nowrap;opacity:0;transform:translateY(48%) skewY(2deg);filter:blur(5px);transition:opacity .55s ease,transform .72s cubic-bezier(.2,.75,.2,1),filter .55s ease}
+.hero-word.is-active{opacity:1;transform:translateY(0) skewY(0);filter:blur(0)}
 .hero-bottom{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end}
 .hero-copy{max-width:600px;font-size:clamp(15px,1.35vw,20px);line-height:1.45;color:#c9c7bf}
 .hero-cta{justify-self:end;font:11px var(--mono);border-bottom:1px solid var(--fg);padding-bottom:6px}
@@ -103,13 +107,14 @@ footer{padding:28px var(--pad);border-top:1px solid var(--line);font:9px var(--m
   .nav{gap:12px}
   footer{flex-direction:column;gap:15px}
 }
+@media(prefers-reduced-motion:reduce){.hero-word{transition:none;filter:none}.hero-word:not(.is-active){display:none}}
 </style>
 </head>
 <body>
 <div class="boot" id="boot"><div class="boot-inner"><div class="boot-line">▸ EXECUTAR / RENAN-DAMAZIO / PORTFÓLIO</div><div class="boot-big">INICIALIZANDO...</div><div class="progress"><i></i></div></div></div>
 <header><a href="#top" class="brand"><strong>RD.</strong><small>DIRETOR DE ARTE</small></a><nav class="nav"><a href="#work">PROJETOS</a><a href="#about">SOBRE</a><a href="#contact">CONTATO</a></nav></header>
 <main id="top">
-<section class="hero"><div class="hero-top"><span class="hero-kicker">SÃO PAULO · BRASIL · 2026</span><span class="hero-status"><i class="dot"></i> DISPONÍVEL PARA NOVOS PROJETOS</span></div><h1 class="hero-title">IDEIAS<br><span class="stroke">COM</span> <span class="accent">IMPACTO.</span></h1><div class="hero-bottom"><p class="hero-copy">Direção de arte, design, construção de marca e experimentação com IA. Um portfólio pensado para mostrar ideias fortes, execução visual e trabalhos que ganham presença.</p><a class="hero-cta" href="#work">VER PROJETOS ↓</a></div></section>
+<section class="hero"><div class="hero-top"><span class="hero-kicker">SÃO PAULO · BRASIL · 2026</span><span class="hero-status"><i class="dot"></i> DISPONÍVEL PARA NOVOS PROJETOS</span></div><h1 class="hero-title"><span class="hero-line">IDEIAS</span><span class="hero-line stroke">COM</span><span class="hero-rotator accent" aria-live="polite"><span class="hero-word is-active">IMPACTO.</span><span class="hero-word">CONCEITO.</span><span class="hero-word">CAMPANHA.</span><span class="hero-word">CRIAÇÃO.</span></span></h1><div class="hero-bottom"><p class="hero-copy">Direção de arte, design, construção de marca e experimentação com IA. Um portfólio pensado para mostrar ideias fortes, execução visual e trabalhos que ganham presença.</p><a class="hero-cta" href="#work">VER PROJETOS ↓</a></div></section>
 <section class="section" id="work"><div class="section-head"><span>01 / PROJETOS SELECIONADOS</span><span class="muted">4 PROJETOS</span></div><div class="projects">
 <button class="project" data-id="jj"><div class="visual"><img src="assets/nubank/KV-JUROS-NUBANK.png" alt="Juros-Jitsu"></div><div class="project-info"><div class="project-title">Juros-Jitsu</div><div class="project-meta">NUBANK / CONCEITO<br>2026</div></div></button>
 <button class="project" data-id="verao"><div class="visual"><img data-b64-parts="assets/verao-kv-01.b64,assets/verao-kv-02.b64,assets/verao-kv-03.b64,assets/verao-kv-04.b64,assets/verao-kv-05.b64,assets/verao-kv-06.b64" alt="Verão Premiado"></div><div class="project-info"><div class="project-title">Verão Premiado</div><div class="project-meta">FEBRAFAR<br>2026</div></div></button>
@@ -169,6 +174,15 @@ document.querySelectorAll('.project').forEach(b=>b.onclick=async()=>{
 });
 document.getElementById('close').onclick=()=>{modal.classList.remove('open');document.body.style.overflow=''};
 document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('close').click()});
+const heroWords=[...document.querySelectorAll('.hero-word')];
+let heroWordIndex=0;
+if(heroWords.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  setInterval(()=>{
+    heroWords[heroWordIndex].classList.remove('is-active');
+    heroWordIndex=(heroWordIndex+1)%heroWords.length;
+    heroWords[heroWordIndex].classList.add('is-active');
+  },2400);
+}
 window.addEventListener('load',()=>setTimeout(()=>document.getElementById('boot').classList.add('off'),800));
 </script>
 </body>
