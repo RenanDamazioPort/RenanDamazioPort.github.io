@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Renan Damazio — Teste</title>
+<meta name="description" content="Experimento de navegação do portfólio de Renan Damazio">
+<style>
+:root{
+  --bg:#dededb;
+  --panel:#f6f6f4;
+  --sidebar:#efefed;
+  --line:#dfdfdc;
+  --text:#0d0d0c;
+  --muted:#8d8d87;
+  --accent:#55dbe8;
+  --folder:#39b9f6;
+  --folder2:#0ea6ee;
+  --shadow:0 35px 90px rgba(0,0,0,.16),0 10px 30px rgba(0,0,0,.07);
+  --sans:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{margin:0;font-family:var(--sans);color:var(--text);background:
+  radial-gradient(circle at 18% 22%,rgba(255,255,255,.75),transparent 28%),
+  radial-gradient(circle at 84% 74%,rgba(255,255,255,.45),transparent 30%),
+  var(--bg);display:grid;place-items:center;padding:clamp(14px,4vw,52px)}
+button,a{font:inherit;color:inherit}
+button{border:0;background:none}
+a{text-decoration:none}
+.app{width:min(1180px,94vw);height:min(760px,88vh);min-height:610px;background:rgba(247,247,245,.94);backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,.72);border-radius:34px;box-shadow:var(--shadow);overflow:hidden;display:grid;grid-template-columns:245px 1fr;position:relative}
+.app::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:34px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.7)}
+.sidebar{background:linear-gradient(180deg,rgba(241,241,239,.96),rgba(236,236,233,.94));border-right:1px solid var(--line);padding:26px 18px 24px;display:flex;flex-direction:column;min-width:0}
+.traffic{display:flex;gap:9px;padding:0 4px 24px}.traffic i{width:14px;height:14px;border-radius:50%;box-shadow:inset 0 -1px 2px rgba(0,0,0,.15)}.traffic i:nth-child(1){background:#ff5f57}.traffic i:nth-child(2){background:#febc2e}.traffic i:nth-child(3){background:#28c840}
+.profile{padding:4px 10px 22px;border-bottom:1px solid var(--line);margin-bottom:16px}.profile strong{display:block;font-size:18px;letter-spacing:-.03em}.profile span{display:block;margin-top:4px;color:var(--muted);font-size:12px}
+.nav{display:grid;gap:6px}.nav-btn,.nav-link{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:12px;cursor:pointer;text-align:left;font-weight:600;font-size:14px;transition:.22s}.nav-btn:hover,.nav-link:hover{background:rgba(0,0,0,.045)}.nav-btn.active{background:#dff8f8;color:#0a797f}.nav-ico{width:18px;height:18px;display:grid;place-items:center;color:#999;font-size:14px}.nav-btn.active .nav-ico{color:#0aa6ad}
+.sidebar-bottom{margin-top:auto;display:grid;gap:7px}.tiny{font-size:10px;color:#9b9b95;padding:8px 12px 0;line-height:1.4}
+.main{min-width:0;padding:28px 36px 34px;overflow:auto;scrollbar-width:thin}.topbar{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:34px}.eyebrow{font-size:13px;color:#8d8d87;margin-bottom:2px}.title{font-size:clamp(48px,6vw,76px);line-height:.95;letter-spacing:-.065em;margin:0;font-weight:760}.view-icons{display:flex;gap:15px;color:#777;font-size:24px;padding-top:9px;user-select:none}
+.folder-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:38px 42px;align-items:start}.folder-card{display:grid;justify-items:center;gap:11px;cursor:pointer;padding:8px 6px;border-radius:18px;transition:transform .2s ease,background .2s ease}.folder-card:hover{transform:translateY(-4px);background:rgba(255,255,255,.45)}.folder-card:active{transform:scale(.985)}
+.folder{width:min(155px,12vw);min-width:112px;aspect-ratio:1.28;position:relative;filter:drop-shadow(0 10px 12px rgba(27,143,212,.18))}.folder::before{content:"";position:absolute;left:5%;top:18%;width:39%;height:24%;border-radius:12px 11px 4px 4px;background:linear-gradient(180deg,#73d4ff,#39b8f5)}.folder::after{content:"";position:absolute;inset:29% 2% 5%;border-radius:10px 13px 15px 15px;background:linear-gradient(180deg,#45c5ff 0%,#24b1f2 62%,#159fe6 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.42),inset 0 -8px 20px rgba(0,91,161,.13)}.folder-card:hover .folder::after{background:linear-gradient(180deg,#5bcfff,#31bdf5 60%,#1aa5ea)}.folder-label{font-size:14px;font-weight:600;text-align:center;line-height:1.25}.folder-meta{font-size:10px;color:#9c9c96;text-align:center;margin-top:-5px}
+.file-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.file-card{background:#fff;border:1px solid #ececea;border-radius:20px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.05);cursor:pointer;transition:.25s}.file-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.09)}.file-thumb{aspect-ratio:16/10;background:#e9e9e6;overflow:hidden}.file-thumb img{width:100%;height:100%;object-fit:cover;display:block}.file-info{padding:15px 16px 17px}.file-info strong{display:block;font-size:17px;letter-spacing:-.03em}.file-info span{display:block;font-size:11px;color:#989892;margin-top:5px;line-height:1.35}.back{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:#777;margin-bottom:19px;cursor:pointer;padding:7px 0}.back:hover{color:#111}
+.text-view{max-width:730px;padding-top:10px}.text-view h2{font-size:clamp(38px,5vw,68px);line-height:.95;letter-spacing:-.06em;margin:0 0 26px}.text-view p{font-size:clamp(17px,1.6vw,22px);line-height:1.45;color:#55554f;max-width:670px}.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}.chips span{border:1px solid #dddeda;background:#fff;border-radius:999px;padding:9px 12px;font-size:11px}.contact-list{display:grid;gap:10px;margin-top:28px}.contact-list a{display:flex;justify-content:space-between;align-items:center;background:white;border:1px solid #e7e7e3;padding:17px 18px;border-radius:14px;font-size:15px;transition:.2s}.contact-list a:hover{transform:translateX(4px);border-color:#bfeef0}.contact-list small{color:#999}
+.toast{position:absolute;left:50%;bottom:22px;transform:translate(-50%,18px);opacity:0;background:#111;color:#fff;padding:10px 14px;border-radius:999px;font-size:11px;pointer-events:none;transition:.25s;z-index:10}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:900px){body{padding:0;background:#e4e4e1;place-items:stretch}.app{width:100%;height:100svh;min-height:0;border-radius:0;grid-template-columns:1fr;display:block}.app::after{display:none}.sidebar{position:sticky;top:0;z-index:20;padding:14px 14px 10px;border-right:0;border-bottom:1px solid var(--line);display:block;backdrop-filter:blur(18px)}.traffic{display:none}.profile{display:none}.nav{display:flex;overflow:auto;gap:7px;padding-bottom:2px}.nav-btn,.nav-link{white-space:nowrap;padding:9px 11px;font-size:12px}.sidebar-bottom{display:none}.main{height:calc(100svh - 59px);padding:25px 18px 38px}.topbar{margin-bottom:25px}.title{font-size:52px}.eyebrow{font-size:12px}.view-icons{font-size:20px}.folder-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 14px}.folder{width:130px;min-width:0}.file-grid{grid-template-columns:1fr 1fr;gap:12px}.file-info{padding:12px}.file-info strong{font-size:15px}.text-view{padding-bottom:40px}}
+@media(max-width:560px){.file-grid{grid-template-columns:1fr}.folder{width:118px}.folder-label{font-size:13px}.topbar{align-items:center}.view-icons{display:none}.title{font-size:46px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="traffic"><i></i><i></i><i></i></div>
+    <div class="profile"><strong>Renan Damazio</strong><span>Diretor de Arte · São Paulo</span></div>
+    <nav class="nav" aria-label="Navegação">
+      <button class="nav-btn active" data-view="recent"><span class="nav-ico">◷</span>Recentes</button>
+      <button class="nav-btn" data-view="about"><span class="nav-ico">◉</span>Sobre mim</button>
+      <button class="nav-btn" data-view="contact"><span class="nav-ico">✉</span>Contato</button>
+      <a class="nav-link" href="https://www.linkedin.com/in/reenandamazio/" target="_blank"><span class="nav-ico">↗</span>LinkedIn</a>
+      <a class="nav-link" href="https://www.instagram.com/nan.damazio/" target="_blank"><span class="nav-ico">◎</span>Instagram</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a class="nav-link" href="/"><span class="nav-ico">←</span>Voltar ao portfólio</a>
+      <div class="tiny">/teste<br>Experimento de navegação</div>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <div class="topbar">
+      <div><div class="eyebrow" id="eyebrow">Renan Damazio</div><h1 class="title" id="title">Recentes</h1></div>
+      <div class="view-icons"><span>⌘</span><span>≡</span></div>
+    </div>
+    <div id="content"></div>
+  </main>
+  <div class="toast" id="toast">Abrindo projeto</div>
+</div>
+<script>
+const folders=[
+  {name:'Campanhas',meta:'4 projetos',key:'campaigns'},
+  {name:'Branding',meta:'2 projetos',key:'branding'},
+  {name:'IA & Experimentos',meta:'3 projetos',key:'ai'},
+  {name:'Direção de Arte',meta:'4 projetos',key:'art'},
+  {name:'Projetos Pessoais',meta:'em construção',key:'personal'},
+  {name:'Arquivo',meta:'2024 — 2026',key:'archive'}
+];
+const projects={
+  campaigns:[
+    {t:'Juros-Jitsu',m:'Nubank · 2026',img:'/assets/nubank/KV-JUROS-NUBANK.png',href:'/nubank/'},
+    {t:'Verão Premiado',m:'Febrafar · 2026',img:'/assets/verao-premiado/Proposta%20de%20KV.png',href:'/#work'},
+    {t:'Keune Black Friday',m:'Keune · 2024',img:'/assets/Keune/2%5BKEUNE%5D%20PE%C3%87A%20PARA%20SAL%C3%83O.jpg',href:'/#work'},
+    {t:'Gulf 30L',m:'Gulf · 2025',img:null,href:'/#work'}
+  ],
+  branding:[
+    {t:'Verão Premiado',m:'Rebranding de campanha · 2026',img:'/assets/verao-premiado/Proposta%20de%20KV.png',href:'/#work'},
+    {t:'ROKU',m:'Identidade de marca',img:null,href:'/#work'}
+  ],
+  ai:[
+    {t:'Juros-Jitsu',m:'Campanha + IA · 2026',img:'/assets/nubank/KV-JUROS-NUBANK.png',href:'/nubank/'},
+    {t:'Verão Premiado',m:'Mascote + IA · 2026',img:'/assets/verao-premiado/Proposta%20de%20KV.png',href:'/#work'},
+    {t:'Vans RPG',m:'Projeto experimental',img:null,href:'/#work'}
+  ],
+  art:[
+    {t:'Keune Black Friday',m:'Direção de arte · 2024',img:'/assets/Keune/2%5BKEUNE%5D%20PE%C3%87A%20PARA%20SAL%C3%83O.jpg',href:'/#work'},
+    {t:'Juros-Jitsu',m:'Direção de arte · 2026',img:'/assets/nubank/KV-JUROS-NUBANK.png',href:'/nubank/'},
+    {t:'Verão Premiado',m:'Direção de arte · 2026',img:'/assets/verao-premiado/Proposta%20de%20KV.png',href:'/#work'},
+    {t:'Gulf 30L',m:'KV de campanha · 2025',img:null,href:'/#work'}
+  ],
+  personal:[{t:'Em construção',m:'Novos projetos pessoais chegando',img:null,href:'#'}],
+  archive:[...[]]
+};
+const content=document.getElementById('content'),title=document.getElementById('title'),eyebrow=document.getElementById('eyebrow'),toast=document.getElementById('toast');
+function folderHTML(f){return `<button class="folder-card" data-folder="${f.key}"><span class="folder"></span><span class="folder-label">${f.name}</span><span class="folder-meta">${f.meta}</span></button>`}
+function showRecent(){title.textContent='Recentes';eyebrow.textContent='Renan Damazio';content.innerHTML=`<div class="folder-grid">${folders.map(folderHTML).join('')}</div>`;content.querySelectorAll('[data-folder]').forEach(b=>b.onclick=()=>showFolder(b.dataset.folder));}
+function showFolder(key){const f=folders.find(x=>x.key===key);title.textContent=f.name;eyebrow.innerHTML='<button class="back" id="back">← Recentes</button>';const items=projects[key]||[];content.innerHTML=items.length?`<div class="file-grid">${items.map(p=>`<article class="file-card" data-href="${p.href}"><div class="file-thumb">${p.img?`<img src="${p.img}" alt="${p.t}">`:`<div style="height:100%;display:grid;place-items:center;font-size:70px;color:#38baf5">▰</div>`}</div><div class="file-info"><strong>${p.t}</strong><span>${p.m}</span></div></article>`).join('')}</div>`:`<div class="text-view"><h2>Arquivo em construção.</h2><p>Essa pasta vai receber projetos e peças mais antigas do portfólio.</p></div>`;document.getElementById('back').onclick=showRecent;content.querySelectorAll('[data-href]').forEach(card=>card.onclick=()=>{const href=card.dataset.href;if(href==='#')return;toast.classList.add('show');setTimeout(()=>{location.href=href},240)});}
+function showAbout(){title.textContent='Sobre mim';eyebrow.textContent='Renan Damazio';content.innerHTML=`<section class="text-view"><h2>Ideia primeiro.<br>Execução logo depois.</h2><p>Sou diretor de arte e designer em São Paulo. Trabalho com campanhas, construção de marca, key visuals, digital e experimentação com inteligência artificial.</p><p>Gosto de usar tecnologia para ampliar possibilidades visuais sem deixar o conceito em segundo plano.</p><div class="chips"><span>Direção de Arte</span><span>Campanhas</span><span>Branding</span><span>IA</span><span>Design Visual</span></div></section>`}
+function showContact(){title.textContent='Contato';eyebrow.textContent='Vamos criar algo';content.innerHTML=`<section class="text-view"><h2>Aberto a boas ideias.</h2><p>Para projetos, freelas, conversas sobre direção de arte ou oportunidades, pode me chamar por aqui.</p><div class="contact-list"><a href="https://wa.me/5511994064761" target="_blank"><span>WhatsApp</span><small>abrir ↗</small></a><a href="https://www.linkedin.com/in/reenandamazio/" target="_blank"><span>LinkedIn</span><small>abrir ↗</small></a><a href="https://www.instagram.com/nan.damazio/" target="_blank"><span>Instagram</span><small>abrir ↗</small></a></div></section>`}
+document.querySelectorAll('.nav-btn').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.nav-btn').forEach(x=>x.classList.remove('active'));btn.classList.add('active');btn.dataset.view==='recent'?showRecent():btn.dataset.view==='about'?showAbout():showContact()}));
+showRecent();
+</script>
+</body>
+</html>
