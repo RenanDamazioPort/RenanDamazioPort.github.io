@@ -1,3 +1,3 @@
-# Renan Damazio — Portfolio
+# Renan Damazio Portfolio
 
-Portfolio pessoal de Renan Damazio, Art Director em São Paulo.
+Site publicado em renandamazio.com.br.
