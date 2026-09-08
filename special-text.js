@@ -185,10 +185,13 @@
     root.querySelectorAll?.(TARGETS).forEach(prepareElement);
   }
 
-  scan(document);
-
-  const modal = document.getElementById('modalContent');
-  if (modal) {
-    new MutationObserver(() => scan(modal)).observe(modal, { childList: true, subtree: true });
+  function init() {
+    scan(document);
+    const modal = document.getElementById('modalContent');
+    if (modal) {
+      new MutationObserver(() => scan(modal)).observe(modal, { childList: true, subtree: true });
+    }
   }
+
+  window.setTimeout(init, 900);
 })();
