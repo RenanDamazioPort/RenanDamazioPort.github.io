@@ -1,0 +1,4 @@
+.special-text-chunk{display:inline-block;vertical-align:baseline;font:inherit;line-height:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;white-space:pre;will-change:contents}
+.special-text-running{text-shadow:0 0 10px currentColor}
+.stroke .special-text-running{text-shadow:none}
+@media(prefers-reduced-motion:reduce){.special-text-chunk{will-change:auto}}
