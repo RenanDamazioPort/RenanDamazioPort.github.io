@@ -1,48 +1,69 @@
 (()=>{
-  const STORAGE_KEY='rd_starship_rank_v1';
+  const ENDPOINT='https://ncmvcrvyexocadvjpyyx.supabase.co/functions/v1/game-leaderboard';
+  const CACHE_KEY='rd_starship_rank_cache_v2';
   let roundSaved=false;
+  let globalRank=[];
+  let loading=false;
 
-  function safeLoad(){
+  function normalizeName(name){
+    return (name||'PLAYER 01').trim().toUpperCase().replace(/[^A-Z0-9 _-]/g,'').slice(0,18)||'PLAYER 01';
+  }
+
+  function escapeHtml(str){
+    return String(str).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+  }
+
+  function cacheSave(list){
+    try{localStorage.setItem(CACHE_KEY,JSON.stringify(list.slice(0,20)))}catch(_){ }
+  }
+
+  function cacheLoad(){
     try{
-      const raw=localStorage.getItem(STORAGE_KEY);
-      const data=raw?JSON.parse(raw):[];
-      return Array.isArray(data)?data.filter(x=>x&&typeof x.name==='string'&&Number.isFinite(Number(x.score))):[];
+      const d=JSON.parse(localStorage.getItem(CACHE_KEY)||'[]');
+      return Array.isArray(d)?d:[];
     }catch(_){return[]}
   }
 
-  function safeSave(list){
-    try{localStorage.setItem(STORAGE_KEY,JSON.stringify(list))}catch(_){ }
+  async function api(method='GET',body){
+    const res=await fetch(ENDPOINT,{
+      method,
+      headers:body?{'Content-Type':'application/json'}:undefined,
+      body:body?JSON.stringify(body):undefined
+    });
+    if(!res.ok)throw new Error(`Leaderboard ${res.status}`);
+    return await res.json();
   }
 
-  function normalizeName(name){
-    return (name||'PLAYER 01').trim().toUpperCase().slice(0,18)||'PLAYER 01';
-  }
-
-  function mergeScore(name,score){
-    const n=normalizeName(name);
-    const s=Math.max(0,Number(score)||0);
-    const list=safeLoad();
-    const idx=list.findIndex(x=>normalizeName(x.name)===n);
-    if(idx>=0){
-      if(s>Number(list[idx].score||0))list[idx]={name:n,score:s,ts:Date.now()};
-    }else if(s>0){
-      list.push({name:n,score:s,ts:Date.now()});
+  async function loadGlobalRank(){
+    if(loading)return globalRank;
+    loading=true;
+    try{
+      const data=await api('GET');
+      globalRank=(Array.isArray(data)?data:[]).map(x=>({
+        name:normalizeName(x.player_name),
+        score:Number(x.score)||0,
+        updated_at:x.updated_at||null
+      }));
+      cacheSave(globalRank);
+    }catch(_){
+      if(!globalRank.length)globalRank=cacheLoad();
+    }finally{
+      loading=false;
     }
-    list.sort((a,b)=>Number(b.score)-Number(a.score)||Number(a.ts||0)-Number(b.ts||0));
-    const trimmed=list.slice(0,20);
-    safeSave(trimmed);
-    return trimmed;
+    return globalRank;
   }
 
-  function buildPreview(name,score){
+  async function submitGlobalScore(name,score){
     const n=normalizeName(name);
-    const s=Math.max(0,Number(score)||0);
-    const list=safeLoad().map(x=>({name:normalizeName(x.name),score:Number(x.score)||0,stored:true}));
-    const idx=list.findIndex(x=>x.name===n);
-    if(idx>=0)list[idx].score=Math.max(list[idx].score,s);
-    else list.push({name:n,score:s,stored:false});
-    list.sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));
-    return list;
+    const s=Math.max(0,Math.min(500000,Math.floor((Number(score)||0)/100)*100));
+    if(!s)return;
+    const data=await api('POST',{name:n,score:s});
+    globalRank=(Array.isArray(data)?data:[]).map(x=>({
+      name:normalizeName(x.player_name),
+      score:Number(x.score)||0,
+      updated_at:x.updated_at||null
+    }));
+    cacheSave(globalRank);
   }
 
   function setup(){
@@ -62,49 +83,61 @@
     shell.classList.add('has-rank');
     const panel=document.createElement('div');
     panel.className='game-rank';
-    panel.innerHTML='<div class="game-rank-title">RANK · 100 PTS / ASTEROIDE</div><div class="game-rank-list" id="gameRankList"></div>';
+    panel.innerHTML='<div class="game-rank-title">RANK GLOBAL · 100 PTS / ASTEROIDE</div><div class="game-rank-list" id="gameRankList"><div class="game-rank-empty">CARREGANDO RANK...</div></div>';
     hud.insertAdjacentElement('afterend',panel);
     const listEl=panel.querySelector('#gameRankList');
 
     function currentScore(){return Number(String(scoreEl.textContent||'0').replace(/\D/g,''))||0}
     function currentName(){return normalizeName(playerEl.textContent)}
 
-    function render(){
+    function previewList(){
       const name=currentName();
       const score=currentScore();
-      const list=buildPreview(name,score);
-      const top=list.slice(0,5);
+      const list=globalRank.map(x=>({...x}));
+      const idx=list.findIndex(x=>x.name===name);
+      if(idx>=0)list[idx].score=Math.max(list[idx].score,score);
+      else if(score>0)list.push({name,score});
+      list.sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));
+      return list.slice(0,10);
+    }
+
+    function render(){
+      const name=currentName();
+      const top=previewList();
       if(!top.length){
-        listEl.innerHTML='<div class="game-rank-empty">SEJA O PRIMEIRO NO RANK.</div>';
+        listEl.innerHTML='<div class="game-rank-empty">SEJA O PRIMEIRO DO RANK GLOBAL.</div>';
         return;
       }
-      listEl.innerHTML=top.map((entry,i)=>{
+      const limit=innerWidth<821?3:5;
+      listEl.innerHTML=top.slice(0,limit).map((entry,i)=>{
         const isCurrent=entry.name===name;
         return `<div class="game-rank-entry${isCurrent?' current':''}"><span class="game-rank-pos">#${String(i+1).padStart(2,'0')}</span><span class="game-rank-name">${escapeHtml(entry.name)}</span><span class="game-rank-score">${String(entry.score).padStart(6,'0')}</span></div>`;
       }).join('');
     }
 
-    function escapeHtml(str){
-      return String(str).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+    async function refresh(){
+      await loadGlobalRank();
+      render();
     }
 
-    function saveRound(){
+    async function saveRound(){
       if(roundSaved)return;
       roundSaved=true;
-      mergeScore(currentName(),currentScore());
+      const name=currentName();
+      const score=currentScore();
+      try{await submitGlobalScore(name,score)}catch(_){ }
       render();
     }
 
     new MutationObserver(render).observe(scoreEl,{childList:true,characterData:true,subtree:true});
     new MutationObserver(render).observe(playerEl,{childList:true,characterData:true,subtree:true});
-    new MutationObserver(()=>{
-      if(message.classList.contains('show'))saveRound();
-    }).observe(message,{attributes:true,attributeFilter:['class']});
+    new MutationObserver(()=>{if(message.classList.contains('show'))saveRound()}).observe(message,{attributes:true,attributeFilter:['class']});
 
     restart?.addEventListener('click',()=>{roundSaved=false;setTimeout(render,0)});
-    loginForm?.addEventListener('submit',()=>{roundSaved=false;setTimeout(render,750)});
+    loginForm?.addEventListener('submit',()=>{roundSaved=false;setTimeout(()=>{render();refresh()},750)});
+    window.addEventListener('focus',refresh);
 
-    render();
+    refresh();
   }
 
   const observer=new MutationObserver(()=>setup());
