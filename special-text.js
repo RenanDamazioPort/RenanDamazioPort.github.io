@@ -54,17 +54,21 @@
     const text=node.nodeValue||'';if(!text.trim())return null;
     const parentElement=node.parentElement;if(!parentElement)return null;
     const fontSize=parseFloat(getComputedStyle(parentElement).fontSize)||16;
+    const isMobile=window.innerWidth<=820;
     if(fontSize>30)return null;
+    if(isMobile&&fontSize>18)return null;
     const range=document.createRange();range.selectNodeContents(node);const width=range.getBoundingClientRect().width;
     const span=document.createElement('span');span.className='special-text-chunk';span.dataset.specialText=text;span.dataset.specialDelay=String((index%5)*28);span.textContent=text;
-    if(width>0&&text.length<=44)span.style.minWidth=`${Math.ceil(width)}px`;
+    if(!isMobile&&width>0&&text.length<=44)span.style.minWidth=`${Math.ceil(width)}px`;
     node.replaceWith(span);observer.observe(span);return span;
   }
 
   function prepareElement(element){
     if(!element||prepared.has(element))return;
     if(element.closest('.hero-emoji-layer,.easter-overlay,.boot'))return;
-    if((parseFloat(getComputedStyle(element).fontSize)||16)>30)return;
+    const fontSize=parseFloat(getComputedStyle(element).fontSize)||16;
+    if(fontSize>30)return;
+    if(window.innerWidth<=820&&fontSize>18)return;
     prepared.add(element);
     if(!element.hasAttribute('aria-label')){const label=(element.innerText||element.textContent||'').replace(/\s+/g,' ').trim();if(label)element.setAttribute('aria-label',label)}
     const walker=document.createTreeWalker(element,NodeFilter.SHOW_TEXT,{acceptNode(node){if(!node.nodeValue||!node.nodeValue.trim())return NodeFilter.FILTER_REJECT;const parent=node.parentElement;if(!parent||parent.classList.contains('special-text-chunk'))return NodeFilter.FILTER_REJECT;if(parent.closest('.hero-emoji-layer,.easter-overlay,.boot'))return NodeFilter.FILTER_REJECT;return NodeFilter.FILTER_ACCEPT}});
