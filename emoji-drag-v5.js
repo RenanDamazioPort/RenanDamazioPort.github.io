@@ -127,3 +127,12 @@
   document.addEventListener('pointerup',endTouch,{capture:true});
   document.addEventListener('pointercancel',endTouch,{capture:true});
 })();
+
+(()=>{
+  if(!(window.matchMedia('(pointer:coarse)').matches||window.innerWidth<=900))return;
+  if(document.querySelector('script[data-easter-mobile-fix]'))return;
+  const s=document.createElement('script');
+  s.src='/easter-mobile-fix.js?v=1';
+  s.dataset.easterMobileFix='1';
+  document.head.appendChild(s);
+})();
