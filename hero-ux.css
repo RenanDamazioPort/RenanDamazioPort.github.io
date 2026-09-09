@@ -1,4 +1,4 @@
-/* Hero UX refinements — compact, balanced, centered and consistent */
+/* Hero UX refinements — compact, balanced and consistent */
 @media(min-width:821px){
   .hero{
     min-height:72svh;
@@ -10,13 +10,17 @@
   .hero-emoji-layer{inset:70px 0 0}
 }
 
+/* Top labels back to the original left/right layout */
 .hero-top{
-  justify-content:center;
+  justify-content:space-between;
   align-items:center;
-  gap:28px;
-  text-align:center;
+  gap:20px;
+  text-align:left;
 }
-.hero-status{justify-content:center}
+.hero-status{
+  justify-content:flex-start;
+  margin-left:auto;
+}
 
 .hero-title{
   align-self:end;
@@ -27,6 +31,7 @@
   line-height:.82;
   letter-spacing:-.072em;
   text-align:center;
+  transform:translateY(-32px);
 }
 .hero-rotator{
   position:relative;
@@ -70,7 +75,7 @@
 .hero-cta{
   justify-self:center;
   align-self:start;
-  margin-top:0;
+  margin-top:14px;
   white-space:nowrap;
   padding:5px 0 4px;
   transition:color .2s ease,border-color .2s ease,transform .2s ease;
@@ -79,7 +84,7 @@
 
 @media(max-width:1100px) and (min-width:821px){
   .hero{min-height:70svh;padding-top:98px}
-  .hero-title{font-size:clamp(58px,7.8vw,88px);margin-bottom:7px}
+  .hero-title{font-size:clamp(58px,7.8vw,88px);margin-bottom:7px;transform:translateY(-24px)}
   .hero-copy{max-width:620px;font-size:15px}
 }
 
@@ -91,14 +96,18 @@
   }
   .hero-top{
     flex-direction:column;
-    align-items:center;
-    justify-content:center;
+    align-items:flex-start;
+    justify-content:flex-start;
     gap:6px;
     max-width:100%;
     width:100%;
-    text-align:center;
+    text-align:left;
   }
-  .hero-status{justify-content:center;text-align:center}
+  .hero-status{
+    justify-content:flex-start;
+    text-align:left;
+    margin-left:0;
+  }
   .hero-title{
     align-self:end;
     margin:0 0 8px;
@@ -106,6 +115,7 @@
     line-height:.84;
     letter-spacing:-.062em;
     text-align:center;
+    transform:translateY(-18px);
   }
   .hero-rotator{height:1.78em;overflow:hidden}
   .hero-word{
@@ -125,11 +135,11 @@
   .hero-word:nth-child(4){font-size:.90em}
   .hero-bottom{grid-template-columns:1fr;justify-items:center;gap:8px;align-items:start;text-align:center}
   .hero-copy{margin:0 auto;max-width:100%;font-size:13.5px;line-height:1.42;text-wrap:pretty;text-align:center}
-  .hero-cta{justify-self:center;margin-top:0;padding-top:3px}
+  .hero-cta{justify-self:center;margin-top:12px;padding-top:3px}
 }
 
 @media(max-width:380px){
   .hero{min-height:76svh;padding-top:88px}
-  .hero-title{font-size:clamp(38px,12.4vw,48px);margin-bottom:7px}
+  .hero-title{font-size:clamp(38px,12.4vw,48px);margin-bottom:7px;transform:translateY(-14px)}
   .hero-copy{font-size:13px;line-height:1.4}
 }
