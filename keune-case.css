@@ -1,38 +1,60 @@
-/* Keune case — editorial layout for campaign pieces */
-.keune-intro{max-width:920px;margin:46px 0 54px}
-.keune-intro p{max-width:820px;font-size:clamp(18px,1.7vw,27px);line-height:1.32;color:#d7d5cd}
+/* Keune case — compact presentation frames, without using the artwork at native size */
+.keune-intro{max-width:820px;margin:40px 0 44px}
+.keune-intro p{max-width:760px;font-size:clamp(18px,1.45vw,24px);line-height:1.4;color:#d7d5cd}
 
-.keune-case{margin-top:24px}
+.keune-case{margin:18px auto 0;max-width:1180px}
 .keune-piece{margin:0;min-width:0}
-.keune-piece-label{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0 0 10px;font:9px "Courier New",monospace;letter-spacing:.1em;color:#8d8d87;text-transform:uppercase}
-.keune-piece img{display:block;width:100%;height:auto;border:1px solid #272724;background:#111}
+.keune-piece-label{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 9px;font:9px "Courier New",monospace;letter-spacing:.1em;color:#8d8d87;text-transform:uppercase}
 
-.keune-kv{margin-bottom:24px}
-.keune-kv img{width:100%}
+/* Every artwork lives inside a controlled frame so tall/large source files never dominate the case. */
+.keune-piece img{
+  display:block;
+  width:100%;
+  height:360px;
+  object-fit:contain;
+  object-position:center;
+  padding:18px;
+  border:1px solid #272724;
+  background:#111;
+}
 
-.keune-duo{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr);gap:18px;align-items:start;margin-bottom:18px}
-.keune-duo .keune-piece:last-child{align-self:start}
+.keune-kv{max-width:1040px;margin:0 auto 28px}
+.keune-kv img{height:480px;padding:22px}
 
-.keune-mosaic{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:start}
-.keune-mosaic .keune-piece:nth-child(2){margin-top:clamp(24px,3vw,48px)}
+.keune-duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start;margin:0 auto 26px;max-width:1040px}
+.keune-duo .keune-piece img{height:390px}
 
-.keune-wide{margin-top:28px}
+.keune-mosaic{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:start;margin:0 auto;max-width:1040px}
+.keune-mosaic .keune-piece img{height:290px;padding:14px}
+
+.keune-wide{max-width:1040px;margin:30px auto 0}
 .keune-wide .keune-piece-label{border-top:1px solid #272724;padding-top:12px}
+.keune-wide img{height:430px;padding:18px}
 
 @media(max-width:900px){
-  .keune-duo{grid-template-columns:1fr 1fr}
-  .keune-mosaic{grid-template-columns:1fr 1fr}
-  .keune-mosaic .keune-piece:nth-child(2){margin-top:0}
-  .keune-mosaic .keune-piece:last-child{grid-column:1/-1;width:72%;justify-self:center}
+  .keune-case{max-width:100%}
+  .keune-kv,.keune-duo,.keune-mosaic,.keune-wide{max-width:100%}
+  .keune-kv img{height:400px}
+  .keune-duo .keune-piece img{height:330px}
+  .keune-mosaic{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .keune-mosaic .keune-piece img{height:270px}
+  .keune-mosaic .keune-piece:last-child{grid-column:1/-1;width:50%;justify-self:center}
+  .keune-wide img{height:360px}
 }
 
 @media(max-width:620px){
-  .keune-intro{margin:32px 0 38px}
-  .keune-intro p{font-size:17px;line-height:1.42}
-  .keune-case{margin-top:16px}
-  .keune-piece-label{font-size:8px;margin-bottom:8px}
-  .keune-kv{margin-bottom:16px}
-  .keune-duo,.keune-mosaic{grid-template-columns:1fr;gap:16px}
+  .keune-intro{margin:30px 0 34px}
+  .keune-intro p{font-size:17px;line-height:1.45}
+  .keune-case{margin-top:14px}
+  .keune-piece-label{font-size:8px;margin-bottom:7px}
+  .keune-piece img{padding:10px}
+  .keune-kv{margin-bottom:18px}
+  .keune-kv img{height:260px;padding:12px}
+  .keune-duo{grid-template-columns:1fr;gap:16px;margin-bottom:20px}
+  .keune-duo .keune-piece img{height:280px}
+  .keune-mosaic{grid-template-columns:1fr;gap:14px}
+  .keune-mosaic .keune-piece img{height:240px;padding:10px}
   .keune-mosaic .keune-piece:last-child{grid-column:auto;width:100%;justify-self:stretch}
-  .keune-wide{margin-top:18px}
+  .keune-wide{margin-top:22px}
+  .keune-wide img{height:260px;padding:10px}
 }
