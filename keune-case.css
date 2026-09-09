@@ -1,0 +1,38 @@
+/* Keune case — editorial layout for campaign pieces */
+.keune-intro{max-width:920px;margin:46px 0 54px}
+.keune-intro p{max-width:820px;font-size:clamp(18px,1.7vw,27px);line-height:1.32;color:#d7d5cd}
+
+.keune-case{margin-top:24px}
+.keune-piece{margin:0;min-width:0}
+.keune-piece-label{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0 0 10px;font:9px "Courier New",monospace;letter-spacing:.1em;color:#8d8d87;text-transform:uppercase}
+.keune-piece img{display:block;width:100%;height:auto;border:1px solid #272724;background:#111}
+
+.keune-kv{margin-bottom:24px}
+.keune-kv img{width:100%}
+
+.keune-duo{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr);gap:18px;align-items:start;margin-bottom:18px}
+.keune-duo .keune-piece:last-child{align-self:start}
+
+.keune-mosaic{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:start}
+.keune-mosaic .keune-piece:nth-child(2){margin-top:clamp(24px,3vw,48px)}
+
+.keune-wide{margin-top:28px}
+.keune-wide .keune-piece-label{border-top:1px solid #272724;padding-top:12px}
+
+@media(max-width:900px){
+  .keune-duo{grid-template-columns:1fr 1fr}
+  .keune-mosaic{grid-template-columns:1fr 1fr}
+  .keune-mosaic .keune-piece:nth-child(2){margin-top:0}
+  .keune-mosaic .keune-piece:last-child{grid-column:1/-1;width:72%;justify-self:center}
+}
+
+@media(max-width:620px){
+  .keune-intro{margin:32px 0 38px}
+  .keune-intro p{font-size:17px;line-height:1.42}
+  .keune-case{margin-top:16px}
+  .keune-piece-label{font-size:8px;margin-bottom:8px}
+  .keune-kv{margin-bottom:16px}
+  .keune-duo,.keune-mosaic{grid-template-columns:1fr;gap:16px}
+  .keune-mosaic .keune-piece:last-child{grid-column:auto;width:100%;justify-self:stretch}
+  .keune-wide{margin-top:18px}
+}
