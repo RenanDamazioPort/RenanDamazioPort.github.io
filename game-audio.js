@@ -171,8 +171,17 @@
     btn.id='gameAudioToggle';
     btn.className='game-audio-toggle';
     btn.type='button';
-    btn.addEventListener('touchstart',e=>{e.preventDefault();primeAudio();toggleMusic()},{passive:false});
-    btn.addEventListener('click',e=>{if(Date.now()-(btn._touchAt||0)<500)return;toggleMusic()});
+    btn._touchAt=0;
+    btn.addEventListener('touchstart',e=>{
+      btn._touchAt=Date.now();
+      e.preventDefault();
+      primeAudio();
+      toggleMusic();
+    },{passive:false});
+    btn.addEventListener('click',()=>{
+      if(Date.now()-btn._touchAt<650)return;
+      toggleMusic();
+    });
     help.appendChild(btn);
     syncButton();
   }
