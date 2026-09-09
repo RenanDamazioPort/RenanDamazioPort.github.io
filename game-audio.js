@@ -3,8 +3,9 @@
   if(!AudioCtx)return;
 
   const isChrome=/Chrome|CriOS/.test(navigator.userAgent)&&!/Edg|OPR/.test(navigator.userAgent);
-  let ctx=null,master=null,compressor=null,timer=null,nextNoteTime=0,step=0,playing=false,unlocked=false;
-  let muted=localStorage.getItem('rd-game-music-muted')==='1';
+  const isMobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  let ctx=null,master=null,compressor=null,timer=null,nextNoteTime=0,step=0,playing=false,unlocked=false,muted=false;
 
   const lead=[69,72,74,76,74,72,69,67,69,72,76,79,76,74,72,67];
   const bass=[45,null,45,null,48,null,43,null,45,null,41,null,43,null,40,null];
@@ -22,25 +23,24 @@
     compressor.ratio.value=4;
     compressor.attack.value=.006;
     compressor.release.value=.18;
-    master.gain.value=0.0001;
+    master.gain.value=.0001;
     master.connect(compressor);
     compressor.connect(ctx.destination);
   }
 
-  async function unlockAudio(){
+  function primeAudio(){
     ensureAudio();
-    try{if(ctx.state!=='running')await ctx.resume()}catch(_){ }
-    if(ctx.state!=='running')return false;
-    if(!unlocked){
-      const buffer=ctx.createBuffer(1,1,ctx.sampleRate);
-      const source=ctx.createBufferSource();
-      source.buffer=buffer;
-      source.connect(master);
-      source.start(0);
+    try{ctx.resume()}catch(_){ }
+    if(unlocked)return;
+    try{
+      const osc=ctx.createOscillator();
+      const gain=ctx.createGain();
+      gain.gain.setValueAtTime(.0001,ctx.currentTime);
+      osc.connect(gain);gain.connect(master);
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime+.02);
       unlocked=true;
-    }
-    syncButton();
-    return true;
+    }catch(_){ }
   }
 
   function tone(note,time,duration,type,volume,detune=0){
@@ -50,10 +50,10 @@
     osc.type=type;
     osc.frequency.setValueAtTime(midi(note),time);
     osc.detune.setValueAtTime(detune,time);
-    gain.gain.setValueAtTime(0.0001,time);
+    gain.gain.setValueAtTime(.0001,time);
     gain.gain.exponentialRampToValueAtTime(volume,time+.008);
     gain.gain.exponentialRampToValueAtTime(Math.max(.0001,volume*.38),time+duration*.5);
-    gain.gain.exponentialRampToValueAtTime(0.0001,time+duration);
+    gain.gain.exponentialRampToValueAtTime(.0001,time+duration);
     osc.connect(gain);gain.connect(master);
     osc.start(time);osc.stop(time+duration+.03);
   }
@@ -87,12 +87,19 @@
     osc.start(time);osc.stop(time+.13);
   }
 
+  function startupBlip(){
+    if(!ctx||!master||muted)return;
+    const t=ctx.currentTime+.015;
+    tone(72,t,.08,'square',.055);
+    tone(79,t+.07,.11,'square',.07);
+    tone(84,t+.14,.13,'triangle',.075);
+  }
+
   function scheduleStep(time){
     const lv=level();
     const l=lead[step%lead.length]+(lv>=4&&step%8===7?12:0);
     const b=bass[step%bass.length];
     const a=arp[step%arp.length]+(lv>=6?12:0);
-
     tone(l,time,.13,'square',isChrome?.105:.09,step%2?4:-4);
     tone(l-12,time,.18,'triangle',.055);
     if(b!=null)tone(b,time,.27,'triangle',.11);
@@ -103,29 +110,30 @@
   }
 
   function scheduler(){
-    if(!ctx||!playing||ctx.state!=='running')return;
+    if(!ctx||!playing)return;
     const bpm=Math.min(142,108+(level()-1)*4);
     const secondsPerStep=(60/bpm)/2;
-    while(nextNoteTime<ctx.currentTime+.16){
+    while(nextNoteTime<ctx.currentTime+.18){
       scheduleStep(nextNoteTime);
       nextNoteTime+=secondsPerStep;
     }
   }
 
-  async function startMusic(){
+  function beginMusic(){
     if(muted)return;
-    const ok=await unlockAudio();
-    if(!ok)return;
+    primeAudio();
     if(playing){syncButton();return}
     playing=true;
     step=0;
-    nextNoteTime=ctx.currentTime+.03;
+    nextNoteTime=ctx.currentTime+.05;
+    const target=isMobile?.62:(isChrome?.52:.40);
     master.gain.cancelScheduledValues(ctx.currentTime);
-    master.gain.setValueAtTime(Math.max(master.gain.value,0.0001),ctx.currentTime);
-    master.gain.exponentialRampToValueAtTime(isChrome?.52:.40,ctx.currentTime+.22);
+    master.gain.setValueAtTime(Math.max(master.gain.value,.0001),ctx.currentTime);
+    master.gain.exponentialRampToValueAtTime(target,ctx.currentTime+.18);
+    startupBlip();
     scheduler();
     clearInterval(timer);
-    timer=setInterval(scheduler,isChrome?25:35);
+    timer=setInterval(scheduler,isMobile?22:(isChrome?25:35));
     syncButton();
   }
 
@@ -135,16 +143,16 @@
     if(ctx&&master){
       const t=ctx.currentTime;
       master.gain.cancelScheduledValues(t);
-      master.gain.setValueAtTime(Math.max(master.gain.value,0.0001),t);
-      master.gain.exponentialRampToValueAtTime(0.0001,t+.14);
+      master.gain.setValueAtTime(Math.max(master.gain.value,.0001),t);
+      master.gain.exponentialRampToValueAtTime(.0001,t+.12);
     }
     syncButton();
   }
 
-  async function toggleMusic(){
+  function toggleMusic(){
     muted=!muted;
-    localStorage.setItem('rd-game-music-muted',muted?'1':'0');
-    if(muted)stopMusic();else await startMusic();
+    if(muted)stopMusic();
+    else{primeAudio();beginMusic()}
     syncButton();
   }
 
@@ -163,8 +171,8 @@
     btn.id='gameAudioToggle';
     btn.className='game-audio-toggle';
     btn.type='button';
-    btn.addEventListener('pointerdown',unlockAudio,{passive:true});
-    btn.addEventListener('click',toggleMusic);
+    btn.addEventListener('touchstart',e=>{e.preventDefault();primeAudio();toggleMusic()},{passive:false});
+    btn.addEventListener('click',e=>{if(Date.now()-(btn._touchAt||0)<500)return;toggleMusic()});
     help.appendChild(btn);
     syncButton();
   }
@@ -174,44 +182,50 @@
     return !!game&&!game.hidden&&document.getElementById('easterOverlay')?.classList.contains('open');
   }
 
+  function startFromGesture(){
+    muted=false;
+    primeAudio();
+    beginMusic();
+  }
+
+  // Mobile browsers require audio creation/resume directly inside the user's gesture.
+  document.addEventListener('touchstart',e=>{
+    if(e.target?.closest?.('#eggLoginForm .login-enter,#gameRestart'))startFromGesture();
+  },{capture:true,passive:true});
+
   document.addEventListener('pointerdown',e=>{
-    if(e.target?.closest?.('#eggLoginForm .login-enter,#gameAudioToggle,#gameRestart'))unlockAudio();
+    if(e.pointerType==='touch')return;
+    if(e.target?.closest?.('#eggLoginForm .login-enter,#gameRestart'))startFromGesture();
   },true);
 
   document.addEventListener('click',e=>{
-    if(e.target?.closest?.('#eggLoginForm .login-enter')){
-      unlockAudio().then(()=>{if(!muted)startMusic()});
-      return;
-    }
+    if(e.target?.closest?.('#eggLoginForm .login-enter')){startFromGesture();return}
     const id=e.target?.id;
     if(id==='eggClose'||id==='gameExit')stopMusic();
-    if(id==='gameRestart'&&!muted)unlockAudio().then(startMusic);
+    if(id==='gameRestart')startFromGesture();
   },true);
 
   document.addEventListener('submit',e=>{
-    if(e.target?.id!=='eggLoginForm')return;
-    unlockAudio().then(()=>{if(!muted)startMusic()});
+    if(e.target?.id==='eggLoginForm')startFromGesture();
   },true);
 
   document.addEventListener('keydown',e=>{
     if(e.key==='Escape'&&document.getElementById('easterOverlay')?.classList.contains('open'))stopMusic();
-    if(e.key==='Enter'&&document.activeElement?.id==='eggPlayer')unlockAudio().then(()=>{if(!muted)startMusic()});
+    if(e.key==='Enter'&&document.activeElement?.id==='eggPlayer')startFromGesture();
   },true);
 
   const observer=new MutationObserver(()=>{
     attachUI();
-    if(gameIsVisible()&&!muted&&!playing&&unlocked)startMusic();
+    if(gameIsVisible()&&!muted&&!playing&&unlocked)beginMusic();
   });
   observer.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['hidden','class']});
 
   document.addEventListener('visibilitychange',()=>{
     if(document.hidden)stopMusic();
-    else if(gameIsVisible()&&!muted&&unlocked)startMusic();
+    else if(gameIsVisible()&&!muted&&unlocked)beginMusic();
   });
-
-  window.addEventListener('focus',()=>{
-    if(gameIsVisible()&&!muted&&unlocked&&!playing)startMusic();
-  });
+  window.addEventListener('focus',()=>{if(gameIsVisible()&&!muted&&unlocked&&!playing)beginMusic()});
+  window.addEventListener('pageshow',()=>{if(gameIsVisible()&&!muted&&unlocked&&!playing)beginMusic()});
 
   attachUI();
 })();
