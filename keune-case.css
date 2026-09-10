@@ -1,8 +1,8 @@
-/* Keune case — responsive presentation frames up to 1900px wide. */
+/* Keune case — presentation frames using the full modal width, like Verão Premiado. */
 .keune-intro{max-width:820px;margin:40px 0 44px}
 .keune-intro p{max-width:760px;font-size:clamp(18px,1.45vw,24px);line-height:1.4;color:#d7d5cd}
 
-.keune-case{margin:18px auto 0;max-width:1900px}
+.keune-case{margin:18px auto 0;max-width:100%}
 .keune-piece{margin:0;min-width:0}
 .keune-piece-label{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 9px;font:9px "Courier New",monospace;letter-spacing:.1em;color:#8d8d87;text-transform:uppercase}
 
@@ -18,16 +18,16 @@
   background:#111;
 }
 
-.keune-kv{max-width:1900px;margin:0 auto 28px}
+.keune-kv{max-width:100%;margin:0 auto 28px}
 .keune-kv img{height:480px;padding:22px}
 
-.keune-duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start;margin:0 auto 26px;max-width:1900px}
+.keune-duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start;margin:0 auto 26px;max-width:100%}
 .keune-duo .keune-piece img{height:390px}
 
-.keune-mosaic{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:start;margin:0 auto;max-width:1900px}
+.keune-mosaic{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:start;margin:0 auto;max-width:100%}
 .keune-mosaic .keune-piece img{height:290px;padding:14px}
 
-.keune-wide{max-width:1900px;margin:30px auto 0}
+.keune-wide{max-width:100%;margin:30px auto 0}
 .keune-wide .keune-piece-label{border-top:1px solid #272724;padding-top:12px}
 .keune-wide img{height:430px;padding:18px}
 
