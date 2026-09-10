@@ -31,7 +31,7 @@
   line-height:.82;
   letter-spacing:-.072em;
   text-align:center;
-  transform:translateY(-32px);
+  transform:translateY(-64px);
 }
 .hero-rotator{
   position:relative;
@@ -84,7 +84,7 @@
 
 @media(max-width:1100px) and (min-width:821px){
   .hero{min-height:70svh;padding-top:98px}
-  .hero-title{font-size:clamp(58px,7.8vw,88px);margin-bottom:7px;transform:translateY(-24px)}
+  .hero-title{font-size:clamp(58px,7.8vw,88px);margin-bottom:7px;transform:translateY(-48px)}
   .hero-copy{max-width:620px;font-size:15px}
 }
 
