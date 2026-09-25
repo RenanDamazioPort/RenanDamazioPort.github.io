@@ -149,7 +149,7 @@
     display: flex; justify-content: center; align-items: flex-end;
     animation-delay: 2.7s;
   }
-  .cachorro video {
+  .cachorro img {
     display: block; height: 100%; width: auto; max-width: 100%;
     object-fit: contain; object-position: center bottom;
     background: var(--papel);
@@ -235,8 +235,7 @@
   </div>
 
   <div class="cachorro entra">
-    <video src="https://res.cloudinary.com/p48prprp/video/upload/f_mp4/v1790345118/cachorrinho.mp4"
-           autoplay muted loop playsinline preload="auto" aria-label="Cachorrinho"></video>
+    <img src="https://res.cloudinary.com/p48prprp/video/upload/c_scale,w_700,f_gif,e_loop,fps_8/v1790345118/cachorrinho.gif" alt="Tobias, o cachorrinho" loading="eager">
   </div>
 </main>
 
@@ -315,9 +314,6 @@
   window.addEventListener('resize', function () { clearTimeout(espera); espera = setTimeout(desenhar, 120); });
   desenhar();
 
-  /* Garante o vídeo tocando no celular */
-  var v = document.querySelector('.cachorro video');
-  if (v) { var tocar = v.play(); if (tocar && tocar.catch) tocar.catch(function () {}); }
 })();
 </script>
 </body>
