@@ -45,12 +45,12 @@ body{color:var(--ink);font-family:"Cormorant Garamond",Georgia,serif}
 }
 @media(max-height:600px) and (min-width:701px){.logo{top:2%;height:26%}.names{top:27%}.message{top:40%}.message .line{font-size:clamp(24px,2.8vw,36px)}.video-wrap{top:35%}}
 @media(prefers-reduced-motion:reduce){.logo,.names,.message{transition:none}}
-</style>
+.video-wrap{transition:opacity .6s ease}.still-dog{position:absolute;z-index:1;right:11%;bottom:5%;width:13%;height:24%;background:var(--reference) 85% 85%/700% auto no-repeat;opacity:0;transition:opacity .7s ease;pointer-events:none}.is-complete .video-wrap{opacity:0}.is-complete .still-dog{opacity:1}@media(max-width:700px){.still-dog{right:9%;bottom:5%;width:35%;height:17%;background-size:700% auto}}</style>
 </head>
 <body>
 <main class="invitation" id="invitation">
   <div class="video-wrap" aria-hidden="true"><video id="tobias" autoplay muted playsinline preload="auto"><source src="https://res.cloudinary.com/p48prprp/video/upload/f_mp4/v1790345118/cachorrinho.mp4" type="video/mp4"><source src="https://res.cloudinary.com/p48prprp/video/upload/v1790345118/cachorrinho.webm" type="video/webm"></video></div>
-  <div class="logo" role="img" aria-label="Save the Date" aria-hidden="true"></div>
+  <div class="still-dog" aria-hidden="true"></div>\n  <div class="logo" role="img" aria-label="Save the Date" aria-hidden="true"></div>
   <h1 class="names">Renan <span>&amp;</span> Tainara</h1>
   <div class="message">
     <p class="line">Tem um dia muito especial chegando.</p>
