@@ -87,10 +87,6 @@ main{padding:0 var(--pad) 110px}
 @media(max-width:900px){.decis{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.proc,.usar,.decis,.ficha{grid-template-columns:1fr}.ficha div:nth-child(odd){border-right:0}}
 
-.expl{column-count:3;column-gap:14px}
-.expl-i{margin:0 0 14px;break-inside:avoid;border:1px solid var(--line);background:#050807}
-.expl-i img{display:block;width:100%;height:auto}
-@media(max-width:900px){.expl{column-count:2}}
 
 
 /* CAPITULOS */
@@ -125,18 +121,27 @@ h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
 @media(max-width:900px){.refs{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.refs{grid-template-columns:1fr}}
 
-.vis{display:grid;gap:12px;margin:44px 0 0;align-items:start}
-.vis-i{margin:0;border:1px solid var(--line);background:#050807;opacity:.92}
-.vis-i img{display:block;width:100%;height:auto}
-.vis.one{max-width:640px;margin-left:auto}
-.vis.two{grid-template-columns:repeat(2,minmax(0,1fr));max-width:760px}
-.vis.three{grid-template-columns:repeat(3,minmax(0,1fr));max-width:760px}
-.vis.two.wide{max-width:860px}
-.vis.sheets{grid-template-columns:1fr;max-width:860px}
-.vis.masonry{display:block;column-count:3;column-gap:12px;max-width:860px}
-.vis.masonry .vis-i{margin:0 0 12px;break-inside:avoid}
-@media(max-width:640px){.vis.masonry{column-count:2;column-gap:8px}}
-@media(max-width:640px){.vis.one{max-width:none}.vis.two,.vis.three{max-width:none;gap:8px}}
+
+/* GALERIAS */
+.gal{display:grid;grid-template-columns:240px minmax(0,1fr);gap:40px;margin:72px 0 0;align-items:start}
+.gal-t{position:sticky;top:130px}
+.gal-t h3{margin:0;font:10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--fg);display:flex;gap:12px;align-items:center}
+.gal-t h3::before{content:"";width:22px;height:1px;background:var(--red)}
+.gal-t p{margin:12px 0 0;color:var(--muted);font-size:14px;line-height:1.5}
+.rows{--h:260px;display:flex;flex-wrap:wrap;gap:10px}
+.rows .vis-i{margin:0;flex:var(--ar) 1 calc(var(--ar)*var(--h));min-width:0;border:1px solid var(--line);background:#050807}
+.rows .vis-i img{display:block;width:100%;height:auto}
+.rows.stack{flex-direction:column;flex-wrap:nowrap}.rows.stack .vis-i{flex:none}
+main img{cursor:zoom-in}
+.lb{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(5,8,7,.95);backdrop-filter:blur(8px);padding:56px 64px 64px}
+.lb.on{display:flex}
+.lb img{max-width:100%;max-height:100%;object-fit:contain;cursor:zoom-out;box-shadow:0 0 0 1px var(--line)}
+.lb button{position:absolute;background:none;border:1px solid var(--line);color:var(--fg);font:12px var(--mono);letter-spacing:.1em;padding:10px 14px;cursor:pointer;transition:.2s}
+.lb button:hover{background:var(--red);border-color:var(--red);color:#050807}
+.lb .x{top:14px;right:14px}.lb .pv{left:14px;top:50%;transform:translateY(-50%)}.lb .nx{right:14px;top:50%;transform:translateY(-50%)}
+.lb .ct{position:absolute;left:0;right:0;bottom:18px;text-align:center;font:10px var(--mono);letter-spacing:.12em;color:var(--muted);text-transform:uppercase;padding:0 70px}
+@media(max-width:900px){.gal{grid-template-columns:1fr;gap:16px}.gal-t{position:static}.rows{--h:150px}}
+@media(max-width:640px){.lb{padding:52px 10px 56px}.lb .pv,.lb .nx{top:auto;bottom:10px;transform:none}}
 /* TRANSFORMACAO */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:8px}
 .step{position:relative;background:var(--ink);border:1px solid var(--line);padding:26px 24px 28px;min-height:230px;display:flex;flex-direction:column;gap:10px}
@@ -258,7 +263,7 @@ h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
 <div class="step reveal"><b>03</b><h3>DM Screen</h3><p>A embalagem vira o escudo do mestre.</p></div>
 <div class="step reveal"><b>04</b><h3>Play</h3><p>O jogo acontece com a peça em uso.</p></div>
 </div>
-<div class="vis one"><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-grupo-3.jpg" alt="Os três heróis em uma rua cyberpunk, em vermelho e preto"></figure></div>
+<div class="gal reveal"><div class="gal-t"><h3>A cidade e o grupo</h3><p>Os três heróis juntos, na rua.</p></div><div class="rows" style="--h:240px;max-width:560px"><figure class="vis-i reveal" style="--ar:1.786"><img loading="lazy" src="../assets/vans-rpg/expl-grupo-3.jpg" width="1300" height="728" alt="Os três heróis em uma rua cyberpunk, em vermelho e preto"></figure></div></div>
 </section>
 
 <section class="chap" id="processo">
@@ -281,7 +286,7 @@ h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
 <div class="type-box"><small>TEXTOS</small><div class="b">Inter</div><p>Para textos, stats, tabelas e informações de apoio.</p></div>
 </div>
 <div class="lang reveal"><span>Halftone vermelho</span><span>Ilustração cinematográfica</span><span>Cyberpunk japonês</span><span>Kraft e papel cru</span><span>Serigrafia</span></div>
-<div class="vis three"><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-cidade-1.jpg" alt="Cenário: avenida vertical de letreiros em contra-plongée"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-cidade-2.jpg" alt="Cenário: prédios e dutos em contra-plongée"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-cidade-3.jpg" alt="Cenário: arranha-céus e fios cruzados"></figure></div>
+<div class="gal reveal"><div class="gal-t"><h3>A cidade</h3><p>Cenários vistos do chão: prédios, fios e letreiros.</p></div><div class="rows" style="--h:300px;"><figure class="vis-i reveal" style="--ar:0.667"><img loading="lazy" src="../assets/vans-rpg/expl-cidade-1.jpg" width="980" height="1470" alt="Cenário: avenida vertical de letreiros em contra-plongée"></figure><figure class="vis-i reveal" style="--ar:0.667"><img loading="lazy" src="../assets/vans-rpg/expl-cidade-2.jpg" width="980" height="1470" alt="Cenário: prédios e dutos em contra-plongée"></figure><figure class="vis-i reveal" style="--ar:0.667"><img loading="lazy" src="../assets/vans-rpg/expl-cidade-3.jpg" width="980" height="1470" alt="Cenário: arranha-céus e fios cruzados"></figure></div></div>
 <h3 class="sub reveal">Referências</h3>
 <div class="refs reveal">
 <div><small>LIVRO · 1984</small><b>Neuromancer</b><p>William Gibson</p></div>
@@ -300,7 +305,7 @@ h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
 <div class="dec"><b>05</b><h3>Regras para o mestre</h3><p>O escudo é lido pelo mestre, então a informação é de consulta rápida: ações, condições, dificuldade e fluxo de combate.</p></div>
 <div class="dec"><b>06</b><h3>Nada de cyberpunk genérico</h3><p>Sem acabamento limpo, glossy, azul e roxo. A referência é xerox punk e pôster de rua japonês.</p></div>
 </div>
-<div class="vis two wide"><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-morro.jpg" alt="Cenário: morro cyberpunk com o herói em primeiro plano"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-anuncio.jpg" alt="Anúncio em neon com a frase na parede"></figure></div>
+<div class="gal reveal"><div class="gal-t"><h3>Cenas</h3><p>Do morro ao letreiro de neon.</p></div><div class="rows" style="--h:240px;"><figure class="vis-i reveal" style="--ar:1.252"><img loading="lazy" src="../assets/vans-rpg/expl-morro.jpg" width="1300" height="1038" alt="Cenário: morro cyberpunk com o herói em primeiro plano"></figure><figure class="vis-i reveal" style="--ar:1.786"><img loading="lazy" src="../assets/vans-rpg/expl-anuncio.jpg" width="1300" height="728" alt="Anúncio em neon com a frase na parede"></figure></div></div>
 <h3 class="sub reveal">A mensagem dentro da tampa</h3>
 <div class="lid reveal">
 <p class="l1">If you're reading this,</p>
@@ -318,7 +323,7 @@ h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
 <figure class="hero-card reveal"><img loading="lazy" src="../assets/vans-rpg/ilus-kitsune.jpg" alt="Ilustração de Kitsune, a assassina de máscara de raposa, sentada em um beco"><figcaption><h3>Kitsune</h3><p>Ronin / Assassina · Nível 5</p></figcaption></figure>
 <figure class="hero-card reveal"><img loading="lazy" src="../assets/vans-rpg/ilus-null.jpg" alt="Ilustração de Null, o hacker de máscara de gás, com a interface digital na mão"><figcaption><h3>Null</h3><p>Hacker / Controlador · Nível 5</p></figcaption></figure>
 </div>
-<div class="vis two"><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-grupo-1.jpg" alt="Kitsune no cano, Redline e Null em ação"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-grupo-2.jpg" alt="Os três de frente, com a Kitsune em destaque"></figure></div>
+<div class="gal reveal"><div class="gal-t"><h3>O grupo em ação</h3><p>Kitsune, Redline e Null em duas poses.</p></div><div class="rows" style="--h:300px;max-width:560px"><figure class="vis-i reveal" style="--ar:0.667"><img loading="lazy" src="../assets/vans-rpg/expl-grupo-1.jpg" width="980" height="1470" alt="Kitsune no cano, Redline e Null em ação"></figure><figure class="vis-i reveal" style="--ar:0.560"><img loading="lazy" src="../assets/vans-rpg/expl-grupo-2.jpg" width="980" height="1751" alt="Os três de frente, com a Kitsune em destaque"></figure></div></div>
 <h3 class="sub reveal">Fichas de personagem</h3>
 <div class="copy reveal"><p>Cada herói chega pronto para jogar: história, atributos, arma, habilidade, passiva e ultimate em uma carta só.</p></div>
 <div class="sheets">
@@ -326,7 +331,7 @@ h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
 <a class="sheet reveal" href="../assets/vans-rpg/ficha-null.jpg" target="_blank" rel="noopener"><img loading="lazy" src="../assets/vans-rpg/ficha-null.jpg" alt="Carta de personagem de Null, com história, atributos e habilidades"><figcaption>Null · abrir em tamanho real ↗</figcaption></a>
 <a class="sheet reveal" href="../assets/vans-rpg/ficha-redline.jpg" target="_blank" rel="noopener"><img loading="lazy" src="../assets/vans-rpg/ficha-redline.jpg" alt="Carta de personagem de Redline, com história, atributos e habilidades"><figcaption>Redline · abrir em tamanho real ↗</figcaption></a>
 </div>
-<div class="vis two"><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-kitsune.jpg" alt="Pôster da Kitsune, sentada sobre a rua"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-null.jpg" alt="Pôster do Null, com o letreiro VANS ao fundo"></figure></div>
+<div class="gal reveal"><div class="gal-t"><h3>Pôsteres</h3><p>Kitsune e Null, cada um no seu cartaz.</p></div><div class="rows" style="--h:300px;max-width:500px"><figure class="vis-i reveal" style="--ar:0.667"><img loading="lazy" src="../assets/vans-rpg/expl-kitsune.jpg" width="980" height="1470" alt="Pôster da Kitsune, sentada sobre a rua"></figure><figure class="vis-i reveal" style="--ar:0.667"><img loading="lazy" src="../assets/vans-rpg/expl-null.jpg" width="980" height="1470" alt="Pôster do Null, com o letreiro VANS ao fundo"></figure></div></div>
 </section>
 
 <section class="chap" id="jogo">
@@ -358,7 +363,7 @@ h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
 <h3 class="sub reveal">A carta que vem junto</h3>
 <div class="copy reveal"><p>Dentro da caixa vem o Arquivo do mestre: um envelope preto com a carta de boas-vindas, que abre a aventura no Distrito Zero.</p></div>
 <figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/carta-arquivo-do-mestre.jpg" width="1600" height="900" alt="Envelope preto Arquivo do mestre, com o globo em vermelho, e a carta Bem-vindo, mestre, com o texto do Distrito Zero e prédios em vermelho e preto"><figcaption>Arquivo do mestre · envelope e carta de boas-vindas</figcaption></figure>
-<div class="vis two"><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-grupo-4.jpg" alt="Os três heróis em contra-plongée"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-grupo-5.jpg" alt="Kitsune em primeiro plano, com Redline e drones ao fundo"></figure></div>
+<div class="gal reveal"><div class="gal-t"><h3>Mais do grupo</h3><p>Dois enquadramentos de baixo para cima.</p></div><div class="rows" style="--h:300px;max-width:600px"><figure class="vis-i reveal" style="--ar:0.799"><img loading="lazy" src="../assets/vans-rpg/expl-grupo-4.jpg" width="980" height="1227" alt="Os três heróis em contra-plongée"></figure><figure class="vis-i reveal" style="--ar:0.560"><img loading="lazy" src="../assets/vans-rpg/expl-grupo-5.jpg" width="980" height="1751" alt="Kitsune em primeiro plano, com Redline e drones ao fundo"></figure></div></div>
 </section>
 
 <div class="label reveal">EM DESENVOLVIMENTO</div>
@@ -367,12 +372,9 @@ h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
 <section class="chap" id="bastidores">
 <header class="chap-h reveal"><span class="chap-n">06</span><h2>Bastidores</h2><p>O que ficou de fora também conta a história.</p></header>
 <div class="copy reveal"><p>Antes de fechar o vermelho e preto, os heróis passaram por outras cores, outras poses e muitas folhas de personagem. Estas versões não entraram no projeto, mas mostram o caminho.</p></div>
-<h3 class="sub reveal">Primeiras versões dos heróis</h3>
-<div class="vis three"><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-heroi-1.jpg" width="941" height="1672" alt="Primeira versão de personagem, em fundo amarelo"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-heroi-2.jpg" width="1086" height="1448" alt="Primeira versão de personagem, em fundo azul e rosa"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-heroi-3.jpg" width="1086" height="1448" alt="Primeira versão de personagem com máscara de raposa, em fundo amarelo"></figure></div>
-<h3 class="sub reveal">Folhas de personagem</h3>
-<div class="vis sheets"><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-folha-1.jpg" width="1672" height="941" alt="Folha de personagem 1, com vistas, detalhes e poses"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-folha-2.jpg" width="1672" height="941" alt="Folha de personagem 2, com vistas, detalhes e poses"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-folha-3.jpg" width="1672" height="941" alt="Folha de personagem 3, com vistas, detalhes e poses"></figure></div>
-<h3 class="sub reveal">Estudos de grupo e de cena</h3>
-<div class="vis masonry"><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-grupo-a.jpg" width="1200" height="1502" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-estudo-1.jpg" width="1200" height="675" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-cenario-2.jpg" width="1200" height="931" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-grupo-b.jpg" width="1200" height="1200" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-estudo-2.jpg" width="1200" height="933" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-grupo-c.jpg" width="1200" height="1200" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-estudo-3.jpg" width="1200" height="1112" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-grupo-d.jpg" width="1200" height="1200" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-cenario-1.jpg" width="1200" height="898" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-grupo-e.jpg" width="1200" height="1200" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-estudo-4.jpg" width="1200" height="1200" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-estudo-5.jpg" width="1072" height="834" alt="Estudo de cena e de grupo"></figure></div>
+<div class="gal reveal"><div class="gal-t"><h3>Primeiras versões dos heróis</h3><p>Outras cores e outras poses, antes do vermelho e preto.</p></div><div class="rows" style="--h:300px;max-width:640px"><figure class="vis-i reveal" style="--ar:0.563"><img loading="lazy" src="../assets/vans-rpg/bast-heroi-1.jpg" width="941" height="1672" alt="Primeira versão de personagem, em fundo amarelo"></figure><figure class="vis-i reveal" style="--ar:0.750"><img loading="lazy" src="../assets/vans-rpg/bast-heroi-2.jpg" width="1086" height="1448" alt="Primeira versão de personagem, em fundo azul e rosa"></figure><figure class="vis-i reveal" style="--ar:0.750"><img loading="lazy" src="../assets/vans-rpg/bast-heroi-3.jpg" width="1086" height="1448" alt="Primeira versão de personagem com máscara de raposa, em fundo amarelo"></figure></div></div>
+<div class="gal reveal"><div class="gal-t"><h3>Folhas de personagem</h3><p>Vistas, detalhes e poses de cada herói.</p></div><div class="rows stack" style="max-width:860px"><figure class="vis-i reveal" style="--ar:1.777"><img loading="lazy" src="../assets/vans-rpg/bast-folha-1.jpg" width="1672" height="941" alt="Folha de personagem 1, com vistas, detalhes e poses"></figure><figure class="vis-i reveal" style="--ar:1.777"><img loading="lazy" src="../assets/vans-rpg/bast-folha-2.jpg" width="1672" height="941" alt="Folha de personagem 2, com vistas, detalhes e poses"></figure><figure class="vis-i reveal" style="--ar:1.777"><img loading="lazy" src="../assets/vans-rpg/bast-folha-3.jpg" width="1672" height="941" alt="Folha de personagem 3, com vistas, detalhes e poses"></figure></div></div>
+<div class="gal reveal"><div class="gal-t"><h3>Estudos de grupo e de cena</h3><p>Enquadramentos testados até chegar na versão final.</p></div><div class="rows" style="--h:210px;"><figure class="vis-i reveal" style="--ar:0.799"><img loading="lazy" src="../assets/vans-rpg/bast-grupo-a.jpg" width="1200" height="1502" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal" style="--ar:1.778"><img loading="lazy" src="../assets/vans-rpg/bast-estudo-1.jpg" width="1200" height="675" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal" style="--ar:1.289"><img loading="lazy" src="../assets/vans-rpg/bast-cenario-2.jpg" width="1200" height="931" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal" style="--ar:1.000"><img loading="lazy" src="../assets/vans-rpg/bast-grupo-b.jpg" width="1200" height="1200" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal" style="--ar:1.286"><img loading="lazy" src="../assets/vans-rpg/bast-estudo-2.jpg" width="1200" height="933" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal" style="--ar:1.000"><img loading="lazy" src="../assets/vans-rpg/bast-grupo-c.jpg" width="1200" height="1200" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal" style="--ar:1.079"><img loading="lazy" src="../assets/vans-rpg/bast-estudo-3.jpg" width="1200" height="1112" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal" style="--ar:1.000"><img loading="lazy" src="../assets/vans-rpg/bast-grupo-d.jpg" width="1200" height="1200" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal" style="--ar:1.336"><img loading="lazy" src="../assets/vans-rpg/bast-cenario-1.jpg" width="1200" height="898" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal" style="--ar:1.000"><img loading="lazy" src="../assets/vans-rpg/bast-grupo-e.jpg" width="1200" height="1200" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal" style="--ar:1.000"><img loading="lazy" src="../assets/vans-rpg/bast-estudo-4.jpg" width="1200" height="1200" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal" style="--ar:1.285"><img loading="lazy" src="../assets/vans-rpg/bast-estudo-5.jpg" width="1072" height="834" alt="Estudo de cena e de grupo"></figure></div></div>
 </section>
 
 <section class="credits" id="ficha">
@@ -399,6 +401,20 @@ h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
     entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})
   },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
   els.forEach(function(e){io.observe(e)});
+})();
+</script>
+<script>
+(function(){var imgs=[].slice.call(document.querySelectorAll('main img'));if(!imgs.length)return;
+var lb=document.createElement('div');lb.className='lb';lb.setAttribute('role','dialog');lb.setAttribute('aria-label','Visualizar imagem');
+lb.innerHTML='<button class="x" aria-label="Fechar">FECHAR ✕</button><button class="pv" aria-label="Anterior">←</button><img alt=""><button class="nx" aria-label="Próxima">→</button><div class="ct"></div>';
+document.body.appendChild(lb);var im=lb.querySelector('img'),ct=lb.querySelector('.ct'),i=0;
+function show(n){i=(n+imgs.length)%imgs.length;var s=imgs[i];im.src=s.currentSrc||s.src;im.alt=s.alt;var f=s.closest('figure'),c=f&&f.querySelector('figcaption');ct.textContent=(i+1)+' / '+imgs.length+' · '+(c?c.textContent.replace(/\s+/g,' ').trim():s.alt)}
+function open(n){show(n);lb.classList.add('on');document.documentElement.style.overflow='hidden'}
+function close(){lb.classList.remove('on');document.documentElement.style.overflow='';im.removeAttribute('src')}
+imgs.forEach(function(m,k){m.addEventListener('click',function(e){e.preventDefault();open(k)})});
+lb.addEventListener('click',function(e){var t=e.target;if(t===lb||t===im||t.classList.contains('x'))close();else if(t.classList.contains('pv'))show(i-1);else if(t.classList.contains('nx'))show(i+1)});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')close();else if(e.key==='ArrowLeft')show(i-1);else if(e.key==='ArrowRight')show(i+1)});
+var x0=null;lb.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});lb.addEventListener('touchend',function(e){if(x0===null)return;var d=e.changedTouches[0].clientX-x0;if(Math.abs(d)>50)show(d<0?i+1:i-1);x0=null});
 })();
 </script>
 <script src="ambient.js?v=1" defer></script>
