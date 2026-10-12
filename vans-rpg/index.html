@@ -114,6 +114,16 @@ h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
 .chap-h.in h2{animation:h2glitch .5s steps(1,end) 1}
 @keyframes h2glitch{0%{transform:translateX(0)}12%{transform:translateX(-4px);text-shadow:3px 0 var(--red),-3px 0 #fff}24%{transform:translateX(3px);clip-path:inset(30% 0 40% 0)}36%{transform:translateX(-2px);clip-path:none}48%{transform:translateX(2px);text-shadow:-2px 0 var(--red)}60%,100%{transform:none;text-shadow:none;clip-path:none}}
 @media(prefers-reduced-motion:reduce){.chap-h.in h2{animation:none}}
+
+.refs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.refs div{background:var(--bg);padding:22px 18px}
+.refs small,.refs-games small{display:block;font:10px var(--mono);letter-spacing:.12em;color:var(--red);margin-bottom:12px}
+.refs b{display:block;overflow-wrap:anywhere;font:clamp(18px,1.7vw,26px)/1.05 var(--display);text-transform:uppercase;font-weight:400}
+.refs p{margin:10px 0 0;color:var(--muted);font-size:13px;line-height:1.4}
+.refs-games{margin:18px 0 0;font:12px var(--mono);letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.refs-games small{display:inline;margin:0 14px 0 0}
+@media(max-width:900px){.refs{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.refs{grid-template-columns:1fr}}
 /* TRANSFORMACAO */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:8px}
 .step{position:relative;background:var(--ink);border:1px solid var(--line);padding:26px 24px 28px;min-height:230px;display:flex;flex-direction:column;gap:10px}
@@ -251,12 +261,22 @@ h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
 <section class="chap" id="universo">
 <header class="chap-h reveal"><span class="chap-n">03</span><h2>O universo</h2><p>Vermelho, preto e papel cru. Uma cidade que não foi feita para você.</p></header>
 <div class="copy reveal"><p>Vermelho, preto e papel cru, sem cores extras. Halftone vermelho no lugar de sangue, ilustração cinematográfica com influência de anime e a arquitetura cyberpunk japonesa como cenário.</p></div>
+<figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/universo-kit-grafico.jpg" width="1672" height="941" alt="Kit gráfico do universo em vermelho e preto: halftone, miras, globo em wireframe, faixas de alerta, kanji e prédios cyberpunk em contra-plongée"><figcaption><span>KIT GRÁFICO</span><span>HALFTONE, MIRAS, WIREFRAME E CIDADE</span></figcaption></figure>
 <figure class="ident reveal"><div class="ident-board"><img loading="lazy" src="../assets/vans-rpg/identidade-visual.png" width="1225" height="1281" alt="Identidade visual OFF THE MAP: pinceladas e halftone vermelho, globo, miras, prédios cyberpunk, tarjas e xadrez"></div><figcaption>Identidade visual · vermelho, preto e papel cru</figcaption></figure>
 <div class="type-row reveal">
 <div class="type-box"><small>TÍTULOS</small><div class="a">Anton</div><p>Para títulos, headlines e destaques.</p></div>
 <div class="type-box"><small>TEXTOS</small><div class="b">Inter</div><p>Para textos, stats, tabelas e informações de apoio.</p></div>
 </div>
 <div class="lang reveal"><span>Halftone vermelho</span><span>Ilustração cinematográfica</span><span>Cyberpunk japonês</span><span>Kraft e papel cru</span><span>Serigrafia</span></div>
+<h3 class="sub reveal">Referências</h3>
+<div class="refs reveal">
+<div><small>LIVRO · 1984</small><b>Neuromancer</b><p>William Gibson</p></div>
+<div><small>HQ · 1982</small><b>Akira</b><p>Katsuhiro Otomo</p></div>
+<div><small>HQ · 1989</small><b>Ghost in the Shell</b><p>Masamune Shirow</p></div>
+<div><small>HQ · 1997</small><b>Transmetropolitan</b><p>Warren Ellis e Darick Robertson</p></div>
+<div><small>LIVRO · 2002</small><b>Altered Carbon</b><p>Richard K. Morgan</p></div>
+</div>
+<p class="refs-games reveal"><small>JOGOS</small>Cyberpunk RED · Shadowrun · Cyberpunk 2077</p>
 <h3 class="sub reveal">Decisões de direção de arte</h3>
 <div class="decis reveal">
 <div class="dec"><b>01</b><h3>Vermelho, preto e branco</h3><p>Sem azul, verde, roxo ou neon multicolorido. O kraft só entra onde a arte é aplicada direto na caixa física.</p></div>
