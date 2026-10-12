@@ -58,6 +58,33 @@ main{padding:0 var(--pad) 110px}
 .shield img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
 @media(max-width:760px){.shields{grid-template-columns:1fr}}
 
+.proc{display:grid;grid-template-columns:1fr 1fr;gap:18px;counter-reset:p}
+.proc .shot img{aspect-ratio:4/3;object-fit:cover}
+.proc .shot figcaption b{color:var(--red);margin-right:8px}
+.wide{margin-top:18px}
+.wide img{aspect-ratio:auto}
+.decis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.dec{border:1px solid var(--line);background:var(--ink);padding:24px 22px 26px;display:flex;flex-direction:column;gap:12px}
+.dec b{font:700 11px var(--mono);letter-spacing:.14em;color:var(--red)}
+.dec h3{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(24px,2.3vw,34px);line-height:1.05;text-transform:uppercase}
+.dec p{margin:0;font-size:15px;line-height:1.45;color:#cfcbc6}
+.usar{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px;align-items:start}
+.usar .shot img{aspect-ratio:auto}
+.ad{margin:18px 0 0}
+.ficha{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--line)}
+.ficha div{padding:18px 20px;border-bottom:1px solid var(--line)}
+.ficha div:nth-child(odd){border-right:1px solid var(--line)}
+.ficha small{display:block;font:10px var(--mono);letter-spacing:.12em;color:var(--red);margin-bottom:8px}
+.ficha p{margin:0;font-size:15px;line-height:1.45;color:#e4e1dd}
+.talk{margin-top:40px;display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;justify-content:space-between;border:1px solid var(--red);padding:clamp(22px,3vw,40px)}
+.talk h2{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(34px,5vw,72px);line-height:1;text-transform:uppercase}
+.talk nav{display:flex;flex-wrap:wrap;gap:10px}
+.talk a{font:700 12px var(--mono);letter-spacing:.1em;border:1px solid var(--fg);padding:12px 16px;color:var(--fg);text-decoration:none}
+.talk a:first-child{background:var(--red);border-color:var(--red);color:#050807}
+.talk a:hover{background:var(--fg);color:#050807}
+@media(max-width:900px){.decis{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.proc,.usar,.decis,.ficha{grid-template-columns:1fr}.ficha div:nth-child(odd){border-right:0}}
+
 /* TRANSFORMACAO */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:8px}
 .step{position:relative;background:var(--ink);border:1px solid var(--line);padding:26px 24px 28px;min-height:230px;display:flex;flex-direction:column;gap:10px}
@@ -230,6 +257,23 @@ main{padding:0 var(--pad) 110px}
 </div>
 </div>
 
+<div class="label reveal">PROCESSO · DA REFERÊNCIA À FACA</div>
+<div class="copy reveal"><p>Comecei por uma caixa Vans de verdade e pelo desenho da faca: frente, logo, lateral e verso com informações. Testei as faces em kraft antes de chegar à versão final em off-white, com selo e xadrez.</p></div>
+<div class="proc">
+<figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/proc-01-referencia.jpg" width="1600" height="1200" alt="Caixa Vans real aberta ao lado do desenho da faca, com as áreas Back side, Back info, Front side e Front logo"><figcaption><b>01</b>Referência · caixa Vans real e faca</figcaption></figure>
+<figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/proc-02-faca-kraft.jpg" width="1448" height="1086" alt="Faca da caixa em kraft, plana, com abas e furos"><figcaption><b>02</b>Faca · molde em kraft</figcaption></figure>
+<figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/proc-03-exploracao-kraft.jpg" width="1252" height="1200" alt="Exploração da planificação em kraft com painéis de regras e a ilustração dos personagens"><figcaption><b>03</b>Exploração · painéis em kraft</figcaption></figure>
+<figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/proc-04-faca-final.jpg" width="1448" height="1086" alt="Faca final da caixa em off-white, aberta e plana"><figcaption><b>04</b>Resultado · faca final em off-white</figcaption></figure>
+</div>
+
+<div class="label reveal">EM USO · JOGUE FORA DA CAIXA</div>
+<div class="copy reveal"><p>Para mostrar a caixa em uso, desenhei um filme de 30 segundos: os personagens encontram a caixa, ela se desdobra no escudo, o dado rola e a cidade vira tabuleiro.</p></div>
+<figure class="shot wide reveal"><img loading="lazy" src="../assets/vans-rpg/storyboard-jogue-fora-da-caixa.jpg" width="1312" height="1199" alt="Storyboard do filme de 30 segundos Jogue fora da caixa, em dez cenas, do encontro dos personagens ao packshot com o tênis e o escudo do mestre"><figcaption>Storyboard · filme de 30″ · “A rua é o seu tabuleiro.”</figcaption></figure>
+<div class="usar">
+<figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/em-uso-mao.jpg" width="1086" height="1448" alt="Mockup da caixa aberta nas mãos de alguém, numa rua cyberpunk à noite"><figcaption>Mockup · a caixa na mão, na rua</figcaption></figure>
+<figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/guia-do-mestre.jpg" width="1200" height="1200" alt="Mockup de impressos: o Guia do mestre e a folha Bem-vindo à rua, com a pasta OFF THE MAP"><figcaption>Impressos · guia do mestre e boas-vindas</figcaption></figure>
+</div>
+
 <div class="label reveal">DIREÇÃO DE ARTE</div>
 <div class="copy reveal"><p>Vermelho, preto e papel cru, sem cores extras. Halftone vermelho no lugar de sangue, ilustração cinematográfica com influência de anime e a arquitetura cyberpunk japonesa como cenário.</p></div>
 <figure class="ident reveal"><div class="ident-board"><img loading="lazy" src="../assets/vans-rpg/identidade-visual.png" width="1225" height="1281" alt="Identidade visual OFF THE MAP: pinceladas e halftone vermelho, globo, miras, prédios cyberpunk, tarjas e xadrez"></div><figcaption>Identidade visual · vermelho, preto e papel cru</figcaption></figure>
@@ -238,6 +282,17 @@ main{padding:0 var(--pad) 110px}
 <div class="type-box"><small>TEXTOS</small><div class="b">Inter</div><p>Para textos, stats, tabelas e informações de apoio.</p></div>
 </div>
 <div class="lang reveal"><span>Halftone vermelho</span><span>Ilustração cinematográfica</span><span>Cyberpunk japonês</span><span>Kraft e papel cru</span><span>Serigrafia</span></div>
+
+<div class="label reveal">DECISÕES DE DIREÇÃO DE ARTE</div>
+<div class="decis reveal">
+<div class="dec"><b>01</b><h3>Vermelho, preto e branco</h3><p>Sem azul, verde, roxo ou neon multicolorido. O kraft só entra onde a arte é aplicada direto na caixa física.</p></div>
+<div class="dec"><b>02</b><h3>Halftone constrói volume</h3><p>A densidade e o tamanho dos pontos variam para dar profundidade a roupas, rostos, prédios e céu. Não é só efeito.</p></div>
+<div class="dec"><b>03</b><h3>Câmera no chão</h3><p>Enquadramento baixo, três personagens e prédios fechando as laterais. Sobra um céu vermelho enorme para a marca.</p></div>
+<div class="dec"><b>04</b><h3>A caixa deixa de ser descarte</h3><p>Fechada, é identidade. Aberta, vira ferramenta de jogo. O produto continua vivo depois da compra.</p></div>
+<div class="dec"><b>05</b><h3>Regras para o mestre</h3><p>O escudo é lido pelo mestre, então a informação é de consulta rápida: ações, condições, dificuldade e fluxo de combate.</p></div>
+<div class="dec"><b>06</b><h3>Nada de cyberpunk genérico</h3><p>Sem acabamento limpo, glossy, azul e roxo. A referência é xerox punk e pôster de rua japonês.</p></div>
+</div>
+
 
 <div class="label reveal">NARRATIVA</div>
 <div class="lid reveal">
@@ -250,9 +305,21 @@ main{padding:0 var(--pad) 110px}
 <h2 class="display">This city wasn't built for you.</h2>
 <p>A frase do universo, em grafite sobre um anúncio em neon.</p>
 </div>
+<figure class="shot ad reveal"><img loading="lazy" src="../assets/vans-rpg/anuncio-cidade.jpg" width="1600" height="900" alt="Anúncio em neon de uma tigela de ramen com a frase This city wasn't built for you em grafite por cima"><figcaption>Intervenção · a frase em grafite sobre o anúncio</figcaption></figure>
 
 <div class="label reveal">EM DESENVOLVIMENTO</div>
 <div class="soon reveal"><b>PRÓXIMO PASSO</b><p>A caixa gira em oito vistas e abre até formar o escudo do mestre, em animação.</p></div>
+
+<div class="label reveal">FICHA TÉCNICA</div>
+<div class="ficha reveal">
+<div><small>PROJETO</small><p>OFF THE MAP — Vans Tabletop RPG. Conceito autoral, sem parceria oficial com a Vans.</p></div>
+<div><small>FUNÇÃO</small><p>Conceito, direção de arte, embalagem e sistema gráfico.</p></div>
+<div><small>IMAGEM E IA</small><p>Ilustrações e estudos gerados com IA (ChatGPT e Gemini) sob minha direção. Escolha, edição e montagem são minhas.</p></div>
+<div><small>FERRAMENTAS</small><p>Photoshop para mockups e montagem, IA generativa para imagem e GDevelop para o protótipo do jogo.</p></div>
+<div><small>ENTREGAS</small><p>Caixa e faca, escudo do mestre, fichas de personagem, ilustrações, GIF da caixa e storyboard do filme.</p></div>
+<div><small>ANO</small><p>2026</p></div>
+</div>
+<div class="talk reveal"><h2>Quer ver o próximo?</h2><nav><a href="https://wa.me/5511994064761" target="_blank" rel="noopener">WHATSAPP ↗</a><a href="https://www.linkedin.com/in/reenandamazio/" target="_blank" rel="noopener">LINKEDIN ↗</a><a href="https://www.instagram.com/nan.damazio/" target="_blank" rel="noopener">INSTAGRAM ↗</a></nav></div>
 
 <div class="next"><span>RENAN DAMAZIO · DIRETOR DE ARTE</span><a href="/">VER TODOS OS PROJETOS →</a></div>
 </main>
