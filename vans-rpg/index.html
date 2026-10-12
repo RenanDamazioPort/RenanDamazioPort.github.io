@@ -124,6 +124,15 @@ h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
 .refs-games small{display:inline;margin:0 14px 0 0}
 @media(max-width:900px){.refs{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.refs{grid-template-columns:1fr}}
+
+.vis{display:grid;gap:14px;margin:56px 0 0}
+.vis-i{margin:0;overflow:hidden;border:1px solid var(--line);background:#050807}
+.vis-i img{display:block;width:100%;height:100%;object-fit:cover}
+.vis.one{grid-template-columns:1fr}.vis.one .vis-i{aspect-ratio:21/9}
+.vis.two{grid-template-columns:1fr 1fr}.vis.two .vis-i{aspect-ratio:4/5}
+.vis.two.wide .vis-i{aspect-ratio:4/3}
+.vis.three{grid-template-columns:repeat(3,minmax(0,1fr))}.vis.three .vis-i{aspect-ratio:2/3}
+@media(max-width:640px){.vis.two,.vis.three{grid-template-columns:1fr}.vis.two .vis-i,.vis.three .vis-i{aspect-ratio:4/5}.vis.one .vis-i{aspect-ratio:16/10}}
 /* TRANSFORMACAO */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:8px}
 .step{position:relative;background:var(--ink);border:1px solid var(--line);padding:26px 24px 28px;min-height:230px;display:flex;flex-direction:column;gap:10px}
@@ -228,7 +237,7 @@ h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
 
 <div class="meta-wrap"><div class="meta"><span>PROJETO — AUTORAL / CONCEITUAL</span><span>ANO — 2026</span><span>FUNÇÃO — DIREÇÃO DE ARTE · EMBALAGEM · IA</span></div></div>
 
-<nav class="cnav" aria-label="Capítulos"><a href="#ideia">01 A ideia</a><a href="#processo">02 Processo</a><a href="#universo">03 Universo</a><a href="#herois">04 Heróis</a><a href="#jogo">05 O jogo</a><a href="#bastidores">06 Bastidores</a></nav>
+<nav class="cnav" aria-label="Capítulos"><a href="#ideia">01 A ideia</a><a href="#processo">02 Processo</a><a href="#universo">03 Universo</a><a href="#herois">04 Heróis</a><a href="#jogo">05 O jogo</a></nav>
 <main>
 <section class="chap" id="ideia">
 <header class="chap-h reveal"><span class="chap-n">01</span><h2>A ideia</h2><p>Uma embalagem que vira escudo de mestre, feita para ser jogada na rua.</p></header>
@@ -245,6 +254,7 @@ h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
 <div class="step reveal"><b>03</b><h3>DM Screen</h3><p>A embalagem vira o escudo do mestre.</p></div>
 <div class="step reveal"><b>04</b><h3>Play</h3><p>O jogo acontece com a peça em uso.</p></div>
 </div>
+<div class="vis one"><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-grupo-3.jpg" alt="Os três heróis em uma rua cyberpunk, em vermelho e preto"></figure></div>
 </section>
 
 <section class="chap" id="processo">
@@ -268,6 +278,7 @@ h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
 <div class="type-box"><small>TEXTOS</small><div class="b">Inter</div><p>Para textos, stats, tabelas e informações de apoio.</p></div>
 </div>
 <div class="lang reveal"><span>Halftone vermelho</span><span>Ilustração cinematográfica</span><span>Cyberpunk japonês</span><span>Kraft e papel cru</span><span>Serigrafia</span></div>
+<div class="vis three"><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-cidade-1.jpg" alt="Cenário: avenida vertical de letreiros em contra-plongée"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-cidade-2.jpg" alt="Cenário: prédios e dutos em contra-plongée"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-cidade-3.jpg" alt="Cenário: arranha-céus e fios cruzados"></figure></div>
 <h3 class="sub reveal">Referências</h3>
 <div class="refs reveal">
 <div><small>LIVRO · 1984</small><b>Neuromancer</b><p>William Gibson</p></div>
@@ -286,6 +297,7 @@ h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
 <div class="dec"><b>05</b><h3>Regras para o mestre</h3><p>O escudo é lido pelo mestre, então a informação é de consulta rápida: ações, condições, dificuldade e fluxo de combate.</p></div>
 <div class="dec"><b>06</b><h3>Nada de cyberpunk genérico</h3><p>Sem acabamento limpo, glossy, azul e roxo. A referência é xerox punk e pôster de rua japonês.</p></div>
 </div>
+<div class="vis two wide"><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-morro.jpg" alt="Cenário: morro cyberpunk com o herói em primeiro plano"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-anuncio.jpg" alt="Anúncio em neon com a frase na parede"></figure></div>
 <h3 class="sub reveal">A mensagem dentro da tampa</h3>
 <div class="lid reveal">
 <p class="l1">If you're reading this,</p>
@@ -303,6 +315,7 @@ h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
 <figure class="hero-card reveal"><img loading="lazy" src="../assets/vans-rpg/ilus-kitsune.jpg" alt="Ilustração de Kitsune, a assassina de máscara de raposa, sentada em um beco"><figcaption><h3>Kitsune</h3><p>Ronin / Assassina · Nível 5</p></figcaption></figure>
 <figure class="hero-card reveal"><img loading="lazy" src="../assets/vans-rpg/ilus-null.jpg" alt="Ilustração de Null, o hacker de máscara de gás, com a interface digital na mão"><figcaption><h3>Null</h3><p>Hacker / Controlador · Nível 5</p></figcaption></figure>
 </div>
+<div class="vis two"><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-grupo-1.jpg" alt="Kitsune no cano, Redline e Null em ação"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-grupo-2.jpg" alt="Os três de frente, com a Kitsune em destaque"></figure></div>
 <h3 class="sub reveal">Fichas de personagem</h3>
 <div class="copy reveal"><p>Cada herói chega pronto para jogar: história, atributos, arma, habilidade, passiva e ultimate em uma carta só.</p></div>
 <div class="sheets">
@@ -310,6 +323,7 @@ h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
 <a class="sheet reveal" href="../assets/vans-rpg/ficha-null.jpg" target="_blank" rel="noopener"><img loading="lazy" src="../assets/vans-rpg/ficha-null.jpg" alt="Carta de personagem de Null, com história, atributos e habilidades"><figcaption>Null · abrir em tamanho real ↗</figcaption></a>
 <a class="sheet reveal" href="../assets/vans-rpg/ficha-redline.jpg" target="_blank" rel="noopener"><img loading="lazy" src="../assets/vans-rpg/ficha-redline.jpg" alt="Carta de personagem de Redline, com história, atributos e habilidades"><figcaption>Redline · abrir em tamanho real ↗</figcaption></a>
 </div>
+<div class="vis two"><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-kitsune.jpg" alt="Pôster da Kitsune, sentada sobre a rua"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-null.jpg" alt="Pôster do Null, com o letreiro VANS ao fundo"></figure></div>
 </section>
 
 <section class="chap" id="jogo">
@@ -341,29 +355,11 @@ h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
 <h3 class="sub reveal">A carta que vem junto</h3>
 <div class="copy reveal"><p>Dentro da caixa vem o Arquivo do mestre: um envelope preto com a carta de boas-vindas, que abre a aventura no Distrito Zero.</p></div>
 <figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/carta-arquivo-do-mestre.jpg" width="1600" height="900" alt="Envelope preto Arquivo do mestre, com o globo em vermelho, e a carta Bem-vindo, mestre, com o texto do Distrito Zero e prédios em vermelho e preto"><figcaption>Arquivo do mestre · envelope e carta de boas-vindas</figcaption></figure>
+<div class="vis two"><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-grupo-4.jpg" alt="Os três heróis em contra-plongée"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-grupo-5.jpg" alt="Kitsune em primeiro plano, com Redline e drones ao fundo"></figure></div>
 </section>
 
 <div class="label reveal">EM DESENVOLVIMENTO</div>
 <div class="soon reveal"><b>PRÓXIMO PASSO</b><p>A caixa gira em oito vistas e abre até formar o escudo do mestre, em animação.</p></div>
-
-<section class="chap" id="bastidores">
-<header class="chap-h reveal"><span class="chap-n">06</span><h2>Bastidores</h2><p>O que ficou de fora também conta a história.</p></header>
-<div class="copy reveal"><p>Antes da ilustração final, passaram muitas versões. Estas não entraram no projeto, mas mostram o caminho: enquadramentos, cenários e poses testados até o grupo certo.</p></div>
-<div class="expl">
-<figure class="expl-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-grupo-1.jpg" alt="Estudo do grupo: Kitsune no cano, Redline e Null embaixo"></figure>
-<figure class="expl-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-kitsune.jpg" alt="Pôster da Kitsune, sentada sobre a rua"></figure>
-<figure class="expl-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-cidade-1.jpg" alt="Cenário: avenida vertical de letreiros"></figure>
-<figure class="expl-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-grupo-3.jpg" alt="Estudo do grupo em formato horizontal, com drones"></figure>
-<figure class="expl-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-null.jpg" alt="Pôster do Null, com o letreiro VANS ao fundo"></figure>
-<figure class="expl-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-cidade-2.jpg" alt="Cenário: prédios e dutos em contra-plongée"></figure>
-<figure class="expl-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-grupo-5.jpg" alt="Estudo do grupo com a Kitsune em primeiro plano"></figure>
-<figure class="expl-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-morro.jpg" alt="Cenário: morro cyberpunk com o herói em primeiro plano"></figure>
-<figure class="expl-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-cidade-3.jpg" alt="Cenário: arranha-céus e fios cruzados"></figure>
-<figure class="expl-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-grupo-2.jpg" alt="Estudo do grupo vertical, com os três de frente"></figure>
-<figure class="expl-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-anuncio.jpg" alt="Anúncio em neon com a frase na parede"></figure>
-<figure class="expl-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-grupo-4.jpg" alt="Estudo dos três heróis em contra-plongée"></figure>
-</div>
-</section>
 
 <section class="credits" id="ficha">
 <h3 class="sub reveal">Ficha técnica</h3>
