@@ -65,11 +65,25 @@ main{padding:0 var(--pad) 110px}
 /* HEROIS */
 .heroes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .hero-card{margin:0;position:relative;overflow:hidden;border:1px solid var(--line);background:#0b1210}
-.hero-card img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1),filter .4s}
+.hero-card img{display:block;width:100%;aspect-ratio:2/3;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1),filter .4s}
 .hero-card:hover img{transform:scale(1.05);filter:saturate(1.15)}
 .hero-card figcaption{position:absolute;left:0;right:0;bottom:0;padding:70px 20px 20px;background:linear-gradient(180deg,rgba(5,8,7,0),rgba(5,8,7,.94))}
 .hero-card h3{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(40px,4.4vw,72px);line-height:1;text-transform:uppercase}
 .hero-card p{margin:8px 0 0;font:11px var(--mono);letter-spacing:.08em;color:var(--red);text-transform:uppercase}
+
+
+/* FICHAS + CAIXA */
+.sheets{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.sheet{margin:0;display:block;border:1px solid var(--line);background:#0b1210;overflow:hidden}
+.sheet img{display:block;width:100%;height:auto;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.sheet:hover img{transform:scale(1.03)}
+.sheet figcaption{padding:12px 14px;font:11px var(--mono);letter-spacing:.08em;color:var(--muted);text-transform:uppercase;border-top:1px solid var(--line)}
+.shots{display:grid;gap:18px}
+.shots .row2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.shot{margin:0;border:1px solid var(--line);background:#0b1210;overflow:hidden}
+.shot img{display:block;width:100%;height:auto}
+.shot figcaption{padding:12px 14px;font:11px var(--mono);letter-spacing:.08em;color:var(--muted);text-transform:uppercase;border-top:1px solid var(--line)}
+@media(max-width:820px){.sheets,.shots .row2{grid-template-columns:1fr}}
 
 /* DIRECAO DE ARTE */
 .palette{display:grid;grid-template-columns:repeat(7,1fr);gap:12px}
@@ -170,9 +184,36 @@ main{padding:0 var(--pad) 110px}
 
 <div class="label reveal">OS HERÓIS</div>
 <div class="heroes">
-<figure class="hero-card reveal"><img loading="lazy" src="../assets/vans-rpg/hero-redline.jpg" alt="Redline: jaqueta vermelha, óculos escuros e bandana"><figcaption><h3>Redline</h3><p>Jaqueta vermelha, óculos e bandana</p></figcaption></figure>
-<figure class="hero-card reveal"><img loading="lazy" src="../assets/vans-rpg/hero-kitsune.jpg" alt="Kitsune: máscara de raposa e cabelo preso"><figcaption><h3>Kitsune</h3><p>Máscara de raposa e cabelo preso</p></figcaption></figure>
-<figure class="hero-card reveal"><img loading="lazy" src="../assets/vans-rpg/hero-null.jpg" alt="Null: gorro e máscara de dois filtros"><figcaption><h3>Null</h3><p>Gorro e máscara de dois filtros</p></figcaption></figure>
+<figure class="hero-card reveal"><img loading="lazy" src="../assets/vans-rpg/ilus-redline.jpg" alt="Ilustração de Redline, o pistoleiro de jaqueta vermelha, apontando a arma"><figcaption><h3>Redline</h3><p>Pistoleiro / Atirador · Nível 5</p></figcaption></figure>
+<figure class="hero-card reveal"><img loading="lazy" src="../assets/vans-rpg/ilus-kitsune.jpg" alt="Ilustração de Kitsune, a assassina de máscara de raposa, sentada em um beco"><figcaption><h3>Kitsune</h3><p>Ronin / Assassina · Nível 5</p></figcaption></figure>
+<figure class="hero-card reveal"><img loading="lazy" src="../assets/vans-rpg/ilus-null.jpg" alt="Ilustração de Null, o hacker de máscara de gás, com a interface digital na mão"><figcaption><h3>Null</h3><p>Hacker / Controlador · Nível 5</p></figcaption></figure>
+</div>
+
+<div class="label reveal">FICHAS DE PERSONAGEM</div>
+<div class="copy reveal"><p>Cada herói chega pronto para jogar: história, atributos, arma, habilidade, passiva e ultimate em uma carta só.</p></div>
+<div class="sheets">
+<a class="sheet reveal" href="../assets/vans-rpg/ficha-kitsune.jpg" target="_blank" rel="noopener"><img loading="lazy" src="../assets/vans-rpg/ficha-kitsune.jpg" alt="Carta de personagem de Kitsune, com história, atributos e habilidades"><figcaption>Kitsune · abrir em tamanho real ↗</figcaption></a>
+<a class="sheet reveal" href="../assets/vans-rpg/ficha-null.jpg" target="_blank" rel="noopener"><img loading="lazy" src="../assets/vans-rpg/ficha-null.jpg" alt="Carta de personagem de Null, com história, atributos e habilidades"><figcaption>Null · abrir em tamanho real ↗</figcaption></a>
+<a class="sheet reveal" href="../assets/vans-rpg/ficha-redline.jpg" target="_blank" rel="noopener"><img loading="lazy" src="../assets/vans-rpg/ficha-redline.jpg" alt="Carta de personagem de Redline, com história, atributos e habilidades"><figcaption>Redline · abrir em tamanho real ↗</figcaption></a>
+</div>
+
+<div class="label reveal">A CAIXA</div>
+<div class="copy reveal"><p>A embalagem tem cara de edição especial Vans: kraft cru, xadrez, o selo OFF THE MAP e a ilustração dos três heróis na tampa. As laterais carregam ferramentas de jogo, como o mapa de pontos da cidade e o gerador de NPCs.</p></div>
+<div class="shots">
+<figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/caixa-05.jpg" alt="Caixa OFF THE MAP vista em perspectiva, com o selo, o xadrez e a lateral do gerador de NPCs"><figcaption>Fechada · selo OFF THE MAP e xadrez</figcaption></figure>
+<div class="row2">
+<figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/caixa-06.jpg" alt="Frente da caixa com o selo OFF THE MAP Vans Tabletop RPG e os três heróis na tampa"><figcaption>Frente · V-66 Urban Roleplay System</figcaption></figure>
+<figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/caixa-01.jpg" alt="Caixa com a tampa entreaberta mostrando a ilustração interna e a etiqueta do tênis"><figcaption>Abrindo · a tampa revela a arte</figcaption></figure>
+</div>
+<figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/caixa-02.jpg" alt="Lateral da caixa com o mapa Sua cidade, sua campanha, conecte os pontos"><figcaption>Lateral · Sua cidade. Sua campanha.</figcaption></figure>
+<div class="row2">
+<figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/caixa-03.jpg" alt="Lateral da caixa de frente, com o mapa de pontos da cidade"><figcaption>Conecte os pontos · atalho, perigo, segredo</figcaption></figure>
+<figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/caixa-04.jpg" alt="Caixa em perspectiva mostrando o mapa da cidade e a aba Quem"><figcaption>Ruas reais. Novas histórias.</figcaption></figure>
+</div>
+<div class="row2">
+<figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/caixa-1-1.jpg" alt="Cabeceira da caixa com a etiqueta do tênis Skate Old Skool e a aba Complicação"><figcaption>Cabeceira · etiqueta do tênis e tabela de complicações</figcaption></figure>
+<figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/caixa-4-1.jpg" alt="Cabeceira da caixa com a aba Quem, o gerador de NPCs"><figcaption>Quem? · gerador de NPCs</figcaption></figure>
+</div>
 </div>
 
 <div class="label reveal">DIREÇÃO DE ARTE</div>
@@ -205,7 +246,7 @@ main{padding:0 var(--pad) 110px}
 </div>
 
 <div class="label reveal">EM DESENVOLVIMENTO</div>
-<div class="soon reveal"><b>PRÓXIMO PASSO</b><p>A caixa fechada gira em oito vistas e abre até formar o DM Screen.</p></div>
+<div class="soon reveal"><b>PRÓXIMO PASSO</b><p>A caixa gira em oito vistas e abre até formar o escudo do mestre, em animação.</p></div>
 
 <div class="next"><span>RENAN DAMAZIO · DIRETOR DE ARTE</span><a href="/">VER TODOS OS PROJETOS →</a></div>
 </main>
