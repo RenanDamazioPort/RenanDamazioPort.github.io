@@ -132,6 +132,10 @@ h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
 .vis.two{grid-template-columns:repeat(2,minmax(0,1fr));max-width:760px}
 .vis.three{grid-template-columns:repeat(3,minmax(0,1fr));max-width:760px}
 .vis.two.wide{max-width:860px}
+.vis.sheets{grid-template-columns:1fr;max-width:860px}
+.vis.masonry{display:block;column-count:3;column-gap:12px;max-width:860px}
+.vis.masonry .vis-i{margin:0 0 12px;break-inside:avoid}
+@media(max-width:640px){.vis.masonry{column-count:2;column-gap:8px}}
 @media(max-width:640px){.vis.one{max-width:none}.vis.two,.vis.three{max-width:none;gap:8px}}
 /* TRANSFORMACAO */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:8px}
@@ -237,7 +241,7 @@ h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
 
 <div class="meta-wrap"><div class="meta"><span>PROJETO — AUTORAL / CONCEITUAL</span><span>ANO — 2026</span><span>FUNÇÃO — DIREÇÃO DE ARTE · EMBALAGEM · IA</span></div></div>
 
-<nav class="cnav" aria-label="Capítulos"><a href="#ideia">01 A ideia</a><a href="#processo">02 Processo</a><a href="#universo">03 Universo</a><a href="#herois">04 Heróis</a><a href="#jogo">05 O jogo</a></nav>
+<nav class="cnav" aria-label="Capítulos"><a href="#ideia">01 A ideia</a><a href="#processo">02 Processo</a><a href="#universo">03 Universo</a><a href="#herois">04 Heróis</a><a href="#jogo">05 O jogo</a><a href="#bastidores">06 Bastidores</a></nav>
 <main>
 <section class="chap" id="ideia">
 <header class="chap-h reveal"><span class="chap-n">01</span><h2>A ideia</h2><p>Uma embalagem que vira escudo de mestre, feita para ser jogada na rua.</p></header>
@@ -359,6 +363,17 @@ h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
 
 <div class="label reveal">EM DESENVOLVIMENTO</div>
 <div class="soon reveal"><b>PRÓXIMO PASSO</b><p>A caixa gira em oito vistas e abre até formar o escudo do mestre, em animação.</p></div>
+
+<section class="chap" id="bastidores">
+<header class="chap-h reveal"><span class="chap-n">06</span><h2>Bastidores</h2><p>O que ficou de fora também conta a história.</p></header>
+<div class="copy reveal"><p>Antes de fechar o vermelho e preto, os heróis passaram por outras cores, outras poses e muitas folhas de personagem. Estas versões não entraram no projeto, mas mostram o caminho.</p></div>
+<h3 class="sub reveal">Primeiras versões dos heróis</h3>
+<div class="vis three"><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-heroi-1.jpg" width="941" height="1672" alt="Primeira versão de personagem, em fundo amarelo"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-heroi-2.jpg" width="1086" height="1448" alt="Primeira versão de personagem, em fundo azul e rosa"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-heroi-3.jpg" width="1086" height="1448" alt="Primeira versão de personagem com máscara de raposa, em fundo amarelo"></figure></div>
+<h3 class="sub reveal">Folhas de personagem</h3>
+<div class="vis sheets"><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-folha-1.jpg" width="1672" height="941" alt="Folha de personagem 1, com vistas, detalhes e poses"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-folha-2.jpg" width="1672" height="941" alt="Folha de personagem 2, com vistas, detalhes e poses"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-folha-3.jpg" width="1672" height="941" alt="Folha de personagem 3, com vistas, detalhes e poses"></figure></div>
+<h3 class="sub reveal">Estudos de grupo e de cena</h3>
+<div class="vis masonry"><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-grupo-a.jpg" width="1200" height="1502" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-estudo-1.jpg" width="1200" height="675" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-cenario-2.jpg" width="1200" height="931" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-grupo-b.jpg" width="1200" height="1200" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-estudo-2.jpg" width="1200" height="933" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-grupo-c.jpg" width="1200" height="1200" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-estudo-3.jpg" width="1200" height="1112" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-grupo-d.jpg" width="1200" height="1200" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-cenario-1.jpg" width="1200" height="898" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-grupo-e.jpg" width="1200" height="1200" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-estudo-4.jpg" width="1200" height="1200" alt="Estudo de cena e de grupo"></figure><figure class="vis-i reveal"><img loading="lazy" src="../assets/vans-rpg/bast-estudo-5.jpg" width="1072" height="834" alt="Estudo de cena e de grupo"></figure></div>
+</section>
 
 <section class="credits" id="ficha">
 <h3 class="sub reveal">Ficha técnica</h3>
