@@ -91,6 +91,21 @@ main{padding:0 var(--pad) 110px}
 .expl-i img{display:block;width:100%;height:auto}
 @media(max-width:900px){.expl{column-count:2}}
 
+
+/* CAPITULOS */
+.cnav{position:sticky;top:var(--toph,50px);z-index:9;display:flex;gap:6px;overflow-x:auto;padding:10px var(--pad);background:rgba(5,8,7,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);font:10px var(--mono);letter-spacing:.08em;scrollbar-width:none}
+.cnav::-webkit-scrollbar{display:none}
+.cnav a{white-space:nowrap;padding:7px 12px;border:1px solid var(--line);color:var(--muted);transition:.2s}
+.cnav a.on{background:var(--red);border-color:var(--red);color:#050807}
+.chap{padding-top:110px;scroll-margin-top:110px}
+.chap-h{display:grid;grid-template-columns:auto 1fr;column-gap:28px;align-items:end;border-top:1px solid var(--line);padding-top:28px;margin-bottom:48px}
+.chap-n{grid-row:1/3;font:clamp(72px,12vw,180px)/.8 var(--display);color:var(--red)}
+.chap-h h2{margin:0;font:clamp(40px,6.5vw,104px)/.95 var(--display);text-transform:uppercase}
+.chap-h p{margin:14px 0 0;max-width:640px;color:var(--muted);font-size:clamp(15px,1.4vw,20px);line-height:1.45}
+h3.sub{margin:80px 0 22px;font:10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:flex;gap:12px;align-items:center}
+h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
+.chap .street{margin-top:0}
+@media(max-width:640px){.chap{padding-top:72px}.chap-h{grid-template-columns:1fr}.chap-n{grid-row:auto;margin-bottom:12px}h3.sub{margin-top:56px}}
 /* TRANSFORMACAO */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:8px}
 .step{position:relative;background:var(--ink);border:1px solid var(--line);padding:26px 24px 28px;min-height:230px;display:flex;flex-direction:column;gap:10px}
@@ -199,56 +214,83 @@ main{padding:0 var(--pad) 110px}
 
 <div class="meta-wrap"><div class="meta"><span>PROJETO — AUTORAL / CONCEITUAL</span><span>ANO — 2026</span><span>FUNÇÃO — DIREÇÃO DE ARTE · EMBALAGEM · IA</span></div></div>
 
+<nav class="cnav" aria-label="Capítulos"><a href="#ideia">01 A ideia</a><a href="#processo">02 Processo</a><a href="#universo">03 Universo</a><a href="#herois">04 Heróis</a><a href="#jogo">05 O jogo</a><a href="#bastidores">06 Bastidores</a></nav>
 <main>
+<section class="chap" id="ideia">
+<header class="chap-h reveal"><span class="chap-n">01</span><h2>A ideia</h2><p>Uma embalagem que vira escudo de mestre, feita para ser jogada na rua.</p></header>
 <figure class="spin reveal"><img src="../assets/vans-rpg/off-the-map-capa.gif?v=2" width="960" height="540" alt="Quatro faces da caixa OFF THE MAP: a etiqueta de tênis Vans, o painel Sua cidade. Sua campanha., a lateral Quem? do gerador de NPCs e o selo OFF THE MAP com xadrez" fetchpriority="high"><figcaption><span>A CAIXA · 4 FACES</span><span>OFF THE MAP — VANS TABLETOP RPG</span></figcaption></figure>
-<div class="label reveal">A IDEIA</div>
 <div class="copy reveal">
 <p>E se a caixa de um tênis fosse o começo de um jogo? <strong>OFF THE MAP</strong> transforma a embalagem da Vans no escudo do mestre de um RPG de mesa urbano e cyberpunk, feito para ser jogado na rua.</p>
 <p>Fechada, a caixa apresenta a identidade. Aberta, entrega ao mestre as informações de consulta para conduzir a partida. A embalagem deixa de ser só embalagem e entra no jogo.</p>
 <p class="note">PROJETO CONCEITUAL AUTORAL. NÃO REPRESENTA PARCERIA OFICIAL COM A MARCA.</p>
 </div>
-
-<div class="label reveal">DA CAIXA AO ESCUDO</div>
+<h3 class="sub reveal">Da caixa ao escudo</h3>
 <div class="steps">
 <div class="step reveal"><b>01</b><h3>Shoebox</h3><p>A caixa fechada apresenta a identidade.</p></div>
 <div class="step reveal"><b>02</b><h3>Unfold</h3><p>A faca aberta explica a construção.</p></div>
 <div class="step reveal"><b>03</b><h3>DM Screen</h3><p>A embalagem vira o escudo do mestre.</p></div>
 <div class="step reveal"><b>04</b><h3>Play</h3><p>O jogo acontece com a peça em uso.</p></div>
 </div>
-
-<div class="label reveal">O ESCUDO DO MESTRE</div>
-<div class="copy reveal"><p>Aberta, a caixa vira o escudo. Por fora, a arte e o selo para a mesa. Do lado do mestre, é onde aparece tudo o que ele precisa: regras, tabelas e o mapa da cidade.</p></div>
-<div class="shields">
-<figure class="shield reveal"><img loading="lazy" src="../assets/vans-rpg/escudo-frente.jpg" width="1920" height="1080" alt="Escudo do mestre visto de frente: caixa aberta com a arte do KV e o selo OFF THE MAP"><figcaption>Frente · o que a mesa vê</figcaption></figure>
-<figure class="shield reveal"><img loading="lazy" src="../assets/vans-rpg/escudo-costas.jpg" width="1920" height="1080" alt="Escudo do mestre visto de costas: o lado do mestre com regras, tabelas e Sua cidade. Sua campanha."><figcaption>Costas · o lado do mestre, com as regras</figcaption></figure>
-</div>
-
-<div class="label reveal">A CARTA QUE VEM JUNTO</div>
-<div class="copy reveal"><p>Dentro da caixa vem o Arquivo do mestre: um envelope preto com a carta de boas-vindas, que abre a aventura no Distrito Zero.</p></div>
-<figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/carta-arquivo-do-mestre.jpg" width="1600" height="900" alt="Envelope preto Arquivo do mestre, com o globo em vermelho, e a carta Bem-vindo, mestre, com o texto do Distrito Zero e prédios em vermelho e preto"><figcaption>Arquivo do mestre · envelope e carta de boas-vindas</figcaption></figure>
-
-<section class="street reveal">
-<h2 class="display">Jogue na rua.</h2>
-<p>Um RPG de mesa urbano que sai da estante: a caixa abre, vira o escudo do mestre e o jogo começa onde você estiver.</p>
-<div class="chips"><span>Uma caixa</span><span>Três heróis</span><span>A cidade inteira</span></div>
 </section>
 
-<div class="label reveal">OS HERÓIS</div>
+<section class="chap" id="processo">
+<header class="chap-h reveal"><span class="chap-n">02</span><h2>O processo</h2><p>Tudo parte de uma caixa Vans de verdade e da faca dela.</p></header>
+<div class="copy reveal"><p>Comecei por uma caixa Vans de verdade e pela faca dela, aberta e plana: abas, dobras, furos e a etiqueta. Testei as faces em kraft antes de chegar à versão final em off-white, com selo e xadrez.</p></div>
+<div class="proc">
+<figure class="shot proc-169 reveal"><img loading="lazy" src="../assets/vans-rpg/proc-00-caixa-real.jpg" width="1600" height="900" alt="A caixa Vans de verdade fechada, em off-white, com xadrez preto, a ilustração de um tênis na tampa e a etiqueta Off the Wall"><figcaption><b>01</b>A caixa · a Vans de verdade que usei como base</figcaption></figure>
+<figure class="shot proc-169 reveal"><img loading="lazy" src="../assets/vans-rpg/proc-01-faca-real.jpg" width="1600" height="900" alt="A faca da caixa Vans de verdade, aberta e plana sobre fundo cinza, com as abas, os furos e a etiqueta Vans"><figcaption><b>02</b>A faca · a mesma caixa, aberta e plana</figcaption></figure>
+<figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/proc-03-exploracao-kraft.jpg" width="1252" height="1200" alt="Exploração da planificação em kraft com painéis de regras e a ilustração dos personagens"><figcaption><b>03</b>Exploração · painéis em kraft</figcaption></figure>
+<figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/proc-04-faca-final.jpg" width="1448" height="1086" alt="Faca final da caixa em off-white, aberta e plana"><figcaption><b>04</b>Resultado · faca final em off-white</figcaption></figure>
+</div>
+</section>
+
+<section class="chap" id="universo">
+<header class="chap-h reveal"><span class="chap-n">03</span><h2>O universo</h2><p>Vermelho, preto e papel cru. Uma cidade que não foi feita para você.</p></header>
+<div class="copy reveal"><p>Vermelho, preto e papel cru, sem cores extras. Halftone vermelho no lugar de sangue, ilustração cinematográfica com influência de anime e a arquitetura cyberpunk japonesa como cenário.</p></div>
+<figure class="ident reveal"><div class="ident-board"><img loading="lazy" src="../assets/vans-rpg/identidade-visual.png" width="1225" height="1281" alt="Identidade visual OFF THE MAP: pinceladas e halftone vermelho, globo, miras, prédios cyberpunk, tarjas e xadrez"></div><figcaption>Identidade visual · vermelho, preto e papel cru</figcaption></figure>
+<div class="type-row reveal">
+<div class="type-box"><small>TÍTULOS</small><div class="a">Anton</div><p>Para títulos, headlines e destaques.</p></div>
+<div class="type-box"><small>TEXTOS</small><div class="b">Inter</div><p>Para textos, stats, tabelas e informações de apoio.</p></div>
+</div>
+<div class="lang reveal"><span>Halftone vermelho</span><span>Ilustração cinematográfica</span><span>Cyberpunk japonês</span><span>Kraft e papel cru</span><span>Serigrafia</span></div>
+<h3 class="sub reveal">Decisões de direção de arte</h3>
+<div class="decis reveal">
+<div class="dec"><b>01</b><h3>Vermelho, preto e branco</h3><p>Sem azul, verde, roxo ou neon multicolorido. O kraft só entra onde a arte é aplicada direto na caixa física.</p></div>
+<div class="dec"><b>02</b><h3>Halftone constrói volume</h3><p>A densidade e o tamanho dos pontos variam para dar profundidade a roupas, rostos, prédios e céu. Não é só efeito.</p></div>
+<div class="dec"><b>03</b><h3>Câmera no chão</h3><p>Enquadramento baixo, três personagens e prédios fechando as laterais. Sobra um céu vermelho enorme para a marca.</p></div>
+<div class="dec"><b>04</b><h3>A caixa deixa de ser descarte</h3><p>Fechada, é identidade. Aberta, vira ferramenta de jogo. O produto continua vivo depois da compra.</p></div>
+<div class="dec"><b>05</b><h3>Regras para o mestre</h3><p>O escudo é lido pelo mestre, então a informação é de consulta rápida: ações, condições, dificuldade e fluxo de combate.</p></div>
+<div class="dec"><b>06</b><h3>Nada de cyberpunk genérico</h3><p>Sem acabamento limpo, glossy, azul e roxo. A referência é xerox punk e pôster de rua japonês.</p></div>
+</div>
+<h3 class="sub reveal">A mensagem dentro da tampa</h3>
+<div class="lid reveal">
+<p class="l1">If you're reading this,</p>
+<p class="l2">you're already off the map.</p>
+<p class="l3">Find your crew. Choose your path. Make your move.</p>
+<p class="cap">MENSAGEM NO INTERIOR DA TAMPA, NO MOMENTO DE ABRIR A CAIXA E ENTRAR NO JOGO.</p>
+</div>
+<figure class="shot ad reveal"><img loading="lazy" src="../assets/vans-rpg/anuncio-cidade.jpg" width="1600" height="900" alt="Anúncio em neon de uma tigela de ramen com a frase This city wasn't built for you em grafite por cima"><figcaption>Intervenção · a frase em grafite sobre o anúncio</figcaption></figure>
+</section>
+
+<section class="chap" id="herois">
+<header class="chap-h reveal"><span class="chap-n">04</span><h2>Os heróis</h2><p>Três personagens para começar a partida.</p></header>
 <div class="heroes">
 <figure class="hero-card reveal"><img loading="lazy" src="../assets/vans-rpg/ilus-redline.jpg" alt="Ilustração de Redline, o pistoleiro de jaqueta vermelha, apontando a arma"><figcaption><h3>Redline</h3><p>Pistoleiro / Atirador · Nível 5</p></figcaption></figure>
 <figure class="hero-card reveal"><img loading="lazy" src="../assets/vans-rpg/ilus-kitsune.jpg" alt="Ilustração de Kitsune, a assassina de máscara de raposa, sentada em um beco"><figcaption><h3>Kitsune</h3><p>Ronin / Assassina · Nível 5</p></figcaption></figure>
 <figure class="hero-card reveal"><img loading="lazy" src="../assets/vans-rpg/ilus-null.jpg" alt="Ilustração de Null, o hacker de máscara de gás, com a interface digital na mão"><figcaption><h3>Null</h3><p>Hacker / Controlador · Nível 5</p></figcaption></figure>
 </div>
-
-<div class="label reveal">FICHAS DE PERSONAGEM</div>
+<h3 class="sub reveal">Fichas de personagem</h3>
 <div class="copy reveal"><p>Cada herói chega pronto para jogar: história, atributos, arma, habilidade, passiva e ultimate em uma carta só.</p></div>
 <div class="sheets">
 <a class="sheet reveal" href="../assets/vans-rpg/ficha-kitsune.jpg" target="_blank" rel="noopener"><img loading="lazy" src="../assets/vans-rpg/ficha-kitsune.jpg" alt="Carta de personagem de Kitsune, com história, atributos e habilidades"><figcaption>Kitsune · abrir em tamanho real ↗</figcaption></a>
 <a class="sheet reveal" href="../assets/vans-rpg/ficha-null.jpg" target="_blank" rel="noopener"><img loading="lazy" src="../assets/vans-rpg/ficha-null.jpg" alt="Carta de personagem de Null, com história, atributos e habilidades"><figcaption>Null · abrir em tamanho real ↗</figcaption></a>
 <a class="sheet reveal" href="../assets/vans-rpg/ficha-redline.jpg" target="_blank" rel="noopener"><img loading="lazy" src="../assets/vans-rpg/ficha-redline.jpg" alt="Carta de personagem de Redline, com história, atributos e habilidades"><figcaption>Redline · abrir em tamanho real ↗</figcaption></a>
 </div>
+</section>
 
-<div class="label reveal">A CAIXA</div>
+<section class="chap" id="jogo">
+<header class="chap-h reveal"><span class="chap-n">05</span><h2>O jogo na mesa</h2><p>Fechada, é a identidade. Aberta, é o escudo do mestre.</p></header>
+<h3 class="sub reveal">A caixa</h3>
 <div class="copy reveal"><p>A embalagem tem cara de edição especial Vans: kraft cru, xadrez, o selo OFF THE MAP e a ilustração dos três heróis na tampa. As laterais carregam ferramentas de jogo, como o mapa de pontos da cidade e o gerador de NPCs.</p></div>
 <div class="shots">
 <figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/caixa-05.jpg" alt="Caixa OFF THE MAP vista em perspectiva, com o selo, o xadrez e a lateral do gerador de NPCs"><figcaption>Fechada · selo OFF THE MAP e xadrez</figcaption></figure>
@@ -266,49 +308,27 @@ main{padding:0 var(--pad) 110px}
 <figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/caixa-4-1.jpg" alt="Cabeceira da caixa com a aba Quem, o gerador de NPCs"><figcaption>Quem? · gerador de NPCs</figcaption></figure>
 </div>
 </div>
-
-<div class="label reveal">PROCESSO · DA REFERÊNCIA À FACA</div>
-<div class="copy reveal"><p>Comecei por uma caixa Vans de verdade e pela faca dela, aberta e plana: abas, dobras, furos e a etiqueta. Testei as faces em kraft antes de chegar à versão final em off-white, com selo e xadrez.</p></div>
-<div class="proc">
-<figure class="shot proc-169 reveal"><img loading="lazy" src="../assets/vans-rpg/proc-00-caixa-real.jpg" width="1600" height="900" alt="A caixa Vans de verdade fechada, em off-white, com xadrez preto, a ilustração de um tênis na tampa e a etiqueta Off the Wall"><figcaption><b>01</b>A caixa · a Vans de verdade que usei como base</figcaption></figure>
-<figure class="shot proc-169 reveal"><img loading="lazy" src="../assets/vans-rpg/proc-01-faca-real.jpg" width="1600" height="900" alt="A faca da caixa Vans de verdade, aberta e plana sobre fundo cinza, com as abas, os furos e a etiqueta Vans"><figcaption><b>02</b>A faca · a mesma caixa, aberta e plana</figcaption></figure>
-<figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/proc-03-exploracao-kraft.jpg" width="1252" height="1200" alt="Exploração da planificação em kraft com painéis de regras e a ilustração dos personagens"><figcaption><b>03</b>Exploração · painéis em kraft</figcaption></figure>
-<figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/proc-04-faca-final.jpg" width="1448" height="1086" alt="Faca final da caixa em off-white, aberta e plana"><figcaption><b>04</b>Resultado · faca final em off-white</figcaption></figure>
+<h3 class="sub reveal">O escudo do mestre</h3>
+<div class="copy reveal"><p>Aberta, a caixa vira o escudo. Por fora, a arte e o selo para a mesa. Do lado do mestre, é onde aparece tudo o que ele precisa: regras, tabelas e o mapa da cidade.</p></div>
+<div class="shields">
+<figure class="shield reveal"><img loading="lazy" src="../assets/vans-rpg/escudo-frente.jpg" width="1920" height="1080" alt="Escudo do mestre visto de frente: caixa aberta com a arte do KV e o selo OFF THE MAP"><figcaption>Frente · o que a mesa vê</figcaption></figure>
+<figure class="shield reveal"><img loading="lazy" src="../assets/vans-rpg/escudo-costas.jpg" width="1920" height="1080" alt="Escudo do mestre visto de costas: o lado do mestre com regras, tabelas e Sua cidade. Sua campanha."><figcaption>Costas · o lado do mestre, com as regras</figcaption></figure>
 </div>
+<h3 class="sub reveal">A carta que vem junto</h3>
+<div class="copy reveal"><p>Dentro da caixa vem o Arquivo do mestre: um envelope preto com a carta de boas-vindas, que abre a aventura no Distrito Zero.</p></div>
+<figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/carta-arquivo-do-mestre.jpg" width="1600" height="900" alt="Envelope preto Arquivo do mestre, com o globo em vermelho, e a carta Bem-vindo, mestre, com o texto do Distrito Zero e prédios em vermelho e preto"><figcaption>Arquivo do mestre · envelope e carta de boas-vindas</figcaption></figure>
+</section>
 
-<div class="label reveal">DIREÇÃO DE ARTE</div>
-<div class="copy reveal"><p>Vermelho, preto e papel cru, sem cores extras. Halftone vermelho no lugar de sangue, ilustração cinematográfica com influência de anime e a arquitetura cyberpunk japonesa como cenário.</p></div>
-<figure class="ident reveal"><div class="ident-board"><img loading="lazy" src="../assets/vans-rpg/identidade-visual.png" width="1225" height="1281" alt="Identidade visual OFF THE MAP: pinceladas e halftone vermelho, globo, miras, prédios cyberpunk, tarjas e xadrez"></div><figcaption>Identidade visual · vermelho, preto e papel cru</figcaption></figure>
-<div class="type-row reveal">
-<div class="type-box"><small>TÍTULOS</small><div class="a">Anton</div><p>Para títulos, headlines e destaques.</p></div>
-<div class="type-box"><small>TEXTOS</small><div class="b">Inter</div><p>Para textos, stats, tabelas e informações de apoio.</p></div>
-</div>
-<div class="lang reveal"><span>Halftone vermelho</span><span>Ilustração cinematográfica</span><span>Cyberpunk japonês</span><span>Kraft e papel cru</span><span>Serigrafia</span></div>
-
-<div class="label reveal">DECISÕES DE DIREÇÃO DE ARTE</div>
-<div class="decis reveal">
-<div class="dec"><b>01</b><h3>Vermelho, preto e branco</h3><p>Sem azul, verde, roxo ou neon multicolorido. O kraft só entra onde a arte é aplicada direto na caixa física.</p></div>
-<div class="dec"><b>02</b><h3>Halftone constrói volume</h3><p>A densidade e o tamanho dos pontos variam para dar profundidade a roupas, rostos, prédios e céu. Não é só efeito.</p></div>
-<div class="dec"><b>03</b><h3>Câmera no chão</h3><p>Enquadramento baixo, três personagens e prédios fechando as laterais. Sobra um céu vermelho enorme para a marca.</p></div>
-<div class="dec"><b>04</b><h3>A caixa deixa de ser descarte</h3><p>Fechada, é identidade. Aberta, vira ferramenta de jogo. O produto continua vivo depois da compra.</p></div>
-<div class="dec"><b>05</b><h3>Regras para o mestre</h3><p>O escudo é lido pelo mestre, então a informação é de consulta rápida: ações, condições, dificuldade e fluxo de combate.</p></div>
-<div class="dec"><b>06</b><h3>Nada de cyberpunk genérico</h3><p>Sem acabamento limpo, glossy, azul e roxo. A referência é xerox punk e pôster de rua japonês.</p></div>
-</div>
-
-
-<div class="label reveal">NARRATIVA</div>
-<div class="lid reveal">
-<p class="l1">If you're reading this,</p>
-<p class="l2">you're already off the map.</p>
-<p class="l3">Find your crew. Choose your path. Make your move.</p>
-<p class="cap">MENSAGEM NO INTERIOR DA TAMPA, NO MOMENTO DE ABRIR A CAIXA E ENTRAR NO JOGO.</p>
-</div>
-<figure class="shot ad reveal"><img loading="lazy" src="../assets/vans-rpg/anuncio-cidade.jpg" width="1600" height="900" alt="Anúncio em neon de uma tigela de ramen com a frase This city wasn't built for you em grafite por cima"><figcaption>Intervenção · a frase em grafite sobre o anúncio</figcaption></figure>
-
+<section class="street reveal">
+<h2 class="display">Jogue na rua.</h2>
+<p>Um RPG de mesa urbano que sai da estante: a caixa abre, vira o escudo do mestre e o jogo começa onde você estiver.</p>
+<div class="chips"><span>Uma caixa</span><span>Três heróis</span><span>A cidade inteira</span></div>
+</section>
 <div class="label reveal">EM DESENVOLVIMENTO</div>
 <div class="soon reveal"><b>PRÓXIMO PASSO</b><p>A caixa gira em oito vistas e abre até formar o escudo do mestre, em animação.</p></div>
 
-<div class="label reveal">FICHA TÉCNICA</div>
+<section class="chap" id="bastidores">
+<header class="chap-h reveal"><span class="chap-n">06</span><h2>Bastidores</h2><p>Ficha técnica e o que ficou de fora.</p></header>
 <div class="ficha reveal">
 <div><small>PROJETO</small><p>OFF THE MAP — Vans Tabletop RPG. Conceito autoral, sem parceria oficial com a Vans.</p></div>
 <div><small>FUNÇÃO</small><p>Conceito, direção de arte, embalagem e sistema gráfico.</p></div>
@@ -317,7 +337,7 @@ main{padding:0 var(--pad) 110px}
 <div><small>ENTREGAS</small><p>Caixa e faca, escudo do mestre, fichas de personagem, ilustrações e GIF da caixa.</p></div>
 <div><small>ANO</small><p>2026</p></div>
 </div>
-<div class="label reveal">EXPLORAÇÕES · O QUE FICOU DE FORA</div>
+<h3 class="sub reveal">Explorações · o que ficou de fora</h3>
 <div class="copy reveal"><p>Antes da ilustração final, passaram muitas versões. Estas não entraram no projeto, mas mostram o caminho: enquadramentos, cenários e poses testados até o grupo certo.</p></div>
 <div class="expl">
 <figure class="expl-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-grupo-1.jpg" alt="Estudo do grupo: Kitsune no cano, Redline e Null embaixo"></figure>
@@ -333,6 +353,7 @@ main{padding:0 var(--pad) 110px}
 <figure class="expl-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-anuncio.jpg" alt="Anúncio em neon com a frase na parede"></figure>
 <figure class="expl-i reveal"><img loading="lazy" src="../assets/vans-rpg/expl-grupo-4.jpg" alt="Estudo dos três heróis em contra-plongée"></figure>
 </div>
+</section>
 
 <div class="talk reveal"><h2>Quer ver o próximo?</h2><nav><a href="https://wa.me/5511994064761" target="_blank" rel="noopener">WHATSAPP ↗</a><a href="https://www.linkedin.com/in/reenandamazio/" target="_blank" rel="noopener">LINKEDIN ↗</a><a href="https://www.instagram.com/nan.damazio/" target="_blank" rel="noopener">INSTAGRAM ↗</a></nav></div>
 
@@ -347,6 +368,13 @@ main{padding:0 var(--pad) 110px}
   },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
   els.forEach(function(e){io.observe(e)});
 })();
+</script>
+<script>
+(function(){var t=document.querySelector('.top');if(t)document.documentElement.style.setProperty('--toph',t.offsetHeight+'px');
+var links=[].slice.call(document.querySelectorAll('.cnav a'));
+if(!('IntersectionObserver' in window))return;
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){var on=a.getAttribute('href')==='#'+e.target.id;a.classList.toggle('on',on);if(on&&a.scrollIntoView)try{a.parentNode.scrollTo({left:a.offsetLeft-20,behavior:'smooth'})}catch(x){}})}})},{rootMargin:'-30% 0px -60% 0px'});
+document.querySelectorAll('.chap').forEach(function(c){io.observe(c)});})();
 </script>
 </body>
 </html>
