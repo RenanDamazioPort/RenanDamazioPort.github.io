@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="OFF THE MAP — Vans Tabletop RPG: uma caixa de tênis que vira o escudo do mestre de um RPG urbano e cyberpunk. Projeto autoral de Renan Damazio.">
+<meta property="og:title" content="OFF THE MAP — Vans Tabletop RPG | Renan Damazio">
+<meta property="og:description" content="Uma caixa de tênis que vira o escudo do mestre de um RPG urbano e cyberpunk, feito para jogar na rua.">
+<meta property="og:image" content="https://renandamazio.com.br/assets/vans-rpg/vans-rpg-kv-1200.jpg">
+<meta property="og:type" content="website">
+<title>OFF THE MAP — Vans Tabletop RPG — Renan Damazio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
+<style>
+:root{--bg:#050807;--fg:#f4f7f3;--muted:#8d9a95;--line:#1c2724;--red:#ef1734;--red-dark:#a80f23;--petrol:#092521;--petrol-2:#17493e;--metal:#749b93;--pad:clamp(20px,4vw,64px);--mono:"Courier New",monospace;--sans:Arial,Helvetica,sans-serif;--display:"Anton",Impact,"Arial Narrow",Arial,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans)}a{color:inherit;text-decoration:none}::selection{background:var(--red);color:#050807}
+.top{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:18px var(--pad);background:rgba(5,8,7,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);font:10px var(--mono);letter-spacing:.08em}
+.top a{transition:opacity .2s}.top a:hover{opacity:.65}
+
+/* HERO */
+.hero{position:relative;min-height:calc(100vh - 54px);display:flex;flex-direction:column;justify-content:flex-end;padding:90px var(--pad) 48px;overflow:hidden;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:-2;background:#050807 url("../assets/vans-rpg/vans-rpg-kv-2000.jpg") center/cover no-repeat;transform:scale(1.04);animation:drift 22s ease-in-out infinite alternate}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(5,8,7,.25) 0%,rgba(5,8,7,.15) 35%,rgba(5,8,7,.92) 88%,#050807 100%)}
+@keyframes drift{from{transform:scale(1.04) translateY(0)}to{transform:scale(1.1) translateY(-1.5%)}}
+.eyebrow{font:700 11px var(--mono);letter-spacing:.2em;color:var(--red);margin:0 0 18px;text-shadow:0 0 14px rgba(5,8,7,.9)}
+.title{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(84px,18vw,300px);line-height:.86;letter-spacing:-.01em;text-transform:uppercase}
+.subtitle{margin:18px 0 0;font-family:var(--display);font-weight:400;font-size:clamp(26px,4.2vw,64px);letter-spacing:.14em;color:var(--red);text-transform:uppercase}
+.tagline{margin:26px 0 0;font:700 clamp(14px,1.6vw,22px) var(--mono);letter-spacing:.14em;text-transform:uppercase}
+
+/* META */
+.meta-wrap{padding:0 var(--pad)}
+.meta{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;border-block:1px solid rgba(239,23,52,.5);padding:15px 0;font:11px var(--mono);font-weight:700;letter-spacing:.08em;overflow:hidden}
+.meta span{color:var(--red);opacity:0;transform:translateX(-90px);filter:blur(1.2px);text-shadow:0 0 5px rgba(239,23,52,.9),0 0 16px rgba(239,23,52,.6),0 0 30px rgba(239,23,52,.35);animation:slide 1.65s cubic-bezier(.18,.78,.18,1) forwards}
+.meta span:nth-child(2){animation-delay:.22s}.meta span:nth-child(3){animation-delay:.44s}
+@keyframes slide{0%{opacity:0;transform:translateX(-90px);filter:blur(3px)}58%{opacity:1;transform:translateX(10px);filter:blur(0)}100%{opacity:1;transform:translateX(0);filter:blur(0)}}
+
+main{padding:0 var(--pad) 110px}
+.label{margin:96px 0 22px;font:10px var(--mono);letter-spacing:.1em;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+.display{font-family:var(--display);font-weight:400;text-transform:uppercase;line-height:1}
+
+/* IDEIA */
+.copy{max-width:1100px;margin:0 0 20px}
+.copy p{font-size:clamp(20px,2.2vw,34px);line-height:1.24;letter-spacing:-.02em;color:#dfe5e1;margin:0 0 .8em}
+.copy strong{color:var(--fg)}
+.note{font:11px var(--mono);letter-spacing:.06em;color:var(--metal);margin:0}
+
+/* TRANSFORMACAO */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:8px}
+.step{position:relative;background:var(--petrol);border:1px solid var(--petrol-2);padding:26px 24px 28px;min-height:230px;display:flex;flex-direction:column;gap:10px}
+.step:not(:last-child)::after{content:"→";position:absolute;right:-22px;top:50%;transform:translateY(-50%);z-index:2;font:700 26px var(--sans);color:var(--red)}
+.step b{font:700 11px var(--mono);letter-spacing:.14em;color:var(--red)}
+.step h3{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(34px,3.6vw,56px);line-height:1;text-transform:uppercase}
+.step p{margin:auto 0 0;font-size:16px;line-height:1.4;color:#c9d3ce}
+
+/* RUA */
+.street{position:relative;margin-top:96px;padding:clamp(48px,8vw,120px) 0;border-block:1px solid var(--line);overflow:hidden}
+.street::before{content:"";position:absolute;inset:auto -10% -60% -10%;height:120%;background:radial-gradient(ellipse at 50% 100%,rgba(239,23,52,.4),rgba(5,8,7,0) 62%);z-index:0}
+.street>*{position:relative;z-index:1}
+.street h2{margin:0;font-size:clamp(76px,16vw,260px);letter-spacing:-.01em}
+.street p{max-width:760px;margin:26px 0 0;font-size:clamp(18px,1.9vw,28px);line-height:1.35;color:#dfe5e1}
+.chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.chips span{font-family:var(--display);font-size:clamp(20px,2.2vw,32px);letter-spacing:.04em;text-transform:uppercase;border:2px solid var(--red);border-radius:999px;padding:10px 26px}
+
+/* HEROIS */
+.heroes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.hero-card{margin:0;position:relative;overflow:hidden;border:1px solid var(--line);background:#0b1210}
+.hero-card img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1),filter .4s}
+.hero-card:hover img{transform:scale(1.05);filter:saturate(1.15)}
+.hero-card figcaption{position:absolute;left:0;right:0;bottom:0;padding:70px 20px 20px;background:linear-gradient(180deg,rgba(5,8,7,0),rgba(5,8,7,.94))}
+.hero-card h3{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(40px,4.4vw,72px);line-height:1;text-transform:uppercase}
+.hero-card p{margin:8px 0 0;font:11px var(--mono);letter-spacing:.08em;color:var(--red);text-transform:uppercase}
+
+/* DIRECAO DE ARTE */
+.palette{display:grid;grid-template-columns:repeat(7,1fr);gap:12px}
+.swatch{display:flex;flex-direction:column;gap:8px}
+.swatch i{display:block;height:110px;border:1px solid rgba(244,247,243,.18)}
+.swatch b{font:700 11px var(--mono);letter-spacing:.06em}
+.swatch span{font:11px var(--mono);color:var(--muted);letter-spacing:.04em}
+.type-row{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px}
+.type-box{border:1px solid var(--line);padding:26px}
+.type-box small{display:block;font:10px var(--mono);letter-spacing:.12em;color:var(--muted);margin-bottom:14px}
+.type-box .a{font-family:var(--display);font-size:clamp(48px,6vw,88px);line-height:1;text-transform:uppercase}
+.type-box .b{font-size:clamp(22px,2.6vw,38px);line-height:1.2;letter-spacing:-.02em}
+.type-box p{margin:12px 0 0;font-size:15px;line-height:1.45;color:#aab6b1}
+.lang{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.lang span{font:700 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line);padding:9px 14px;color:#dfe5e1}
+
+/* NARRATIVA */
+.lid{padding:clamp(30px,5vw,64px) 0}
+.lid p{margin:0}
+.lid .l1,.lid .l2{font-family:var(--display);font-size:clamp(40px,8.4vw,140px);line-height:1.02;text-transform:uppercase}
+.lid .l3{margin-top:22px;font-family:var(--display);font-size:clamp(22px,3.6vw,56px);letter-spacing:.04em;color:var(--red);text-transform:uppercase}
+.cap{margin:22px 0 0;font:11px var(--mono);letter-spacing:.08em;color:var(--muted)}
+.city{background:var(--red);color:#050807;padding:clamp(34px,6vw,84px) clamp(22px,4vw,56px);margin-top:44px}
+.city h2{margin:0;font-size:clamp(54px,11.5vw,190px);letter-spacing:-.005em}
+.city p{margin:22px 0 0;font:700 12px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+
+/* PROXIMO */
+.soon{border:1px dashed var(--red);padding:26px 28px;display:flex;gap:22px;align-items:center;justify-content:space-between}
+.soon b{font:700 11px var(--mono);letter-spacing:.16em;color:var(--red);white-space:nowrap}
+.soon p{margin:0;font-size:clamp(16px,1.6vw,22px);line-height:1.35;color:#dfe5e1}
+
+.next{margin-top:90px;border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;font:10px var(--mono);color:var(--muted)}
+.next a:hover{color:var(--fg)}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .step:nth-child(2)::after{display:none}
+  .heroes{grid-template-columns:1fr;max-width:520px}
+  .palette{grid-template-columns:repeat(4,1fr)}
+  .type-row{grid-template-columns:1fr}
+}
+@media(max-width:620px){
+  .hero{min-height:88vh;padding-top:70px}
+  .meta{grid-template-columns:1fr;gap:10px}
+  .steps{grid-template-columns:1fr}
+  .step{min-height:0}
+  .step::after{display:none}
+  .palette{grid-template-columns:repeat(3,1fr)}
+  .soon{flex-direction:column;align-items:flex-start;gap:10px}
+  .next{flex-direction:column;gap:12px}
+  .label{margin-top:72px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-bg{animation:none;transform:none}
+  .meta span{animation:none;opacity:1;transform:none;filter:none}
+  .reveal{opacity:1;transform:none;transition:none}
+}
+</style>
+<noscript><style>.reveal{opacity:1;transform:none}.meta span{animation:none;opacity:1;transform:none;filter:none}</style></noscript>
+</head>
+<body>
+<header class="top"><a href="/">← VOLTAR AO PORTFÓLIO</a><span>PROJETO / 03</span></header>
+
+<section class="hero">
+<div class="hero-bg" role="img" aria-label="Ilustração de Redline, Kitsune e Null em um beco cyberpunk vermelho e preto"></div>
+<p class="eyebrow">CASE · DIREÇÃO DE ARTE · EMBALAGEM · NARRATIVA</p>
+<h1 class="title">OFF THE MAP</h1>
+<p class="subtitle">VANS TABLETOP RPG</p>
+<p class="tagline">Same roads. Different worlds.</p>
+</section>
+
+<div class="meta-wrap"><div class="meta"><span>PROJETO — AUTORAL / CONCEITUAL</span><span>ANO — 2026</span><span>FUNÇÃO — DIREÇÃO DE ARTE · EMBALAGEM · IA</span></div></div>
+
+<main>
+<div class="label reveal">A IDEIA</div>
+<div class="copy reveal">
+<p>E se a caixa de um tênis fosse o começo de um jogo? <strong>OFF THE MAP</strong> transforma a embalagem da Vans no escudo do mestre de um RPG de mesa urbano e cyberpunk, feito para ser jogado na rua.</p>
+<p>Fechada, a caixa apresenta a identidade. Aberta, entrega ao mestre as informações de consulta para conduzir a partida. A embalagem deixa de ser só embalagem e entra no jogo.</p>
+<p class="note">PROJETO CONCEITUAL AUTORAL. NÃO REPRESENTA PARCERIA OFICIAL COM A MARCA.</p>
+</div>
+
+<div class="label reveal">DA CAIXA AO ESCUDO</div>
+<div class="steps">
+<div class="step reveal"><b>01</b><h3>Shoebox</h3><p>A caixa fechada apresenta a identidade.</p></div>
+<div class="step reveal"><b>02</b><h3>Unfold</h3><p>A faca aberta explica a construção.</p></div>
+<div class="step reveal"><b>03</b><h3>DM Screen</h3><p>A embalagem vira o escudo do mestre.</p></div>
+<div class="step reveal"><b>04</b><h3>Play</h3><p>O jogo acontece com a peça em uso.</p></div>
+</div>
+
+<section class="street reveal">
+<h2 class="display">Jogue na rua.</h2>
+<p>Um RPG de mesa urbano que sai da estante: a caixa abre, vira o escudo do mestre e o jogo começa onde você estiver.</p>
+<div class="chips"><span>Uma caixa</span><span>Três heróis</span><span>A cidade inteira</span></div>
+</section>
+
+<div class="label reveal">OS HERÓIS</div>
+<div class="heroes">
+<figure class="hero-card reveal"><img loading="lazy" src="../assets/vans-rpg/hero-redline.jpg" alt="Redline: jaqueta vermelha, óculos escuros e bandana"><figcaption><h3>Redline</h3><p>Jaqueta vermelha, óculos e bandana</p></figcaption></figure>
+<figure class="hero-card reveal"><img loading="lazy" src="../assets/vans-rpg/hero-kitsune.jpg" alt="Kitsune: máscara de raposa e cabelo preso"><figcaption><h3>Kitsune</h3><p>Máscara de raposa e cabelo preso</p></figcaption></figure>
+<figure class="hero-card reveal"><img loading="lazy" src="../assets/vans-rpg/hero-null.jpg" alt="Null: gorro e máscara de dois filtros"><figcaption><h3>Null</h3><p>Gorro e máscara de dois filtros</p></figcaption></figure>
+</div>
+
+<div class="label reveal">DIREÇÃO DE ARTE</div>
+<div class="copy reveal"><p>Preto, vermelho e off-white, com tons de petróleo nas sombras. Halftone vermelho no lugar de sangue, ilustração cinematográfica com influência de anime e a arquitetura cyberpunk japonesa como cenário.</p></div>
+<div class="palette reveal">
+<div class="swatch"><i style="background:#050807"></i><b>#050807</b><span>Preto</span></div>
+<div class="swatch"><i style="background:#092521"></i><b>#092521</b><span>Petróleo escuro</span></div>
+<div class="swatch"><i style="background:#17493e"></i><b>#17493E</b><span>Petróleo</span></div>
+<div class="swatch"><i style="background:#749b93"></i><b>#749B93</b><span>Metal</span></div>
+<div class="swatch"><i style="background:#f4f7f3"></i><b>#F4F7F3</b><span>Off-white</span></div>
+<div class="swatch"><i style="background:#a80f23"></i><b>#A80F23</b><span>Vermelho escuro</span></div>
+<div class="swatch"><i style="background:#ef1734"></i><b>#EF1734</b><span>Vermelho</span></div>
+</div>
+<div class="type-row reveal">
+<div class="type-box"><small>TÍTULOS</small><div class="a">Anton</div><p>Para títulos, headlines e destaques.</p></div>
+<div class="type-box"><small>TEXTOS</small><div class="b">Inter</div><p>Para textos, stats, tabelas e informações de apoio.</p></div>
+</div>
+<div class="lang reveal"><span>Halftone vermelho</span><span>Ilustração cinematográfica</span><span>Cyberpunk japonês</span><span>Kraft e papel cru</span><span>Serigrafia</span></div>
+
+<div class="label reveal">NARRATIVA</div>
+<div class="lid reveal">
+<p class="l1">If you're reading this,</p>
+<p class="l2">you're already off the map.</p>
+<p class="l3">Find your crew. Choose your path. Make your move.</p>
+<p class="cap">MENSAGEM NO INTERIOR DA TAMPA, NO MOMENTO DE ABRIR A CAIXA E ENTRAR NO JOGO.</p>
+</div>
+<div class="city reveal">
+<h2 class="display">This city wasn't built for you.</h2>
+<p>A frase do universo, em grafite sobre um anúncio em neon.</p>
+</div>
+
+<div class="label reveal">EM DESENVOLVIMENTO</div>
+<div class="soon reveal"><b>PRÓXIMO PASSO</b><p>A caixa fechada gira em oito vistas e abre até formar o DM Screen.</p></div>
+
+<div class="next"><span>RENAN DAMAZIO · DIRETOR DE ARTE</span><a href="/">VER TODOS OS PROJETOS →</a></div>
+</main>
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})
+  },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
