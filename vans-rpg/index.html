@@ -12,6 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
+<link rel="stylesheet" href="glitch.css?v=1">
 <style>
 :root{--bg:#050807;--fg:#f4f7f3;--muted:#9a9894;--line:#262524;--red:#ef1734;--red-dark:#a80f23;--paper:#dcd6d2;--ink:#0b0b0b;--pad:clamp(20px,4vw,64px);--mono:"Courier New",monospace;--sans:Arial,Helvetica,sans-serif;--display:"Anton",Impact,"Arial Narrow",Arial,sans-serif}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans)}a{color:inherit;text-decoration:none}::selection{background:var(--red);color:#050807}
@@ -105,8 +106,14 @@ main{padding:0 var(--pad) 110px}
 .chap-h p{margin:14px 0 0;max-width:640px;color:var(--muted);font-size:clamp(15px,1.4vw,20px);line-height:1.45}
 h3.sub{margin:80px 0 22px;font:10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:flex;gap:12px;align-items:center}
 h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
-.chap .street{margin-top:0}
-@media(max-width:640px){.chap{padding-top:72px}.chap-h{grid-template-columns:1fr}.chap-n{grid-row:auto;margin-bottom:12px}h3.sub{margin-top:56px}}
+.chap @media(max-width:640px){.chap{padding-top:72px}.chap-h{grid-template-columns:1fr}.chap-n{grid-row:auto;margin-bottom:12px}h3.sub{margin-top:56px}}
+
+/* neon vermelho so em algumas secoes */
+.chap-n{transition:text-shadow .3s}
+#ideia .chap-n,#universo .chap-n,#jogo .chap-n{text-shadow:0 0 8px rgba(239,23,52,.85),0 0 28px rgba(239,23,52,.55),0 0 60px rgba(239,23,52,.35)}
+.chap-h.in h2{animation:h2glitch .5s steps(1,end) 1}
+@keyframes h2glitch{0%{transform:translateX(0)}12%{transform:translateX(-4px);text-shadow:3px 0 var(--red),-3px 0 #fff}24%{transform:translateX(3px);clip-path:inset(30% 0 40% 0)}36%{transform:translateX(-2px);clip-path:none}48%{transform:translateX(2px);text-shadow:-2px 0 var(--red)}60%,100%{transform:none;text-shadow:none;clip-path:none}}
+@media(prefers-reduced-motion:reduce){.chap-h.in h2{animation:none}}
 /* TRANSFORMACAO */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:8px}
 .step{position:relative;background:var(--ink);border:1px solid var(--line);padding:26px 24px 28px;min-height:230px;display:flex;flex-direction:column;gap:10px}
@@ -116,11 +123,6 @@ h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
 .step p{margin:auto 0 0;font-size:16px;line-height:1.4;color:#cfcbc6}
 
 /* RUA */
-.street{position:relative;margin-top:96px;padding:clamp(48px,8vw,120px) 0;border-block:1px solid var(--line);overflow:hidden}
-.street::before{content:"";position:absolute;inset:auto -10% -60% -10%;height:120%;background:radial-gradient(ellipse at 50% 100%,rgba(239,23,52,.4),rgba(5,8,7,0) 62%);z-index:0}
-.street>*{position:relative;z-index:1}
-.street h2{margin:0;font-size:clamp(76px,16vw,260px);letter-spacing:-.01em}
-.street p{max-width:760px;margin:26px 0 0;font-size:clamp(18px,1.9vw,28px);line-height:1.35;color:#e4e1dd}
 .chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
 .chips span{font-family:var(--display);font-size:clamp(20px,2.2vw,32px);letter-spacing:.04em;text-transform:uppercase;border:2px solid var(--red);border-radius:999px;padding:10px 26px}
 
@@ -203,6 +205,7 @@ h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
 <noscript><style>.reveal{opacity:1;transform:none}.meta span{animation:none;opacity:1;transform:none;filter:none}</style></noscript>
 </head>
 <body>
+<div class="home-glitch-bg" aria-hidden="true"></div>
 <header class="top"><a href="/">← VOLTAR AO PORTFÓLIO</a><span>PROJETO / 03</span></header>
 
 <section class="hero">
@@ -320,11 +323,6 @@ h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
 <figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/carta-arquivo-do-mestre.jpg" width="1600" height="900" alt="Envelope preto Arquivo do mestre, com o globo em vermelho, e a carta Bem-vindo, mestre, com o texto do Distrito Zero e prédios em vermelho e preto"><figcaption>Arquivo do mestre · envelope e carta de boas-vindas</figcaption></figure>
 </section>
 
-<section class="street reveal">
-<h2 class="display">Jogue na rua.</h2>
-<p>Um RPG de mesa urbano que sai da estante: a caixa abre, vira o escudo do mestre e o jogo começa onde você estiver.</p>
-<div class="chips"><span>Uma caixa</span><span>Três heróis</span><span>A cidade inteira</span></div>
-</section>
 <div class="label reveal">EM DESENVOLVIMENTO</div>
 <div class="soon reveal"><b>PRÓXIMO PASSO</b><p>A caixa gira em oito vistas e abre até formar o escudo do mestre, em animação.</p></div>
 
@@ -373,6 +371,7 @@ h3.sub::before{content:"";width:28px;height:1px;background:var(--red)}
   els.forEach(function(e){io.observe(e)});
 })();
 </script>
+<script src="ambient.js?v=1" defer></script>
 <script>
 (function(){var t=document.querySelector('.top');if(t)document.documentElement.style.setProperty('--toph',t.offsetHeight+'px');
 var links=[].slice.call(document.querySelectorAll('.cnav a'));
