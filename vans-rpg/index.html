@@ -338,43 +338,26 @@ h3.sub{margin-top:70px;margin-bottom:20px}
 @media(prefers-reduced-motion:reduce){.hero-bg{transform:none;animation:none}}
 
 
-/* Ambient illustrations integrated with chapter 01 introduction */
-.copy-frame{position:relative;isolation:isolate;overflow:hidden;max-width:1100px;margin:0 0 44px;border:1px solid var(--line);background:#050807}
-.copy-frame::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(5,8,7,.82) 0%,rgba(5,8,7,.62) 46%,rgba(5,8,7,.34) 72%,rgba(5,8,7,.18) 100%),repeating-linear-gradient(180deg,rgba(255,255,255,.025) 0 1px,transparent 1px 4px)}
-.copy-frame .copy{position:relative;z-index:2;max-width:none;margin:0;padding:clamp(28px,4vw,44px)}
-.copy-frame .copy p{max-width:760px;font-size:clamp(19px,2vw,27px);line-height:1.45;letter-spacing:-.015em}
-.copy-frame .copy p.note{font-size:11px;line-height:1.5;opacity:1;margin-top:26px}
+/* Ambient illustrations across chapter 01, separate from editorial text */
+:root{--case-content-width:1080px}
+main .chap>.chap-h,main .chap>.copy-frame,main .chap>.steps,main .chap>.proc,main .chap>.gal,main .chap>.shots,main .chap>.sheets,main .chap>.spin,main .chap>.type-row,main .chap>.decis,main .chap>.heroes,main .chap>.city,main .chap>.ficha,main .chap>.shot{
+width:100%;max-width:var(--case-content-width);margin-left:auto;margin-right:auto}
+#ideia{position:relative;overflow:hidden;isolation:isolate}
+#ideia>*:not(.idea-ambient){position:relative;z-index:1}
+.idea-ambient{position:absolute;left:50%;top:120px;transform:translateX(-50%);width:min(1280px,calc(100% - 48px));height:520px;overflow:hidden;pointer-events:none;z-index:0;opacity:.36;-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.15),#000 18%,#000 72%,transparent);mask-image:linear-gradient(180deg,rgba(0,0,0,.15),#000 18%,#000 72%,transparent)}
+.idea-ambient::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,8,7,.18),rgba(5,8,7,.52)),linear-gradient(90deg,rgba(5,8,7,.55),rgba(5,8,7,.18) 45%,rgba(5,8,7,.45));z-index:1}
+.idea-ambient-track{position:absolute;inset:0;display:flex;gap:20px;width:max-content;animation:ideaAmbientMove 46s linear infinite}
+.idea-ambient-track img{display:block;width:280px;height:520px;object-fit:cover;flex:none;filter:grayscale(1) contrast(1.08) brightness(.82);border:1px solid rgba(255,255,255,.06)}
+@keyframes ideaAmbientMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.copy-frame{position:relative;overflow:hidden;isolation:isolate;max-width:var(--case-content-width);margin:0 auto 44px;border:1px solid var(--line);background:rgba(5,8,7,.86);backdrop-filter:blur(2px)}
+.copy-frame::before{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(180deg,rgba(255,255,255,.02) 0 1px,transparent 1px 4px);z-index:0}
+.copy-frame .copy{position:relative;z-index:1;max-width:none;margin:0;padding:clamp(28px,4vw,44px)}
+.copy-frame .copy p{max-width:860px;font-size:clamp(19px,2vw,27px);line-height:1.45;letter-spacing:-.015em}
+.copy-frame .copy p.note{margin-top:26px;font-size:11px;line-height:1.5;opacity:1}
 .copy-frame .copy p:last-child{margin-bottom:0}
-.copy-illu-marquee{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;opacity:.42;mask-image:linear-gradient(90deg,transparent,black 12%,black 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,black 12%,black 92%,transparent)}
-.copy-illu-track{position:absolute;top:50%;left:0;display:flex;gap:16px;width:max-content;transform:translateY(-50%);animation:copyMarquee 42s linear infinite}
-.copy-illu-track img{display:block;width:220px;height:300px;object-fit:cover;flex:none;filter:grayscale(.45) contrast(1.08) brightness(.98)}
-@keyframes copyMarquee{from{transform:translate(0,-50%)}to{transform:translate(-50%,-50%)}}
-@media(max-width:640px){.copy-frame{margin-bottom:30px}.copy-frame .copy{padding:22px 18px 24px}.copy-frame .copy p{font-size:19px;line-height:1.48}.copy-illu-track img{width:150px;height:210px}}
-@media(prefers-reduced-motion:reduce){.copy-illu-track{animation:none}}
-
-/* Shared editorial alignment for the Vans case */
-:root{--case-content-width:1100px}
-main .chap>.chap-h,
-main .chap>.copy-frame,
-main .chap>.steps,
-main .chap>.proc,
-main .chap>.gal,
-main .chap>.shots,
-main .chap>.sheets,
-main .chap>.spin,
-main .chap>.type-row,
-main .chap>.decis,
-main .chap>.heroes,
-main .chap>.city,
-main .chap>.ficha,
-main .chap>.shot {
-  width:100%;
-  max-width:var(--case-content-width);
-  margin-left:auto;
-  margin-right:auto;
-}
-main .chap>.copy-frame{margin-bottom:44px}
-@media(max-width:640px){main .chap>.copy-frame{margin-bottom:30px}}
+@media(max-width:900px){.idea-ambient{top:150px;height:420px;width:calc(100% - 32px);opacity:.28}.idea-ambient-track img{width:220px;height:420px}}
+@media(max-width:640px){.idea-ambient{top:160px;height:320px;width:calc(100% - 24px);opacity:.24}.idea-ambient-track{gap:12px}.idea-ambient-track img{width:150px;height:320px}.copy-frame{margin-bottom:30px}.copy-frame .copy{padding:22px 18px 24px}.copy-frame .copy p{max-width:none;font-size:19px;line-height:1.48}}
+@media(prefers-reduced-motion:reduce){.idea-ambient-track{animation:none}}
 </style>
 <noscript><style>.reveal{opacity:1;transform:none}.meta span{animation:none;opacity:1;transform:none;filter:none}</style></noscript>
 </head>
@@ -397,7 +380,7 @@ main .chap>.copy-frame{margin-bottom:44px}
 <section class="chap" id="ideia">
 <header class="chap-h reveal"><span class="chap-n">01</span><h2>A ideia</h2><p>Uma embalagem que vira escudo de mestre, feita para ser jogada na rua.</p></header>
 
-<div class="copy-frame reveal"><div class="copy-illu-marquee" aria-hidden="true"><div class="copy-illu-track">
+<div class="idea-ambient reveal" aria-hidden="true"><div class="idea-ambient-track">
 <img src="../assets/vans-rpg/expl-grupo-3.jpg" alt="" loading="lazy" decoding="async">
 <img src="../assets/vans-rpg/ilus-redline.jpg" alt="" loading="lazy" decoding="async">
 <img src="../assets/vans-rpg/ilus-kitsune.jpg" alt="" loading="lazy" decoding="async">
@@ -413,12 +396,13 @@ main .chap>.copy-frame{margin-bottom:44px}
 <img src="../assets/vans-rpg/expl-cidade-2.jpg" alt="" loading="lazy" decoding="async">
 <img src="../assets/vans-rpg/expl-grupo-1.jpg" alt="" loading="lazy" decoding="async">
 </div></div>
+<div class="copy-frame reveal">
 <div class="copy">
 <p>E se a caixa de um tênis fosse o começo de um jogo? <strong>OFF THE MAP</strong> transforma a embalagem da Vans no escudo do mestre de um RPG de mesa urbano e cyberpunk, feito para ser jogado na rua.</p>
 <p>Fechada, a caixa apresenta a identidade. Aberta, entrega ao mestre as informações de consulta para conduzir a partida. A embalagem deixa de ser só embalagem e entra no jogo.</p>
 <p class="note">Projeto conceitual autoral, sem parceria oficial com a marca.</p>
 </div>
-</div>
+</div></div>
 <h3 class="sub reveal">Da caixa ao escudo</h3>
 <div class="steps">
 <div class="step reveal"><b>01</b><h3>Shoebox</h3><p>A caixa fechada apresenta a identidade.</p></div>
