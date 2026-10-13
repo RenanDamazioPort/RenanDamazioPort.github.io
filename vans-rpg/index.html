@@ -229,6 +229,114 @@ main img{cursor:zoom-in}
   .meta span{animation:none;opacity:1;transform:none;filter:none}
   .reveal{opacity:1;transform:none;transition:none}
 }
+
+/* OFF THE MAP — editorial redesign 2026-10-13 */
+:root{--pad:clamp(20px,4vw,64px);--line:#302e2c;--muted:#aaa8a4}
+.hero{min-height:min(760px,88svh);padding:100px max(var(--pad),calc((100vw - 1280px)/2)) 64px}
+.hero-bg{animation:none;transform:none;background-position:center 43%}
+.hero::after{background:linear-gradient(180deg,rgba(5,8,7,.12),rgba(5,8,7,.12) 38%,rgba(5,8,7,.94) 100%)}
+.hero .title{font-size:clamp(70px,10.5vw,148px);line-height:.96;max-width:100%;letter-spacing:-.025em}
+.hero .subtitle{font-size:clamp(24px,3.1vw,43px);margin-top:12px;letter-spacing:.09em}
+.hero .tagline{font-size:clamp(12px,1.15vw,16px);margin-top:20px;letter-spacing:.12em}
+.hero .eyebrow{font-size:10px;letter-spacing:.16em}
+.meta-wrap,main{max-width:1408px;margin-inline:auto}
+.meta{border-color:var(--line);font-weight:400;gap:16px;padding:20px 0}
+.meta span{color:#d5d0c9;text-shadow:none;filter:none;transform:none;opacity:1;animation:none;font-size:10px}
+.cnav{justify-content:center;gap:2px;padding-block:11px}
+.cnav a{border:0;padding:8px 13px;font-size:10px}
+.cnav a.on{background:transparent;border:0;color:var(--fg);box-shadow:inset 0 -1px var(--red)}
+main{padding-bottom:100px}
+.chap{padding-top:136px;scroll-margin-top:112px}
+.chap-h{grid-template-columns:60px minmax(0,1fr);gap:10px 20px;padding-top:24px;margin-bottom:50px;align-items:start}
+.chap-n{grid-row:1/3;font:38px/1 var(--display);color:var(--red);text-shadow:none!important}
+.chap-h h2{font-size:clamp(44px,5.5vw,76px);line-height:1.04;letter-spacing:-.015em}
+.chap-h p{grid-column:2;margin-top:6px;font-size:clamp(15px,1.5vw,19px);line-height:1.55}
+.copy{max-width:720px;margin-bottom:44px}
+.copy p{font-size:clamp(19px,2vw,27px);line-height:1.45;letter-spacing:-.015em}
+.copy p.note{font-size:11px;opacity:1}
+h3.sub{margin-top:70px;margin-bottom:20px}
+.spin{max-width:1080px;margin:56px auto 0}
+.spin img{object-fit:contain;aspect-ratio:auto;max-height:720px}
+.spin figcaption,.shot figcaption,.sheet figcaption,.shield figcaption{font-size:10px;line-height:1.5}
+.steps{gap:12px}
+.step{min-height:180px;padding:24px 20px}
+.step h3{font-size:clamp(26px,2.6vw,40px)}
+.step p{font-size:14px;line-height:1.5}
+.proc{gap:14px;max-width:1100px;margin-inline:auto}
+.proc .shot img{aspect-ratio:5/4;object-fit:contain;background:#101312}
+.proc .proc-169 img{aspect-ratio:5/4;object-fit:contain}
+#universo>.shot{max-width:1100px;margin-inline:auto}
+#universo>.shot img{max-height:680px;object-fit:contain;background:#101312}
+.type-row{max-width:980px;gap:14px}
+.type-box{padding:24px}
+.lang span{font-size:10px;font-weight:400}
+.decis{grid-template-columns:repeat(2,minmax(0,1fr));max-width:1100px}
+.dec{padding:24px;min-height:190px}
+.dec h3{font-size:clamp(25px,2.6vw,36px)}
+.dec b{color:#e0b4b3}
+.dec p{font-size:14px;line-height:1.55}
+.gal{grid-template-columns:190px minmax(0,1fr);gap:26px;margin-top:76px}
+.gal-t{top:130px}
+.rows{--h:210px!important;gap:12px}
+.rows .vis-i{background:#101312;overflow:hidden}
+.rows .vis-i img{object-fit:contain;max-height:390px}
+.heroes{gap:14px;max-width:1100px}
+.hero-card{background:#101312}
+.hero-card img{aspect-ratio:3/4;object-fit:contain}
+.hero-card:hover img{transform:none;filter:none}
+.hero-card h3{font-size:clamp(30px,3vw,46px)}
+.sheets{max-width:1080px;gap:14px}
+.shots{max-width:1100px;margin-inline:auto;gap:14px}
+.shots .row2{gap:14px}
+.shot img,.sheet img,.shield img{object-fit:contain}
+.city{background:#7e1623;color:#fff;padding:clamp(30px,5vw,68px);max-width:1100px}
+.city h2{font-size:clamp(44px,7vw,110px)}
+.lid .l1,.lid .l2{font-size:clamp(36px,6vw,100px)}
+.credits{padding-top:128px}
+.ficha{max-width:1080px}
+.talk{margin-top:74px;border-color:var(--line);padding:clamp(24px,3vw,40px)}
+.talk h2{font-size:clamp(34px,4.4vw,58px)}
+/* Explorations remain accessible without overwhelming the case */
+#bastidores .gal{max-width:1100px}
+#bastidores .rows .vis-i img{max-height:310px}
+@media(max-width:900px){
+ .hero{min-height:76svh}
+ .gal{grid-template-columns:1fr;gap:15px}
+ .gal-t{position:static}
+ .steps{grid-template-columns:repeat(2,1fr)}
+ .step:nth-child(2)::after{display:none}
+ .heroes{grid-template-columns:repeat(3,minmax(0,1fr));max-width:none}
+ .hero-card figcaption{padding:45px 10px 14px}
+ .hero-card h3{font-size:clamp(20px,3vw,32px)}
+}
+@media(max-width:640px){
+ .hero{min-height:72svh;padding:82px 20px 38px}
+ .hero .title{font-size:clamp(57px,15vw,86px)}
+ .hero .subtitle{font-size:clamp(21px,6vw,30px)}
+ .meta{grid-template-columns:1fr;gap:9px;padding-block:17px}
+ .cnav{justify-content:flex-start}
+ .chap{padding-top:84px}
+ .chap-h{grid-template-columns:1fr;gap:10px;margin-bottom:34px}
+ .chap-n{grid-row:auto;font-size:27px}
+ .chap-h h2{font-size:clamp(42px,12vw,60px)}
+ .chap-h p{grid-column:auto;font-size:15px}
+ .copy{margin-bottom:28px}
+ .copy p{font-size:19px;line-height:1.48}
+ .steps,.proc,.decis,.sheets,.shots .row2,.type-row{grid-template-columns:1fr}
+ .step{min-height:0}
+ .step:after{display:none!important}
+ .heroes{grid-template-columns:1fr;max-width:460px;margin-inline:auto}
+ .hero-card img{aspect-ratio:auto;max-height:600px}
+ .hero-card h3{font-size:40px}
+ .rows{--h:150px!important}
+ .rows .vis-i{flex:1 1 100%}
+ .rows .vis-i img{max-height:500px}
+ .city h2{font-size:clamp(43px,12vw,66px)}
+ .ficha{grid-template-columns:1fr}
+ .ficha div{border-right:0!important}
+}
+@media(prefers-reduced-motion:reduce){.hero-bg{transform:none;animation:none}}
+
 </style>
 <noscript><style>.reveal{opacity:1;transform:none}.meta span{animation:none;opacity:1;transform:none;filter:none}</style></noscript>
 </head>
@@ -250,7 +358,7 @@ main img{cursor:zoom-in}
 <main>
 <section class="chap" id="ideia">
 <header class="chap-h reveal"><span class="chap-n">01</span><h2>A ideia</h2><p>Uma embalagem que vira escudo de mestre, feita para ser jogada na rua.</p></header>
-<figure class="spin reveal"><img src="../assets/vans-rpg/off-the-map-capa.gif?v=2" width="960" height="540" alt="Quatro faces da caixa OFF THE MAP: a etiqueta de tênis Vans, o painel Sua cidade. Sua campanha., a lateral Quem? do gerador de NPCs e o selo OFF THE MAP com xadrez" fetchpriority="high"><figcaption><span>A CAIXA · 4 FACES</span><span>OFF THE MAP — VANS TABLETOP RPG</span></figcaption></figure>
+
 <div class="copy reveal">
 <p>E se a caixa de um tênis fosse o começo de um jogo? <strong>OFF THE MAP</strong> transforma a embalagem da Vans no escudo do mestre de um RPG de mesa urbano e cyberpunk, feito para ser jogado na rua.</p>
 <p>Fechada, a caixa apresenta a identidade. Aberta, entrega ao mestre as informações de consulta para conduzir a partida. A embalagem deixa de ser só embalagem e entra no jogo.</p>
@@ -275,6 +383,7 @@ main img{cursor:zoom-in}
 <figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/proc-03-exploracao-kraft.jpg" width="1252" height="1200" alt="Exploração da planificação em kraft com painéis de regras e a ilustração dos personagens"><figcaption><b>03</b>Exploração · painéis em kraft</figcaption></figure>
 <figure class="shot reveal"><img loading="lazy" src="../assets/vans-rpg/proc-04-faca-final.jpg" width="1448" height="1086" alt="Faca final da caixa em off-white, aberta e plana"><figcaption><b>04</b>Resultado · faca final em off-white</figcaption></figure>
 </div>
+<figure class="spin reveal"><img src="../assets/vans-rpg/off-the-map-capa.gif?v=2" width="960" height="540" alt="Quatro faces da caixa OFF THE MAP: a etiqueta de tênis Vans, o painel Sua cidade. Sua campanha., a lateral Quem? do gerador de NPCs e o selo OFF THE MAP com xadrez" fetchpriority="high"><figcaption><span>A CAIXA · 4 FACES</span><span>OFF THE MAP — VANS TABLETOP RPG</span></figcaption></figure>
 </section>
 
 <section class="chap" id="universo">
