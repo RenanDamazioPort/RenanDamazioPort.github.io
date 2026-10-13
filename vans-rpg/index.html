@@ -340,17 +340,41 @@ h3.sub{margin-top:70px;margin-bottom:20px}
 
 /* Ambient illustrations integrated with chapter 01 introduction */
 .copy-frame{position:relative;isolation:isolate;overflow:hidden;max-width:1100px;margin:0 0 44px;border:1px solid var(--line);background:#050807}
-.copy-frame::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(5,8,7,.93),rgba(5,8,7,.82) 58%,rgba(5,8,7,.6)),repeating-linear-gradient(180deg,rgba(255,255,255,.025) 0 1px,transparent 1px 4px)}
+.copy-frame::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(5,8,7,.82) 0%,rgba(5,8,7,.62) 46%,rgba(5,8,7,.34) 72%,rgba(5,8,7,.18) 100%),repeating-linear-gradient(180deg,rgba(255,255,255,.025) 0 1px,transparent 1px 4px)}
 .copy-frame .copy{position:relative;z-index:2;max-width:none;margin:0;padding:clamp(28px,4vw,44px)}
 .copy-frame .copy p{max-width:760px;font-size:clamp(19px,2vw,27px);line-height:1.45;letter-spacing:-.015em}
 .copy-frame .copy p.note{font-size:11px;line-height:1.5;opacity:1;margin-top:26px}
 .copy-frame .copy p:last-child{margin-bottom:0}
-.copy-illu-marquee{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;opacity:.24;mask-image:linear-gradient(90deg,transparent,black 14%,black 86%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,black 14%,black 86%,transparent)}
+.copy-illu-marquee{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;opacity:.42;mask-image:linear-gradient(90deg,transparent,black 12%,black 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,black 12%,black 92%,transparent)}
 .copy-illu-track{position:absolute;top:50%;left:0;display:flex;gap:16px;width:max-content;transform:translateY(-50%);animation:copyMarquee 42s linear infinite}
-.copy-illu-track img{display:block;width:220px;height:300px;object-fit:cover;flex:none;filter:grayscale(1) contrast(1.1) brightness(.75)}
+.copy-illu-track img{display:block;width:220px;height:300px;object-fit:cover;flex:none;filter:grayscale(.45) contrast(1.08) brightness(.98)}
 @keyframes copyMarquee{from{transform:translate(0,-50%)}to{transform:translate(-50%,-50%)}}
 @media(max-width:640px){.copy-frame{margin-bottom:30px}.copy-frame .copy{padding:22px 18px 24px}.copy-frame .copy p{font-size:19px;line-height:1.48}.copy-illu-track img{width:150px;height:210px}}
 @media(prefers-reduced-motion:reduce){.copy-illu-track{animation:none}}
+
+/* Shared editorial alignment for the Vans case */
+:root{--case-content-width:1100px}
+main .chap>.chap-h,
+main .chap>.copy-frame,
+main .chap>.steps,
+main .chap>.proc,
+main .chap>.gal,
+main .chap>.shots,
+main .chap>.sheets,
+main .chap>.spin,
+main .chap>.type-row,
+main .chap>.decis,
+main .chap>.heroes,
+main .chap>.city,
+main .chap>.ficha,
+main .chap>.shot {
+  width:100%;
+  max-width:var(--case-content-width);
+  margin-left:auto;
+  margin-right:auto;
+}
+main .chap>.copy-frame{margin-bottom:44px}
+@media(max-width:640px){main .chap>.copy-frame{margin-bottom:30px}}
 </style>
 <noscript><style>.reveal{opacity:1;transform:none}.meta span{animation:none;opacity:1;transform:none;filter:none}</style></noscript>
 </head>
