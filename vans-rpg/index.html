@@ -358,6 +358,31 @@ width:100%;max-width:var(--case-content-width);margin-left:auto;margin-right:aut
 @media(max-width:900px){.idea-ambient{top:150px;height:420px;width:calc(100% - 32px);opacity:.28}.idea-ambient-track img{width:220px;height:420px}}
 @media(max-width:640px){.idea-ambient{top:160px;height:320px;width:calc(100% - 24px);opacity:.24}.idea-ambient-track{gap:12px}.idea-ambient-track img{width:150px;height:320px}.copy-frame{margin-bottom:30px}.copy-frame .copy{padding:22px 18px 24px}.copy-frame .copy p{max-width:none;font-size:19px;line-height:1.48}}
 @media(prefers-reduced-motion:reduce){.idea-ambient-track{animation:none}}
+
+/* Consistent two-edge editorial grid across every chapter */
+main .chap{
+  --editorial-width:1080px;
+}
+main .chap > :is(.chap-h,.copy,.copy-frame,.steps,.proc,.gal,.shots,.sheets,.spin,.type-row,.decis,.heroes,.city,.ficha,.shot,.sub,.refs,.refs-games,.lang,.lid,.ident,.shields,.usar,.ad,.chips,.label,.cap,.wide,.talk,.next,.soon){
+  width:100%;
+  max-width:var(--editorial-width);
+  margin-left:auto;
+  margin-right:auto;
+  min-width:0;
+}
+main .chap > .copy{max-width:var(--editorial-width)}
+main .chap > .copy p{max-width:860px}
+main .chap > .chap-h{grid-template-columns:60px minmax(0,1fr)}
+main .chap > .chap-h :is(h2,p){min-width:0;max-width:100%;overflow-wrap:break-word}
+main .chap > :is(.gal,.proc,.type-row,.heroes,.sheets,.shots){min-width:0}
+main .chap > :is(.gal,.proc,.type-row,.decis,.heroes,.sheets,.shots) > *{min-width:0}
+main .chap > :is(.shot,.gal,.copy-frame,.ident,.shields,.city){box-sizing:border-box}
+@media(max-width:640px){
+  main .chap > .chap-h{grid-template-columns:minmax(0,1fr)}
+  main .chap > .chap-h p{grid-column:1}
+  main .chap > .copy p{max-width:100%}
+}
+
 </style>
 <noscript><style>.reveal{opacity:1;transform:none}.meta span{animation:none;opacity:1;transform:none;filter:none}</style></noscript>
 </head>
