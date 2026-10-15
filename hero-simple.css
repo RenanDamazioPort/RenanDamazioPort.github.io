@@ -14,3 +14,6 @@
 @media(max-width:620px){.hero.hero-simple{padding-top:70px}}
 @media(max-width:620px){.hero.hero-simple{padding-top:44px}}
 @media(max-width:620px){.hero.hero-simple{padding-top:20px}}
+/* name already in the hero: hide the duplicate brand in the header */
+header .brand{display:none}
+header .nav{margin-left:auto}
