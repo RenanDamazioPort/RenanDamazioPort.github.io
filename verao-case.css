@@ -1,0 +1,11 @@
+/* Verão Premiado — extended case sections (mascote IA, lives, marcas). */
+.vp-note{max-width:820px;margin:0 0 26px;font-size:clamp(17px,1.4vw,22px);line-height:1.45;color:#c9c7bf}
+.vp-piece{margin:0;min-width:0}
+.vp-piece img{display:block;width:100%;height:auto;border:1px solid var(--line);background:#111}
+.vp-wide{margin:0 0 18px}
+.vp-grid{display:grid;gap:18px;margin:0 0 18px;align-items:start}
+.vp-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.vp-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.vp-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:900px){.vp-3,.vp-4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.vp-grid{gap:10px;margin-bottom:10px}.vp-note{font-size:16px;margin-bottom:18px}.vp-wide{margin-bottom:10px}}
