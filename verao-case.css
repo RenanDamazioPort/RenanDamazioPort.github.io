@@ -52,3 +52,9 @@
 .vp-next button{background:none;border:0;padding:0;cursor:pointer;font:inherit;color:inherit;text-align:left}
 .vp-next button:hover{color:var(--fg)}
 @media(max-width:620px){.vp-talk{margin-top:60px}.vp-next{flex-direction:column;gap:12px;margin-top:60px}}
+
+/* Inverno Premiado block */
+.vp-piece video{display:block;width:100%;height:auto;border:1px solid var(--line);background:#111}
+.ze-poses.ze-poses-inverno{grid-template-columns:repeat(3,minmax(0,1fr));background:radial-gradient(circle at 50% 120%,#7fd3ff 0,#dff2ff 60%);margin-top:18px}
+.ze-poses-inverno .ze-pose figcaption{color:#0b4f7a}
+@media(max-width:620px){.ze-poses.ze-poses-inverno{grid-template-columns:repeat(2,minmax(0,1fr))}}
