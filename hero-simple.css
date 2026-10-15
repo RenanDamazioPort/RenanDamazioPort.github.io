@@ -1,0 +1,8 @@
+/* Simplified hero (temporary): only name + role. The original hero markup stays in the page, hidden. */
+.hero.hero-simple{min-height:auto;padding:clamp(150px,18vw,230px) var(--pad) clamp(70px,9vw,120px);display:block;border-bottom:1px solid var(--line)}
+.hero.hero-simple:before{display:none}
+.hero-simple > :not(.hero-name){display:none !important}
+.home-glitch-bg{display:none !important}
+.hero-name h1{margin:0;font-size:clamp(64px,12vw,200px);line-height:.84;letter-spacing:-.075em;font-weight:700;color:var(--fg)}
+.hero-name p{margin:clamp(14px,1.6vw,24px) 0 0;font:clamp(11px,1vw,14px) var(--mono);letter-spacing:.2em;color:var(--muted)}
+@media(max-width:620px){.hero.hero-simple{padding:130px 16px 56px}.hero-name h1{font-size:clamp(52px,16vw,80px)}}
