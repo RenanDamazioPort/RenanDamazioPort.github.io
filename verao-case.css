@@ -1,0 +1,41 @@
+/* Verão Premiado — extended case sections (mascote IA, lives, marcas). */
+.vp-note{max-width:820px;margin:0 0 26px;font-size:clamp(17px,1.4vw,22px);line-height:1.45;color:#c9c7bf}
+.vp-piece{margin:0;min-width:0}
+.vp-piece img{display:block;width:100%;height:auto;border:1px solid var(--line);background:#111}
+.vp-wide{margin:0 0 18px}
+.vp-grid{display:grid;gap:18px;margin:0 0 18px;align-items:start}
+.vp-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.vp-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.vp-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:900px){.vp-3,.vp-4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.vp-grid{gap:10px;margin-bottom:10px}.vp-note{font-size:16px;margin-bottom:18px}.vp-wide{margin-bottom:10px}}
+
+/* Zé da Sorte — dedicated mascot section */
+.ze-section{margin-top:20px}
+.ze-head{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,5vw,80px);align-items:start;margin:10px 0 50px}
+.ze-head h3{margin:0;font-size:clamp(44px,6vw,96px);line-height:.86;letter-spacing:-.07em;font-weight:700;color:#ffcf3a}
+.ze-why p{margin:0 0 18px;font-size:clamp(17px,1.4vw,22px);line-height:1.45;color:#d7d5cd}
+.ze-pillars{list-style:none;padding:0;margin:0 0 48px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.ze-pillars li{border-top:1px solid var(--line);padding-top:14px;font-size:15px;line-height:1.45;color:#a9a79f}
+.ze-pillars span{display:block;font:10px var(--mono);letter-spacing:.1em;color:var(--muted);margin-bottom:10px}
+.ze-pillars strong{display:block;font-size:clamp(20px,1.8vw,28px);letter-spacing:-.03em;color:var(--fg);margin-bottom:6px;font-weight:700}
+.ze-poses{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;padding:clamp(18px,3vw,40px);border-radius:14px;background:radial-gradient(circle at 50% 120%,#ffd76a 0,#f7e3bc 55%);margin:0 0 50px}
+.ze-pose{margin:0;display:flex;flex-direction:column;align-items:center}
+.ze-pose-img{height:clamp(170px,22vw,330px);width:100%;display:flex;align-items:flex-end;justify-content:center}
+.ze-pose img{max-height:100%;max-width:100%;object-fit:contain;filter:drop-shadow(0 14px 18px rgba(80,45,0,.22))}
+.ze-pose figcaption{margin-top:12px;font:10px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#6b4a12;text-align:center}
+.ze-result{margin:0 0 40px}
+.ze-result-lead{max-width:820px;margin:0 0 26px;font-size:clamp(20px,2vw,30px);line-height:1.25;letter-spacing:-.02em;color:#f5f2e9}
+.ze-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin:0 0 26px}
+.ze-stats div{border:1px solid var(--line);border-radius:12px;padding:20px 18px;background:#111}
+.ze-stats strong{display:block;font-size:clamp(30px,3.6vw,58px);line-height:1;letter-spacing:-.05em;color:#ffcf3a}
+.ze-stats span{display:block;margin-top:10px;font:10px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.ze-result-note{max-width:820px;margin:0;font-size:clamp(16px,1.3vw,20px);line-height:1.45;color:#a9a79f}
+@media(max-width:900px){.ze-head{grid-template-columns:1fr;gap:24px}.ze-pillars{grid-template-columns:1fr;gap:4px}.ze-poses{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:22px}.ze-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.ze-poses{grid-template-columns:repeat(2,minmax(0,1fr));padding:16px}.ze-poses .ze-pose:last-child{grid-column:1/-1}.ze-pose-img{height:190px}.ze-stats{gap:10px}.ze-stats div{padding:16px 14px}}
+
+/* Justified rows: every piece in a row shares the same height, no cropping. */
+.vp-row{display:flex;gap:18px;margin:0 0 18px;align-items:flex-start}
+.vp-row .vp-piece{min-width:0}
+.vp-row .vp-piece img{width:100%;height:auto}
+@media(max-width:620px){.vp-row{gap:8px;margin-bottom:8px}}
