@@ -384,6 +384,13 @@ main .chap > :is(.shot,.gal,.copy-frame,.ident,.shields,.city){box-sizing:border
 }
 
 video{display:block;width:100%;height:auto;object-fit:contain;background:#000}
+
+.film-player{position:relative;isolation:isolate}
+.film-play{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:16px;padding:18px 26px;border:1px solid #ffffff80;border-radius:999px;background:#080808e8;color:#fff;box-shadow:0 8px 40px #0009;cursor:pointer;font:700 clamp(13px,1.5vw,18px)/1.2 Arial,sans-serif;white-space:nowrap;transition:background .2s}
+.film-play:hover{background:#d9102d}.film-play:focus-visible{outline:3px solid #fff;outline-offset:5px}
+.film-play[hidden]{display:none}.film-play-icon{display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:#ef1734;color:#fff;font-size:24px;padding-left:3px;box-sizing:border-box}
+.film-play small{display:block;text-align:left;margin-top:5px;font-size:11px;font-weight:400;letter-spacing:.08em}
+@media(max-width:600px){.film-play{padding:12px 18px;gap:10px}.film-play-icon{width:40px;height:40px;font-size:18px}}
 </style>
 <noscript><style>.reveal{opacity:1;transform:none}.meta span{animation:none;opacity:1;transform:none;filter:none}</style></noscript>
 </head>
@@ -603,5 +610,16 @@ if(!('IntersectionObserver' in window))return;
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){var on=a.getAttribute('href')==='#'+e.target.id;a.classList.toggle('on',on);if(on&&a.scrollIntoView)try{a.parentNode.scrollTo({left:a.offsetLeft-20,behavior:'smooth'})}catch(x){}})}})},{rootMargin:'-30% 0px -60% 0px'});
 document.querySelectorAll('.chap').forEach(function(c){io.observe(c)});})();
 </script>
-</body>
+<script>
+document.querySelectorAll('video').forEach(function(video){
+var shell=document.createElement('div');shell.className='film-player';
+video.parentNode.insertBefore(shell,video);shell.appendChild(video);
+var button=document.createElement('button');button.type='button';button.className='film-play';button.setAttribute('aria-label','Assistir ao filme OFF THE MAP, 36 segundos');
+button.innerHTML='<span class="film-play-icon" aria-hidden="true">▶</span><span>Assistir ao filme<small>OFF THE MAP · 36 S</small></span>';
+shell.appendChild(button);
+button.addEventListener('click',function(){video.play().catch(function(){button.hidden=false})});
+video.addEventListener('play',function(){button.hidden=true});
+video.addEventListener('ended',function(){button.hidden=false});
+});
+</script></body>
 </html>
