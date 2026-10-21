@@ -35,7 +35,7 @@
   function blocked(x,y){
     if(booting()) return true;
     var el=document.elementFromPoint(x,y);
-    return !!(el&&el.closest&&el.closest('img,video,picture,.visual,.project-title,.hero-name,.case-hero,.compare-item,a,button,p,h1,h2,h3'));
+    return !!(el&&el.closest&&el.closest('img,video,picture,.visual,.project-title,.hero-name,.case-hero,.compare-item,.section-head,.project-meta,a,button,p,span,small,h1,h2,h3,li'));
   }
   function place(e,extraUp){
     var w=e.offsetWidth,h=e.offsetHeight+(extraUp||0);
