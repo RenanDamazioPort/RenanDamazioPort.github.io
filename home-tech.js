@@ -85,7 +85,7 @@
     nodes.forEach((n, i) => {
       const pulse = .62 + Math.sin(t * .0011 + n.phase) * .28;
       ctx.globalAlpha = globalAlpha * n.alpha * pulse;
-      ctx.fillStyle = i % 4 === 0 ? 'rgba(215,255,63,.72)' : 'rgba(236,237,233,.72)';
+      ctx.fillStyle = i % 4 === 0 ? 'rgba(150,150,145,.45)' : 'rgba(236,237,233,.72)';
       ctx.fillRect(n.x - 2, n.y - 2, 4, 4);
       ctx.strokeStyle = 'rgba(236,237,233,.30)';
       ctx.strokeRect(n.x - 5, n.y - 5, 10, 10);

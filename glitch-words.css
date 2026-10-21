@@ -1,18 +1,16 @@
-/* Palavras-glitch de fundo: aparecem e somem rápido */
+/* Código de fundo: linhas sendo digitadas e blocos subindo, quase da cor do fundo */
 .home-glitch-bg.is-work .tech-network{opacity:.35}
+.tech-burst{display:none !important}
 .gw-layer{position:absolute;inset:0;overflow:hidden;pointer-events:none}
-.gw{position:absolute;white-space:nowrap;font-family:"Courier New",monospace;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-  color:var(--gw-c,#d5ff39);opacity:0;text-shadow:-3px 0 rgba(255,0,90,.45),3px 0 rgba(53,243,255,.45);
-  animation:gwFlash var(--life,.8s) steps(1,end) forwards}
-.gw.big{font-family:Arial,Helvetica,sans-serif;letter-spacing:-.04em}
-@keyframes gwFlash{
-  0%{opacity:0;clip-path:inset(0 100% 0 0);transform:translateX(-8px)}
-  10%{opacity:var(--gw-o,.5);clip-path:inset(0 45% 0 0);transform:translateX(5px) skewX(-10deg)}
-  20%{clip-path:inset(0 0 0 0);transform:none}
-  30%{clip-path:inset(45% 0 15% 0);transform:translateX(-6px)}
-  38%{clip-path:inset(0 0 0 0);transform:none}
-  72%{opacity:var(--gw-o,.5);clip-path:inset(0 0 0 0);transform:none}
-  80%{opacity:calc(var(--gw-o,.5)*.4);clip-path:inset(15% 0 50% 0);transform:translateX(8px)}
-  88%{opacity:var(--gw-o,.5);clip-path:inset(0 0 0 0);transform:none}
-  100%{opacity:0;clip-path:inset(0 0 0 100%);transform:translateX(10px)}}
+.gw-line,.gw-block{position:absolute;white-space:pre;font:11px/1.6 ui-monospace,"JetBrains Mono",Menlo,Consolas,"Courier New",monospace;
+  letter-spacing:.02em;color:rgba(245,242,233,.11)}
+.gw-line .k,.gw-block .k{color:rgba(245,242,233,.2)}
+.gw-line .c,.gw-block .c{color:rgba(245,242,233,.06)}
+.gw-line .cur{display:inline-block;width:6px;height:11px;margin-left:2px;vertical-align:-1px;background:rgba(245,242,233,.18);animation:gwBlink .5s steps(1) infinite}
+@keyframes gwBlink{50%{opacity:0}}
+.gw-line.out{animation:gwOut .32s steps(3,end) forwards}
+@keyframes gwOut{0%{clip-path:inset(0)}33%{clip-path:inset(40% 0 20% 0);transform:translateX(-4px)}66%{clip-path:inset(0 0 0 0);transform:translateX(3px)}100%{clip-path:inset(0 0 0 100%);opacity:0}}
+.gw-block{animation:gwRise var(--life,4s) linear forwards}
+@keyframes gwRise{0%{opacity:0;transform:translateY(24px)}12%{opacity:1}80%{opacity:1}100%{opacity:0;transform:translateY(-70px)}}
+@media(max-width:620px){.gw-line,.gw-block{font-size:9px}}
 @media(prefers-reduced-motion:reduce){.gw-layer{display:none}}
