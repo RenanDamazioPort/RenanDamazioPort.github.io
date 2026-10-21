@@ -84,4 +84,4 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
   },2400);
 }
 
-addEventListener('load',()=>setTimeout(()=>document.getElementById('boot').classList.add('off'),800));
+addEventListener('load',()=>setTimeout(()=>{const b=document.getElementById('boot');if(b)b.classList.add('off')},800));
