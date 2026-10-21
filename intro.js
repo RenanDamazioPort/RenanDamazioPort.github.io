@@ -14,7 +14,7 @@
     '  rendering portfolio ......... <span class="hl">READY</span>'
   ];
   var log=document.getElementById('intro-log'),fill=document.getElementById('intro-fill'),pct=document.getElementById('intro-pct');
-  var DUR=3200,t0=null,shown=0,finished=false;
+  var DUR=1800,t0=null,shown=0,finished=false;
   function frame(t){
     if(finished) return;
     if(!t0) t0=t;
@@ -32,7 +32,7 @@
     if(finished) return; finished=true;
     pct.textContent='100%';
     intro.classList.add('show');
-    setTimeout(close,1300);
+    setTimeout(close,900);
   }
   function close(){
     intro.classList.add('done');
@@ -40,5 +40,5 @@
   }
   document.documentElement.style.overflow='hidden';
   document.getElementById('intro-skip').onclick=function(){finished=true;close();};
-  setTimeout(function(){requestAnimationFrame(frame);},500);
+  setTimeout(function(){requestAnimationFrame(frame);},200);
 })();

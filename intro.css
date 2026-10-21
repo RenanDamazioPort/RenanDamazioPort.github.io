@@ -6,7 +6,7 @@
 #intro::before{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px)}
 #intro.done{animation:intro-out .7s cubic-bezier(.7,0,.3,1) forwards}
 @keyframes intro-out{to{clip-path:inset(0 0 100% 0)}}
-#intro .intro-hud{width:min(560px,calc(100vw - 32px));position:relative;animation:intro-boot .5s steps(6) both}
+#intro .intro-hud{width:min(560px,calc(100vw - 32px));position:relative;animation:intro-boot .3s steps(6) both}
 @keyframes intro-boot{0%{opacity:0;transform:scaleY(.02)}60%{opacity:1;transform:scaleY(.02)}100%{transform:scaleY(1)}}
 #intro .intro-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
 #intro .intro-warn{width:22px;height:22px;background:var(--i-lime);color:var(--i-bg);display:grid;place-items:center;font-weight:700;font-size:14px;clip-path:polygon(50% 0,100% 100%,0 100%)}
