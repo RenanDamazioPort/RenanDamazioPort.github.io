@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Painel · Tainara &amp; Renan</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="img/tobias.png">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--papel:#fbf8f0;--papel-2:#e9e9df;--cinza:#d6d7cf;--verde:#1d3a2b;--terra:#79523e;--texto:#4f5a50}
+*{box-sizing:border-box}body{margin:0;font:15px/1.45 Inter,system-ui,sans-serif;background:var(--papel);color:#27392d}
+header{background:var(--verde);color:var(--papel);padding:18px 28px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+h1,h2{font-family:Fraunces,serif;font-weight:400;margin:0}h1{font-size:26px}h2{font-size:28px;color:var(--verde);margin-bottom:16px}
+main{padding:28px;max-width:1300px;margin:auto}
+.btn{border:0;background:var(--verde);color:var(--papel);font:600 13px Inter;letter-spacing:.05em;text-transform:uppercase;padding:11px 16px;cursor:pointer}
+.btn.linha{background:transparent;color:var(--verde);border:1px solid var(--verde)}.btn.claro{background:var(--papel);color:var(--verde)}
+.btn.mini{padding:6px 10px;font-size:11px}.btn:disabled{opacity:.4}
+.abas{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}.abas .btn{background:var(--papel-2);color:var(--verde)}.abas .btn.on{background:var(--verde);color:var(--papel)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:24px}
+.card{background:#fff;border:1px solid var(--cinza);padding:16px}.card b{display:block;font:400 28px Fraunces,serif;color:var(--verde)}.card span{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--texto)}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--cinza);font-size:14px}
+th,td{text-align:left;padding:10px;border-bottom:1px solid var(--papel-2);vertical-align:top}th{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--texto);background:var(--papel)}
+.tag{font:600 11px Inter;text-transform:uppercase;padding:3px 7px;border-radius:2px;background:var(--papel-2)}
+.tag.paga{background:#dfe9dc;color:#1d3a2b}.tag.reservada{background:#f3e6d6;color:#79523e}.tag.expirada,.tag.cancelada{background:#eee;color:#888}
+.msg{max-width:260px;font-style:italic;color:var(--texto)}
+.barra{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.login{max-width:420px;margin:80px auto;background:#fff;border:1px solid var(--cinza);padding:32px}
+input[type=email]{width:100%;font:16px Inter;padding:12px;border:1px solid #879589;margin:14px 0}
+.fotos{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.foto{background:#fff;border:1px solid var(--cinza);padding:14px}.foto .prev{aspect-ratio:4/5;background:var(--papel-2) center/cover;margin-bottom:12px;display:grid;place-items:center;color:var(--texto);font-size:12px;text-transform:uppercase}
+.st{color:var(--terra);min-height:1.2em}.scroll{overflow:auto}
+</style>
+</head>
+<body>
+<header><h1>Painel · Tainara &amp; Renan</h1><div id="quem"></div></header>
+<main id="app"><p>Carregando…</p></main>
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="admin.js"></script>
+</body>
+</html>
