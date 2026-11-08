@@ -10,7 +10,7 @@ window.CASAMENTO = {
   // Pix — quando a chave estiver preenchida, o site gera QR Code e
   // "copia e cola" com o valor exato e o código da reserva.
   pix: {
-    chave: "",              // e-mail, telefone (+5511...), CPF ou chave aleatória
+    chave: "reenandamazio@live.com", // e-mail, telefone (+5511...), CPF ou chave aleatória
     nome: "TAINARA E RENAN", // até 25 caracteres, sem acento
     cidade: "SAO PAULO"      // até 15 caracteres, sem acento
   },
