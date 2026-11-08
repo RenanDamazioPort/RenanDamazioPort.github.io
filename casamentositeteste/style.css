@@ -78,6 +78,17 @@ a{color:inherit}
 .tobias{width:100px;height:auto;flex:none}
 .tobias--espelho{transform:scaleX(-1)}
 
+/* ícones */
+.ico{width:1.1em;height:1.1em;flex:none;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.15em;margin-right:.5em;opacity:.9}
+.dia__data,.dia__hora{display:flex;align-items:center}
+.com-ico{display:flex;align-items:flex-start;gap:0}
+.com-ico .ico{margin-top:.1em}
+.rotulo.com-ico{align-items:center}
+.rotulo .ico{width:16px;height:16px;stroke-width:1.6}
+.dia__nota .ico{width:24px;height:24px;margin-top:-.15em}
+.roteiro li{display:flex;align-items:center;margin-bottom:6px}
+.roteiro .ico{width:22px;height:22px;margin-right:12px;color:#c5cebf}
+
 /* traje e paleta */
 .traje{margin-top:8px;padding-top:28px;border-top:1px solid var(--cinza)}
 .traje .rotulo{margin-bottom:10px}
