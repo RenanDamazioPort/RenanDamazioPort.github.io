@@ -36,27 +36,52 @@
     $$(".boas__texto, .historia__texto, .dia > *, .rsvp__conteudo, .presentes__topo, .passos, .rodape > *").forEach(function (el) { el.classList.add("revela"); io.observe(el); });
   }
 
-  /* ---------- RSVP ---------- */
-  var formRsvp = $("#formRsvp");
-  formRsvp.addEventListener("submit", async function (ev) {
-    ev.preventDefault();
-    var st = $(".form__status", formRsvp), f = new FormData(formRsvp);
-    var nome = (f.get("nome") || "").trim(), contato = (f.get("contato") || "").trim(), vai = f.get("vai");
-    st.className = "form__status";
-    if (nome.length < 3 || contato.length < 5 || !vai) { st.textContent = "Preencha nome, contato e se você vem."; return; }
-    var btn = $("button[type=submit]", formRsvp); btn.disabled = true; st.textContent = "Enviando…";
-    try {
-      if (db) {
-        var r = await db.from("rsvp").insert({ nome: nome, contato: contato, vai: vai === "sim" });
-        if (r.error) throw r.error;
-      }
-      formRsvp.reset();
-      st.classList.add("ok");
-      st.textContent = vai === "sim" ? "Resposta recebida. Que alegria ter você com a gente! ♥" : "Resposta recebida. Obrigado por avisar — vamos sentir sua falta.";
-      if (!db) st.textContent += " (modo teste: nada foi salvo)";
-    } catch (e) {
-      console.error(e); st.textContent = "Não conseguimos enviar agora. Tente de novo em instantes.";
-    } finally { btn.disabled = false; }
+  /* ---------- RSVP pela lista de convidados ---------- */
+  var busca = $("#buscaNome"), res = $("#listaRes"), conf = $("#listaConf"), stL = $("#listaStatus"), escolhidoConv = null, tBusca;
+  function limparStatus() { stL.textContent = ""; stL.className = "form__status"; }
+  busca.addEventListener("input", function () {
+    clearTimeout(tBusca); limparStatus();
+    var q = busca.value.trim();
+    if (q.length < 3) { res.innerHTML = ""; return; }
+    tBusca = setTimeout(async function () {
+      if (!db) { res.innerHTML = '<li class="lista__vazio">Lista indisponível no modo teste.</li>'; return; }
+      var r = await db.rpc("buscar_convidado", { q: q });
+      if (busca.value.trim() !== q) return;
+      if (r.error) { console.error(r.error); res.innerHTML = '<li class="lista__vazio">Não conseguimos buscar agora. Tente de novo.</li>'; return; }
+      res.innerHTML = "";
+      if (!r.data.length) { res.innerHTML = '<li class="lista__vazio">Não achamos esse nome. Tente só o sobrenome ou fale com a gente no WhatsApp.</li>'; return; }
+      r.data.forEach(function (c) {
+        var li = document.createElement("li"), b = document.createElement("button");
+        b.type = "button"; b.className = "lista__item";
+        b.innerHTML = "<span></span><small>" + (c.vai === true ? "confirmado ✓" : c.vai === false ? "não vai" : "escolher") + "</small>";
+        b.firstChild.textContent = c.nome;
+        b.addEventListener("click", function () { escolher(c); });
+        li.appendChild(b); res.appendChild(li);
+      });
+    }, 250);
+  });
+  function escolher(c) {
+    escolhidoConv = c; res.innerHTML = ""; busca.closest(".campo").hidden = true;
+    $("#confNome").textContent = c.nome.split(" ")[0];
+    conf.hidden = false; limparStatus();
+    if (c.vai === true) { stL.textContent = "Você já confirmou presença. Se mudou de ideia, é só escolher de novo."; }
+  }
+  $("#trocarNome").addEventListener("click", function () {
+    escolhidoConv = null; conf.hidden = true; busca.closest(".campo").hidden = false; busca.value = ""; busca.focus(); limparStatus();
+  });
+  $$("[data-vai]", conf).forEach(function (b) {
+    b.addEventListener("click", async function () {
+      if (!escolhidoConv) return;
+      var vai = b.getAttribute("data-vai") === "sim";
+      $$("[data-vai]", conf).forEach(function (x) { x.disabled = true; });
+      limparStatus(); stL.textContent = "Enviando…";
+      var r = await db.rpc("responder_convidado", { p_id: escolhidoConv.id, p_vai: vai });
+      $$("[data-vai]", conf).forEach(function (x) { x.disabled = false; });
+      if (r.error) { console.error(r.error); stL.textContent = "Não conseguimos enviar agora. Tente de novo em instantes."; return; }
+      escolhidoConv.vai = vai;
+      stL.classList.add("ok");
+      stL.textContent = vai ? "Presença confirmada! Que alegria ter você com a gente. ♥" : "Obrigado por avisar — vamos sentir sua falta. ♥";
+    });
   });
 
   /* ---------- catálogo de presentes ---------- */

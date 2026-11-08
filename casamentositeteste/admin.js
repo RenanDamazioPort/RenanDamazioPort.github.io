@@ -134,16 +134,39 @@
   }
 
   async function rsvp(c) {
-    var r = await db.from("rsvp").select("*").order("criado_em", { ascending: false });
+    var r = await db.from("convidados").select("*").order("nome");
     if (r.error) throw r.error;
-    var L = r.data, sim = L.filter(function (x) { return x.vai; }).length;
-    c.innerHTML = '<div class="cards"><div class="card"><b>' + sim + '</b><span>Vão estar lá</span></div><div class="card"><b>' + (L.length - sim) + '</b><span>Não poderão ir</span></div></div>' +
+    var L = r.data, sim = L.filter(function (x) { return x.vai === true; }).length, nao = L.filter(function (x) { return x.vai === false; }).length;
+    var norm = function (t) { return String(t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s+/g, " ").trim(); };
+    c.innerHTML = '<div class="cards"><div class="card"><b>' + L.length + '</b><span>Convidados na lista</span></div><div class="card"><b>' + sim + '</b><span>Vão estar lá</span></div><div class="card"><b>' + nao + '</b><span>Não poderão ir</span></div><div class="card"><b>' + (L.length - sim - nao) + '</b><span>Sem resposta</span></div></div>' +
+      '<div class="foto" style="margin-bottom:24px"><h2>Adicionar convidados</h2><p>Copie a coluna de nomes da sua planilha e cole aqui (um nome por linha). Nomes repetidos são ignorados.</p>' +
+      '<textarea id="imp" rows="7" style="width:100%;font:15px Inter;padding:12px;border:1px solid #879589" placeholder="Maria Silva&#10;João Souza&#10;..."></textarea><br><br><button class="btn" id="btnImp">Adicionar à lista</button> <span class="st" id="stImp"></span></div>' +
       '<div class="barra"><h2>Confirmações de presença</h2><button class="btn linha" id="exp">Exportar CSV</button></div>' +
-      '<div class="scroll"><table><thead><tr><th>Quando</th><th>Nome</th><th>Contato</th><th>Resposta</th></tr></thead><tbody>' +
-      (L.length ? L.map(function (x) { return "<tr><td>" + data(x.criado_em) + "</td><td>" + esc(x.nome) + "</td><td>" + esc(x.contato) + '</td><td><span class="tag ' + (x.vai ? "paga" : "cancelada") + '">' + (x.vai ? "vai" : "não vai") + "</span></td></tr>"; }).join("") : '<tr><td colspan="4">Nenhuma resposta ainda.</td></tr>') +
-      "</tbody></table></div>";
+      '<div class="scroll"><table><thead><tr><th>Nome</th><th>Resposta</th><th>Quando</th><th></th></tr></thead><tbody>' +
+      (L.length ? L.map(function (x) {
+        return "<tr><td>" + esc(x.nome) + '</td><td><span class="tag ' + (x.vai === true ? "paga" : x.vai === false ? "cancelada" : "reservada") + '">' + (x.vai === true ? "vai" : x.vai === false ? "não vai" : "sem resposta") + "</span></td><td>" + data(x.respondido_em) +
+          '</td><td><button class="btn linha mini" data-del="' + x.id + '">Remover</button></td></tr>';
+      }).join("") : '<tr><td colspan="4">A lista está vazia. Cole os nomes acima.</td></tr>') + "</tbody></table></div>";
+    document.getElementById("btnImp").onclick = async function () {
+      var st = document.getElementById("stImp"), ja = {};
+      L.forEach(function (x) { ja[norm(x.nome)] = 1; });
+      var novos = document.getElementById("imp").value.split(/\r?\n/).map(function (l) { return l.split("\t")[0].replace(/\s+/g, " ").trim(); })
+        .filter(function (n) { if (n.length < 2 || ja[norm(n)]) return false; ja[norm(n)] = 1; return true; });
+      if (!novos.length) { st.textContent = "Nenhum nome novo."; return; }
+      st.textContent = "Adicionando " + novos.length + "…";
+      var ins = await db.from("convidados").insert(novos.map(function (n) { return { nome: n }; }));
+      if (ins.error) { st.textContent = "Erro: " + ins.error.message; return; }
+      avisar(novos.length + " convidados adicionados ✓"); render();
+    };
+    c.querySelectorAll("[data-del]").forEach(function (b) {
+      b.onclick = async function () {
+        b.disabled = true;
+        var d = await db.from("convidados").delete().eq("id", b.dataset.del);
+        if (d.error) { b.disabled = false; avisar("Erro: " + d.error.message); } else render();
+      };
+    });
     document.getElementById("exp").onclick = function () {
-      csv("confirmacoes-casamento.csv", [["quando", "nome", "contato", "vai"]].concat(L.map(function (x) { return [data(x.criado_em), x.nome, x.contato, x.vai ? "sim" : "não"]; })));
+      csv("confirmacoes-casamento.csv", [["nome", "resposta", "quando"]].concat(L.map(function (x) { return [x.nome, x.vai === true ? "vai" : x.vai === false ? "não vai" : "sem resposta", data(x.respondido_em)]; })));
     };
   }
 

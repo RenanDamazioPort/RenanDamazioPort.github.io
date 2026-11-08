@@ -139,6 +139,19 @@ a{color:inherit}
 .form__status{margin:0;font-size:15px;min-height:1.2em;color:var(--terra)}
 .form__status.ok{color:var(--verde)}
 
+/* lista de convidados */
+.lista{display:grid;gap:14px;max-width:595px}
+.lista input[type=search]{-webkit-appearance:none;appearance:none}
+.lista__res{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.lista__item{width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;text-align:left;background:#fff;border:1px solid var(--cinza);padding:14px 16px;cursor:pointer;font:500 17px var(--sans);color:var(--verde)}
+.lista__item:hover{border-color:var(--verde)}
+.lista__item small{font:600 11px var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--terra);flex:none}
+.lista__vazio{font-size:15px;color:var(--texto)}
+.lista__ola{font:400 28px var(--serif);font-variation-settings:"SOFT" 0,"WONK" 1;color:var(--verde);margin:0 0 18px}
+.lista__botoes{display:flex;gap:12px;flex-wrap:wrap}
+.lista__botoes .btn{min-width:0;flex:1}
+.lista__trocar{margin-top:14px;background:none;border:0;padding:0;font:600 13px var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--texto);cursor:pointer}
+
 /* presentes */
 .presentes{padding:100px var(--pad) 75px}
 .presentes__topo{display:flex;justify-content:space-between;align-items:flex-start;gap:40px}

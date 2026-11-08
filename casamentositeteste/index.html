@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..500,0..100,0..1;1,9..144,300..500,0..100,0..1&family=Homemade+Apple&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=11">
+<link rel="stylesheet" href="style.css?v=12">
 </head>
 <body>
 
@@ -116,24 +116,23 @@
     <div class="rsvp__conteudo">
       <p class="rotulo rotulo--terra">04 &nbsp;/&nbsp; RSVP</p>
       <h2 class="titulo">A gente conta<br>com você?</h2>
-      <p class="corpo">Conta pra gente se você vem. Sua resposta ajuda a preparar tudo com carinho.</p>
-      <form class="form" id="formRsvp" novalidate>
+      <p class="corpo">Procure seu nome na lista e conta pra gente se você vem. Sua resposta ajuda a preparar tudo com carinho.</p>
+      <div class="lista" id="lista">
         <label class="campo">
-          <span>Nome completo</span>
-          <input name="nome" type="text" autocomplete="name" required maxlength="120">
+          <span>Procure seu nome na lista</span>
+          <input id="buscaNome" type="search" autocomplete="off" placeholder="Digite seu nome ou sobrenome" maxlength="60">
         </label>
-        <label class="campo">
-          <span>E-mail ou WhatsApp</span>
-          <input name="contato" type="text" autocomplete="email" required maxlength="120">
-        </label>
-        <fieldset class="escolha">
-          <legend class="sr">Você vem?</legend>
-          <label><input type="radio" name="vai" value="sim" required> <span>Vou estar lá</span></label>
-          <label><input type="radio" name="vai" value="nao"> <span>Não poderei ir</span></label>
-        </fieldset>
-        <button class="btn btn--escuro" type="submit">Enviar resposta <span aria-hidden="true">→</span></button>
-        <p class="form__status" role="status" aria-live="polite"></p>
-      </form>
+        <ul class="lista__res" id="listaRes" aria-live="polite"></ul>
+        <div class="lista__conf" id="listaConf" hidden>
+          <p class="lista__ola">Oi, <strong id="confNome"></strong>! Você vem?</p>
+          <div class="lista__botoes">
+            <button class="btn btn--escuro" type="button" data-vai="sim">Vou estar lá ✓</button>
+            <button class="btn btn--linha" type="button" data-vai="nao">Não poderei ir</button>
+          </div>
+          <button class="lista__trocar" type="button" id="trocarNome">← não sou eu</button>
+        </div>
+        <p class="form__status" id="listaStatus" role="status" aria-live="polite"></p>
+      </div>
     </div>
   </section>
 
@@ -228,10 +227,10 @@
   </section>
 </dialog>
 
-<script src="config.js?v=11"></script>
+<script src="config.js?v=12"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
-<script src="pix.js?v=11"></script>
-<script src="app.js?v=11"></script>
+<script src="pix.js?v=12"></script>
+<script src="app.js?v=12"></script>
 </body>
 </html>
