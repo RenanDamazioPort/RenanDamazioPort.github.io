@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..500,0..100,0..1;1,9..144,300..500,0..100,0..1&family=Homemade+Apple&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=16">
 </head>
 <body>
 
@@ -71,6 +71,14 @@
       </div>
     </div>
   </section>
+
+  <!-- Tobias passeia entre as boas-vindas e a nossa história. -->
+  <div class="tobias-passeio">
+    <video id="tobiasPasseio" muted loop playsinline preload="metadata" aria-label="Animação do Tobias passeando">
+      <source src="https://res.cloudinary.com/p48prprp/video/upload/v1790345118/cachorrinho.webm" type="video/webm">
+    </video>
+    <button class="tobias-passeio__controle" id="tobiasControle" type="button" aria-controls="tobiasPasseio">Pausar Tobias</button>
+  </div>
 
   <!-- 03 · HISTÓRIA -->
   <section class="historia" id="historia">
@@ -232,5 +240,30 @@
 <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
 <script src="pix.js?v=12"></script>
 <script src="app.js?v=12"></script>
+<script>
+(function(){
+  const video=document.getElementById('tobiasPasseio');
+  const button=document.getElementById('tobiasControle');
+  const motion=window.matchMedia('(prefers-reduced-motion: reduce)');
+  let pausedByUser=motion.matches;
+  video.muted=true;
+  function syncButton(){button.textContent=video.paused?'Ver Tobias passear':'Pausar Tobias';}
+  button.addEventListener('click',function(){
+    if(video.paused){pausedByUser=false;video.play().then(syncButton).catch(syncButton);}
+    else{pausedByUser=true;video.pause();syncButton();}
+  });
+  video.addEventListener('play',syncButton);
+  video.addEventListener('pause',syncButton);
+  video.addEventListener('loadedmetadata',function(){if(motion.matches){video.currentTime=2;syncButton();}});
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){
+      if(entries[0].isIntersecting&&!pausedByUser){video.play().catch(syncButton);}
+      else{video.pause();}
+    },{threshold:0.2}).observe(video);
+  }else if(!pausedByUser){video.play().catch(syncButton);}
+  motion.addEventListener('change',function(e){if(e.matches){pausedByUser=true;video.pause();syncButton();}});
+  syncButton();
+})();
+</script>
 </body>
 </html>
