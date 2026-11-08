@@ -168,14 +168,13 @@
     var st = $(".form__status", formRes), f = new FormData(formRes);
     var d = {
       nome: (f.get("nome") || "").trim(), email: (f.get("email") || "").trim(),
-      whatsapp: (f.get("whatsapp") || "").replace(/\D/g, ""), mensagem: (f.get("mensagem") || "").trim().slice(0, 500),
+      mensagem: (f.get("mensagem") || "").trim().slice(0, 500),
       consentimento: !!f.get("consentimento")
     };
     $$(".campo", formRes).forEach(function (c) { c.classList.remove("erro"); });
     var erros = [];
     if (d.nome.split(/\s+/).length < 2) erros.push("nome");
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email)) erros.push("email");
-    if (d.whatsapp.length < 10 || d.whatsapp.length > 13) erros.push("whatsapp");
     erros.forEach(function (n) { formRes.elements[n].closest(".campo").classList.add("erro"); });
     if (erros.length) { st.textContent = "Confira " + erros.join(", ").replace("nome", "nome completo") + "."; return; }
     if (!d.consentimento) { st.textContent = "Marque o aceite para seguirmos com a reserva."; return; }
@@ -186,7 +185,7 @@
       if (db) {
         var r = await db.rpc("reservar_cota", {
           p_opcao_id: opcao.id, p_quantidade: qtd, p_nome: d.nome, p_email: d.email,
-          p_whatsapp: d.whatsapp, p_mensagem: d.mensagem || null, p_consentimento: d.consentimento
+          p_mensagem: d.mensagem || null, p_consentimento: d.consentimento
         });
         if (r.error) throw r.error;
         res = Array.isArray(r.data) ? r.data[0] : r.data;
@@ -209,9 +208,8 @@
     var valor = res.valor_total_centavos / 100;
     $("#jResumo2").textContent = escolhido.nome.replace(/\n/g, " ") + "  ·  " + qtd + (qtd > 1 ? " cotas" : " cota") + "  ·  " + reais(valor);
     $("#jCodigo").textContent = res.codigo;
-    $("#jStatus").textContent = db ? "aguardando pagamento" : "modo teste — nada foi salvo";
     var exp = new Date(res.expira_em);
-    $("#jPrazo").textContent = "Sua cota fica guardada até " + exp.toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }) + ".";
+    $("#jPrazo").textContent = "Faça o Pix até " + exp.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" }) + " para garantir sua cota." + (db ? "" : " (modo teste — nada foi salvo)");
     codigoPix = window.gerarPix({ chave: C.pix.chave, nome: C.pix.nome, cidade: C.pix.cidade, valor: valor, txid: res.codigo });
     var qr = $("#pixQr"), btn = $("#copiarPix");
     if (codigoPix && window.qrcode) {

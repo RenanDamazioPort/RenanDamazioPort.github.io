@@ -57,10 +57,10 @@
       '<div class="scroll"><table><thead><tr><th>Código</th><th>Presente</th><th>Valor</th><th>Convidado</th><th>Mensagem</th><th>Situação</th><th>Ações</th></tr></thead><tbody>' +
       (L.length ? L.map(function (x) {
         return "<tr><td><b>" + esc(x.codigo) + "</b><br><small>" + data(x.criado_em) + "</small></td><td>" + esc(x.presente.replace(/\n/g, " ")) + "<br><small>" + x.quantidade + " × " + reais(x.valor_cota) + "</small></td><td>" + reais(x.valor_total_centavos) +
-          "</td><td>" + esc(x.nome) + "<br><small>" + esc(x.email) + '<br><a href="https://wa.me/55' + esc(x.whatsapp) + '" target="_blank">' + esc(x.whatsapp) + '</a></small></td><td class="msg">' + esc(x.mensagem || "") +
+          "</td><td>" + esc(x.nome) + "<br><small>" + esc(x.email) + '</small></td><td class="msg">' + esc(x.mensagem || "") +
           '</td><td><span class="tag ' + x.situacao + '">' + x.situacao + "</span>" + (x.situacao === "reservada" ? "<br><small>até " + data(x.expira_em) + "</small>" : x.pago_em ? "<br><small>" + data(x.pago_em) + "</small>" : "") +
           '</td><td style="white-space:nowrap">' +
-          (x.status !== "paga" ? '<button class="btn mini" data-id="' + x.id + '" data-acao="paga">Pix recebido</button> ' : "") +
+          (x.status !== "paga" ? '<button class="btn mini" data-id="' + x.id + '" data-acao="paga">Pix recebido</button> ' : '<button class="btn linha mini" data-email="' + x.id + '">Reenviar e-mail</button> ') +
           (x.status !== "cancelada" ? '<button class="btn linha mini" data-id="' + x.id + '" data-acao="cancelada">Cancelar</button>' : '<button class="btn linha mini" data-id="' + x.id + '" data-acao="reservada">Reabrir</button>') +
           "</td></tr>";
       }).join("") : '<tr><td colspan="7">Nenhuma reserva ainda.</td></tr>') + "</tbody></table></div>";
@@ -71,13 +71,59 @@
         if (b.dataset.acao === "paga") { upd.pago_em = new Date().toISOString(); upd.verificacao = "manual: " + sessao.user.email; }
         if (b.dataset.acao === "reservada") upd.expira_em = new Date(Date.now() + (C.reservaHoras || 24) * 3600e3).toISOString();
         var u = await db.from("reservas").update(upd).eq("id", b.dataset.id);
-        if (u.error) { alert(u.error.message); b.disabled = false; } else render();
+        if (u.error) { alert(u.error.message); b.disabled = false; return; }
+        if (b.dataset.acao === "paga") await enviarObrigado(L.find(function (x) { return x.id === b.dataset.id; }));
+        render();
       };
     });
+    c.querySelectorAll("[data-email]").forEach(function (b) {
+      b.onclick = function () { enviarObrigado(L.find(function (x) { return x.id === b.dataset.email; })); };
+    });
     document.getElementById("exp").onclick = function () {
-      csv("reservas-casamento.csv", [["codigo", "criado_em", "presente", "quantidade", "valor", "nome", "email", "whatsapp", "mensagem", "situacao", "pago_em"]].concat(
-        L.map(function (x) { return [x.codigo, data(x.criado_em), x.presente.replace(/\n/g, " "), x.quantidade, (x.valor_total_centavos / 100).toFixed(2).replace(".", ","), x.nome, x.email, x.whatsapp, x.mensagem, x.situacao, data(x.pago_em)]; })));
+      csv("reservas-casamento.csv", [["codigo", "criado_em", "presente", "quantidade", "valor", "nome", "email", "mensagem", "situacao", "pago_em"]].concat(
+        L.map(function (x) { return [x.codigo, data(x.criado_em), x.presente.replace(/\n/g, " "), x.quantidade, (x.valor_total_centavos / 100).toFixed(2).replace(".", ","), x.nome, x.email, x.mensagem, x.situacao, data(x.pago_em)]; })));
     };
+  }
+
+  // E-mail de agradecimento dos noivos (EmailJS automático; sem EmailJS, abre o Gmail já escrito)
+  function textoObrigado(x) {
+    var nome = String(x.nome || "").split(" ")[0];
+    var presente = String(x.presente || "").replace(/\n/g, " ");
+    var assunto = "Obrigado pelo presente, " + nome + "! ♥ Tainara & Renan";
+    var corpo =
+      "Oi, " + nome + "!\n\n" +
+      "Recebemos o seu presente — " + x.quantidade + (x.quantidade > 1 ? " cotas" : " cota") + " de “" + presente + "” — e ficamos muito felizes. " +
+      "Obrigado pelo carinho! Esse mimo vai virar uma memória que a gente vai guardar pra sempre.\n\n" +
+      "E já deixa anotado na agenda:\n" +
+      "09 de julho de 2027, às 20h30\n" +
+      "Av. Cel. Sezefredo Fagundes, 7505 · Jardim das Pedras · São Paulo, SP\n\n" +
+      "Todos os detalhes estão no nosso site: https://renandamazio.com.br/casamentositeteste/\n\n" +
+      "Mal podemos esperar pra viver esse dia com você.\n\n" +
+      "Com amor,\nTainara & Renan";
+    return { assunto: assunto, corpo: corpo, nome: nome };
+  }
+  async function enviarObrigado(x) {
+    if (!x || !x.email) return;
+    var t = textoObrigado(x), E = C.emailjs || {};
+    if (E.publicKey && E.serviceId && E.templateId) {
+      try {
+        var r = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+          method: "POST", headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ service_id: E.serviceId, template_id: E.templateId, user_id: E.publicKey,
+            template_params: { to_email: x.email, to_name: t.nome, assunto: t.assunto, mensagem: t.corpo } })
+        });
+        if (r.ok) { avisar("E-mail de agradecimento enviado para " + x.email + " ✓"); return; }
+        console.warn(await r.text());
+      } catch (e) { console.warn(e); }
+    }
+    window.open("https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(x.email) +
+      "&su=" + encodeURIComponent(t.assunto) + "&body=" + encodeURIComponent(t.corpo), "_blank");
+  }
+  function avisar(msg) {
+    var d = document.createElement("div");
+    d.textContent = msg;
+    d.style.cssText = "position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1d3a2b;color:#fbf8f0;padding:14px 20px;font:600 14px Inter;z-index:9";
+    document.body.appendChild(d); setTimeout(function () { d.remove(); }, 4000);
   }
 
   async function rsvp(c) {

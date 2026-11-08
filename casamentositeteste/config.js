@@ -15,8 +15,12 @@ window.CASAMENTO = {
     cidade: "SAO PAULO"      // até 15 caracteres, sem acento
   },
 
+  // E-mail automático de agradecimento (EmailJS, grátis). Vazio = o painel
+  // abre o Gmail com o e-mail já escrito para vocês só clicarem em Enviar.
+  emailjs: { publicKey: "", serviceId: "", templateId: "" },
+
   // Quanto tempo a cota fica segura esperando o Pix
-  reservaHoras: 24,
+  reservaHoras: 48,
 
   whatsapp: "5511994064761",
   mapa: "https://www.google.com/maps/search/?api=1&query=Av.+Cel.+Sezefredo+Fagundes,+7505+-+Jardim+das+Pedras,+S%C3%A3o+Paulo+-+SP",

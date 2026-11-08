@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..500,0..100,0..1;1,9..144,300..500,0..100,0..1&family=Homemade+Apple&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
 
@@ -180,10 +180,7 @@
     <h2 class="titulo titulo--md">Antes de reservar</h2>
     <form class="form" id="formReserva" novalidate>
       <label class="campo"><span>Nome completo</span><input name="nome" autocomplete="name" required maxlength="120"></label>
-      <div class="form__dupla">
-        <label class="campo"><span>E-mail</span><input name="email" type="email" autocomplete="email" required maxlength="160"></label>
-        <label class="campo"><span>WhatsApp</span><input name="whatsapp" type="tel" autocomplete="tel" inputmode="tel" required maxlength="20" placeholder="(11) 90000-0000"></label>
-      </div>
+      <label class="campo"><span>E-mail</span><input name="email" type="email" autocomplete="email" required maxlength="160"></label>
       <label class="campo campo--area">
         <span>Mensagem aos noivos (opcional)</span>
         <textarea name="mensagem" maxlength="500" rows="3" placeholder="Escreva algumas palavras para nós..."></textarea>
@@ -207,19 +204,19 @@
       <div class="pix__qr" id="pixQr"><span>QR CODE<br>PIX A INSERIR</span></div>
       <div class="pix__info">
         <p>Escaneie pelo aplicativo do banco ou copie o código Pix.</p>
-        <p>Código da reserva: <strong id="jCodigo">—</strong><br>Status: <span id="jStatus">aguardando pagamento</span></p>
+        <p>Código da reserva: <strong id="jCodigo">—</strong></p>
         <p class="pix__prazo" id="jPrazo"></p>
         <button class="btn btn--escuro btn--cheio" type="button" id="copiarPix">Copiar código Pix</button>
       </div>
     </div>
-    <p class="aviso">A cota só vira paga depois que a gente confirmar o recebimento. Obrigado de coração. ♥</p>
+    <p class="aviso">Depois do Pix, sua cota aparece atualizada aqui no site em até 2 dias. Obrigado de coração. ♥</p>
   </section>
 </dialog>
 
-<script src="config.js?v=4"></script>
+<script src="config.js?v=5"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
-<script src="pix.js?v=4"></script>
-<script src="app.js?v=4"></script>
+<script src="pix.js?v=5"></script>
+<script src="app.js?v=5"></script>
 </body>
 </html>
