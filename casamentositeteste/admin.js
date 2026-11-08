@@ -95,7 +95,7 @@
       "Recebemos o seu presente — " + x.quantidade + (x.quantidade > 1 ? " cotas" : " cota") + " de “" + presente + "” — e ficamos muito felizes. " +
       "Obrigado pelo carinho! Esse mimo vai virar uma memória que a gente vai guardar pra sempre.\n\n" +
       "E já deixa anotado na agenda:\n" +
-      "09 de julho de 2027, às 20h30\n" +
+      "09 de julho de 2027 · boas-vindas às 20h30, cerimônia às 21h\n" +
       "Av. Cel. Sezefredo Fagundes, 7505 · Jardim das Pedras · São Paulo, SP\n\n" +
       "Todos os detalhes estão no nosso site: https://renandamazio.com.br/casamentositeteste/\n\n" +
       "Mal podemos esperar pra viver esse dia com você.\n\n" +
