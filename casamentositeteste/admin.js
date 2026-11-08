@@ -37,12 +37,12 @@
   }
 
   async function render() {
-    app.innerHTML = '<div class="abas">' + ["reservas", "rsvp", "cotas", "fotos"].map(function (a) {
-      return '<button class="btn' + (a === aba ? " on" : "") + '" data-aba="' + a + '">' + { reservas: "Reservas", rsvp: "Confirmações", cotas: "Cotas", fotos: "Fotos" }[a] + "</button>";
+    app.innerHTML = '<div class="abas">' + ["reservas", "rsvp", "cotas", "album", "fotos"].map(function (a) {
+      return '<button class="btn' + (a === aba ? " on" : "") + '" data-aba="' + a + '">' + { reservas: "Reservas", rsvp: "Confirmações", cotas: "Cotas", album: "Álbum dos convidados", fotos: "Fotos do site" }[a] + "</button>";
     }).join("") + '</div><div id="conteudo"><p>Carregando…</p></div>';
     app.querySelectorAll("[data-aba]").forEach(function (b) { b.onclick = function () { aba = b.dataset.aba; render(); }; });
     var c = document.getElementById("conteudo");
-    try { await ({ reservas: reservas, rsvp: rsvp, cotas: cotas, fotos: fotos })[aba](c); }
+    try { await ({ reservas: reservas, rsvp: rsvp, cotas: cotas, album: album, fotos: fotos })[aba](c); }
     catch (e) { console.error(e); c.innerHTML = '<p class="st">Sem acesso ou erro: ' + esc(e.message || e) + "<br>Seu e-mail precisa estar na tabela <b>admins</b>.</p>"; }
   }
 
@@ -152,6 +152,21 @@
     document.getElementById("exp").onclick = function () {
       csv("confirmacoes-casamento.csv", [["nome", "resposta", "quando"]].concat(L.map(function (x) { return [x.nome, x.vai === true ? "vai" : x.vai === false ? "não vai" : "sem resposta", data(x.respondido_em)]; })));
     };
+  }
+
+  async function album(c) {
+    var r = await db.from("fotos_convidados").select("*").order("criado_em", { ascending: false }).limit(500);
+    if (r.error) throw r.error;
+    var L = r.data, fotos = L.filter(function (x) { return /^image/.test(x.tipo || ""); }).length;
+    var link = location.origin + location.pathname.replace(/admin\.html$/, "") + "fotos.html";
+    var porDesafio = {};
+    L.forEach(function (x) { if (x.desafio) porDesafio[x.desafio] = (porDesafio[x.desafio] || 0) + 1; });
+    c.innerHTML = '<div class="cards"><div class="card"><b>' + L.length + '</b><span>Arquivos enviados</span></div><div class="card"><b>' + fotos + '</b><span>Fotos</span></div><div class="card"><b>' + (L.length - fotos) + '</b><span>Vídeos</span></div></div>' +
+      '<div class="foto" style="margin-bottom:24px"><h2>Link para os convidados</h2><p><a href="' + link + '" target="_blank">' + esc(link) + '</a></p><p>Tudo cai na pasta <b>Casamento Tainara &amp; Renan — Fotos e vídeos dos convidados</b> do Google Drive (conta akaynuxbox@gmail.com), em qualidade original.</p></div>' +
+      (Object.keys(porDesafio).length ? '<h2>Desafios mais feitos</h2><p>' + Object.keys(porDesafio).sort(function (a, b) { return porDesafio[b] - porDesafio[a]; }).map(function (k) { return esc(k) + " <b>(" + porDesafio[k] + ")</b>"; }).join(" · ") + "</p>" : "") +
+      '<h2>Últimos envios</h2><div class="fotos">' + (L.length ? L.map(function (x) {
+        return '<a class="foto" href="https://drive.google.com/file/d/' + encodeURIComponent(x.drive_id) + '/view" target="_blank" style="text-decoration:none;color:inherit"><div class="prev" style="background-image:url(\'https://drive.google.com/thumbnail?id=' + encodeURIComponent(x.drive_id) + '&sz=w400\')">' + (/^video/.test(x.tipo || "") ? "vídeo" : "") + '</div><small>' + esc(x.nome || "convidado") + (x.desafio ? " · " + esc(x.desafio) : "") + "<br>" + data(x.criado_em) + "</small></a>";
+      }).join("") : "<p>Nenhum envio ainda.</p>") + "</div>";
   }
 
   async function cotas(c) {

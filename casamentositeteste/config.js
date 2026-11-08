@@ -22,6 +22,23 @@ window.CASAMENTO = {
   // Quanto tempo a cota fica segura esperando o Pix
   reservaHoras: 48,
 
+  // Álbum dos convidados (fotos e vídeos vão para o Google Drive)
+  album: { webapp: "" },
+  desafiosFoto: [
+    "Selfie com os noivos",
+    "Um brinde com alguém que você acabou de conhecer",
+    "A melhor dança da pista",
+    "Careta com a sua mesa",
+    "O detalhe mais bonito da decoração",
+    "Alguém com as cores do cortejo",
+    "Os padrinhos aprontando",
+    "Um abraço de família",
+    "O momento do sim",
+    "O sapato mais bonito da festa",
+    "Vídeo de 10 segundos com um recado pros noivos",
+    "Recrie uma foto antiga com quem veio com você"
+  ],
+
   whatsapp: "5511994064761",
   mapa: "https://www.google.com/maps/search/?api=1&query=Av.+Cel.+Sezefredo+Fagundes,+7505+-+Jardim+das+Pedras,+S%C3%A3o+Paulo+-+SP",
 

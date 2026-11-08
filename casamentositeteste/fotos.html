@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nosso álbum · Tainara &amp; Renan</title>
+<meta name="description" content="Mande as fotos e vídeos que você tirou no casamento da Tainara e do Renan.">
+<meta name="theme-color" content="#1d3a2b">
+<meta name="robots" content="noindex">
+<link rel="icon" href="img/tobias.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..500,0..100,0..1;1,9..144,300..500,0..100,0..1&family=Homemade+Apple&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=14">
+<style>
+.album-topo{background:var(--verde);color:var(--papel);padding:22px 24px;display:flex;justify-content:space-between;align-items:center}
+.album-topo a{color:var(--papel);text-decoration:none}
+.album-topo .monograma{width:auto;font-size:24px}
+.album-topo small{font:600 12px var(--sans);letter-spacing:.06em;text-transform:uppercase;opacity:.85}
+.album{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+.album .titulo{margin-bottom:16px}
+.passo{background:#fff;border:1px solid var(--cinza);padding:24px;margin-top:22px}
+.passo h2{font:600 13px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--terra);margin:0 0 14px}
+.desafios{display:flex;flex-wrap:wrap;gap:8px}
+.desafio{border:1px solid var(--linha);background:var(--papel);color:var(--verde);padding:9px 13px;font:500 14px var(--sans);cursor:pointer;border-radius:999px;text-align:left}
+.desafio[aria-pressed=true]{background:var(--verde);color:var(--papel);border-color:var(--verde)}
+.enviar-area{display:grid;gap:12px}
+.enviar-area input[type=file]{display:none}
+.btn-grande{width:100%;min-height:64px;justify-content:center;font-size:16px}
+.dica{font-size:14px;color:var(--texto);margin:0}
+.fila{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:10px}
+.fila li{display:grid;grid-template-columns:56px 1fr;gap:12px;align-items:center}
+.fila .mini{width:56px;height:56px;background:var(--papel-2) center/cover;display:grid;place-items:center;font-size:11px;color:var(--texto)}
+.fila .nome-arq{font-size:14px;color:var(--tinta);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fila .prog{height:6px;background:var(--papel-2);margin-top:6px;overflow:hidden}
+.fila .prog i{display:block;height:100%;width:0;background:var(--verde);transition:width .2s}
+.fila .st{font-size:12px;color:var(--texto);margin-top:4px}
+.fila .ok .st{color:var(--verde);font-weight:600}
+.fila .erro .st{color:#a3402c;font-weight:600}
+.obrigado{display:none;margin-top:22px;background:var(--verde);color:var(--papel);padding:24px}
+.obrigado.on{display:block}
+.obrigado p{margin:0;font:400 24px var(--serif);font-variation-settings:"SOFT" 0,"WONK" 1}
+.obrigado small{display:block;margin-top:8px;font-size:14px;opacity:.85}
+</style>
+</head>
+<body>
+<header class="album-topo">
+  <a class="monograma" href="./">t / R</a>
+  <small>09 · 07 · 2027</small>
+</header>
+
+<main class="album">
+  <p class="rotulo rotulo--terra">Nosso álbum</p>
+  <h1 class="titulo">Clicou? Manda pra gente.</h1>
+  <p class="corpo">Toda foto e todo vídeo que você fizer hoje vira parte da nossa memória. Pode mandar quantos quiser, de qualquer jeito: bonito, tremido, engraçado.</p>
+
+  <section class="passo">
+    <h2>01 · Seu nome (opcional)</h2>
+    <label class="campo"><span class="sr">Seu nome</span><input id="nome" type="text" maxlength="80" autocomplete="name" placeholder="Pra gente saber quem fotografou"></label>
+  </section>
+
+  <section class="passo">
+    <h2>02 · Topa um desafio? (opcional)</h2>
+    <div class="desafios" id="desafios" role="group" aria-label="Desafios de foto"></div>
+  </section>
+
+  <section class="passo">
+    <h2>03 · Escolha as fotos e vídeos</h2>
+    <div class="enviar-area">
+      <input id="arquivos" type="file" accept="image/*,video/*" multiple>
+      <button class="btn btn--escuro btn-grande" type="button" id="btnEscolher">Escolher fotos e vídeos <span aria-hidden="true">↑</span></button>
+      <p class="dica">Fotos e vídeos na qualidade original. Dá pra escolher vários de uma vez. Deixe esta página aberta até terminar.</p>
+    </div>
+    <ul class="fila" id="fila" aria-live="polite"></ul>
+  </section>
+
+  <div class="obrigado" id="obrigado" role="status">
+    <p>Recebemos! Obrigado por guardar esse dia com a gente. ♥</p>
+    <small id="obrigadoTxt"></small>
+  </div>
+</main>
+
+<script src="config.js?v=14"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(function () {
+  var C = window.CASAMENTO, AL = C.album || {};
+  var db = (C.supabaseUrl && window.supabase) ? window.supabase.createClient(C.supabaseUrl, C.supabaseAnonKey, { auth: { persistSession: false } }) : null;
+  var $ = function (s) { return document.querySelector(s); };
+  var DESAFIOS = C.desafiosFoto || [];
+  var desafio = "";
+
+  // nome lembrado neste celular
+  var inpNome = $("#nome");
+  try { inpNome.value = localStorage.getItem("album_nome") || ""; } catch (e) {}
+  inpNome.addEventListener("change", function () { try { localStorage.setItem("album_nome", inpNome.value.trim()); } catch (e) {} });
+
+  // desafios
+  var box = $("#desafios");
+  DESAFIOS.forEach(function (d) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "desafio"; b.textContent = d; b.setAttribute("aria-pressed", "false");
+    b.addEventListener("click", function () {
+      var on = b.getAttribute("aria-pressed") !== "true";
+      box.querySelectorAll(".desafio").forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+      desafio = on ? d : "";
+    });
+    box.appendChild(b);
+  });
+  var q = new URLSearchParams(location.search).get("desafio");
+  if (q) box.querySelectorAll(".desafio").forEach(function (b, i) { if (String(i + 1) === q) b.click(); });
+
+  // envio
+  var inp = $("#arquivos"), fila = $("#fila"), enviados = 0;
+  $("#btnEscolher").addEventListener("click", function () { inp.click(); });
+  inp.addEventListener("change", function () {
+    Array.prototype.slice.call(inp.files).forEach(enviar);
+    inp.value = "";
+  });
+
+  function itemFila(file) {
+    var li = document.createElement("li");
+    li.innerHTML = '<div class="mini"></div><div><div class="nome-arq"></div><div class="prog"><i></i></div><div class="st">Na fila…</div></div>';
+    li.querySelector(".nome-arq").textContent = file.name || "arquivo";
+    if (/^image\//.test(file.type)) { try { li.querySelector(".mini").style.backgroundImage = "url('" + URL.createObjectURL(file) + "')"; } catch (e) {} }
+    else li.querySelector(".mini").textContent = "vídeo";
+    fila.prepend(li);
+    return li;
+  }
+
+  function tipoDe(file) {
+    if (file.type) return file.type;
+    var ext = (String(file.name || "").split(".").pop() || "").toLowerCase();
+    return { heic: "image/heic", heif: "image/heif", jpg: "image/jpeg", jpeg: "image/jpeg", png: "image/png", mov: "video/quicktime", mp4: "video/mp4", m4v: "video/mp4", "3gp": "video/3gpp", webm: "video/webm" }[ext] || "";
+  }
+
+  async function enviar(file) {
+    var li = itemFila(file), st = li.querySelector(".st"), bar = li.querySelector(".prog i");
+    var tipo = tipoDe(file);
+    if (!AL.webapp) { li.className = "erro"; st.textContent = "O álbum ainda não está aberto."; return; }
+    if (!/^(image|video)\//.test(tipo)) { li.className = "erro"; st.textContent = "Esse arquivo não é foto nem vídeo."; return; }
+    if (file.size > 2 * 1024 * 1024 * 1024) { li.className = "erro"; st.textContent = "Arquivo maior que 2 GB."; return; }
+    var nome = inpNome.value.trim().slice(0, 80);
+    st.textContent = "Preparando…";
+    var sessao;
+    try {
+      var r = await fetch(AL.webapp, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ tipo: tipo, tamanho: file.size, arquivo: file.name, nome: nome, desafio: desafio, origem: location.origin }) });
+      sessao = await r.json();
+    } catch (e) { console.warn(e); }
+    if (!sessao || !sessao.url) { li.className = "erro"; st.textContent = "Não foi. Tente de novo em instantes."; console.warn(sessao); return; }
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("PUT", sessao.url);
+    xhr.setRequestHeader("Content-Type", tipo);
+    xhr.upload.onprogress = function (e) { if (e.lengthComputable) { var p = Math.round(100 * e.loaded / e.total); bar.style.width = p + "%"; st.textContent = "Enviando… " + p + "%"; } };
+    xhr.onload = async function () {
+      var d = {}; try { d = JSON.parse(xhr.responseText); } catch (e) {}
+      if (xhr.status >= 200 && xhr.status < 300) {
+        bar.style.width = "100%"; li.className = "ok"; st.textContent = "Enviado ✓";
+        if (db && d.id) {
+          try { await db.from("fotos_convidados").insert({ drive_id: d.id, tipo: tipo, bytes: file.size, nome: nome || null, desafio: desafio || null }); } catch (e) { console.warn(e); }
+        }
+        enviados++;
+        $("#obrigado").classList.add("on");
+        $("#obrigadoTxt").textContent = enviados + (enviados > 1 ? " arquivos enviados" : " arquivo enviado") + ". Pode mandar mais quando quiser.";
+      } else { li.className = "erro"; st.textContent = "Não foi. Tente de novo em instantes."; console.warn(xhr.status, xhr.responseText); }
+    };
+    xhr.onerror = function () { li.className = "erro"; st.textContent = "A conexão caiu. Tente de novo."; };
+    st.textContent = "Enviando…";
+    xhr.send(file);
+  }
+})();
+</script>
+</body>
+</html>
