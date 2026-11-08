@@ -14,6 +14,13 @@
   quem.innerHTML = esc(sessao.user.email) + ' &nbsp; <button class="btn claro mini" id="sair">Sair</button>';
   document.getElementById("sair").onclick = async function () { await db.auth.signOut(); location.reload(); };
 
+  var adm = await db.rpc("eh_admin");
+  if (adm.data !== true) {
+    app.innerHTML = '<div class="login"><h2>Sem acesso ao painel</h2><p>O e-mail <b>' + esc(sessao.user.email) +
+      '</b> ainda não está liberado. Entre com um e-mail da lista de administradores ou peça para incluir este.</p></div>';
+    return;
+  }
+
   var aba = "reservas";
   render();
 
