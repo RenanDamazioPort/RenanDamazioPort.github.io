@@ -23,7 +23,7 @@ window.CASAMENTO = {
   reservaHoras: 48,
 
   // Álbum dos convidados (fotos e vídeos vão para o Google Drive)
-  album: { webapp: "" },
+  album: { webapp: "https://script.google.com/macros/s/AKfycbyhBzGlqG9fp0OJ6YkvxwfluL2xR20keaqL1TAEymOiQoJL_z1sbBOpAe2OfSs0aVPU/exec" },
   desafiosFoto: [
     "Selfie com os noivos",
     "Um brinde com alguém que você acabou de conhecer",
