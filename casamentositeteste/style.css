@@ -82,7 +82,7 @@ a{color:inherit}
 .traje{margin-top:8px;padding-top:28px;border-top:1px solid var(--cinza)}
 .traje .rotulo{margin-bottom:10px}
 .traje .corpo{font-size:16px;margin-bottom:18px;max-width:560px}
-.paleta{list-style:none;padding:0;margin:0 0 18px;display:grid;grid-template-columns:repeat(6,1fr);gap:10px;max-width:600px}
+.paleta{list-style:none;padding:0;margin:0 0 18px;display:grid;grid-template-columns:repeat(7,1fr);gap:10px;max-width:680px}
 .paleta li{display:flex;flex-direction:column;gap:3px;min-width:0}
 .paleta i{display:block;height:34px;border-radius:1px}
 .paleta span{font:600 12px var(--sans);color:var(--verde);margin-top:4px}
@@ -234,7 +234,7 @@ a{color:inherit}
   .rodape{padding:56px 24px 40px;min-height:0}
   .rodape__assina{padding-top:64px;font-size:12px}
   .assinatura-linha{margin-top:40px}
-  .paleta{grid-template-columns:repeat(3,1fr);gap:14px 10px}
+  .paleta{grid-template-columns:repeat(4,1fr);gap:14px 8px}
   .jornada{width:100vw;max-width:100vw;max-height:100svh;height:100svh;margin:0}
   .jornada__etapas{gap:12px;padding:22px 24px 0;font-size:11px;padding-right:60px}
   .etapa{padding:0 24px}
