@@ -277,3 +277,9 @@ a{color:inherit}
   opacity:.48;mix-blend-mode:multiply;
 }
 .hero__lado::before,.dia::before,.rodape::before{opacity:.16;mix-blend-mode:soft-light}
+
+/* Passeio original do Tobias: preserva toda a largura e o personagem inteiro. */
+.tobias-passeio{width:calc(100% - 2 * var(--pad));max-width:1100px;margin:0 auto 30px;position:relative}
+.tobias-passeio video{display:block;width:100%;height:auto;aspect-ratio:1920 / 500;object-fit:cover;object-position:center bottom;mix-blend-mode:multiply}
+.tobias-passeio__controle{display:block;margin:8px 0 0 auto;padding:8px 0;border:0;background:transparent;color:var(--texto);font:500 12px var(--sans);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+@media(max-width:820px){.tobias-passeio{width:calc(100% - 48px);margin-bottom:24px}}
