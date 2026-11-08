@@ -89,7 +89,6 @@
     var box = $("#cartoes");
     box.innerHTML = "";
     catalogo.forEach(function (p, i) {
-      var meta = p.opcoes.reduce(function (s, o) { return s + o.valor * o.total; }, 0);
       var tot = p.opcoes.reduce(function (s, o) { return s + o.total; }, 0);
       var livres = p.opcoes.reduce(function (s, o) { return s + o.livres; }, 0);
       var min = Math.min.apply(null, p.opcoes.map(function (o) { return o.valor; }));
@@ -98,14 +97,19 @@
       el.className = "cartao revela visivel" + (livres <= 0 ? " esgotado" : "");
       el.style.setProperty("--cor", p.cor);
       el.innerHTML =
+        '<div class="cartao__img" hidden></div>' +
         '<p class="cartao__num">' + String(i + 1).padStart(2, "0") + "</p>" +
         '<h3 class="cartao__nome"></h3><hr>' +
-        '<p class="cartao__meta">Plano ' + reais(meta) + "</p>" +
         '<p class="cartao__cotas">' + descreverCotas(p) + "</p>" +
         (db ? '<p class="cartao__livres">' + livres + " de " + tot + ' cotas disponíveis</p><div class="barra"><i></i></div>' : "") +
         '<p class="cartao__preco">' + (unico ? reais(min) + " / cota" : "A partir de " + reais(min)) + "</p>" +
         '<button class="btn btn--escuro" type="button"' + (livres <= 0 ? " disabled" : "") + ">" + (livres <= 0 ? "Esgotado" : 'Escolher cota <span aria-hidden="true">→</span>') + "</button>";
       $(".cartao__nome", el).textContent = p.nome;
+      (function (box) {
+        var im = new Image();
+        im.onload = function () { box.style.backgroundImage = "url('" + im.src + "')"; box.hidden = false; el.classList.add("com-img"); };
+        im.src = "img/presentes/" + p.id + ".jpg";
+      })($(".cartao__img", el));
       $("button", el).addEventListener("click", function () { abrirJornada(p, i); });
       box.appendChild(el);
       var barra = $(".barra i", el);

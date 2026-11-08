@@ -120,10 +120,13 @@ a{color:inherit}
 .presentes{padding:100px var(--pad) 75px}
 .presentes__topo{display:flex;justify-content:space-between;align-items:flex-start;gap:40px}
 .presentes .titulo{font-size:clamp(36px,4.2vw,60px)}
+.sem-obrigacao{margin:28px 0 0;padding:20px 26px;border-left:4px solid var(--terra);background:#fff;font:400 clamp(17px,1.4vw,20px)/1.45 var(--serif);font-style:italic;font-variation-settings:"SOFT" 0,"WONK" 1;color:var(--verde);max-width:1268px}
+.sem-obrigacao span{color:var(--terra);font-style:normal;margin-right:6px}
+.cartao__img{margin:-25px -28px 24px;aspect-ratio:4/3;background:var(--papel-2) center/cover no-repeat}
 .passos{list-style:none;margin:20px 0 56px;padding:22px 29px;background:var(--papel-2);display:flex;flex-wrap:wrap;gap:12px 60px;font:600 16px var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--verde)}
 .passos b{margin-right:12px}
 .cartoes{display:grid;grid-template-columns:repeat(3,1fr);gap:50px 22px}
-.cartao{position:relative;background:#fff;border:1px solid var(--cinza);border-top:18px solid var(--cor);padding:25px 28px 42px;display:flex;flex-direction:column;min-height:520px}
+.cartao{position:relative;background:#fff;border:1px solid var(--cinza);border-top:18px solid var(--cor);padding:25px 28px 42px;display:flex;flex-direction:column;min-height:440px}
 .cartao__num{font:600 15px var(--sans);color:var(--cor);margin:0 0 26px}
 .cartao__nome{font:400 clamp(30px,2.65vw,38px)/1.2 var(--serif);font-variation-settings:"SOFT" 0,"WONK" 1;color:var(--verde);margin:0;white-space:pre-line;min-height:2.4em}
 .cartao hr{border:0;height:1px;background:var(--cinza);margin:22px 0 30px}
@@ -211,6 +214,7 @@ a{color:inherit}
   .presentes__topo .tobias{display:none}
   .cartoes{grid-template-columns:1fr;gap:22px}
   .cartao{min-height:0;border-top-width:10px;padding:24px 21px 22px}
+  .cartao__img{margin:-24px -21px 20px}
   .cartao__preco{margin:22px 0 18px;padding-top:0}
   .btn--escuro,.btn--claro{min-width:0;width:100%}
   .form .btn{justify-self:stretch}

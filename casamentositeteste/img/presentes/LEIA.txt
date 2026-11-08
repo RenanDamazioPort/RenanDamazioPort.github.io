@@ -1,0 +1,3 @@
+Coloque aqui as imagens dos presentes (JPG, horizontal 4:3, ~1200x900):
+viagem.jpg · dias.jpg · a-dois.jpg · jantar.jpg · tainara.jpg · renan.jpg
+Elas aparecem sozinhas no topo de cada cartão.
