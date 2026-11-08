@@ -3,9 +3,9 @@
    Edite só este arquivo para trocar dados, Pix e conexão do banco.
 ------------------------------------------------------------------- */
 window.CASAMENTO = {
-  // Banco de dados gratuito (Supabase). Vazio = modo demonstração.
-  supabaseUrl: "",
-  supabaseAnonKey: "",
+  // Banco de dados gratuito (Supabase · projeto casamento-tainara-renan)
+  supabaseUrl: "https://ijvfslilqwuttazquikm.supabase.co",
+  supabaseAnonKey: "sb_publishable_RQ3_ZuORhWztJGjs2bLmiw_AQC1gSyu", // chave pública (pode ficar no site)
 
   // Pix — quando a chave estiver preenchida, o site gera QR Code e
   // "copia e cola" com o valor exato e o código da reserva.
