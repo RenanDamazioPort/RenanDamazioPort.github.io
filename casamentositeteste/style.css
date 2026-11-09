@@ -285,3 +285,20 @@ a{color:inherit}
 @media(max-width:820px){.tobias-passeio{width:calc(100% - 48px);margin-bottom:24px}}
 
 .tobias-passeio video{-webkit-mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent),linear-gradient(to bottom,transparent,#000 20%,#000 96%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent),linear-gradient(to bottom,transparent,#000 20%,#000 96%,transparent);mask-composite:intersect}
+
+/* Fundo contínuo de ponta a ponta para o passeio do Tobias. */
+.tobias-passeio{
+  width:100%;max-width:none;margin:0;padding:24px var(--pad) 28px;
+  background:#f7f1e4;isolation:isolate;
+}
+.tobias-passeio::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background-image:var(--textura-papel);background-size:720px 720px;
+  opacity:.24;mix-blend-mode:multiply;
+}
+.tobias-passeio video{max-width:1100px;margin:0 auto;mix-blend-mode:darken}
+.tobias-passeio__controle{width:max-content;margin:8px max(0px,calc((100% - 1100px)/2)) 0 auto}
+@media(max-width:820px){
+  .tobias-passeio{width:100%;margin:0;padding:20px 24px 24px}
+  .tobias-passeio__controle{margin-right:0}
+}
