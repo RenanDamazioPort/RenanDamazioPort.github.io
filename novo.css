@@ -1,0 +1,190 @@
+/* =====================================================================
+   Renan Damazio — proposta de home (novo.html)
+   Carregado por último: sobrescreve o necessário e deixa o resto
+   (modal, cases, easter egg, jogo) exatamente como está hoje.
+===================================================================== */
+.novo{
+  --sans:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --mono:"JetBrains Mono","Courier New",monospace;
+  --papel:#f5f2e9;
+}
+body.novo{font-family:var(--sans)}
+.novo .mono,.novo .nav a,.novo .brand small,.novo .section-head,.novo footer{font-family:var(--mono)}
+
+/* ---------- topo ---------- */
+.novo header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px var(--pad);
+}
+.novo header .brand{display:flex!important;gap:2px;line-height:1}
+.novo .brand strong{font-size:17px;font-weight:800;letter-spacing:-.035em}
+.novo .brand small{font-size:9px;letter-spacing:.18em;color:var(--muted);margin-top:4px}
+.novo .nav{gap:clamp(14px,2vw,30px);align-items:center}
+.novo .nav a{position:relative;font-size:10px;letter-spacing:.12em;padding:4px 0}
+.novo .nav a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;background:var(--acid);
+  transform:scaleX(0);transform-origin:right;transition:transform .45s cubic-bezier(.19,1,.22,1)}
+.novo .nav a:hover{color:var(--acid);text-shadow:none}
+.novo .nav a:hover::after{transform:scaleX(1);transform-origin:left}
+
+/* ---------- hero ---------- */
+.novo .hero{
+  position:relative;min-height:100svh;overflow:hidden;border-bottom:1px solid var(--line);
+  padding:clamp(96px,13vh,150px) var(--pad) clamp(24px,4vh,44px);
+  display:grid;grid-template-rows:auto 1fr auto auto;gap:clamp(18px,3vh,36px);
+}
+.novo .hero:before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:linear-gradient(rgba(53,243,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(53,243,255,.045) 1px,transparent 1px);
+  background-size:clamp(70px,8vw,130px) clamp(70px,8vw,130px);
+  mask-image:radial-gradient(130% 85% at 30% 30%,#000 10%,transparent 72%);
+  -webkit-mask-image:radial-gradient(130% 85% at 30% 30%,#000 10%,transparent 72%);
+}
+.novo .hero > *:not(.hero-emoji-layer){position:relative;z-index:2}
+.novo .hero-emoji-layer{z-index:1;inset:clamp(96px,13vh,150px) 0 34% 0;opacity:.82}
+
+.novo .hero-top{
+  display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+  font:400 10px/1 var(--mono);letter-spacing:.14em;color:var(--muted);
+  border-bottom:1px solid var(--line);padding-bottom:14px;
+}
+.novo .hero-status{display:flex;align-items:center;gap:9px;color:var(--papel)}
+.novo .dot{width:7px;height:7px;border-radius:50%;background:var(--acid);box-shadow:0 0 14px var(--acid)}
+
+.novo .hero-mid{align-self:center;display:flex;flex-direction:column;gap:clamp(10px,1.4vh,20px)}
+.novo .hero-nome{
+  margin:0;display:flex;flex-direction:column;
+  font-size:clamp(58px,12.4vw,196px);font-weight:900;line-height:.82;letter-spacing:-.055em;
+}
+.novo .hero-nome .l1{color:transparent;-webkit-text-stroke:1.4px var(--papel);text-stroke:1.4px var(--papel)}
+.novo .hero-nome .l2{color:var(--papel)}
+@supports not ((-webkit-text-stroke:1px #000) or (text-stroke:1px #000)){
+  .novo .hero-nome .l1{color:var(--papel);opacity:.45}
+}
+.novo .hero-funcao{
+  margin:clamp(6px,1vh,14px) 0 0;font:500 clamp(10px,1vw,12px)/1 var(--mono);
+  letter-spacing:.24em;color:var(--muted);
+}
+.novo .hero-claim{margin:clamp(10px,1.6vh,22px) 0 0}
+.novo .hero-rotator{
+  position:relative;display:block;height:1.12em;overflow:hidden;
+  font-size:clamp(26px,4.3vw,62px);font-weight:800;letter-spacing:-.045em;line-height:1.1;
+  color:var(--acid);
+}
+.novo .hero-word{
+  position:absolute;left:0;top:0;white-space:nowrap;
+  opacity:0;transform:translateY(55%);filter:blur(6px);transition:.6s cubic-bezier(.19,1,.22,1);
+}
+.novo .hero-word.is-active{opacity:1;transform:none;filter:none}
+.novo .hero-word br{display:none}
+
+.novo .hero-bottom{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(20px,3vw,56px);align-items:end;
+  border-top:1px solid var(--line);padding-top:clamp(18px,2.6vh,30px);
+}
+.novo .hero-copy{
+  margin:0;max-width:62ch;font-size:clamp(14px,1.18vw,18px);line-height:1.55;color:#c7c5bd;
+  opacity:1;transform:none;filter:none;
+}
+.novo .hero-copy strong{color:var(--papel);font-weight:600}
+.novo .hero-acoes{display:flex;gap:10px;flex-wrap:wrap;opacity:1;transform:none}
+
+.novo .btn-acid,.novo .btn-linha{
+  display:inline-flex;align-items:center;gap:10px;white-space:nowrap;
+  padding:14px 20px;font:500 10px/1 var(--mono);letter-spacing:.14em;
+  border:1px solid var(--acid);transition:.35s cubic-bezier(.19,1,.22,1);
+}
+.novo .btn-acid{background:var(--acid);color:#0a0a0a}
+.novo .btn-acid:hover{background:transparent;color:var(--acid)}
+.novo .btn-linha{border-color:#3d3d38;color:var(--papel)}
+.novo .btn-linha:hover{border-color:var(--cyan);color:var(--cyan)}
+.novo .btn-acid span,.novo .btn-linha span{transition:transform .35s cubic-bezier(.19,1,.22,1)}
+.novo .btn-acid:hover span{transform:translateY(3px)}
+.novo .btn-linha:hover span{transform:translate(3px,-3px)}
+
+.novo .hero-marcas{
+  list-style:none;margin:0;padding:clamp(14px,2vh,20px) 0 0;border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:8px clamp(18px,3.4vw,52px);
+  font:400 10px/1 var(--mono);letter-spacing:.16em;color:#6f6f69;
+}
+.novo .hero-marcas li{position:relative}
+.novo .hero-marcas li+li::before{content:"";position:absolute;left:clamp(-9px,-1.7vw,-26px);top:50%;width:3px;height:3px;border-radius:50%;background:#3b3b36;transform:translateY(-50%)}
+
+/* ---------- seções ---------- */
+.novo .section{padding:clamp(64px,9vw,120px) var(--pad)}
+.novo .section-head{
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+  border-top:1px solid var(--line);border-bottom:0;padding-top:14px;margin-bottom:clamp(32px,4.5vw,60px);
+  font:400 10px/1 var(--mono);letter-spacing:.14em;
+}
+.novo .section-head .muted{display:flex;align-items:center;gap:9px}
+
+/* ---------- projetos ---------- */
+.novo .projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(40px,5vw,78px) clamp(18px,2vw,30px)}
+.novo .project{position:relative;display:flex;flex-direction:column}
+.novo .project.is-destaque{grid-column:1/-1}
+.novo .visual{border-radius:0;border:1px solid #1e1e1c;transition:.5s cubic-bezier(.19,1,.22,1)}
+.novo .project.is-destaque .visual{aspect-ratio:21/9}
+.novo .project:hover .visual{transform:none;border-color:rgba(215,255,63,.5);box-shadow:0 30px 70px -40px rgba(215,255,63,.35)}
+.novo .project:hover .visual img{transform:scale(1.035)}
+.novo .project-info{align-items:baseline;padding-top:18px;border-top:1px solid var(--line);margin-top:16px}
+.novo .project-title{font-weight:800;letter-spacing:-.045em;transition:color .35s}
+.novo .project:hover .project-title{color:var(--acid)}
+.novo .project-meta{font-family:var(--mono);font-size:9px;letter-spacing:.12em}
+.novo .project-desc{margin:10px 0 0;max-width:58ch;font-size:clamp(13px,1.05vw,16px);line-height:1.5;color:#9d9b94}
+.novo .project-cta{
+  margin-top:16px;align-self:flex-start;
+  font:500 10px/1 var(--mono);letter-spacing:.14em;color:var(--muted);
+  border-bottom:1px solid #35352f;padding-bottom:5px;transition:.35s
+}
+.novo .project:hover .project-cta{color:var(--acid);border-color:var(--acid)}
+.novo .project-coming:hover .project-cta{color:var(--muted);border-color:#35352f}
+
+/* ---------- o que eu faço ---------- */
+.novo .faco-lista{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line)}
+.novo .faco-lista li{background:var(--bg);padding:clamp(26px,3vw,42px) clamp(22px,2.4vw,36px);display:flex;flex-direction:column;gap:14px}
+.novo .faco-num{font:500 10px/1 var(--mono);letter-spacing:.18em;color:var(--acid)}
+.novo .faco-lista h3{margin:0;font-size:clamp(24px,2.5vw,38px);font-weight:800;line-height:1.02;letter-spacing:-.045em}
+.novo .faco-lista p{margin:0;font-size:clamp(13px,1.05vw,16px);line-height:1.55;color:#9d9b94}
+
+/* ---------- sobre e contato ---------- */
+.novo .about-teaser{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,64px);align-items:center}
+.novo .about-teaser h2,.novo .contact h2{font-size:clamp(34px,5.4vw,86px);font-weight:900;line-height:.94;letter-spacing:-.055em;margin:0}
+.novo .about-teaser p{margin:0 0 22px;font-size:clamp(16px,1.5vw,22px);line-height:1.45;color:#c7c5bd;max-width:46ch}
+.novo .about-teaser a{margin:0}
+.novo .contact-body{display:grid;grid-template-columns:1fr auto;gap:clamp(28px,4vw,60px);align-items:end}
+.novo .contact-links{gap:6px}
+.novo .contact-links a{
+  font-size:clamp(18px,2.4vw,40px);font-weight:800;letter-spacing:-.04em;
+  border-bottom:1px solid #34342f;padding-bottom:4px;transition:.35s
+}
+.novo .contact-links a:hover{color:var(--acid);border-color:var(--acid)}
+.novo footer{font-family:var(--mono);font-size:9px;letter-spacing:.14em;padding:26px var(--pad)}
+
+/* ---------- celular ---------- */
+@media (max-width:900px){
+  .novo .faco-lista{grid-template-columns:1fr}
+  .novo .about-teaser,.novo .contact-body{grid-template-columns:1fr}
+  .novo .projects{grid-template-columns:1fr}
+  .novo .project.is-destaque .visual{aspect-ratio:16/9}
+  .novo .contact-links{justify-self:start;align-items:flex-start}
+}
+@media (max-width:700px){
+  .novo header{padding:14px 16px}
+  .novo .brand strong{font-size:15px}
+  .novo .nav{gap:12px}
+  .novo .nav a{font-size:9px;letter-spacing:.08em}
+  .novo .hero{min-height:auto;padding:104px 16px 32px;gap:26px}
+  .novo .hero-top{font-size:9px;letter-spacing:.1em}
+  .novo .hero-rotator{height:2.3em;white-space:normal}
+  .novo .hero-word{white-space:normal}
+  .novo .hero-bottom{grid-template-columns:1fr;gap:22px}
+  .novo .hero-acoes{width:100%}
+  .novo .hero-acoes a{flex:1;justify-content:space-between}
+  .novo .hero-marcas{gap:6px 18px;font-size:9px;letter-spacing:.1em}
+  .novo .hero-marcas li+li::before{left:-11px}
+  .novo .section{padding:56px 16px}
+}
+@media (prefers-reduced-motion:reduce){
+  .novo .hero-word{transition:none}
+  .novo .btn-acid,.novo .btn-linha,.novo .visual,.novo .project-cta{transition:none}
+}
