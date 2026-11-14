@@ -127,9 +127,23 @@ button{background:var(--lime);color:#121310;border:0;border-radius:4px;padding:1
   .hero-meio .hero-dir{margin-top:0;order:0}
   .hero-bottom{margin-top:24px}
 }
+
+/* 07 — Estudar com o Claude */
+.estudo{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:10px;align-items:start}
+.met{background:var(--panel);border:1px solid #2e3030;border-radius:5px;padding:22px 20px;display:flex;flex-direction:column;gap:11px}
+.met-num{font:600 10px/1 'Space Grotesk',sans-serif;letter-spacing:.18em;color:var(--lime)}
+.met h3{font:600 17px/1.25 'Space Grotesk',sans-serif;letter-spacing:-.03em;margin:0}
+.met p{margin:0;font-size:13.5px;line-height:1.5;color:var(--sub)}
+.met-prompt{position:relative;margin-top:4px;background:#141515;border:1px solid #2a2c2c;border-radius:4px;padding:14px 14px 44px}
+.met-prompt code{display:block;font:400 12.5px/1.6 ui-monospace,'Cascadia Mono',Consolas,monospace;color:#cfd0cb;white-space:pre-wrap;word-break:break-word}
+.met-copiar{position:absolute;right:10px;bottom:10px;background:none;border:1px solid #3a3d3d;border-radius:3px;
+  color:var(--sub);font:600 9.5px/1 'Space Grotesk',sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:7px 10px;transition:.2s}
+.met-copiar:hover{border-color:var(--lime);color:var(--lime)}
+.met-copiar.ok{border-color:var(--lime);color:#101111;background:var(--lime)}
+@media (max-width:640px){.estudo{grid-template-columns:1fr}}
 </style></head>
 <body>
-<header><div class="wrap head"><a href="#inicio" class="brand">RENAN<span> / </span>CAREER OS</a><nav><a href="#visao">Visão</a><a href="#roadmap">Roadmap</a><a href="#red2go">RED2GO</a><a href="#execucao">Execução</a><a href="#notas">Notas</a></nav><span class="micro muted">PERSONAL SPACE · V1.0</span></div></header>
+<header><div class="wrap head"><a href="#inicio" class="brand">RENAN<span> / </span>CAREER OS</a><nav><a href="#visao">Visão</a><a href="#roadmap">Roadmap</a><a href="#red2go">RED2GO</a><a href="#execucao">Execução</a><a href="#notas">Notas</a><a href="#estudo">Estudo</a></nav><span class="micro muted">PERSONAL SPACE · V1.0</span></div></header>
 <main id="inicio">
 <div class="wrap"><div class="hero"><div class="hero-top"><span class="eyebrow accent">Career strategy / 2027—2030</span><span class="pill">Redhook Creative Community · RCC E5/26</span></div><div class="hero-meio"><h1>THE NEXT<br><em>CREATIVE</em><br>CHAPTER.</h1>
 <div class="hero-dir">
@@ -165,6 +179,14 @@ button{background:var(--lime);color:#121310;border:0;border-radius:4px;padding:1
 <section id="competencias"><div class="wrap"><div class="section-head"><div><span class="eyebrow accent">05 / Skill architecture</span><h2>O que preciso<br>desenvolver.</h2></div></div><div class="skills"><div class="skill"><span class="badge">01 / THINKING</span><h3>Conceito e cultura</h3><p>Insights, tensão cultural, plataforma de campanha e storytelling.</p></div><div class="skill"><span class="badge">02 / CRAFT</span><h3>Direção de arte</h3><p>Composição, imagem, tipografia, sistemas e consistência visual.</p></div><div class="skill"><span class="badge">03 / AI</span><h3>Pipeline criativo</h3><p>Experimentação, prompting, direção de imagens e refinamento.</p></div><div class="skill"><span class="badge">04 / LEADERSHIP</span><h3>Direção de pessoas</h3><p>Briefing, crítica construtiva, delegação e tomada de decisão.</p></div><div class="skill"><span class="badge">05 / COLLAB</span><h3>Dupla criativa</h3><p>Campanhas com parceria de redação e desenvolvimento conjunto de ideias.</p></div><div class="skill"><span class="badge">06 / PRESENCE</span><h3>Portfólio e mercado</h3><p>Case writing, apresentação, networking e repertório de premiações.</p></div></div></div></section>
 <section id="notas"><div class="wrap"><div class="section-head"><div><span class="eyebrow accent">06 / Personal notebook</span><h2>Registro de bordo.</h2></div><p class="section-note">Anote feedbacks das mentorias, decisões, mudanças de direção e aprendizados. Salvo localmente no navegador.</p></div><label class="micro muted" for="journal">Minhas anotações</label><textarea id="journal" placeholder="O que aprendi, o que vou testar, o que preciso melhorar..."></textarea><div><button id="save-notes">Salvar neste navegador</button> <span class="notice" id="save-status" role="status"></span></div><p class="notice">Importante: este site é público para quem conhecer a URL. Não adicione dados sensíveis. Os textos salvos aqui não são sincronizados com seu My Brain, GitHub ou outros aparelhos.</p></div></section>
 
+
+<section id="estudo"><div class="wrap"><div class="section-head"><div><span class="eyebrow accent">07 / Método de estudo</span><h2>Estudar com<br>o Claude.</h2></div><p class="section-note">Cinco jeitos de transformar as gravações da RCC em repertório que você usa no trabalho. Cada cartão tem o prompt pronto — copie, troque o que está entre colchetes e cole numa conversa nova.</p></div><div class="estudo" id="estudo-lista">
+<article class="met"><span class="met-num">01</span><h3>Material extenso vira resumo útil</h3><p>Anexe o PDF, a apostila ou a transcrição da oficina e peça a estrutura, não o resumo bonitinho.</p><div class="met-prompt"><code></code><button type="button" class="met-copiar">Copiar</button></div></article>
+<article class="met"><span class="met-num">02</span><h3>Modo socrático: pergunta em vez de resposta</h3><p>Serve para o que você precisa entender de verdade, não só consultar. Força você a chegar na conclusão.</p><div class="met-prompt"><code></code><button type="button" class="met-copiar">Copiar</button></div></article>
+<article class="met"><span class="met-num">03</span><h3>Cronograma em cima do que você tem</h3><p>Com 27 gravações na fila, a ordem importa mais que a disciplina.</p><div class="met-prompt"><code></code><button type="button" class="met-copiar">Copiar</button></div></article>
+<article class="met"><span class="met-num">04</span><h3>Flashcards e quiz para fixar</h3><p>Assistir não é aprender. O que fixa é tentar lembrar sem olhar.</p><div class="met-prompt"><code></code><button type="button" class="met-copiar">Copiar</button></div></article>
+<article class="met"><span class="met-num">05</span><h3>Um Projeto por disciplina</h3><p>Nos Projetos do Claude você sobe os arquivos uma vez e deixa instruções fixas. Vale um por frente de estudo: direção de criação, IA aplicada, portfólio.</p><div class="met-prompt"><code></code><button type="button" class="met-copiar">Copiar</button></div></article>
+</div></div></section>
 </main>
 <div class="wrap"><footer class="footer"><div><div class="brand">KEEP<br>MOVING<span class="accent">.</span></div><p class="notice">Career OS © 2026 · Renan Damazio</p></div><div class="chip">● BUILT FOR THE NEXT CHAPTER</div></footer></div>
 <script>
@@ -305,6 +327,31 @@ document.getElementById('pop-fecha').addEventListener('click', function(){ pop.c
 pop.addEventListener('click', function(e){ if (e.target === pop) pop.close() });
 
 atualizar();
+})();
+</script>
+
+<script>
+(function(){
+'use strict';
+var PROMPTS = ["Vou anexar o material da oficina [NOME DA OFICINA]. Me devolva três coisas: 1) os 3 conceitos centrais, em uma frase cada; 2) o que cada um muda na minha direção de arte na prática; 3) uma pergunta que eu preciso saber responder depois de estudar isso.", "Não me dê a resposta. Me faça perguntas, uma de cada vez, até eu chegar sozinho na conclusão sobre [TEMA]. Se eu errar, não corrija direto: pergunte de outro jeito. Só confirme quando eu acertar.", "Tenho 27 gravações da Maratona de Oficinas da RCC e [QUANTAS] horas livres por semana. Monte um cronograma por semanas, priorizando as que mais ajudam quem quer sair de direção de arte para direção de criação. Diga o porquê de cada posição na ordem.", "Com base na oficina [NOME DA OFICINA], crie 10 flashcards (pergunta na frente, resposta no verso). Depois monte um quiz de 5 perguntas e espere eu responder cada uma antes de corrigir.", "Instruções fixas do Projeto: sou diretor de arte com 8 anos de experiência, indo para direção de criação. Quando eu trouxer um material deste Projeto, sempre me responda ligando o conteúdo a uma aplicação concreta em campanha. Nunca me dê resposta pronta sem antes perguntar o que eu já pensei."];
+var cartoes = document.querySelectorAll('#estudo-lista .met');
+Array.prototype.forEach.call(cartoes, function(c, i){
+  var code = c.querySelector('code');
+  code.textContent = PROMPTS[i];
+  c.querySelector('.met-copiar').addEventListener('click', function(){
+    var btn = this;
+    function feito(){ btn.textContent = 'Copiado'; btn.classList.add('ok');
+      setTimeout(function(){ btn.textContent = 'Copiar'; btn.classList.remove('ok') }, 1800) }
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(PROMPTS[i]).then(feito, selecionar);
+    } else selecionar();
+    function selecionar(){
+      var r = document.createRange(); r.selectNodeContents(code);
+      var sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+      try{ document.execCommand('copy'); feito() }catch(e){ btn.textContent = 'Selecione e copie' }
+    }
+  });
+});
 })();
 </script>
 </body></html>
