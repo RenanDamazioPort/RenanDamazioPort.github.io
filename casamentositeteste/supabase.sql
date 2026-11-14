@@ -183,7 +183,7 @@ insert into public.presentes (id, nome, cor, ordem) values
 on conflict (id) do nothing;
 
 insert into public.opcoes_cota (presente_id, valor_centavos, quantidade_total) values
-  ('viagem', 30000, 40), ('viagem', 20000, 40),
+  ('viagem', 30000, 30), ('viagem', 20000, 30),
   ('dias',   30000, 15), ('dias',   20000, 15),
   ('a-dois', 30000, 5),  ('a-dois', 20000, 15),
   ('jantar', 15000, 10),

@@ -104,6 +104,20 @@
     });
   }
 
+
+  /* ---------- ícones dos presentes ---------- */
+  var ICONES = {
+    viagem:  '<path d="M21 3 3 10l7.5 3L14 20l7-17z"/><path d="m10.5 13 4-4"/>',
+    dias:    '<circle cx="12" cy="12" r="4"/><path d="M12 3.5v2.2M12 18.3v2.2M3.5 12h2.2M18.3 12h2.2M6 6l1.6 1.6M16.4 16.4 18 18M18 6l-1.6 1.6M7.6 16.4 6 18"/>',
+    "a-dois":'<path d="M4.3 4.6 9.1 3.6l1.2 6.2c.3 1.6-.7 3-2.3 3.3s-3-.7-3.3-2.3L4.3 4.6z"/><path d="M19.7 4.6 14.9 3.6l-1.2 6.2c-.3 1.6.7 3 2.3 3.3s3-.7 3.3-2.3l.4-6.2z"/><path d="M7.6 13.1 6.9 20.4M16.4 13.1l.7 7.3M4.9 20.4h5M14.1 20.4h5"/>',
+    jantar:  '<path d="M6 3v6a2.2 2.2 0 0 0 4.4 0V3"/><path d="M8.2 11.2V21"/><path d="M16.8 3c-1.6 1.8-2.2 3.6-2.2 5.4 0 1.6.9 2.6 2.2 2.8V21"/>',
+    tainara: '<path d="M8.3 4.7c0 3.6 1.6 6 3.7 6s3.7-2.4 3.7-6c-1.4.8-2.5 1.8-3.7 3.3-1.2-1.5-2.3-2.5-3.7-3.3z"/><path d="M12 10.7V21"/><path d="M12 16.4c-1.9 0-3.2-1.1-3.7-2.7 2.1 0 3.2.9 3.7 2.7z"/>',
+    renan:   '<rect x="3.6" y="9.6" width="16.8" height="11" rx="1"/><path d="M3.1 9.6h17.8v3.6H3.1zM12 9.6v11"/><path d="M12 9.6S10.6 6 8.9 6a1.9 1.9 0 0 0 0 3.6zM12 9.6s1.4-3.6 3.1-3.6a1.9 1.9 0 0 1 0 3.6z"/>'
+  };
+  function icone(id, classe) {
+    return '<svg class="' + classe + '" viewBox="0 0 24 24" aria-hidden="true">' + (ICONES[id] || ICONES.renan) + "</svg>";
+  }
+
   function descreverCotas(p) {
     var tot = p.opcoes.reduce(function (s, o) { return s + o.total; }, 0);
     if (p.opcoes.length === 1) return tot + " cotas de " + reais(p.opcoes[0].valor);
@@ -124,11 +138,10 @@
       el.innerHTML =
         '<div class="cartao__img" hidden></div>' +
         '<p class="cartao__num">' + String(i + 1).padStart(2, "0") + "</p>" +
-        '<h3 class="cartao__nome"></h3><hr>' +
-        '<p class="cartao__cotas">' + descreverCotas(p) + "</p>" +
-        (db ? '<p class="cartao__livres">' + livres + " de " + tot + ' cotas disponíveis</p><div class="barra"><i></i></div>' : "") +
+        '<div class="cartao__cabeca">' + icone(p.id, "cartao__ico") + '<h3 class="cartao__nome"></h3></div><hr>' +
+        '<p class="cartao__livres">' + (livres <= 0 ? "Este presente já está completo ♥" : (db ? livres + " de " + tot + " cotas disponíveis" : tot + " cotas disponíveis")) + "</p>" +
         '<p class="cartao__preco">' + (unico ? reais(min) + " / cota" : "A partir de " + reais(min)) + "</p>" +
-        '<button class="btn btn--escuro" type="button"' + (livres <= 0 ? " disabled" : "") + ">" + (livres <= 0 ? "Esgotado" : 'Escolher cota <span aria-hidden="true">→</span>') + "</button>";
+        '<button class="btn btn--escuro" type="button"' + (livres <= 0 ? " disabled" : "") + ">" + (livres <= 0 ? "Presente completo" : 'Quero presentear <span aria-hidden="true">→</span>') + "</button>";
       $(".cartao__nome", el).textContent = p.nome;
       (function (box) {
         var im = new Image();
@@ -137,8 +150,6 @@
       })($(".cartao__img", el));
       $("button", el).addEventListener("click", function () { abrirJornada(p, i); });
       box.appendChild(el);
-      var barra = $(".barra i", el);
-      if (barra) requestAnimationFrame(function () { barra.style.width = Math.round(100 * (tot - livres) / tot) + "%"; });
     });
   }
 
@@ -159,13 +170,14 @@
   function abrirJornada(p, i) {
     escolhido = p; numero = String(i + 1).padStart(2, "0"); qtd = 1;
     dlg.style.setProperty("--cor", p.cor);
-    $("#jPresenteNum").textContent = "Presente " + numero + " · " + p.nome.replace(/\n/g, " ");
+    $("#jPresenteNum").innerHTML = icone(p.id, "jornada__ico");
+    $("#jPresenteNum").appendChild(document.createTextNode(p.nome.replace(/\n/g, " ")));
     var box = $("#jOpcoes"); box.innerHTML = "";
     opcao = null;
-    p.opcoes.forEach(function (o) {
+    p.opcoes.slice().sort(function (x, y) { return x.valor - y.valor; }).forEach(function (o) {
       var lab = document.createElement("label");
       lab.className = "opcao" + (o.livres <= 0 ? " indisponivel" : "");
-      lab.innerHTML = '<span><input type="radio" name="opcao"' + (o.livres <= 0 ? " disabled" : "") + ">Cota de " + reais(o.valor) + "</span><small>" + (o.livres <= 0 ? "esgotada" : (db ? o.livres + " disponíveis" : o.total + " cotas")) + "</small>";
+      lab.innerHTML = '<span><input type="radio" name="opcao"' + (o.livres <= 0 ? " disabled" : "") + ">" + reais(o.valor) + "</span><small>" + (o.livres <= 0 ? "já completo" : "") + "</small>";
       $("input", lab).addEventListener("change", function () { opcao = o; qtd = 1; atualizarTotal(); });
       box.appendChild(lab);
       if (!opcao && o.livres > 0) { opcao = o; $("input", lab).checked = true; }
@@ -204,7 +216,7 @@
     if (erros.length) { st.textContent = "Confira " + erros.join(", ").replace("nome", "nome completo") + "."; return; }
     if (!d.consentimento) { st.textContent = "Marque o aceite para seguirmos com a reserva."; return; }
 
-    var btn = $("button[type=submit]", formRes); btn.disabled = true; st.textContent = "Reservando sua cota…";
+    var btn = $("button[type=submit]", formRes); btn.disabled = true; st.textContent = "Preparando seu Pix…";
     try {
       var res;
       if (db) {
@@ -224,7 +236,7 @@
     } catch (e) {
       console.error(e);
       var msg = String(e && (e.message || e.details) || "");
-      st.textContent = /esgot|dispon/i.test(msg) ? "Essa cota acabou de ser reservada por outra pessoa. Volte e escolha outra." : "Não conseguimos reservar agora. Tente de novo em instantes.";
+      st.textContent = /esgot|dispon/i.test(msg) ? "Essa cota acabou de ser escolhida por outra pessoa. Volte e escolha outra." : "Não conseguimos reservar agora. Tente de novo em instantes.";
     } finally { btn.disabled = false; }
   });
 
@@ -234,7 +246,7 @@
     $("#jResumo2").textContent = escolhido.nome.replace(/\n/g, " ") + "  ·  " + qtd + (qtd > 1 ? " cotas" : " cota") + "  ·  " + reais(valor);
     $("#jCodigo").textContent = res.codigo;
     var exp = new Date(res.expira_em);
-    $("#jPrazo").textContent = "Faça o Pix até " + exp.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" }) + " para garantir sua cota." + (db ? "" : " (modo teste — nada foi salvo)");
+    $("#jPrazo").textContent = "Se puder, faça o Pix até " + exp.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" }) + "." + (db ? "" : " (modo teste — nada foi salvo)");
     codigoPix = window.gerarPix({ chave: C.pix.chave, nome: C.pix.nome, cidade: C.pix.cidade, valor: valor, txid: res.codigo });
     var qr = $("#pixQr"), btn = $("#copiarPix");
     if (codigoPix && window.qrcode) {

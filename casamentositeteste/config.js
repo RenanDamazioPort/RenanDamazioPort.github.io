@@ -44,7 +44,7 @@ window.CASAMENTO = {
 
   // Catálogo usado no modo demonstração (no banco, ele vem da tabela)
   presentes: [
-    { id: "viagem",  ordem: 1, nome: "Um destino\nsó nosso",        cor: "#434b35", opcoes: [{ valor: 300, total: 40 }, { valor: 200, total: 40 }] },
+    { id: "viagem",  ordem: 1, nome: "Um destino\nsó nosso",        cor: "#434b35", opcoes: [{ valor: 300, total: 30 }, { valor: 200, total: 30 }] },
     { id: "dias",    ordem: 2, nome: "Dias sem\npressa",            cor: "#79523e", opcoes: [{ valor: 300, total: 15 }, { valor: 200, total: 15 }] },
     { id: "a-dois",  ordem: 3, nome: "Novas\nhistórias a dois",     cor: "#315a5c", opcoes: [{ valor: 300, total: 5 },  { valor: 200, total: 15 }] },
     { id: "jantar",  ordem: 4, nome: "Mesa para\ndois, sem hora",   cor: "#8f4f3a", opcoes: [{ valor: 150, total: 10 }] },
