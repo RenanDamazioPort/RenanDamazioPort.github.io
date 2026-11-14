@@ -160,6 +160,14 @@ button{background:var(--lime);color:#121310;border:0;border-radius:4px;padding:1
   font-size:13.5px;color:var(--sub);line-height:1.5}
 .ing-oficina a{color:var(--lime);border-bottom:1px solid #4e5a30;padding-bottom:2px}
 .ing-oficina a:hover{border-color:var(--lime)}
+
+.ing-faixa{display:flex;align-items:baseline;gap:14px;margin:34px 0 16px;flex-wrap:wrap}
+.ing-faixa h3{font:600 19px/1 'Space Grotesk',sans-serif;letter-spacing:-.035em;margin:0}
+.ing-faixa span{font:600 10px/1.5 'Space Grotesk',sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--sub)}
+.ing-faixa:first-of-type{margin-top:4px}
+.ing-aviso{background:#16181a;border:1px solid #2a3340;border-left:2px solid var(--lime);border-radius:4px;
+  padding:16px 18px;margin:0 0 4px;font-size:13.5px;line-height:1.55;color:#b9bab6}
+.ing-aviso b{color:var(--white);font-weight:600}
 </style></head>
 <body>
 <header><div class="wrap head"><a href="#inicio" class="brand">RENAN<span> / </span>CAREER OS</a><nav><a href="#visao">Visão</a><a href="#roadmap">Roadmap</a><a href="#red2go">RED2GO</a><a href="#execucao">Execução</a><a href="#notas">Notas</a><a href="#estudo">Estudo</a><a href="#ingles">Inglês</a></nav><span class="micro muted">PERSONAL SPACE · V1.0</span></div></header>
@@ -207,12 +215,19 @@ button{background:var(--lime);color:#121310;border:0;border-radius:4px;padding:1
 <article class="met"><span class="met-num">05</span><h3>Um Projeto por disciplina</h3><p>Nos Projetos do Claude você sobe os arquivos uma vez e deixa instruções fixas. Vale um por frente de estudo: direção de criação, IA aplicada, portfólio.</p><div class="met-prompt"><code></code><button type="button" class="met-copiar">Copiar</button></div></article>
 </div></div></section>
 
-<section id="ingles"><div class="wrap"><div class="section-head"><div><span class="eyebrow accent">08 / Inglês</span><h2>Inglês no meio<br>do caminho.</h2></div><p class="section-note">Treino curto e diário, em cima do que você já faz: apresentar campanha, defender ideia, responder entrevista. Sem curso paralelo — 15 minutos por dia, dentro da mesma conversa.</p></div><div class="ing-topo"><div class="ing-esq"><span class="ing-conta" id="ing-conta">0</span><span class="ing-rot" id="ing-rot">dias seguidos</span><span class="ing-dots" id="ing-dots"></span></div><button type="button" id="ing-btn">Treinei hoje</button></div><div class="estudo" id="ingles-lista">
-<article class="met"><span class="met-num">01</span><h3>Pitch de 60 segundos</h3><p>O que trava numa sala internacional não é gramática, é não conseguir vender a ideia em um minuto.</p><div class="met-prompt"><code></code><button type="button" class="met-copiar">Copiar</button></div></article>
-<article class="met"><span class="met-num">02</span><h3>Corrige e explica, não reescreve</h3><p>Texto reescrito por cima não ensina nada. Você precisa ver o erro com nome e regra.</p><div class="met-prompt"><code></code><button type="button" class="met-copiar">Copiar</button></div></article>
-<article class="met"><span class="met-num">03</span><h3>Vocabulário do ofício</h3><p>Inglês genérico não resolve. O que você precisa é o vocabulário de brief, craft, rollout e aprovação.</p><div class="met-prompt"><code></code><button type="button" class="met-copiar">Copiar</button></div></article>
-<article class="met"><span class="met-num">04</span><h3>Entrevista em inglês</h3><p>Simule antes de precisar. Vaga de Creative Director, uma pergunta por vez.</p><div class="met-prompt"><code></code><button type="button" class="met-copiar">Copiar</button></div></article>
-</div><p class="ing-oficina">Você já tem uma oficina sobre isso na fila da RCC: <a href="https://vimeo.com/redhookschool/pitch-in-english-mof-rcc-e226?share=copy&amp;fl=sv&amp;fe=ci" target="_blank" rel="noopener">Pitch in English: feel confident presenting your ideas, com a Teacher Thay &#8599;</a> &mdash; 15 de agosto.</p></div></section>
+
+
+<section id="ingles"><div class="wrap"><div class="section-head"><div><span class="eyebrow accent">08 / Inglês</span><h2>Inglês no meio<br>do caminho.</h2></div><p class="section-note">Começa do básico, em cima do seu trabalho: a frase que você precisaria falar hoje, as frases de reunião, a pronúncia. Quinze minutos por dia valem mais que duas horas no sábado.</p></div><div class="ing-topo"><div class="ing-esq"><span class="ing-conta" id="ing-conta">0</span><span class="ing-rot" id="ing-rot">dias seguidos</span><span class="ing-dots" id="ing-dots"></span></div><button type="button" id="ing-btn">Treinei hoje</button></div><p class="ing-aviso"><b>Para falar mesmo, use o modo de voz do Claude no celular.</b> Aqui no texto dá para montar frase, decorar bloco e acertar pronúncia escrita — mas som, ritmo e vergonha de abrir a boca só destravam falando. Comece lendo em voz alta as frases do cartão 03.</p><div class="ing-faixa"><h3>Começa aqui</h3><span>nível básico &middot; português como apoio</span></div><div class="estudo">
+<article class="met"><span class="met-num">01</span><h3>Uma frase por dia</h3><p>Uma só. A frase que você precisaria falar hoje no trabalho, destrinchada até você conseguir repetir.</p><div class="met-prompt"><code></code><button type="button" class="met-copiar">Copiar</button></div></article>
+<article class="met"><span class="met-num">02</span><h3>Fala comigo devagar</h3><p>Conversa de verdade, mas no seu tamanho: frases curtas, tradução embaixo, e pode responder com três palavras.</p><div class="met-prompt"><code></code><button type="button" class="met-copiar">Copiar</button></div></article>
+<article class="met"><span class="met-num">03</span><h3>As frases que você vai repetir mil vezes</h3><p>Reunião é repetitiva. Decore como bloco pronto, sem montar do zero toda vez.</p><div class="met-prompt"><code></code><button type="button" class="met-copiar">Copiar</button></div></article>
+<article class="met"><span class="met-num">04</span><h3>Pronúncia sem vergonha</h3><p>Metade do travamento é medo de falar errado. Saber onde o brasileiro erra resolve boa parte.</p><div class="met-prompt"><code></code><button type="button" class="met-copiar">Copiar</button></div></article>
+</div><div class="ing-faixa"><h3>Depois, quando destravar</h3><span>quando já montar frase sozinho</span></div><div class="estudo">
+<article class="met"><span class="met-num">05</span><h3>Pitch de 60 segundos</h3><p>Quando já conseguir montar frases: vender a ideia em um minuto, que é o que trava numa sala internacional.</p><div class="met-prompt"><code></code><button type="button" class="met-copiar">Copiar</button></div></article>
+<article class="met"><span class="met-num">06</span><h3>Corrige e explica, não reescreve</h3><p>Para quando você já escrever parágrafos. Texto reescrito por cima não ensina nada.</p><div class="met-prompt"><code></code><button type="button" class="met-copiar">Copiar</button></div></article>
+<article class="met"><span class="met-num">07</span><h3>Vocabulário do ofício</h3><p>Brief, craft, rollout, aprovação. Inglês genérico não resolve reunião de criação.</p><div class="met-prompt"><code></code><button type="button" class="met-copiar">Copiar</button></div></article>
+<article class="met"><span class="met-num">08</span><h3>Entrevista em inglês</h3><p>O teste final. Simule bastante antes de precisar valer.</p><div class="met-prompt"><code></code><button type="button" class="met-copiar">Copiar</button></div></article>
+</div><p class="ing-oficina">Na fila da RCC você já tem: <a href="https://vimeo.com/redhookschool/pitch-in-english-mof-rcc-e226?share=copy&amp;fl=sv&amp;fe=ci" target="_blank" rel="noopener">Pitch in English, com a Teacher Thay &#8599;</a> &mdash; 15 de agosto. Essa é para depois, não para agora.</p></div></section>
 </main>
 <div class="wrap"><footer class="footer"><div><div class="brand">KEEP<br>MOVING<span class="accent">.</span></div><p class="notice">Career OS © 2026 · Renan Damazio</p></div><div class="chip">● BUILT FOR THE NEXT CHAPTER</div></footer></div>
 <script>
@@ -381,11 +396,13 @@ Array.prototype.forEach.call(cartoes, function(c, i){
 })();
 </script>
 
+
+
 <script>
 (function(){
 'use strict';
-var PROMPTS = ["Vou te descrever uma campanha em português. Transforme num pitch de 60 segundos em inglês, com linguagem de agência. Depois liste as 5 palavras ou expressões desse pitch que eu provavelmente não usaria sozinho, com a tradução. Por último, me faça repetir: peça que eu escreva o pitch de memória e corrija. Campanha: [DESCREVA A CAMPANHA]", "Vou escrever em inglês. Não reescreva tudo: aponte cada erro, diga que tipo de erro é e me dê a regra em uma frase. Só depois mostre como um nativo diria a mesma coisa. Se o texto estiver bom, diga o que soa a estrangeiro e por quê. Texto: [SEU TEXTO EM INGLÊS]", "Me dê 10 termos de direção de arte, publicidade e produção em inglês que um diretor de arte brasileiro provavelmente não domina, cada um com a frase real em que se usa numa agência. Depois me teste: pergunte os 10, um de cada vez, esperando minha resposta antes de corrigir.", "Faça uma entrevista de emprego em inglês comigo para uma vaga de Creative Director numa agência internacional. Uma pergunta por vez, espere minha resposta. Depois de cada resposta, mostre como eu poderia ter respondido melhor em inglês e explique em português o que eu errei. Comece."];
-var cartoes = document.querySelectorAll('#ingles-lista .met');
+var PROMPTS = ["Meu inglês é básico. Vou te dizer em português uma frase que eu usaria no trabalho hoje. Me devolva: 1) a versão em inglês com as palavras mais simples possíveis; 2) a frase quebrada palavra por palavra, com a tradução de cada uma; 3) a pronúncia escrita do jeito que um brasileiro leria. Depois peça para eu escrever a frase de memória e corrija. Uma frase só, não me dê mais nada. Frase: [DIGA EM PORTUGUÊS]", "Meu inglês é básico. Converse comigo em inglês sobre o meu dia de trabalho com estas regras: frases de no máximo 8 palavras, só presente simples, e a tradução em português embaixo de cada frase sua. Espere eu responder, mesmo que eu responda com 3 palavras. Se eu errar, mostre a frase certa sem explicar gramática. Comece com uma pergunta fácil.", "Me dê 15 frases prontas em inglês que um diretor de arte usa numa reunião: abrir a apresentação, discordar com educação, pedir mais tempo, apresentar uma ideia, pedir para a pessoa repetir, encerrar. Cada frase com a tradução e com a pronúncia escrita do jeito que um brasileiro leria. Não explique gramática — eu quero decorar como bloco.", "Vou te dar uma palavra ou frase em inglês. Me diga três coisas: como se pronuncia, escrito do jeito que um brasileiro leria; qual som dela os brasileiros costumam errar; e uma palavra em português com som parecido para eu me guiar. Palavra: [PALAVRA]", "Vou te descrever uma campanha em português. Transforme num pitch de 60 segundos em inglês, com linguagem de agência. Depois liste as 5 palavras ou expressões que eu provavelmente não usaria sozinho, com a tradução. Por último, peça que eu escreva o pitch de memória e corrija. Campanha: [DESCREVA A CAMPANHA]", "Vou escrever em inglês. Não reescreva tudo: aponte cada erro, diga que tipo de erro é e me dê a regra em uma frase. Só depois mostre como um nativo diria a mesma coisa. Texto: [SEU TEXTO EM INGLÊS]", "Me dê 10 termos de direção de arte, publicidade e produção em inglês que um diretor de arte brasileiro provavelmente não domina, cada um com a frase real em que se usa numa agência. Depois me teste: pergunte os 10, um de cada vez, esperando minha resposta antes de corrigir.", "Faça uma entrevista de emprego em inglês comigo para uma vaga de Creative Director numa agência internacional. Uma pergunta por vez, espere minha resposta. Depois de cada resposta, mostre como eu poderia ter respondido melhor em inglês e explique em português o que eu errei. Comece."];
+var cartoes = document.querySelectorAll('#ingles .met');
 Array.prototype.forEach.call(cartoes, function(c, i){
   var code = c.querySelector('code');
   code.textContent = PROMPTS[i];
@@ -401,40 +418,36 @@ Array.prototype.forEach.call(cartoes, function(c, i){
   });
 });
 
-/* treino diario */
 var chave = 'renan-ingles-v1';
 var dias = [];
 try{ dias = JSON.parse(localStorage.getItem(chave) || '[]') }catch(e){}
-function hoje(){ var d = new Date(); return d.getFullYear() + '-' + ('0'+(d.getMonth()+1)).slice(-2) + '-' + ('0'+d.getDate()).slice(-2) }
-function diaAtras(n){ var d = new Date(); d.setDate(d.getDate() - n);
+function dia(n){ var d = new Date(); d.setDate(d.getDate() - n);
   return d.getFullYear() + '-' + ('0'+(d.getMonth()+1)).slice(-2) + '-' + ('0'+d.getDate()).slice(-2) }
 function seguidos(){
-  var n = 0;
-  if (dias.indexOf(hoje()) < 0 && dias.indexOf(diaAtras(1)) < 0) return 0;
-  var i = dias.indexOf(hoje()) >= 0 ? 0 : 1;
-  while (dias.indexOf(diaAtras(i)) >= 0){ n++; i++ }
+  if (dias.indexOf(dia(0)) < 0 && dias.indexOf(dia(1)) < 0) return 0;
+  var n = 0, i = dias.indexOf(dia(0)) >= 0 ? 0 : 1;
+  while (dias.indexOf(dia(i)) >= 0){ n++; i++ }
   return n;
 }
-var caixaDots = document.getElementById('ing-dots');
-var btn = document.getElementById('ing-btn');
+var dots = document.getElementById('ing-dots'), btn = document.getElementById('ing-btn');
 function pintar(){
   var n = seguidos();
   document.getElementById('ing-conta').textContent = n;
   document.getElementById('ing-rot').textContent = n === 1 ? 'dia seguido' : 'dias seguidos';
-  caixaDots.innerHTML = '';
+  dots.innerHTML = '';
   for (var k = 13; k >= 0; k--){
     var i = document.createElement('i');
-    if (dias.indexOf(diaAtras(k)) >= 0) i.className = 'on';
+    if (dias.indexOf(dia(k)) >= 0) i.className = 'on';
     if (k === 0) i.className += ' hoje';
-    i.title = diaAtras(k).split('-').reverse().slice(0,2).join('/');
-    caixaDots.appendChild(i);
+    i.title = dia(k).split('-').reverse().slice(0,2).join('/');
+    dots.appendChild(i);
   }
-  var feito = dias.indexOf(hoje()) >= 0;
-  btn.textContent = feito ? 'Feito hoje \u2713' : 'Treinei hoje';
-  if (feito) btn.setAttribute('data-feito',''); else btn.removeAttribute('data-feito');
+  var f = dias.indexOf(dia(0)) >= 0;
+  btn.textContent = f ? 'Feito hoje \u2713' : 'Treinei hoje';
+  if (f) btn.setAttribute('data-feito',''); else btn.removeAttribute('data-feito');
 }
 btn.addEventListener('click', function(){
-  var h = hoje(), i = dias.indexOf(h);
+  var h = dia(0), i = dias.indexOf(h);
   if (i >= 0) dias.splice(i, 1); else dias.push(h);
   dias = dias.slice(-400);
   try{ localStorage.setItem(chave, JSON.stringify(dias)) }catch(e){}
