@@ -44,7 +44,7 @@ form button{
 form:focus-within button{color:var(--acid)}
 
 /* grupos */
-.grade{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.grade{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
 .grupo{background:var(--bg);padding:22px 20px 24px;display:flex;flex-direction:column;gap:3px}
 .grupo h2{font:600 10px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--acid);margin-bottom:13px}
 .grupo a{
@@ -60,7 +60,10 @@ form:focus-within button{color:var(--acid)}
 .conta{color:var(--muted)}
 .conta b{color:var(--acid);font-weight:600}
 
-@media (max-width:860px){
+@media (max-width:1040px){
+  .grade{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:760px){
   .grade{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:520px){
@@ -98,10 +101,17 @@ form:focus-within button{color:var(--acid)}
     </section>
 
     <section class="grupo">
+      <h2>RCC</h2>
+      <a href="https://renandamazio.com.br/carreira/#oficinas">Oficinas &middot; gravações</a>
+      <a href="https://docs.google.com/spreadsheets/d/1zg0tFtXwunJUllEkfdRkDoV8WFGtkPZZ7p5eMSuDjZA/edit">Planilha dos links</a>
+      <a href="https://vimeo.com/redhookschool">Vimeo da Redhook</a>
+    </section>
+
+    <section class="grupo">
       <h2>Portfólio</h2>
       <a href="https://renandamazio.com.br/">renandamazio.com.br</a>
       <a href="https://renandamazio.com.br/sobre/">Sobre mim</a>
-      <a href="https://renandamazio.com.br/carreira/">Carreira</a>
+      <a href="https://renandamazio.com.br/carreira/">Career OS</a>
       <a href="https://github.com/RenanDamazioPort/renandamazioport.github.io">GitHub do site</a>
     </section>
 
