@@ -141,9 +141,28 @@ button{background:var(--lime);color:#121310;border:0;border-radius:4px;padding:1
 .met-copiar:hover{border-color:var(--lime);color:var(--lime)}
 .met-copiar.ok{border-color:var(--lime);color:#101111;background:var(--lime)}
 @media (max-width:640px){.estudo{grid-template-columns:1fr}}
+
+/* 08 — Ingles */
+.ing-topo{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
+  background:var(--panel);border:1px solid #2e3030;border-radius:5px;padding:20px 22px;margin-bottom:26px}
+.ing-esq{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.ing-conta{font:600 30px/1 'Space Grotesk',sans-serif;letter-spacing:-.05em;color:var(--lime)}
+.ing-rot{font:600 10px/1.5 'Space Grotesk',sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--sub)}
+.ing-dots{display:flex;gap:5px}
+.ing-dots i{width:11px;height:11px;border-radius:50%;background:#2a2c2c;display:block}
+.ing-dots i.on{background:var(--lime)}
+.ing-dots i.hoje{box-shadow:0 0 0 2px #101111,0 0 0 3px #4e5a30}
+#ing-btn{background:var(--lime);color:#101111;border:1px solid var(--lime);border-radius:3px;
+  font:600 10px/1 'Space Grotesk',sans-serif;letter-spacing:.13em;text-transform:uppercase;padding:12px 16px;transition:.2s}
+#ing-btn:hover{background:transparent;color:var(--lime)}
+#ing-btn[data-feito]{background:transparent;color:var(--sub);border-color:#3a3d3d}
+.ing-oficina{display:block;margin-top:22px;padding-top:18px;border-top:1px solid var(--line);
+  font-size:13.5px;color:var(--sub);line-height:1.5}
+.ing-oficina a{color:var(--lime);border-bottom:1px solid #4e5a30;padding-bottom:2px}
+.ing-oficina a:hover{border-color:var(--lime)}
 </style></head>
 <body>
-<header><div class="wrap head"><a href="#inicio" class="brand">RENAN<span> / </span>CAREER OS</a><nav><a href="#visao">Visão</a><a href="#roadmap">Roadmap</a><a href="#red2go">RED2GO</a><a href="#execucao">Execução</a><a href="#notas">Notas</a><a href="#estudo">Estudo</a></nav><span class="micro muted">PERSONAL SPACE · V1.0</span></div></header>
+<header><div class="wrap head"><a href="#inicio" class="brand">RENAN<span> / </span>CAREER OS</a><nav><a href="#visao">Visão</a><a href="#roadmap">Roadmap</a><a href="#red2go">RED2GO</a><a href="#execucao">Execução</a><a href="#notas">Notas</a><a href="#estudo">Estudo</a><a href="#ingles">Inglês</a></nav><span class="micro muted">PERSONAL SPACE · V1.0</span></div></header>
 <main id="inicio">
 <div class="wrap"><div class="hero"><div class="hero-top"><span class="eyebrow accent">Career strategy / 2027—2030</span><span class="pill">Redhook Creative Community · RCC E5/26</span></div><div class="hero-meio"><h1>THE NEXT<br><em>CREATIVE</em><br>CHAPTER.</h1>
 <div class="hero-dir">
@@ -187,6 +206,13 @@ button{background:var(--lime);color:#121310;border:0;border-radius:4px;padding:1
 <article class="met"><span class="met-num">04</span><h3>Flashcards e quiz para fixar</h3><p>Assistir não é aprender. O que fixa é tentar lembrar sem olhar.</p><div class="met-prompt"><code></code><button type="button" class="met-copiar">Copiar</button></div></article>
 <article class="met"><span class="met-num">05</span><h3>Um Projeto por disciplina</h3><p>Nos Projetos do Claude você sobe os arquivos uma vez e deixa instruções fixas. Vale um por frente de estudo: direção de criação, IA aplicada, portfólio.</p><div class="met-prompt"><code></code><button type="button" class="met-copiar">Copiar</button></div></article>
 </div></div></section>
+
+<section id="ingles"><div class="wrap"><div class="section-head"><div><span class="eyebrow accent">08 / Inglês</span><h2>Inglês no meio<br>do caminho.</h2></div><p class="section-note">Treino curto e diário, em cima do que você já faz: apresentar campanha, defender ideia, responder entrevista. Sem curso paralelo — 15 minutos por dia, dentro da mesma conversa.</p></div><div class="ing-topo"><div class="ing-esq"><span class="ing-conta" id="ing-conta">0</span><span class="ing-rot" id="ing-rot">dias seguidos</span><span class="ing-dots" id="ing-dots"></span></div><button type="button" id="ing-btn">Treinei hoje</button></div><div class="estudo" id="ingles-lista">
+<article class="met"><span class="met-num">01</span><h3>Pitch de 60 segundos</h3><p>O que trava numa sala internacional não é gramática, é não conseguir vender a ideia em um minuto.</p><div class="met-prompt"><code></code><button type="button" class="met-copiar">Copiar</button></div></article>
+<article class="met"><span class="met-num">02</span><h3>Corrige e explica, não reescreve</h3><p>Texto reescrito por cima não ensina nada. Você precisa ver o erro com nome e regra.</p><div class="met-prompt"><code></code><button type="button" class="met-copiar">Copiar</button></div></article>
+<article class="met"><span class="met-num">03</span><h3>Vocabulário do ofício</h3><p>Inglês genérico não resolve. O que você precisa é o vocabulário de brief, craft, rollout e aprovação.</p><div class="met-prompt"><code></code><button type="button" class="met-copiar">Copiar</button></div></article>
+<article class="met"><span class="met-num">04</span><h3>Entrevista em inglês</h3><p>Simule antes de precisar. Vaga de Creative Director, uma pergunta por vez.</p><div class="met-prompt"><code></code><button type="button" class="met-copiar">Copiar</button></div></article>
+</div><p class="ing-oficina">Você já tem uma oficina sobre isso na fila da RCC: <a href="https://vimeo.com/redhookschool/pitch-in-english-mof-rcc-e226?share=copy&amp;fl=sv&amp;fe=ci" target="_blank" rel="noopener">Pitch in English: feel confident presenting your ideas, com a Teacher Thay &#8599;</a> &mdash; 15 de agosto.</p></div></section>
 </main>
 <div class="wrap"><footer class="footer"><div><div class="brand">KEEP<br>MOVING<span class="accent">.</span></div><p class="notice">Career OS © 2026 · Renan Damazio</p></div><div class="chip">● BUILT FOR THE NEXT CHAPTER</div></footer></div>
 <script>
@@ -352,6 +378,69 @@ Array.prototype.forEach.call(cartoes, function(c, i){
     }
   });
 });
+})();
+</script>
+
+<script>
+(function(){
+'use strict';
+var PROMPTS = ["Vou te descrever uma campanha em português. Transforme num pitch de 60 segundos em inglês, com linguagem de agência. Depois liste as 5 palavras ou expressões desse pitch que eu provavelmente não usaria sozinho, com a tradução. Por último, me faça repetir: peça que eu escreva o pitch de memória e corrija. Campanha: [DESCREVA A CAMPANHA]", "Vou escrever em inglês. Não reescreva tudo: aponte cada erro, diga que tipo de erro é e me dê a regra em uma frase. Só depois mostre como um nativo diria a mesma coisa. Se o texto estiver bom, diga o que soa a estrangeiro e por quê. Texto: [SEU TEXTO EM INGLÊS]", "Me dê 10 termos de direção de arte, publicidade e produção em inglês que um diretor de arte brasileiro provavelmente não domina, cada um com a frase real em que se usa numa agência. Depois me teste: pergunte os 10, um de cada vez, esperando minha resposta antes de corrigir.", "Faça uma entrevista de emprego em inglês comigo para uma vaga de Creative Director numa agência internacional. Uma pergunta por vez, espere minha resposta. Depois de cada resposta, mostre como eu poderia ter respondido melhor em inglês e explique em português o que eu errei. Comece."];
+var cartoes = document.querySelectorAll('#ingles-lista .met');
+Array.prototype.forEach.call(cartoes, function(c, i){
+  var code = c.querySelector('code');
+  code.textContent = PROMPTS[i];
+  c.querySelector('.met-copiar').addEventListener('click', function(){
+    var btn = this;
+    function feito(){ btn.textContent = 'Copiado'; btn.classList.add('ok');
+      setTimeout(function(){ btn.textContent = 'Copiar'; btn.classList.remove('ok') }, 1800) }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(PROMPTS[i]).then(feito, sel);
+    else sel();
+    function sel(){ var r = document.createRange(); r.selectNodeContents(code);
+      var s = getSelection(); s.removeAllRanges(); s.addRange(r);
+      try{ document.execCommand('copy'); feito() }catch(e){ btn.textContent = 'Selecione e copie' } }
+  });
+});
+
+/* treino diario */
+var chave = 'renan-ingles-v1';
+var dias = [];
+try{ dias = JSON.parse(localStorage.getItem(chave) || '[]') }catch(e){}
+function hoje(){ var d = new Date(); return d.getFullYear() + '-' + ('0'+(d.getMonth()+1)).slice(-2) + '-' + ('0'+d.getDate()).slice(-2) }
+function diaAtras(n){ var d = new Date(); d.setDate(d.getDate() - n);
+  return d.getFullYear() + '-' + ('0'+(d.getMonth()+1)).slice(-2) + '-' + ('0'+d.getDate()).slice(-2) }
+function seguidos(){
+  var n = 0;
+  if (dias.indexOf(hoje()) < 0 && dias.indexOf(diaAtras(1)) < 0) return 0;
+  var i = dias.indexOf(hoje()) >= 0 ? 0 : 1;
+  while (dias.indexOf(diaAtras(i)) >= 0){ n++; i++ }
+  return n;
+}
+var caixaDots = document.getElementById('ing-dots');
+var btn = document.getElementById('ing-btn');
+function pintar(){
+  var n = seguidos();
+  document.getElementById('ing-conta').textContent = n;
+  document.getElementById('ing-rot').textContent = n === 1 ? 'dia seguido' : 'dias seguidos';
+  caixaDots.innerHTML = '';
+  for (var k = 13; k >= 0; k--){
+    var i = document.createElement('i');
+    if (dias.indexOf(diaAtras(k)) >= 0) i.className = 'on';
+    if (k === 0) i.className += ' hoje';
+    i.title = diaAtras(k).split('-').reverse().slice(0,2).join('/');
+    caixaDots.appendChild(i);
+  }
+  var feito = dias.indexOf(hoje()) >= 0;
+  btn.textContent = feito ? 'Feito hoje \u2713' : 'Treinei hoje';
+  if (feito) btn.setAttribute('data-feito',''); else btn.removeAttribute('data-feito');
+}
+btn.addEventListener('click', function(){
+  var h = hoje(), i = dias.indexOf(h);
+  if (i >= 0) dias.splice(i, 1); else dias.push(h);
+  dias = dias.slice(-400);
+  try{ localStorage.setItem(chave, JSON.stringify(dias)) }catch(e){}
+  pintar();
+});
+pintar();
 })();
 </script>
 </body></html>
