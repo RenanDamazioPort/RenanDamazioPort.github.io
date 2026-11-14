@@ -8,7 +8,7 @@
   --mono:"JetBrains Mono","Courier New",monospace;
   --papel:#f5f2e9;
 }
-body.novo{font-family:var(--sans)}
+body.novo{font-family:var(--sans);overflow-x:clip}
 .novo .mono,.novo .nav a,.novo .brand small,.novo .section-head,.novo footer{font-family:var(--mono)}
 
 /* ---------- topo ---------- */
@@ -26,21 +26,21 @@ body.novo{font-family:var(--sans)}
 .novo .nav a:hover{color:var(--acid);text-shadow:none}
 .novo .nav a:hover::after{transform:scaleX(1);transform-origin:left}
 
-/* ---------- hero ---------- */
+/* ---------- hero compacto ---------- */
 .novo .hero{
-  position:relative;min-height:100svh;overflow:hidden;border-bottom:1px solid var(--line);
-  padding:clamp(96px,13vh,150px) var(--pad) clamp(24px,4vh,44px);
-  display:grid;grid-template-rows:auto 1fr auto auto;gap:clamp(18px,3vh,36px);
+  position:relative;overflow:hidden;border-bottom:1px solid var(--line);min-height:0;
+  padding:clamp(26px,4.2vh,50px) var(--pad) clamp(22px,3vh,34px);
+  display:flex;flex-direction:column;gap:clamp(16px,2.6vh,30px);
 }
 .novo .hero:before{
   content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
-  background:linear-gradient(rgba(53,243,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(53,243,255,.045) 1px,transparent 1px);
+  background:linear-gradient(rgba(53,243,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(53,243,255,.04) 1px,transparent 1px);
   background-size:clamp(70px,8vw,130px) clamp(70px,8vw,130px);
-  mask-image:radial-gradient(130% 85% at 30% 30%,#000 10%,transparent 72%);
-  -webkit-mask-image:radial-gradient(130% 85% at 30% 30%,#000 10%,transparent 72%);
+  mask-image:radial-gradient(120% 110% at 28% 42%,#000 6%,transparent 70%);
+  -webkit-mask-image:radial-gradient(120% 110% at 28% 42%,#000 6%,transparent 70%);
 }
 .novo .hero > *:not(.hero-emoji-layer){position:relative;z-index:2}
-.novo .hero-emoji-layer{z-index:1;inset:clamp(96px,13vh,150px) 0 34% 0;opacity:.82}
+.novo .hero-emoji-layer{z-index:1;inset:clamp(20px,3.6vh,44px) 0 20% 0;opacity:.4}
 
 .novo .hero-top{
   display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
@@ -50,43 +50,20 @@ body.novo{font-family:var(--sans)}
 .novo .hero-status{display:flex;align-items:center;gap:9px;color:var(--papel)}
 .novo .dot{width:7px;height:7px;border-radius:50%;background:var(--acid);box-shadow:0 0 14px var(--acid)}
 
-.novo .hero-mid{align-self:center;display:flex;flex-direction:column;gap:clamp(10px,1.4vh,20px)}
+.novo .hero-mid{display:flex;flex-direction:column;gap:clamp(10px,1.4vh,16px)}
 .novo .hero-nome{
-  margin:0;display:flex;flex-direction:column;
-  font-size:clamp(58px,12.4vw,196px);font-weight:900;line-height:.82;letter-spacing:-.055em;
+  margin:0;font-size:clamp(34px,6.8vw,106px);font-weight:900;line-height:.92;letter-spacing:-.055em;
+  white-space:nowrap;
 }
-.novo .hero-nome .l1{color:transparent;-webkit-text-stroke:1.4px var(--papel);text-stroke:1.4px var(--papel)}
+.novo .hero-nome .l1{color:transparent;-webkit-text-stroke:1.3px var(--papel);text-stroke:1.3px var(--papel)}
 .novo .hero-nome .l2{color:var(--papel)}
 @supports not ((-webkit-text-stroke:1px #000) or (text-stroke:1px #000)){
   .novo .hero-nome .l1{color:var(--papel);opacity:.45}
 }
 .novo .hero-funcao{
-  margin:clamp(6px,1vh,14px) 0 0;font:500 clamp(10px,1vw,12px)/1 var(--mono);
-  letter-spacing:.24em;color:var(--muted);
+  margin:0;font:500 clamp(10px,1.08vw,13px)/1 var(--mono);
+  letter-spacing:.24em;color:var(--acid);
 }
-.novo .hero-claim{margin:clamp(10px,1.6vh,22px) 0 0}
-.novo .hero-rotator{
-  position:relative;display:block;height:1.12em;overflow:hidden;
-  font-size:clamp(26px,4.3vw,62px);font-weight:800;letter-spacing:-.045em;line-height:1.1;
-  color:var(--acid);
-}
-.novo .hero-word{
-  position:absolute;left:0;top:0;white-space:nowrap;
-  opacity:0;transform:translateY(55%);filter:blur(6px);transition:.6s cubic-bezier(.19,1,.22,1);
-}
-.novo .hero-word.is-active{opacity:1;transform:none;filter:none}
-.novo .hero-word br{display:none}
-
-.novo .hero-bottom{
-  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(20px,3vw,56px);align-items:end;
-  border-top:1px solid var(--line);padding-top:clamp(18px,2.6vh,30px);
-}
-.novo .hero-copy{
-  margin:0;max-width:62ch;font-size:clamp(14px,1.18vw,18px);line-height:1.55;color:#c7c5bd;
-  opacity:1;transform:none;filter:none;
-}
-.novo .hero-copy strong{color:var(--papel);font-weight:600}
-.novo .hero-acoes{display:flex;gap:10px;flex-wrap:wrap;opacity:1;transform:none}
 
 .novo .btn-acid,.novo .btn-linha{
   display:inline-flex;align-items:center;gap:10px;white-space:nowrap;
@@ -98,11 +75,10 @@ body.novo{font-family:var(--sans)}
 .novo .btn-linha{border-color:#3d3d38;color:var(--papel)}
 .novo .btn-linha:hover{border-color:var(--cyan);color:var(--cyan)}
 .novo .btn-acid span,.novo .btn-linha span{transition:transform .35s cubic-bezier(.19,1,.22,1)}
-.novo .btn-acid:hover span{transform:translateY(3px)}
 .novo .btn-linha:hover span{transform:translate(3px,-3px)}
 
 .novo .hero-marcas{
-  list-style:none;margin:0;padding:clamp(14px,2vh,20px) 0 0;border-top:1px solid var(--line);
+  list-style:none;margin:0;padding:clamp(14px,2vh,18px) 0 0;border-top:1px solid var(--line);
   display:flex;flex-wrap:wrap;gap:8px clamp(18px,3.4vw,52px);
   font:400 10px/1 var(--mono);letter-spacing:.16em;color:#6f6f69;
 }
@@ -111,6 +87,7 @@ body.novo{font-family:var(--sans)}
 
 /* ---------- seções ---------- */
 .novo .section{padding:clamp(64px,9vw,120px) var(--pad)}
+.novo #work{padding-top:clamp(34px,4.4vw,60px)}
 .novo .section-head{
   display:flex;justify-content:space-between;align-items:center;gap:16px;
   border-top:1px solid var(--line);border-bottom:0;padding-top:14px;margin-bottom:clamp(32px,4.5vw,60px);
@@ -168,23 +145,28 @@ body.novo{font-family:var(--sans)}
   .novo .project.is-destaque .visual{aspect-ratio:16/9}
   .novo .contact-links{justify-self:start;align-items:flex-start}
 }
-@media (max-width:700px){
+@media (max-width:760px){
   .novo header{padding:14px 16px}
   .novo .brand strong{font-size:15px}
   .novo .nav{gap:12px}
   .novo .nav a{font-size:9px;letter-spacing:.08em}
-  .novo .hero{min-height:auto;padding:104px 16px 32px;gap:26px}
+  .novo .hero{padding:22px 16px 24px;gap:18px}
   .novo .hero-top{font-size:9px;letter-spacing:.1em}
-  .novo .hero-rotator{height:2.3em;white-space:normal}
-  .novo .hero-word{white-space:normal}
-  .novo .hero-bottom{grid-template-columns:1fr;gap:22px}
-  .novo .hero-acoes{width:100%}
-  .novo .hero-acoes a{flex:1;justify-content:space-between}
+  .novo .hero-nome{font-size:clamp(24px,8.2vw,44px)}
+  .novo .hero-funcao{letter-spacing:.16em}
   .novo .hero-marcas{gap:6px 18px;font-size:9px;letter-spacing:.1em}
   .novo .hero-marcas li+li::before{left:-11px}
   .novo .section{padding:56px 16px}
+  .novo #work{padding-top:30px}
+  .novo .section-head{flex-wrap:wrap;gap:6px 14px}
+  .novo .section-head .muted{font-size:8.5px;letter-spacing:.07em}
+}
+@media (max-width:470px){
+  .novo .nav-extra{display:none}
+  .novo .nav{gap:10px}
+  .novo .nav a{font-size:8.5px;letter-spacing:.06em}
+  .novo .brand strong{font-size:14px}
 }
 @media (prefers-reduced-motion:reduce){
-  .novo .hero-word{transition:none}
   .novo .btn-acid,.novo .btn-linha,.novo .visual,.novo .project-cta{transition:none}
 }

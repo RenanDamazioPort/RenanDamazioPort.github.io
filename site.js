@@ -76,7 +76,7 @@ document.addEventListener('keydown',e=>{
 
 const ws=[...document.querySelectorAll('.hero-word')];
 let wi=0;
-if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+if(ws.length>1&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
   setInterval(()=>{
     ws[wi].classList.remove('is-active');
     wi=(wi+1)%ws.length;
