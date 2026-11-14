@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Início</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#090909; --fg:#f5f2e9; --muted:#8d8d87; --line:#232320; --acid:#d7ff3f;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,"Cascadia Mono","Segoe UI Mono","SF Mono",Consolas,monospace;
+}
+html,body{height:100%}
+body{
+  background:var(--bg);color:var(--fg);font-family:var(--sans);
+  display:flex;align-items:center;justify-content:center;padding:40px 24px;
+  background-image:linear-gradient(rgba(53,243,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(53,243,255,.03) 1px,transparent 1px);
+  background-size:96px 96px;
+}
+.folha{width:100%;max-width:1060px}
+
+/* topo */
+.topo{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;
+  border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:34px}
+.saudacao{font-size:clamp(28px,4.4vw,52px);font-weight:800;letter-spacing:-.045em;line-height:1}
+.saudacao b{color:var(--acid);font-weight:800}
+.data{font:500 11px/1.7 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:right}
+.data .relogio{display:block;font-size:22px;letter-spacing:.04em;color:var(--fg);font-weight:500}
+
+/* busca */
+form{position:relative;margin-bottom:38px}
+input{
+  width:100%;background:#111110;border:1px solid var(--line);color:var(--fg);
+  font:400 17px/1 var(--sans);padding:17px 52px 17px 18px;outline:none;transition:border-color .25s;
+}
+input::placeholder{color:#5f5f59}
+input:focus{border-color:var(--acid)}
+form button{
+  position:absolute;right:6px;top:6px;bottom:6px;width:42px;background:none;border:0;cursor:pointer;
+  color:var(--muted);font:500 11px var(--mono);letter-spacing:.1em;transition:color .25s
+}
+form:focus-within button{color:var(--acid)}
+
+/* grupos */
+.grade{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.grupo{background:var(--bg);padding:22px 20px 24px;display:flex;flex-direction:column;gap:3px}
+.grupo h2{font:600 10px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--acid);margin-bottom:13px}
+.grupo a{
+  color:#c9c7bf;text-decoration:none;font-size:14.5px;line-height:1.5;padding:4px 8px;margin-left:-8px;
+  border-radius:3px;transition:background .18s,color .18s;display:block
+}
+.grupo a:hover,.grupo a:focus-visible{background:#17170f;color:var(--acid);outline:none}
+
+/* rodape */
+.rodape{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+  margin-top:30px;padding-top:18px;border-top:1px solid var(--line);
+  font:500 10.5px/1 var(--mono);letter-spacing:.13em;text-transform:uppercase;color:#64645e}
+.conta{color:var(--muted)}
+.conta b{color:var(--acid);font-weight:600}
+
+@media (max-width:860px){
+  .grade{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:520px){
+  body{align-items:flex-start;padding:28px 16px}
+  .grade{grid-template-columns:1fr}
+  .topo{align-items:flex-start;flex-direction:column;gap:10px;margin-bottom:24px}
+  .data{text-align:left}
+  form{margin-bottom:26px}
+}
+</style>
+</head>
+<body>
+<main class="folha">
+
+  <div class="topo">
+    <h1 class="saudacao" id="saudacao">Olá, <b>Renan</b></h1>
+    <p class="data"><span class="relogio" id="relogio">--:--</span><span id="hoje"></span></p>
+  </div>
+
+  <form action="https://www.google.com/search" method="get" role="search">
+    <input id="busca" name="q" type="text" autocomplete="off" autofocus
+           placeholder="Buscar no Google — ou cole um endereço e dê Enter" aria-label="Buscar">
+    <button type="submit" aria-label="Buscar">↵</button>
+  </form>
+
+  <div class="grade">
+
+    <section class="grupo">
+      <h2>Casamento</h2>
+      <a href="https://renandamazio.com.br/casamentositeteste/">Site</a>
+      <a href="https://renandamazio.com.br/casamentositeteste/admin.html">Painel de reservas</a>
+      <a href="https://renandamazio.com.br/casamentositeteste/fotos.html">Fotos</a>
+      <a href="https://supabase.com/dashboard/project/ijvfslilqwuttazquikm/editor">Supabase &middot; tabelas</a>
+      <a href="https://supabase.com/dashboard/project/ijvfslilqwuttazquikm/sql/new">Supabase &middot; SQL</a>
+    </section>
+
+    <section class="grupo">
+      <h2>Portfólio</h2>
+      <a href="https://renandamazio.com.br/">renandamazio.com.br</a>
+      <a href="https://renandamazio.com.br/sobre/">Sobre mim</a>
+      <a href="https://renandamazio.com.br/carreira/">Carreira</a>
+      <a href="https://github.com/RenanDamazioPort/renandamazioport.github.io">GitHub do site</a>
+    </section>
+
+    <section class="grupo">
+      <h2>Criação</h2>
+      <a href="https://www.figma.com/files">Figma</a>
+      <a href="https://claude.ai/">Claude</a>
+      <a href="https://fonts.adobe.com/">Adobe Fonts</a>
+      <a href="https://www.behance.net/">Behance</a>
+    </section>
+
+    <section class="grupo">
+      <h2>Dia a dia</h2>
+      <a href="https://mail.google.com/">Gmail</a>
+      <a href="https://calendar.google.com/">Agenda</a>
+      <a href="https://drive.google.com/">Drive</a>
+      <a href="https://www.linkedin.com/in/reenandamazio/">LinkedIn</a>
+    </section>
+
+  </div>
+
+  <div class="rodape">
+    <span>Renan Damazio &middot; Direção de arte</span>
+    <span class="conta" id="conta"></span>
+  </div>
+
+</main>
+
+<script>
+(function(){
+  var dias=["domingo","segunda-feira","terça-feira","quarta-feira","quinta-feira","sexta-feira","sábado"];
+  var meses=["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
+  var casamento=new Date("2027-07-09T20:30:00-03:00").getTime();
+  function dois(n){return n<10?"0"+n:""+n}
+
+  function tick(){
+    var d=new Date();
+    var h=d.getHours();
+    document.getElementById("saudacao").innerHTML=
+      (h<5?"Boa madrugada, ":h<12?"Bom dia, ":h<18?"Boa tarde, ":"Boa noite, ")+"<b>Renan</b>";
+    document.getElementById("relogio").textContent=dois(h)+":"+dois(d.getMinutes());
+    document.getElementById("hoje").textContent=dias[d.getDay()]+", "+d.getDate()+" de "+meses[d.getMonth()];
+    var faltam=Math.ceil((casamento-d.getTime())/86400000);
+    document.getElementById("conta").innerHTML=
+      faltam>0 ? "Faltam <b>"+faltam+"</b> dias para o casamento"
+      : (faltam===0 ? "<b>É hoje.</b>" : "Casados há <b>"+(-faltam)+"</b> dias");
+  }
+  tick(); setInterval(tick,20000);
+
+  // se o que foi digitado parece um endereço, vai direto pro site
+  document.querySelector("form").addEventListener("submit",function(e){
+    var v=document.getElementById("busca").value.trim();
+    if(/^(https?:\/\/\S+|[\w-]+(\.[\w-]+)+(\/\S*)?)$/i.test(v) && !/\s/.test(v)){
+      e.preventDefault();
+      location.href = /^https?:\/\//i.test(v) ? v : "https://"+v;
+    }
+  });
+  window.addEventListener("pageshow",function(){document.getElementById("busca").focus()});
+})();
+</script>
+</body>
+</html>
