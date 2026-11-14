@@ -49,29 +49,107 @@ button{background:var(--lime);color:#121310;border:0;border-radius:4px;padding:1
 .ofi-ver:hover{border-color:var(--lime)}
 .ofi-nada{color:var(--sub);font-size:14px;padding:18px 0}
 @media (max-width:640px){.ofi-dias{grid-template-columns:1fr}}
+
+/* Hero: texto rotativo + calendario */
+.hero-bottom{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,380px);gap:clamp(24px,4vw,64px);align-items:end}
+.hero-esq{min-width:0}
+.pensamento{margin:30px 0 0;padding:20px 0 0;border-top:1px solid var(--line);max-width:560px}
+.pensamento p{font:500 clamp(16px,1.5vw,21px)/1.4 'Space Grotesk',sans-serif;letter-spacing:-.02em;color:var(--white);
+  min-height:2.8em;opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s cubic-bezier(.19,1,.22,1)}
+.pensamento p.on{opacity:1;transform:none}
+.pensamento footer{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:12px;
+  font:600 10px/1 'Space Grotesk',sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--sub)}
+.pensamento cite{font-style:normal}
+.pensamento a{color:var(--lime);border-bottom:1px solid #4e5a30;padding-bottom:3px}
+.pensamento a:hover{border-color:var(--lime)}
+
+/* calendario */
+.cal{background:var(--panel);border:1px solid #2e3030;border-radius:5px;padding:20px;min-width:0}
+.cal-cab{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:16px}
+.cal-mes{font:600 16px/1 'Space Grotesk',sans-serif;letter-spacing:-.03em}
+.cal-sub{font:600 9.5px/1 'Space Grotesk',sans-serif;letter-spacing:.11em;text-transform:uppercase;color:var(--sub);white-space:nowrap}
+.cal-sem,.cal-grade{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.cal-sem{margin-bottom:6px}
+.cal-sem span{text-align:center;font:600 9px/1 'Space Grotesk',sans-serif;letter-spacing:.1em;color:#6e7070}
+.cal-dia{position:relative;aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:4px;
+  font:500 13px/1 'Space Grotesk',sans-serif;color:#5d5f5f;background:transparent;border:1px solid transparent}
+.cal-dia.tem{color:var(--white);background:#232525;border-color:#3a3d3d;cursor:pointer;transition:.2s}
+.cal-dia.tem:hover,.cal-dia.tem:focus-visible{background:var(--lime);color:#101111;border-color:var(--lime);outline:none;transform:translateY(-2px)}
+.cal-dia.tem::after{content:"";position:absolute;bottom:5px;left:50%;transform:translateX(-50%);
+  width:4px;height:4px;border-radius:50%;background:var(--lime)}
+.cal-dia.tem:hover::after,.cal-dia.tem:focus-visible::after{background:#101111}
+.cal-dia.feito{background:#1b2416;border-color:#38491f}
+.cal-dia.feito::after{background:#5d7030}
+.cal-barra{height:3px;background:#2e3030;border-radius:2px;overflow:hidden;margin:16px 0 10px}
+.cal-barra i{display:block;height:100%;width:0;background:var(--lime);transition:width .45s cubic-bezier(.19,1,.22,1)}
+.cal-pe{font:600 9.5px/1.4 'Space Grotesk',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#6e7070}
+
+/* pop-up do dia */
+.dia-pop{width:min(560px,92vw);max-height:84vh;padding:0;border:1px solid var(--line);border-radius:6px;
+  background:var(--panel);color:var(--white);overflow:hidden}
+.dia-pop::backdrop{background:rgba(5,6,6,.82);backdrop-filter:blur(3px)}
+.pop-topo{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 22px;border-bottom:1px solid var(--line)}
+.pop-data{font:600 22px/1 'Space Grotesk',sans-serif;letter-spacing:-.04em}
+.pop-sem{margin-left:10px;font:600 10px/1 'Space Grotesk',sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--sub)}
+#pop-fecha{background:none;border:0;color:var(--sub);font:600 10px/1 'Space Grotesk',sans-serif;letter-spacing:.13em;text-transform:uppercase;padding:6px}
+#pop-fecha:hover{color:var(--lime)}
+.pop-corpo{padding:6px 22px 22px;overflow-y:auto;max-height:calc(84vh - 70px)}
+.pop-item{display:flex;gap:12px;padding:16px 0;border-bottom:1px solid #26292a}
+.pop-item:last-child{border-bottom:0}
+.pop-item input{accent-color:var(--lime);width:16px;height:16px;margin-top:3px;flex:none;cursor:pointer}
+.pop-item h3{font:600 15px/1.3 'Space Grotesk',sans-serif;letter-spacing:-.02em;margin:5px 0 3px}
+.pop-item.feita h3{color:var(--sub);text-decoration:line-through;text-decoration-color:#4a4d4d}
+.pop-hora{font:600 10px/1.4 'Space Grotesk',sans-serif;letter-spacing:.11em;text-transform:uppercase;color:var(--sub)}
+.pop-es{color:#101111;background:var(--sub);border-radius:2px;padding:1px 4px;margin-left:6px;font-size:9px}
+.pop-com{font-size:12.5px;color:var(--sub);line-height:1.4}
+.pop-ver{display:inline-block;margin-top:7px;font:600 10px/1 'Space Grotesk',sans-serif;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--lime);border-bottom:1px solid #4e5a30;padding-bottom:3px}
+.pop-ver:hover{border-color:var(--lime)}
+
+@media (max-width:900px){
+  .hero-bottom{grid-template-columns:minmax(0,1fr);align-items:start}
+  
+.hero-dir{min-width:0}
+.hero-dir{order:-1;width:100%;min-width:0}
+  .hero-esq{min-width:0}
+  .cal{max-width:100%}
+  .pensamento{margin-top:24px}
+}
 </style></head>
 <body>
-<header><div class="wrap head"><a href="#inicio" class="brand">RENAN<span> / </span>CAREER OS</a><nav><a href="#visao">Visão</a><a href="#roadmap">Roadmap</a><a href="#red2go">RED2GO</a><a href="#execucao">Execução</a><a href="#notas">Notas</a><a href="#oficinas">Oficinas</a></nav><span class="micro muted">PERSONAL SPACE · V1.0</span></div></header>
+<header><div class="wrap head"><a href="#inicio" class="brand">RENAN<span> / </span>CAREER OS</a><nav><a href="#visao">Visão</a><a href="#roadmap">Roadmap</a><a href="#red2go">RED2GO</a><a href="#execucao">Execução</a><a href="#notas">Notas</a></nav><span class="micro muted">PERSONAL SPACE · V1.0</span></div></header>
 <main id="inicio">
-<div class="wrap"><div class="hero"><div class="hero-top"><span class="eyebrow accent">Career strategy / 2027—2030</span><span class="pill">Redhook Creative Community · RCC E5/26</span></div><h1>THE NEXT<br><em>CREATIVE</em><br>CHAPTER.</h1><div class="hero-bottom"><p class="intro">De diretor de arte a uma liderança criativa que une conceito, cultura, direção de criação e inteligência artificial. Um plano vivo — construído projeto após projeto.</p><span class="arrow">↘</span></div></div></div>
+<div class="wrap"><div class="hero"><div class="hero-top"><span class="eyebrow accent">Career strategy / 2027—2030</span><span class="pill">Redhook Creative Community · RCC E5/26</span></div><h1>THE NEXT<br><em>CREATIVE</em><br>CHAPTER.</h1><div class="hero-bottom">
+<div class="hero-esq">
+  <p class="intro">De diretor de arte a uma liderança criativa que une conceito, cultura, direção de criação e inteligência artificial. Um plano vivo — construído projeto após projeto.</p>
+  <blockquote class="pensamento" id="pensamento">
+    <p id="pensamento-txt"></p>
+    <footer><cite id="pensamento-aut"></cite> &middot; <a id="pensamento-link" href="#" target="_blank" rel="noopener">ver no YouTube &#8599;</a></footer>
+  </blockquote>
+</div>
+<div class="hero-dir">
+  <div class="cal" id="cal">
+    <div class="cal-cab"><span class="cal-mes">Agosto 2026</span><span class="cal-sub" id="cal-sub">0 / 27 assistidas</span></div>
+    <div class="cal-sem"><span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span></div>
+    <div class="cal-grade" id="cal-grade"></div>
+    <div class="cal-barra"><i id="cal-fill"></i></div>
+    <p class="cal-pe">Maratona de oficinas RCC E2/2026 &middot; clique num dia</p>
+  </div>
+</div>
+</div></div></div>
+
+<dialog class="dia-pop" id="dia-pop">
+  <div class="pop-topo"><div><span class="pop-data" id="pop-data"></span><span class="pop-sem" id="pop-sem"></span></div><button type="button" id="pop-fecha" aria-label="Fechar">Fechar &times;</button></div>
+  <div class="pop-corpo" id="pop-corpo"></div>
+</dialog>
+
 <section id="visao"><div class="wrap"><div class="section-head"><div><span class="eyebrow accent">01 / North star</span><h2>Onde quero chegar.</h2></div><p class="section-note">Direção de criação em agência com especialização em IA, sem perder a força do conceito e da direção de arte.</p></div><div class="stats"><div class="stat"><span class="micro muted">Horizonte</span><div class="num">2030</div><div class="label">Meta estratégica de carreira</div></div><div class="stat"><span class="micro muted">Trajetória</span><div class="num">8+</div><div class="label">Anos de experiência em criação</div></div><div class="stat"><span class="micro muted">Foco</span><div class="num">2×</div><div class="label">Creative direction + AI craft</div></div><div class="stat"><span class="micro muted">Método</span><div class="num">01</div><div class="label">Pipeline principal de IA</div></div></div></div></section>
 <section id="roadmap"><div class="wrap"><div class="section-head"><div><span class="eyebrow accent">02 / The roadmap</span><h2>Quatro anos.<br>Uma direção.</h2></div><p class="section-note">Etapas propostas para orientar as escolhas. O objetivo final é uma direção, não um cargo garantido em data fixa.</p></div><div class="timeline"><div class="year"><strong>2027</strong><h3>Consolidar repertório.</h3><p>Cases fortes, maturidade conceitual, domínio do pipeline de IA e evolução pela Redhook.</p><span class="stage">Foundation</span></div><div class="year"><strong>2028</strong><h3>Liderar ideias.</h3><p>Conduzir projetos, colaborar com redatores e assumir decisões criativas mais complexas.</p><span class="stage">Leadership</span></div><div class="year"><strong>2029</strong><h3>Ampliar impacto.</h3><p>Desenvolver visão de campanha, direção de times e repertório reconhecido no mercado.</p><span class="stage">Creative influence</span></div><div class="year"><strong>2030</strong><h3>Creative Director + AI.</h3><p>Atuar na liderança de criação com IA integrada à estratégia e à execução.</p><span class="stage">North star</span></div></div></div></section>
 <section id="red2go"><div class="wrap"><div class="section-head"><div><span class="eyebrow accent">03 / Redhook · RED2GO</span><h2>Autoconhecimento<br>vira movimento.</h2></div><p class="section-note">Estrutura de trabalho inicial, a adaptar aos tópicos oficiais do RED2GO quando estiverem disponíveis. Não é uma reprodução do formulário oficial.</p></div><div class="grid2"><article class="panel"><span class="badge">PONTO DE PARTIDA</span><h3>O que já levo comigo.</h3><p>Experiência em direção de arte, branding, campanhas, trade e projetos autorais. OFF THE MAP como laboratório de conceito, execução e narrativa.</p></article><article class="panel"><span class="badge">POSICIONAMENTO</span><h3>Criatividade primeiro.<br>IA como potência.</h3><p>Usar inteligência artificial para ampliar possibilidades de criação — não apenas acelerar produção de peças.</p></article><article class="panel"><span class="badge">LACUNAS A INVESTIGAR</span><h3>O que precisa crescer.</h3><p>Seleção crítica do portfólio, liderança criativa, campanhas integradas, colaboração com copy e construção de reconhecimento.</p></article><article class="panel"><span class="badge">REDHOOK</span><h3>Aprender em público.</h3><p>Levar os trabalhos para crítica, buscar mentoria, testar ideias e transformar feedback em decisões de projeto.</p></article></div></div></section>
 <section id="execucao"><div class="wrap"><div class="section-head"><div><span class="eyebrow accent">04 / Execution tracker</span><h2>Próximas quatro<br>semanas.</h2></div><p class="section-note">Checklist editável. O progresso é salvo apenas neste navegador e neste dispositivo.</p></div><div class="toolbar"><div><span class="micro muted" id="progress-label">0 / 12 concluídas</span><div class="bar" style="width:240px;max-width:75vw"><div class="bar-fill" id="progress-fill"></div></div></div><button class="secondary" id="reset">Reiniciar checklist</button></div><div class="tasks" id="tasks"></div><p class="notice">As datas e ações abaixo são propostas de execução, não compromissos oficialmente confirmados pela Redhook.</p></div></section>
 <section id="competencias"><div class="wrap"><div class="section-head"><div><span class="eyebrow accent">05 / Skill architecture</span><h2>O que preciso<br>desenvolver.</h2></div></div><div class="skills"><div class="skill"><span class="badge">01 / THINKING</span><h3>Conceito e cultura</h3><p>Insights, tensão cultural, plataforma de campanha e storytelling.</p></div><div class="skill"><span class="badge">02 / CRAFT</span><h3>Direção de arte</h3><p>Composição, imagem, tipografia, sistemas e consistência visual.</p></div><div class="skill"><span class="badge">03 / AI</span><h3>Pipeline criativo</h3><p>Experimentação, prompting, direção de imagens e refinamento.</p></div><div class="skill"><span class="badge">04 / LEADERSHIP</span><h3>Direção de pessoas</h3><p>Briefing, crítica construtiva, delegação e tomada de decisão.</p></div><div class="skill"><span class="badge">05 / COLLAB</span><h3>Dupla criativa</h3><p>Campanhas com parceria de redação e desenvolvimento conjunto de ideias.</p></div><div class="skill"><span class="badge">06 / PRESENCE</span><h3>Portfólio e mercado</h3><p>Case writing, apresentação, networking e repertório de premiações.</p></div></div></div></section>
 <section id="notas"><div class="wrap"><div class="section-head"><div><span class="eyebrow accent">06 / Personal notebook</span><h2>Registro de bordo.</h2></div><p class="section-note">Anote feedbacks das mentorias, decisões, mudanças de direção e aprendizados. Salvo localmente no navegador.</p></div><label class="micro muted" for="journal">Minhas anotações</label><textarea id="journal" placeholder="O que aprendi, o que vou testar, o que preciso melhorar..."></textarea><div><button id="save-notes">Salvar neste navegador</button> <span class="notice" id="save-status" role="status"></span></div><p class="notice">Importante: este site é público para quem conhecer a URL. Não adicione dados sensíveis. Os textos salvos aqui não são sincronizados com seu My Brain, GitHub ou outros aparelhos.</p></div></section>
-<section id="oficinas"><div class="wrap">
-<div class="section-head">
-  <div><span class="eyebrow accent">07 / Redfull Creative Course</span><h2>Maratona de<br>oficinas.</h2></div>
-  <p class="section-note">RCC E2/2026, de 5 a 22 de agosto — 27 oficinas gravadas, no Vimeo da Redhook. Marque o que já assistiu: fica salvo neste navegador.</p>
-</div>
-<div class="ofi-topo">
-  <div class="ofi-progresso"><span id="ofi-label">0 / 27 assistidas</span><div class="ofi-barra"><i id="ofi-fill"></i></div></div>
-  <label class="ofi-filtro"><input type="checkbox" id="ofi-faltam"> Mostrar só o que falta</label>
-</div>
-<div class="ofi-dias" id="ofi-dias"></div>
-<p class="ofi-nada" id="ofi-nada" hidden>Tudo assistido. 🎬</p>
-</div></section>
+
 </main>
 <div class="wrap"><footer class="footer"><div><div class="brand">KEEP<br>MOVING<span class="accent">.</span></div><p class="notice">Career OS © 2026 · Renan Damazio</p></div><div class="chip">● BUILT FOR THE NEXT CHAPTER</div></footer></div>
 <script>
@@ -101,85 +179,116 @@ document.getElementById('save-notes').addEventListener('click',function(){state.
 document.getElementById('reset').addEventListener('click',function(){if(!confirm('Reiniciar o checklist?'))return;state.checks={};Array.from(root.querySelectorAll('input')).forEach(function(c,i){c.checked=items[i][3]});save();refresh()});
 })();
 </script>
+
+
 <script>
 (function(){
 'use strict';
 var DADOS = {"dias": [{"data": "2026-08-05", "dia": 5, "semana": "quarta", "sessoes": [{"h": "20h–22h", "t": "Linkedin: Estratégia e criação de conteúdo pessoal", "s": "", "c": "Bruna Slongo e Laura Quaresma", "l": "https://vimeo.com/redhookschool/linkedin-mof-rcc-e226?share=copy", "es": false}]}, {"data": "2026-08-07", "dia": 7, "semana": "sexta", "sessoes": [{"h": "20h–22h", "t": "Processo Criativo sob um olhar psicanalítico", "s": "", "c": "Moa Domingues", "l": "https://vimeo.com/1216574063/765d73d1b3", "es": false}, {"h": "7:00 pm–9:00 pm · Lima", "t": "Redacción Creativa", "s": "", "c": "Renzo Choque Hokama", "l": "https://vimeo.com/redhookschool/redacion-creativa-mof-rcc-e226?share=copy", "es": true}]}, {"data": "2026-08-08", "dia": 8, "semana": "sábado", "sessoes": [{"h": "9h–11h", "t": "Portfolio Criativo: da plataforma a publicação dos trabalhos", "s": "", "c": "Luis Bacellar", "l": "https://vimeo.com/redhookschool/portfolio-criativo-mof-rcce226?share=copy", "es": false}, {"h": "11h–13h", "t": "Branding Visual: da logo à apresentação", "s": "", "c": "Ana Simões", "l": "https://vimeo.com/redhookschool/branding-visual-mof-rcce226?share=copy", "es": false}, {"h": "11h–13h", "t": "Direção de Arte & Craft Aplicado", "s": "", "c": "Marcelo Seguti", "l": "https://vimeo.com/redhookschool/direcao-de-arte-e-craft-aplicado-mof-rcc-e226?share=copy", "es": false}, {"h": "9:00 am–11:00 am · Lima", "t": "Estrategia Creativa de Comunicaciones", "s": "", "c": "Diego Choque Hokama e Diego Altamirano", "l": "https://vimeo.com/redhookschool/estrategia-creativa-mof-rcc-e226?share=copy", "es": true}, {"h": "11:00 am–1:00 pm · Lima", "t": "Competencias Creativas y como pueden ayudarte en tu trayectoria profesional", "s": "", "c": "Jose Alphayet", "l": "https://vimeo.com/redhookschool/competecias-criativas-mof-rcce226?share=copy", "es": true}]}, {"data": "2026-08-10", "dia": 10, "semana": "segunda", "sessoes": [{"h": "20h–22h", "t": "Criação de campanhas: do brief à entrega final", "s": "", "c": "Bruno Souza", "l": "https://vimeo.com/redhookschool/criacao-de-campanha-mof-rcce226?share=copy", "es": false}, {"h": "20h–22h", "t": "Projeto Pessoal: como usar a favor da sua carreira", "s": "", "c": "Eduardo Chaves", "l": "https://vimeo.com/1217161316/ceb853ddb4", "es": false}]}, {"data": "2026-08-11", "dia": 11, "semana": "terça", "sessoes": [{"h": "20h–22h", "t": "Storytelling", "s": "", "c": "Andre Kovadloff", "l": "https://vimeo.com/redhookschool/storytelling-mof-rcce226?share=copy", "es": false}]}, {"data": "2026-08-12", "dia": 12, "semana": "quarta", "sessoes": [{"h": "20h–22h", "t": "Briefing bom é briefing claro", "s": "", "c": "Chris Brum", "l": "https://vimeo.com/redhookschool/briefing-bom-e-briefing-claro-rcce226?share=copy", "es": false}, {"h": "8:00 pm–10:00 pm · Lima", "t": "Portfolio Creativo: como crear una carpeta competitiva", "s": "", "c": "Shirley Miraval e Cristina Llerena", "l": "https://vimeo.com/redhookschool/portfolio-creativo-mof-rcc-e226?share=copy", "es": true}]}, {"data": "2026-08-13", "dia": 13, "semana": "quinta", "sessoes": [{"h": "20h–22h", "t": "Ideia & Linguagem: Como uma ideia encontra uma linguagem própria", "s": "", "c": "Luiza Prado - Chief Executive Officer - Estúdio Língua", "l": "https://vimeo.com/redhookschool/ideia-de-linguagem-mof-rcc-e226?share=copy", "es": false}]}, {"data": "2026-08-15", "dia": 15, "semana": "sábado", "sessoes": [{"h": "9h–11h", "t": "Pensando em um bom título", "s": "", "c": "Thales Santos", "l": "https://vimeo.com/redhookschool/pensando-em-um-bom-titulo-mof-rcc-e226?share=copy&fl=sv&fe=ci", "es": false}, {"h": "9h–11h", "t": "Estratégia: qual é a ideal para cada tipo de briefing?", "s": "", "c": "Ana Lívia", "l": "https://vimeo.com/redhookschool/estrategia-mof-rcc-e226?share=copy&fl=sv&fe=ci", "es": false}, {"h": "11h–13h", "t": "Pitch in English: feel confident presenting your ideas", "s": "", "c": "Teacher Thay", "l": "https://vimeo.com/redhookschool/pitch-in-english-mof-rcc-e226?share=copy&fl=sv&fe=ci", "es": false}, {"h": "11:00 am–1:00 pm · Lima", "t": "Más dirección de arte, con IA.", "s": "La importancia de la dirección de arte en la era de la inteligencia artificial.", "c": "Kenny Hernández", "l": "https://vimeo.com/redhookschool/mas-direccion-de-arte-mof-rcc-e226?share=copy", "es": true}]}, {"data": "2026-08-17", "dia": 17, "semana": "segunda", "sessoes": [{"h": "20h–22h", "t": "Atendimento: a arte de conectar", "s": "", "c": "Thiago Accioly", "l": "https://vimeo.com/redhookschool/atendimento-a-ater-de-conectar-mof-rcc-e226?share=copy", "es": false}, {"h": "20h–22h", "t": "Dinâmica de duplas criativas", "s": "", "c": "MayLana: May Schwab e Alana Marques", "l": "https://vimeo.com/redhookschool/dinamica-de-duplas-criativas-mof-rcc-e226?share=copy", "es": false}]}, {"data": "2026-08-18", "dia": 18, "semana": "terça", "sessoes": [{"h": "20h–22h", "t": "IAs para criar PORTFOLIO sozinho do zero", "s": "", "c": "Thiago Egg", "l": "https://vimeo.com/redhookschool/ias-para-criar-potfolio-mof-rcc-e226?share=copy", "es": false}, {"h": "20h–22h", "t": "Apresentações: do Storytelling ao PPT", "s": "", "c": "Elielson Junior e Wes Sousa", "l": "https://vimeo.com/redhookschool/apresentacoes-mof-rcc-e226?share=copy", "es": false}, {"h": "21h15–23h15", "t": "Brand PR: transformando criatividade em impacto para as marcas", "s": "", "c": "Mari Foloni", "l": "https://vimeo.com/redhookschool/brand-pr-mof-rcc-e226?share=copy", "es": false}]}, {"data": "2026-08-19", "dia": 19, "semana": "quarta", "sessoes": [{"h": "20h–22h", "t": "Saúde Mental: quando o talento encontra o limite", "s": "Pressão, ansiedade e o lado invisível da criatividade.", "c": "Camila Maquea Leite", "l": "https://vimeo.com/redhookschool/saude-mental-mof-rcc-e226?share=copy", "es": false}, {"h": "8:00 pm–10:00 am · Lima", "t": "Pitch Deck: presentación de ideas creativas", "s": "", "c": "Dickson Barbaran", "l": "https://vimeo.com/redhookschool/pitch-deck-mof-rcc-e226?share=copy", "es": true}]}, {"data": "2026-08-22", "dia": 22, "semana": "sábado", "sessoes": [{"h": "9h–11h", "t": "PR - Da estrategia aos resultados", "s": "", "c": "Fabiola Ribeiro do Carmo", "l": "https://vimeo.com/redhookschool/pr-da-estrategia-aos-resltados-mof-rcc-e226?share=copy", "es": false}, {"h": "9h–11h", "t": "Claude Design - Introdução prática", "s": "", "c": "Kaike Mota", "l": "https://vimeo.com/redhookschool/claude-design-mof-rcc-e226?share=copy", "es": false}]}], "total": 27};
+var PENSA = [{"t": "Quem tem brio não deita antes de resolver.", "a": "Clóvis de Barros Filho", "q": "Clóvis de Barros Filho brio"}, {"t": "Alegria é o instante bom que você torce para não acabar — e ele não aparece no piloto automático.", "a": "ideia de Clóvis de Barros Filho", "q": "Clóvis de Barros Filho alegria e felicidade"}, {"t": "Excelência é tirar de si o melhor possível, e se alegrar ao olhar no espelho.", "a": "ideia de Clóvis de Barros Filho", "q": "Clóvis de Barros Filho excelência vida que vale a pena"}, {"t": "Ética é a arte da convivência.", "a": "Clóvis de Barros Filho, TEDxSãoPaulo", "q": "Clóvis de Barros Filho ética arte da convivência TEDx"}, {"t": "No começo, seu gosto é melhor que seu trabalho. É esse incômodo que fecha a distância.", "a": "ideia de Ira Glass", "q": "Ira Glass the gap taste creative work"}, {"t": "Criatividade não é um talento raro. É um jeito de operar que dá pra treinar.", "a": "ideia de John Cleese", "q": "John Cleese lecture on creativity"}];
+var MESES = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+
+/* ---------- pensamento que roda ---------- */
+var pTxt = document.getElementById('pensamento-txt');
+var pAut = document.getElementById('pensamento-aut');
+var pLink = document.getElementById('pensamento-link');
+var pi = Math.floor(Math.random() * PENSA.length);
+function mostrarPensamento(){
+  var p = PENSA[pi % PENSA.length];
+  pTxt.classList.remove('on');
+  setTimeout(function(){
+    pTxt.textContent = p.t;
+    pAut.textContent = p.a;
+    pLink.href = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(p.q);
+    pTxt.classList.add('on');
+  }, 420);
+  pi++;
+}
+mostrarPensamento();
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches) setInterval(mostrarPensamento, 9000);
+
+/* ---------- calendario ---------- */
 var chave = 'renan-rcc-oficinas-v1';
 var vistos = {};
 try{ vistos = JSON.parse(localStorage.getItem(chave) || '{}') }catch(e){}
 function salvar(){ try{ localStorage.setItem(chave, JSON.stringify(vistos)) }catch(e){} }
+function idDe(d, s){ return d.data + '|' + s.t.slice(0, 40) }
 
-var caixa = document.getElementById('ofi-dias');
-var MESES = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+var porDia = {};
 var total = 0;
+DADOS.dias.forEach(function(d){ porDia[d.dia] = d; total += d.sessoes.length });
 
-DADOS.dias.forEach(function(d){
-  var art = document.createElement('article');
-  art.className = 'ofi-dia';
-  var cab = document.createElement('div');
-  cab.className = 'ofi-cab';
-  cab.innerHTML = '<span class="ofi-num"></span><span class="ofi-mes">ago</span><span class="ofi-sem"></span>';
-  cab.querySelector('.ofi-num').textContent = d.dia < 10 ? '0' + d.dia : d.dia;
-  cab.querySelector('.ofi-sem').textContent = d.semana;
-  art.appendChild(cab);
+var grade = document.getElementById('cal-grade');
+var primeiro = new Date(2026, 7, 1).getDay();      // agosto/2026 começa no sábado
+var ultimo = new Date(2026, 8, 0).getDate();       // 31
+for (var v = 0; v < primeiro; v++) grade.appendChild(document.createElement('span'));
+for (var n = 1; n <= ultimo; n++){
+  var d = porDia[n];
+  var cel;
+  if (d){
+    cel = document.createElement('button');
+    cel.type = 'button';
+    cel.className = 'cal-dia tem';
+    cel.setAttribute('data-dia', n);
+    cel.setAttribute('aria-label', n + ' de agosto — ' + d.sessoes.length + (d.sessoes.length > 1 ? ' oficinas' : ' oficina'));
+    cel.addEventListener('click', function(){ abrirDia(Number(this.getAttribute('data-dia'))) });
+  } else {
+    cel = document.createElement('span');
+    cel.className = 'cal-dia';
+  }
+  cel.textContent = n;
+  grade.appendChild(cel);
+}
 
+function atualizar(){
+  var feitos = Object.keys(vistos).length;
+  document.getElementById('cal-sub').textContent = feitos + ' / ' + total + ' assistidas';
+  document.getElementById('cal-fill').style.width = (feitos / total * 100) + '%';
+  Array.prototype.forEach.call(grade.querySelectorAll('.cal-dia.tem'), function(cel){
+    var d = porDia[Number(cel.getAttribute('data-dia'))];
+    var todas = d.sessoes.every(function(s){ return vistos[idDe(d, s)] });
+    cel.classList.toggle('feito', todas);
+  });
+}
+
+/* ---------- pop-up do dia ---------- */
+var pop = document.getElementById('dia-pop');
+var corpo = document.getElementById('pop-corpo');
+function abrirDia(n){
+  var d = porDia[n];
+  document.getElementById('pop-data').textContent = n + ' de ' + MESES[7];
+  document.getElementById('pop-sem').textContent = d.semana;
+  corpo.innerHTML = '';
   d.sessoes.forEach(function(s){
-    total++;
-    var id = d.data + '|' + s.t.slice(0, 40);
+    var id = idDe(d, s);
     var item = document.createElement('div');
-    item.className = 'ofi-item';
-    item.setAttribute('data-id', id);
-
+    item.className = 'pop-item' + (vistos[id] ? ' feita' : '');
     var cx = document.createElement('input');
     cx.type = 'checkbox'; cx.checked = !!vistos[id];
     cx.setAttribute('aria-label', 'Marcar "' + s.t + '" como assistida');
-
-    var corpo = document.createElement('div');
-    corpo.className = 'ofi-corpo';
-    var hora = document.createElement('p');
-    hora.className = 'ofi-hora';
-    hora.textContent = s.h;
-    if (s.es) { var tag = document.createElement('span'); tag.className = 'ofi-es'; tag.textContent = 'ES'; hora.appendChild(tag); }
+    var box = document.createElement('div');
+    var hora = document.createElement('p'); hora.className = 'pop-hora'; hora.textContent = s.h;
+    if (s.es){ var tg = document.createElement('span'); tg.className = 'pop-es'; tg.textContent = 'ES'; hora.appendChild(tg) }
     var h3 = document.createElement('h3'); h3.textContent = s.t;
-    var com = document.createElement('p'); com.className = 'ofi-com'; com.textContent = s.c;
-    var a = document.createElement('a');
-    a.className = 'ofi-ver'; a.href = s.l; a.target = '_blank'; a.rel = 'noopener';
+    box.append(hora, h3);
+    if (s.s){ var sub = document.createElement('p'); sub.className = 'pop-com'; sub.textContent = s.s; box.appendChild(sub) }
+    var com = document.createElement('p'); com.className = 'pop-com'; com.textContent = s.c;
+    var a = document.createElement('a'); a.className = 'pop-ver'; a.href = s.l; a.target = '_blank'; a.rel = 'noopener';
     a.textContent = 'Assistir \u2197';
-    corpo.append(hora, h3);
-    if (s.s) { var sub = document.createElement('p'); sub.className = 'ofi-com'; sub.textContent = s.s; corpo.appendChild(sub); }
-    corpo.append(com, a);
-
-    item.append(cx, corpo);
-    if (cx.checked) item.classList.add('feita');
+    box.append(com, a);
+    item.append(cx, box);
     cx.addEventListener('change', function(){
-      if (cx.checked) { vistos[id] = 1; item.classList.add('feita'); }
-      else { delete vistos[id]; item.classList.remove('feita'); }
+      if (cx.checked){ vistos[id] = 1; item.classList.add('feita') }
+      else { delete vistos[id]; item.classList.remove('feita') }
       salvar(); atualizar();
     });
-    art.appendChild(item);
+    corpo.appendChild(item);
   });
-  caixa.appendChild(art);
-});
-
-var filtro = document.getElementById('ofi-faltam');
-function atualizar(){
-  var n = Object.keys(vistos).length;
-  document.getElementById('ofi-label').textContent = n + ' / ' + total + ' assistidas';
-  document.getElementById('ofi-fill').style.width = (n / total * 100) + '%';
-  var soFaltam = filtro.checked;
-  Array.prototype.forEach.call(caixa.querySelectorAll('.ofi-dia'), function(dia){
-    var visiveis = 0;
-    Array.prototype.forEach.call(dia.querySelectorAll('.ofi-item'), function(it){
-      var esconde = soFaltam && it.classList.contains('feita');
-      it.classList.toggle('oculta', esconde);
-      if (!esconde) visiveis++;
-    });
-    dia.classList.toggle('vazio', visiveis === 0);
-  });
-  document.getElementById('ofi-nada').hidden = !(soFaltam && n === total);
+  if (pop.showModal) pop.showModal(); else pop.setAttribute('open','');
 }
-filtro.addEventListener('change', atualizar);
+document.getElementById('pop-fecha').addEventListener('click', function(){ pop.close ? pop.close() : pop.removeAttribute('open') });
+pop.addEventListener('click', function(e){ if (e.target === pop) pop.close() });
+
 atualizar();
 })();
 </script>
