@@ -115,18 +115,23 @@ button{background:var(--lime);color:#121310;border:0;border-radius:4px;padding:1
   .cal{max-width:100%}
   .pensamento{margin-top:24px}
 }
+
+/* calendario ao lado do titulo */
+.hero-meio{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,380px);gap:clamp(24px,4vw,64px);align-items:start}
+.hero-meio h1{margin:37px 0 0}
+.hero-meio .hero-dir{margin-top:44px}
+.hero-bottom{display:block;margin-top:clamp(28px,4vw,52px)}
+@media (max-width:900px){
+  .hero-meio{grid-template-columns:minmax(0,1fr)}
+  .hero-meio h1{margin-bottom:28px}
+  .hero-meio .hero-dir{margin-top:0;order:0}
+  .hero-bottom{margin-top:24px}
+}
 </style></head>
 <body>
 <header><div class="wrap head"><a href="#inicio" class="brand">RENAN<span> / </span>CAREER OS</a><nav><a href="#visao">Visão</a><a href="#roadmap">Roadmap</a><a href="#red2go">RED2GO</a><a href="#execucao">Execução</a><a href="#notas">Notas</a></nav><span class="micro muted">PERSONAL SPACE · V1.0</span></div></header>
 <main id="inicio">
-<div class="wrap"><div class="hero"><div class="hero-top"><span class="eyebrow accent">Career strategy / 2027—2030</span><span class="pill">Redhook Creative Community · RCC E5/26</span></div><h1>THE NEXT<br><em>CREATIVE</em><br>CHAPTER.</h1><div class="hero-bottom">
-<div class="hero-esq">
-  <p class="intro">De diretor de arte a uma liderança criativa que une conceito, cultura, direção de criação e inteligência artificial. Um plano vivo — construído projeto após projeto.</p>
-  <blockquote class="pensamento" id="pensamento">
-    <p id="pensamento-txt"></p>
-    <footer><cite id="pensamento-aut"></cite> &middot; <a id="pensamento-link" href="#" target="_blank" rel="noopener">ver no YouTube &#8599;</a></footer>
-  </blockquote>
-</div>
+<div class="wrap"><div class="hero"><div class="hero-top"><span class="eyebrow accent">Career strategy / 2027—2030</span><span class="pill">Redhook Creative Community · RCC E5/26</span></div><div class="hero-meio"><h1>THE NEXT<br><em>CREATIVE</em><br>CHAPTER.</h1>
 <div class="hero-dir">
   <div class="cal" id="cal">
     <div class="cal-cab"><span class="cal-mes">Agosto 2026</span><span class="cal-sub" id="cal-sub">0 / 27 assistidas</span></div>
@@ -136,6 +141,16 @@ button{background:var(--lime);color:#121310;border:0;border-radius:4px;padding:1
     <p class="cal-pe">Maratona de oficinas RCC E2/2026 &middot; clique num dia</p>
   </div>
 </div>
+</div>
+<div class="hero-bottom">
+<div class="hero-esq">
+  <p class="intro">De diretor de arte a uma liderança criativa que une conceito, cultura, direção de criação e inteligência artificial. Um plano vivo — construído projeto após projeto.</p>
+  <blockquote class="pensamento" id="pensamento">
+    <p id="pensamento-txt"></p>
+    <footer><cite id="pensamento-aut"></cite> &middot; <a id="pensamento-link" href="#" target="_blank" rel="noopener">ver no YouTube &#8599;</a></footer>
+  </blockquote>
+</div>
+
 </div></div></div>
 
 <dialog class="dia-pop" id="dia-pop">
