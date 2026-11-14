@@ -12,8 +12,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..500,0..100,0..1;1,9..144,300..500,0..100,0..1&family=Homemade+Apple&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=18">
+<link rel="stylesheet" href="motion.css?v=1">
+<script>
+(function(h){try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches&&"IntersectionObserver" in window){h.classList.add("mo");var visto=null;try{visto=sessionStorage.getItem("mo-intro")}catch(e){}if(!visto)h.classList.add("mo-intro-on")}}catch(e){}
+setTimeout(function(){if(!window.__mo)h.classList.remove("mo","mo-intro-on")},5000)})(document.documentElement);
+</script>
 </head>
 <body>
+
+<div class="mo-intro" aria-hidden="true">
+  <div class="mo-intro__centro">
+    <p class="mo-intro__mono">t / R</p>
+    <span class="mo-intro__linha"></span>
+    <p class="mo-intro__data">09 · 07 · 2027</p>
+  </div>
+</div>
 
 <header class="topo" id="topo">
   <a class="monograma" href="#inicio" aria-label="Início">t / R</a>
@@ -37,6 +50,12 @@
         <span class="filete filete--claro"></span>
         <p class="hero__data">09 &nbsp;·&nbsp; JULHO &nbsp;·&nbsp; 2027</p>
         <p class="hero__lugar">São Paulo &nbsp;·&nbsp; 20h30</p>
+        <ul class="contagem" id="contagem" aria-label="Contagem regressiva para o casamento">
+          <li><b data-u="d">0</b><small>dias</small></li>
+          <li><b data-u="h">00</b><small>horas</small></li>
+          <li><b data-u="m">00</b><small>min</small></li>
+          <li><b data-u="s">00</b><small>seg</small></li>
+        </ul>
         <a class="btn btn--claro" href="#rsvp">Confirme que vem <span aria-hidden="true">→</span></a>
       </div>
       <a class="hero__scroll" href="#boas-vindas">↓ &nbsp;Veja os detalhes</a>
@@ -95,6 +114,7 @@
 
   <!-- 04 · O GRANDE DIA -->
   <section class="dia" id="grande-dia">
+    <p class="dia__fundo" aria-hidden="true">09.07.27</p>
     <p class="rotulo rotulo--claro">03 &nbsp;/&nbsp; O grande dia</p>
     <h2 class="titulo titulo--claro titulo--xl">O nosso sim.</h2>
     <p class="dia__data"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>09 de julho de 2027</p>
@@ -117,6 +137,13 @@
     </div>
     <a class="btn btn--claro" id="btnMapa" href="#" target="_blank" rel="noopener">Ver como chegar <span aria-hidden="true">↗</span></a>
   </section>
+
+  <!-- faixa em movimento -->
+  <div class="faixa" aria-hidden="true">
+    <div class="faixa__trilho">
+      <span>Tainara &amp; Renan<em>✦</em>09 de julho de 2027<em>✦</em>São Paulo<em>✦</em>O nosso sim<em>✦</em></span><span>Tainara &amp; Renan<em>✦</em>09 de julho de 2027<em>✦</em>São Paulo<em>✦</em>O nosso sim<em>✦</em></span><span>Tainara &amp; Renan<em>✦</em>09 de julho de 2027<em>✦</em>São Paulo<em>✦</em>O nosso sim<em>✦</em></span>
+    </div>
+  </div>
 
   <!-- 05 · RSVP -->
   <section class="rsvp" id="rsvp">
@@ -168,6 +195,7 @@
   <h2 class="titulo titulo--claro">Fale com a gente.</h2>
   <p class="corpo corpo--claro">Uma dúvida sobre o dia, a confirmação ou os presentes? Estamos por aqui.</p>
   <a class="link-claro" id="linkWhats" href="#" target="_blank" rel="noopener">Chamar no WhatsApp ↗</a>
+  <p class="rodape__mao" aria-hidden="true">Tainara &amp; Renan</p>
   <p class="rodape__assina">Tainara &amp; Renan &nbsp;&nbsp;·&nbsp;&nbsp; 09 Jul 2027 &nbsp;&nbsp;·&nbsp;&nbsp; São Paulo</p>
 </footer>
 
@@ -240,6 +268,7 @@
 <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
 <script src="pix.js?v=12"></script>
 <script src="app.js?v=12"></script>
+<script src="motion.js?v=1"></script>
 <script>
 (function(){
   const video=document.getElementById('tobiasPasseio');
