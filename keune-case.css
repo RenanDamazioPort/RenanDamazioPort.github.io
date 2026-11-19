@@ -66,3 +66,60 @@
   .keune-wide{margin-top:22px}
   .keune-wide img{height:260px;padding:10px}
 }
+
+
+/* Keune artwork lightbox */
+.keune-piece img{cursor:zoom-in}
+.keune-piece img:focus-visible{outline:2px solid #35f3ff;outline-offset:4px}
+.keune-lightbox{
+  position:fixed;
+  inset:0;
+  z-index:300;
+  display:none;
+  place-items:center;
+  overflow:auto;
+  padding:68px 24px 24px;
+  background-color:rgba(8,8,8,.94);
+  background-image:
+    repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0,rgba(255,255,255,.035) 1px,transparent 1px,transparent 4px),
+    repeating-linear-gradient(90deg,rgba(255,255,255,.018) 0,rgba(255,255,255,.018) 1px,transparent 1px,transparent 5px);
+  backdrop-filter:blur(8px);
+}
+.keune-lightbox.open{display:grid}
+.keune-lightbox img{
+  position:relative;
+  z-index:1;
+  display:block;
+  width:auto;
+  height:auto;
+  max-width:min(96vw,1600px);
+  max-height:calc(100dvh - 104px);
+  object-fit:contain;
+  border:1px solid rgba(255,255,255,.24);
+  background:#101010;
+  box-shadow:0 24px 90px rgba(0,0,0,.7);
+}
+.keune-lightbox-close{
+  position:fixed;
+  z-index:2;
+  top:16px;
+  right:20px;
+  min-width:44px;
+  min-height:44px;
+  padding:10px 14px;
+  border:1px solid rgba(255,255,255,.28);
+  background:rgba(10,10,10,.82);
+  color:#f1efe8;
+  font:10px "Courier New",monospace;
+  letter-spacing:.12em;
+  cursor:pointer;
+}
+.keune-lightbox-close:hover,.keune-lightbox-close:focus-visible{
+  border-color:#35f3ff;
+  color:#35f3ff;
+}
+@media(max-width:620px){
+  .keune-lightbox{padding:68px 12px 16px}
+  .keune-lightbox img{max-width:100%;max-height:calc(100dvh - 100px)}
+  .keune-lightbox-close{top:10px;right:10px}
+}
