@@ -46,6 +46,49 @@ const modal=document.getElementById('modal');
 const mc=document.getElementById('modalContent');
 const mn=document.getElementById('modalNum');
 
+const keuneLightbox=document.createElement('div');
+keuneLightbox.className='keune-lightbox';
+keuneLightbox.setAttribute('role','dialog');
+keuneLightbox.setAttribute('aria-modal','true');
+keuneLightbox.setAttribute('aria-label','Visualização ampliada da imagem');
+keuneLightbox.setAttribute('aria-hidden','true');
+keuneLightbox.innerHTML='<button type="button" class="keune-lightbox-close" aria-label="Fechar visualização">FECHAR ×</button><img alt="">';
+document.body.appendChild(keuneLightbox);
+const keuneLightboxImage=keuneLightbox.querySelector('img');
+const keuneLightboxClose=keuneLightbox.querySelector('.keune-lightbox-close');
+let keuneLightboxReturnFocus=null;
+
+function openKeuneLightbox(image){
+  keuneLightboxReturnFocus=image;
+  keuneLightboxImage.src=image.currentSrc||image.src;
+  keuneLightboxImage.alt=image.alt||'Imagem ampliada do case Keune';
+  keuneLightbox.classList.add('open');
+  keuneLightbox.setAttribute('aria-hidden','false');
+  keuneLightboxClose.focus();
+}
+
+function closeKeuneLightbox(){
+  keuneLightbox.classList.remove('open');
+  keuneLightbox.setAttribute('aria-hidden','true');
+  keuneLightboxImage.removeAttribute('src');
+  if(keuneLightboxReturnFocus?.isConnected)keuneLightboxReturnFocus.focus();
+  keuneLightboxReturnFocus=null;
+}
+
+mc.addEventListener('click',e=>{
+  const image=e.target.closest?.('.keune-case .keune-piece img');
+  if(image){e.preventDefault();openKeuneLightbox(image);}
+});
+mc.addEventListener('keydown',e=>{
+  if(e.target.matches?.('.keune-case .keune-piece img')&&(e.key==='Enter'||e.key===' ')){
+    e.preventDefault();
+    openKeuneLightbox(e.target);
+  }
+});
+keuneLightbox.addEventListener('click',e=>{
+  if(e.target===keuneLightbox||e.target.closest('.keune-lightbox-close'))closeKeuneLightbox();
+});
+
 document.querySelectorAll('button.project').forEach(b=>b.onclick=()=>{
   if(b.classList.contains('project-coming'))return;
   const p=projects[b.dataset.id];
@@ -59,6 +102,11 @@ document.querySelectorAll('button.project').forEach(b=>b.onclick=()=>{
     mc.innerHTML=`<h2>Keune Black Friday</h2><div class="modal-meta"><span>CLIENTE — KEUNE</span><span>ANO — 2024</span><span>FUNÇÃO — DIREÇÃO DE ARTE · VISUAL PRINCIPAL</span></div><div class="case-copy keune-intro"><p>Direção visual para Black Friday com linguagem premium e arquitetura preparada para diferentes formatos e pontos de contato da campanha.</p></div><div class="case-label">SISTEMA VISUAL E DESDOBRAMENTOS</div><div class="keune-case"><figure class="keune-piece keune-kv reveal"><figcaption class="keune-piece-label"><span>01 / KEY VISUAL</span><span>BLACK FRIDAY</span></figcaption><img loading="lazy" decoding="async" src="assets/thumbs/keune.webp" alt="Key visual Keune Black Friday"></figure><div class="keune-duo"><figure class="keune-piece reveal"><figcaption class="keune-piece-label"><span>02 / PEÇA PARA SALÃO</span><span>PDV</span></figcaption><img loading="lazy" decoding="async" src="assets/opt/keune-3-keune-peca-para-salao.webp" alt="Peça para salão Keune"></figure><figure class="keune-piece reveal"><figcaption class="keune-piece-label"><span>03 / SOCIAL</span><span>FEED</span></figcaption><img loading="lazy" decoding="async" src="assets/Keune/Feed%201080%20x%201080.jpg" alt="Peça de feed Keune"></figure></div><div class="case-label">EXPLORAÇÕES VISUAIS</div><div class="keune-mosaic"><figure class="keune-piece reveal"><figcaption class="keune-piece-label"><span>04 / ESTUDO</span><span>A</span></figcaption><img loading="lazy" decoding="async" src="assets/opt/keune-op02.webp" alt="Estudo visual Keune 01"></figure><figure class="keune-piece reveal"><figcaption class="keune-piece-label"><span>05 / ESTUDO</span><span>B</span></figcaption><img loading="lazy" decoding="async" src="assets/Keune/op03.jpg" alt="Estudo visual Keune 02"></figure><figure class="keune-piece reveal"><figcaption class="keune-piece-label"><span>06 / ESTUDO</span><span>C</span></figcaption><img loading="lazy" decoding="async" src="assets/Keune/op6.jpg" alt="Estudo visual Keune 03"></figure></div><figure class="keune-piece keune-wide reveal"><figcaption class="keune-piece-label"><span>07 / APLICAÇÃO</span><span>DESDOBRAMENTO</span></figcaption><img loading="lazy" decoding="async" src="assets/opt/keune-captura-de-tela-2024-08-06-as-16-21-18.webp" alt="Aplicação da campanha Keune"></figure></div>`;
   }
 
+  mc.querySelectorAll('.keune-case .keune-piece img').forEach(img=>{
+    img.tabIndex=0;
+    img.setAttribute('role','button');
+    img.setAttribute('aria-label','Ampliar: '+(img.alt||'imagem do case Keune'));
+  });
   mc.querySelectorAll('.modal-meta,.case-hero,.case-copy,.case-label,.case-grid img,.compare-item,.vp-piece,.vp-note,.ze-head,.ze-pillars li,.ze-pose,.ze-result,.vp-inverno .vp-piece').forEach(e=>e.classList.add('reveal'));
   setupReveals(mc);
   modal.classList.add('open');
@@ -66,12 +114,16 @@ document.querySelectorAll('button.project').forEach(b=>b.onclick=()=>{
 });
 
 document.getElementById('close').onclick=()=>{
+  if(keuneLightbox.classList.contains('open'))closeKeuneLightbox();
   modal.classList.remove('open');
   document.body.style.overflow='';
 };
 
 document.addEventListener('keydown',e=>{
-  if(e.key==='Escape')document.getElementById('close').click();
+  if(e.key==='Escape'){
+    if(keuneLightbox.classList.contains('open'))closeKeuneLightbox();
+    else document.getElementById('close').click();
+  }
 });
 
 const ws=[...document.querySelectorAll('.hero-word')];
