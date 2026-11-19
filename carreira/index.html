@@ -197,6 +197,15 @@ button{background:var(--lime);color:#121310;border:0;border-radius:4px;padding:1
 .ag-item.passou .ag-data,.ag-item.passou .ag-txt{color:#5d5f5f}
 .ag-rev{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;line-height:1.6;color:var(--sub)}
 .ag-rev b{color:var(--white);font-weight:600}
+.ag-prox{margin:12px 0 14px;padding:12px 14px;background:#1a1c1c;border:1px solid #2e3030;border-left:3px solid var(--lime);border-radius:4px;font-size:13.5px;line-height:1.55;color:var(--white)}
+.ag-prox b{color:var(--lime);font-weight:600}
+.ag-quando{display:inline-block;margin-left:6px;font:600 10px/1 'Space Grotesk',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--sub);border:1px solid #2e3030;border-radius:3px;padding:4px 6px;vertical-align:1px}
+.ag-slots{list-style:none;margin:0 0 14px;padding:0;display:flex;gap:8px;flex-wrap:wrap}
+.ag-slots li{background:#1a1c1c;border:1px solid #2e3030;border-radius:4px;padding:7px 10px;font:600 12.5px/1 'Space Grotesk',sans-serif;color:var(--white);display:flex;gap:6px;align-items:baseline}
+.ag-slots li span{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--sub);font-weight:500}
+.ag-link{display:inline-block;font:600 11px/1 'Space Grotesk',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--lime);text-decoration:none;border:1px solid var(--lime);border-radius:4px;padding:10px 14px;transition:background .18s,color .18s}
+.ag-link:hover{background:var(--lime);color:#111}
+.ag-nota{margin:12px 0 0;font-size:12px;line-height:1.55;color:var(--sub)}
 .ag-video{margin-top:10px}
 @media (max-width:860px){.ag-colunas{grid-template-columns:1fr}}
 </style></head>
@@ -235,7 +244,7 @@ button{background:var(--lime);color:#121310;border:0;border-radius:4px;padding:1
 <label class="ag-ent" data-ent="e1"><input type="checkbox"><div><h4>Preencher o RED2GO — Planejamento de Carreira</h4><p>Deixar o doc na sua pasta do Drive.</p></div></label>
 <label class="ag-ent" data-ent="e2"><input type="checkbox"><div><h4>Gravar o vídeo de 1 minuto</h4><p>Quem sou, onde moro, o que me motivou a entrar na comunidade e o que espero conquistar nos próximos 12 meses com o mentor.</p></div></label>
 <label class="ag-ent" data-ent="e3"><input type="checkbox"><div><h4>Subir o vídeo no Drive</h4><p>Na mesma pasta do doc do RED2GO.</p></div></label>
-<div class="met ag-video"><span class="met-num">Roteiro</span><h3 style="font-size:15px;text-transform:none;letter-spacing:-.02em;color:var(--white)">Montar o vídeo de 1 minuto</h3><p>Ele pergunta antes de escrever, para o roteiro sair com a sua história e não com frase pronta.</p><div class="met-prompt"><code id="ag-prompt"></code><button type="button" class="met-copiar" id="ag-copiar">Copiar</button></div></div></div><div class="ag-bloco"><h3>Calendário da turma</h3><div id="ag-linha"></div><p class="ag-rev"><b>Reviews recorrentes:</b> terças 19h30, quintas 13h e sábados 9h (horário de Brasília).<br>E desde já: Portfolio Review, talks, oficinas e Bluehook (inglês, português e espanhol).</p></div></div></div></section>
+<div class="met ag-video"><span class="met-num">Roteiro</span><h3 style="font-size:15px;text-transform:none;letter-spacing:-.02em;color:var(--white)">Montar o vídeo de 1 minuto</h3><p>Ele pergunta antes de escrever, para o roteiro sair com a sua história e não com frase pronta.</p><div class="met-prompt"><code id="ag-prompt"></code><button type="button" class="met-copiar" id="ag-copiar">Copiar</button></div></div></div><div class="ag-bloco"><h3>Calendário da turma</h3><div id="ag-linha"></div><div class="ag-rev"><b>Reviews do RED2GO</b><div class="ag-prox" id="ag-prox">—</div><ul class="ag-slots"><li><span>Terça</span>19h30</li><li><span>Quinta</span>13h</li><li><span>Sábado</span>9h</li></ul><a class="ag-link" href="https://redhookschool.whereby.com/office" target="_blank" rel="noopener">Entrar na sala &#8599;</a><p class="ag-nota">Horário de Brasília. Os três reviews da semana cobrem o mesmo conteúdo — vá no que couber. E desde já: Portfolio Review, talks, oficinas e Bluehook (inglês, português e espanhol).</p></div></div></div></div></section>
 <section id="visao"><div class="wrap"><div class="section-head"><div><span class="eyebrow accent">01 / North star</span><h2>Onde quero chegar.</h2></div><p class="section-note">Direção de criação em agência com especialização em IA, sem perder a força do conceito e da direção de arte.</p></div><div class="stats"><div class="stat"><span class="micro muted">Horizonte</span><div class="num">2030</div><div class="label">Meta estratégica de carreira</div></div><div class="stat"><span class="micro muted">Trajetória</span><div class="num">8+</div><div class="label">Anos de experiência em criação</div></div><div class="stat"><span class="micro muted">Foco</span><div class="num">2×</div><div class="label">Creative direction + AI craft</div></div><div class="stat"><span class="micro muted">Método</span><div class="num">01</div><div class="label">Pipeline principal de IA</div></div></div></div></section>
 <section id="roadmap"><div class="wrap"><div class="section-head"><div><span class="eyebrow accent">02 / The roadmap</span><h2>Quatro anos.<br>Uma direção.</h2></div><p class="section-note">Etapas propostas para orientar as escolhas. O objetivo final é uma direção, não um cargo garantido em data fixa.</p></div><div class="timeline"><div class="year"><strong>2027</strong><h3>Consolidar repertório.</h3><p>Cases fortes, maturidade conceitual, domínio do pipeline de IA e evolução pela Redhook.</p><span class="stage">Foundation</span></div><div class="year"><strong>2028</strong><h3>Liderar ideias.</h3><p>Conduzir projetos, colaborar com redatores e assumir decisões criativas mais complexas.</p><span class="stage">Leadership</span></div><div class="year"><strong>2029</strong><h3>Ampliar impacto.</h3><p>Desenvolver visão de campanha, direção de times e repertório reconhecido no mercado.</p><span class="stage">Creative influence</span></div><div class="year"><strong>2030</strong><h3>Creative Director + AI.</h3><p>Atuar na liderança de criação com IA integrada à estratégia e à execução.</p><span class="stage">North star</span></div></div></div></section>
 <section id="red2go"><div class="wrap"><div class="section-head"><div><span class="eyebrow accent">03 / Redhook · RED2GO</span><h2>Autoconhecimento<br>vira movimento.</h2></div><p class="section-note">Estrutura de trabalho inicial, a adaptar aos tópicos oficiais do RED2GO quando estiverem disponíveis. Não é uma reprodução do formulário oficial.</p></div><div class="grid2"><article class="panel"><span class="badge">PONTO DE PARTIDA</span><h3>O que já levo comigo.</h3><p>Experiência em direção de arte, branding, campanhas, trade e projetos autorais. OFF THE MAP como laboratório de conceito, execução e narrativa.</p></article><article class="panel"><span class="badge">POSICIONAMENTO</span><h3>Criatividade primeiro.<br>IA como potência.</h3><p>Usar inteligência artificial para ampliar possibilidades de criação — não apenas acelerar produção de peças.</p></article><article class="panel"><span class="badge">LACUNAS A INVESTIGAR</span><h3>O que precisa crescer.</h3><p>Seleção crítica do portfólio, liderança criativa, campanhas integradas, colaboração com copy e construção de reconhecimento.</p></article><article class="panel"><span class="badge">REDHOOK</span><h3>Aprender em público.</h3><p>Levar os trabalhos para crítica, buscar mentoria, testar ideias e transformar feedback em decisões de projeto.</p></article></div></div></section>
@@ -504,6 +513,27 @@ function fmt(iso){ var d = dt(iso); return ('0'+d.getDate()).slice(-2) + ' ' + M
 var hoje = new Date(); hoje.setHours(0,0,0,0);
 function dias(iso){ return Math.round((dt(iso) - hoje) / 86400000) }
 
+(function(){
+  var SLOTS=[[2,19,30],[4,13,0],[6,9,0]], agora=new Date(), melhor=null, i, k, d, delta;
+  for(i=0;i<SLOTS.length;i++){
+    for(k=0;k<2;k++){
+      d=new Date(agora.getFullYear(),agora.getMonth(),agora.getDate(),SLOTS[i][1],SLOTS[i][2],0,0);
+      delta=((SLOTS[i][0]-agora.getDay())+7)%7 + k*7;
+      d.setDate(d.getDate()+delta);
+      if(d>agora && (melhor===null || d<melhor)) melhor=d;
+    }
+  }
+  var el=document.getElementById('ag-prox');
+  if(!el||melhor===null) return;
+  var DIAS=['domingo','segunda','ter\u00e7a','quarta','quinta','sexta','s\u00e1bado'];
+  function dois(n){return (n<10?'0':'')+n;}
+  var min=melhor.getMinutes(), hm=melhor.getHours()+'h'+(min?dois(min):'');
+  var dd=dois(melhor.getDate())+'/'+dois(melhor.getMonth()+1);
+  var horas=Math.round((melhor-agora)/3600000);
+  var quando = horas<1 ? 'agora' : (horas<24 ? 'em '+horas+'h' : 'em '+Math.round(horas/24)+'d');
+  el.innerHTML='<b>Pr\u00f3ximo review:</b> '+DIAS[melhor.getDay()]+', '+dd+' \u00e0s '+hm+
+    ' <span class="ag-quando">'+quando+'</span>';
+})();
 var caixa = document.getElementById('ag-linha');
 LINHA.forEach(function(it){
   var ini = dias(it.d), fim = it.a ? dias(it.a) : ini;
