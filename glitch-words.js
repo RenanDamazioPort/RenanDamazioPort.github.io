@@ -31,9 +31,7 @@
   ];
   function r(a,b){return a+Math.random()*(b-a)}
   function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
-  function booting(){var b=document.getElementById('boot');return !!(b&&!b.classList.contains('off'))}
   function blocked(x,y){
-    if(booting()) return true;
     var el=document.elementFromPoint(x,y);
     return !!(el&&el.closest&&el.closest('img,video,picture,.visual,.project-title,.hero-name,.case-hero,.compare-item,.section-head,.project-meta,a,button,p,span,small,h1,h2,h3,li'));
   }

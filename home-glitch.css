@@ -21,7 +21,7 @@ opacity:.46;animation:signalShift 8.6s steps(1,end) infinite}
 .tech-scan-slice{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent 0 8%,rgba(150,150,145,.38) 18%,rgba(235,235,235,.26) 48%,rgba(150,150,145,.22) 72%,transparent 94%);opacity:0;filter:blur(.2px)}
 .tech-scan-slice.show{animation:scanSlice .28s steps(1,end) forwards}
 header,main,footer{position:relative;z-index:1}
-header{z-index:50}.boot{z-index:1000}.modal{z-index:100}.easter-overlay{z-index:5000}
+header{z-index:50}.modal{z-index:100}.easter-overlay{z-index:5000}
 @keyframes ambientFlicker{0%,9%,9.16%,24%,24.1%,46%,46.14%,67%,67.12%,88%,88.15%,100%{opacity:.96;filter:brightness(1)}9.08%{opacity:.83;filter:brightness(.965)}24.05%{opacity:1;filter:brightness(1.025)}46.07%{opacity:.86;filter:brightness(.975)}67.06%{opacity:1;filter:brightness(1.02)}88.07%{opacity:.80;filter:brightness(.955)}}
 @keyframes signalShift{0%,19%,19.14%,43%,43.14%,71%,71.1%,100%{transform:translate(0,0);opacity:.46}19.06%{transform:translateX(2px);opacity:.62}43.06%{transform:translate(-2px,1px);opacity:.30}71.05%{transform:translateX(1px);opacity:.56}}
 @keyframes ringSignal{0%,13%,13.36%,35%,35.3%,58%,58.34%,81%,81.32%,100%{opacity:.72}13.14%,35.12%,58.14%,81.12%{opacity:0}13.25%,35.22%,58.25%,81.24%{opacity:.9}}
